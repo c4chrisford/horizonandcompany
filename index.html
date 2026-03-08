@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Horizon & Company | Cinematic Wedding Films</title>
+<title>Horizon & Co | Cinematic Wedding Films</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -111,7 +111,7 @@ letter-spacing:3px;
 text-transform:uppercase;
 }
 
-/* GENERAL SECTIONS */
+/* SECTIONS */
 
 section{
 padding:110px 20px;
@@ -130,55 +130,6 @@ font-size:2.6rem;
 margin-bottom:10px;
 }
 
-.section-title p{
-color:#666;
-}
-
-/* ABOUT */
-
-.about{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-align-items:center;
-}
-
-.about-text{
-font-size:1rem;
-line-height:1.7;
-color:#555;
-}
-
-.about-text p{
-margin-bottom:18px;
-}
-
-.about-highlight{
-font-family:'Baskervville',serif;
-font-size:1.8rem;
-margin-bottom:15px;
-}
-
-/* PROCESS */
-
-.process{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
-text-align:center;
-}
-
-.process h3{
-font-family:'Baskervville',serif;
-margin-bottom:10px;
-}
-
-.process p{
-font-size:0.9rem;
-color:#666;
-line-height:1.6;
-}
-
 /* COLLECTIONS */
 
 .packages{
@@ -193,6 +144,7 @@ padding:45px;
 border:1px solid #e5e5e5;
 text-align:center;
 transition:0.3s;
+cursor:pointer;
 }
 
 .card:hover{
@@ -213,16 +165,23 @@ font-size:1.4rem;
 margin:20px 0;
 }
 
-.card ul{
-list-style:none;
-padding:0;
-font-size:0.9rem;
-color:#666;
-margin-bottom:30px;
+.package-details{
+margin-top:50px;
+background:white;
+border:1px solid #e5e5e5;
+padding:40px;
+display:none;
+animation:fadeIn .4s ease;
 }
 
-.card li{
-margin-bottom:10px;
+.package-details ul{
+line-height:1.8;
+color:#666;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(10px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 /* CONTACT */
@@ -276,40 +235,22 @@ font-size:0.85rem;
 color:#777;
 }
 
-/* MOBILE */
-
-@media(max-width:900px){
-
-.about{
-grid-template-columns:1fr;
-}
-
-.hero-content h1{
-font-size:2.5rem;
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
 <nav>
-
 <div class="nav-container">
 
 <a href="#" class="nav-logo">H & C</a>
 
 <div class="menu">
-<a href="#about">About</a>
 <a href="#collections">Collections</a>
 <a href="#contact">Contact</a>
 </div>
 
 </div>
-
 </nav>
 
 <!-- HERO -->
@@ -329,164 +270,35 @@ font-size:2.5rem;
 
 </div>
 
-<!-- ABOUT -->
-
-<section id="about">
-
-<div class="about">
-
-<div>
-
-<div class="about-highlight">
-Films That Feel Like Your Day
-</div>
-
-<div class="about-text">
-
-<p>
-At Horizon & Company we believe the best wedding films feel natural, emotional and timeless.
-</p>
-
-<p>
-Our approach is relaxed and unobtrusive, allowing real moments to unfold while we capture them with a cinematic eye.
-</p>
-
-<p>
-Based in the North West and filming across the UK and Europe, we focus on storytelling rather than staged moments.
-</p>
-
-<p>
-The result is a wedding film that reflects the atmosphere of your day and the people who matter most.
-</p>
-
-</div>
-
-</div>
-
-<div class="about-text">
-
-<p>
-Every film is crafted with careful editing, natural colour grading and professional audio so your memories feel as vivid years from now as they did in the moment.
-</p>
-
-<p>
-Some couples want a relaxed highlights film that captures the feeling of the day. Others prefer a deeper narrative edit featuring speeches and ceremony moments.
-</p>
-
-<p>
-We tailor each film to match the tone and personality of your wedding.
-</p>
-
-<p>
-Elegant. Emotional. Authentic.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- HOW WE FILM -->
-
-<section>
-
-<div class="section-title">
-<h2>How We Film</h2>
-<p>A calm documentary approach</p>
-</div>
-
-<div class="process">
-
-<div>
-
-<h3>Unobtrusive</h3>
-
-<p>
-We blend quietly into the background so you can enjoy your day without cameras dominating the moment.
-</p>
-
-</div>
-
-<div>
-
-<h3>Cinematic</h3>
-
-<p>
-Careful composition, movement and natural light allow us to capture your wedding with a refined cinematic feel.
-</p>
-
-</div>
-
-<div>
-
-<h3>Authentic</h3>
-
-<p>
-Real reactions, real emotion and real atmosphere are what make your wedding film truly personal.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
 <!-- COLLECTIONS -->
 
-<section id="collections" style="background:#f3f3f1">
+<section id="collections">
 
 <div class="section-title">
 <h2>The Collections</h2>
-<p>Curated packages for every story</p>
+<p>Each collection includes professional audio capture, cinematic colour grading and private 4K delivery.</p>
 </div>
 
 <div class="packages">
 
-<div class="card">
-
-<h3>The Archive</h3>
-
-<p class="price">£300</p>
-
-<ul>
-<li>Ceremony Coverage</li>
-<li>Full 4K Delivery</li>
-<li>Professional Audio</li>
-</ul>
-
+<div class="card" onclick="showPackage('ceremony')">
+<h3>Ceremony Collection</h3>
+<p class="price">£450</p>
 </div>
 
-<div class="card" style="border:2px solid var(--gold)">
-
-<h3>The Cinematic</h3>
-
-<p class="price">£900</p>
-
-<ul>
-<li>Full Day Coverage</li>
-<li>5–8 Minute Narrative Film</li>
-<li>Full Ceremony & Speeches</li>
-<li>Drone Coverage Included</li>
-</ul>
-
-</div>
-
-<div class="card">
-
-<h3>The Narrative</h3>
-
+<div class="card" onclick="showPackage('narrative')" style="border:2px solid var(--gold)">
+<h3>Narrative Collection</h3>
 <p class="price">£600</p>
+</div>
 
-<ul>
-<li>Full Day Coverage</li>
-<li>5–8 Minute Highlights Film</li>
-<li>Natural Colour Grading</li>
-</ul>
-
+<div class="card" onclick="showPackage('cinematic')">
+<h3>Cinematic Collection</h3>
+<p class="price">£900</p>
 </div>
 
 </div>
+
+<div id="package-details" class="package-details"></div>
 
 </section>
 
@@ -545,6 +357,58 @@ hello@horizonandcompany.com
 
 </footer>
 
-</body>
+<script>
 
+function showPackage(type){
+
+const panel=document.getElementById("package-details");
+
+let content="";
+
+if(type==="ceremony"){
+content=`
+<h3>The Ceremony Collection (£450)</h3>
+<ul>
+<li>Full ceremony coverage from guest arrival to ceremony exit</li>
+<li>Professionally edited ceremony film with multiple angles</li>
+<li>Professionally recorded audio</li>
+<li>Cinematic colour grading</li>
+</ul>
+`;
+}
+
+if(type==="narrative"){
+content=`
+<h3>The Narrative Collection (£600)</h3>
+<ul>
+<li>Full day filming from preparations through to first dance</li>
+<li>5–8 minute cinematic highlights film set to a custom soundtrack</li>
+<li>Creative editing, colour grading and professional audio</li>
+<li>Drone footage where safe and permitted</li>
+</ul>
+`;
+}
+
+if(type==="cinematic"){
+content=`
+<h3>The Cinematic Collection (£900)</h3>
+<ul>
+<li>Full day coverage from preparations through to first dance</li>
+<li>5–8 minute cinematic highlights film set to a custom soundtrack</li>
+<li>Full ceremony film delivered separately</li>
+<li>Full speeches film delivered separately</li>
+<li>Professional audio and cinematic colour grading throughout</li>
+<li>Drone footage where safe and permitted</li>
+</ul>
+`;
+}
+
+panel.innerHTML=content;
+panel.style.display="block";
+
+}
+
+</script>
+
+</body>
 </html>

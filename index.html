@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Horizon & Company | Cinematic Wedding Films</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-:root {
+:root{
 --gold:#8E7A5A;
 --charcoal:#1a1a1a;
 --light-grey:#fafaf9;
 }
 
 body{
-font-family:'Inter',sans-serif;
-background-color:var(--light-grey);
-color:var(--charcoal);
 margin:0;
+font-family:'Inter',sans-serif;
+background:var(--light-grey);
+color:var(--charcoal);
 scroll-behavior:smooth;
 }
 
-/* Navigation */
+/* NAV */
 
 nav{
 position:fixed;
-width:100%;
 top:0;
+width:100%;
 background:white;
 border-bottom:1px solid #eee;
 z-index:1000;
@@ -63,7 +65,7 @@ text-transform:uppercase;
 font-weight:600;
 }
 
-/* Hero */
+/* HERO */
 
 .hero{
 position:relative;
@@ -76,31 +78,25 @@ text-align:center;
 color:white;
 }
 
-.hero::before{
-content:"";
+.hero-video{
+position:absolute;
+top:50%;
+left:50%;
+min-width:100%;
+min-height:100%;
+transform:translate(-50%,-50%);
+object-fit:cover;
+z-index:-2;
+}
+
+.hero-overlay{
 position:absolute;
 top:0;
 left:0;
 width:100%;
 height:100%;
-
-background:
-linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)),
-url("images/AimeeNiall.png");
-
-background-size:cover;
-background-position:center 25%;
-background-repeat:no-repeat;
-
-transform:scale(1);
-animation:slowZoom 20s ease-in-out infinite alternate;
-
+background:rgba(0,0,0,0.35);
 z-index:-1;
-}
-
-@keyframes slowZoom{
-from{transform:scale(1);}
-to{transform:scale(1.08);}
 }
 
 .hero-content h1{
@@ -115,7 +111,7 @@ letter-spacing:3px;
 text-transform:uppercase;
 }
 
-/* Sections */
+/* SECTIONS */
 
 section{
 padding:100px 20px;
@@ -134,7 +130,7 @@ font-size:2.5rem;
 margin-bottom:10px;
 }
 
-/* Packages */
+/* COLLECTIONS */
 
 .packages{
 display:grid;
@@ -174,15 +170,21 @@ margin-bottom:30px;
 margin-bottom:10px;
 }
 
-/* Contact */
+/* CONTACT */
 
 .contact-flex{
 display:flex;
 gap:50px;
+flex-wrap:wrap;
 }
 
-.contact-info{flex:1;}
-.contact-form{flex:2;}
+.contact-info{
+flex:1;
+}
+
+.contact-form{
+flex:2;
+}
 
 input,textarea{
 width:100%;
@@ -202,38 +204,54 @@ letter-spacing:2px;
 cursor:pointer;
 }
 
-/* Footer */
+/* FOOTER */
 
 footer{
 text-align:center;
 padding:60px;
-background:#fff;
+background:white;
 border-top:1px solid #eee;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <nav>
 <div class="nav-container">
+
 <a href="#" class="nav-logo">H & C</a>
+
 <div class="menu">
 <a href="#collections">Collections</a>
 <a href="#contact">Contact</a>
 </div>
+
 </div>
 </nav>
 
+<!-- HERO -->
+
 <div class="hero">
+
+<video autoplay muted loop playsinline class="hero-video">
+<source src="videos/hero.mp4" type="video/mp4">
+</video>
+
+<div class="hero-overlay"></div>
+
 <div class="hero-content">
 <h1>Natural Light. Honest Emotion.</h1>
 <p>Cinematic Wedding Films</p>
 </div>
+
 </div>
 
-<section id="collections" style="background-color:#f3f3f1;">
+<!-- COLLECTIONS -->
+
+<section id="collections">
 
 <div class="section-title">
 <h2>The Collections</h2>
@@ -245,37 +263,45 @@ border-top:1px solid #eee;
 <div class="card">
 <h3>The Archive</h3>
 <p class="price">£300</p>
+
 <ul>
 <li>Ceremony Coverage</li>
 <li>Full 4K Delivery</li>
 <li>Professional Audio</li>
 </ul>
+
 </div>
 
 <div class="card" style="border-color:var(--gold);border-width:2px;">
 <h3>The Cinematic</h3>
 <p class="price">£900</p>
+
 <ul>
 <li>Full Day Coverage</li>
-<li>5-8 Minute Narrative Film</li>
+<li>5–8 Minute Narrative Film</li>
 <li>Full Ceremony & Speeches</li>
 <li>Drone Coverage Included</li>
 </ul>
+
 </div>
 
 <div class="card">
 <h3>The Narrative</h3>
 <p class="price">£600</p>
+
 <ul>
 <li>Full Day Coverage</li>
-<li>5-8 Minute Highlights Film</li>
+<li>5–8 Minute Highlights Film</li>
 <li>Natural Colour Grading</li>
 </ul>
+
 </div>
 
 </div>
 
 </section>
+
+<!-- CONTACT -->
 
 <section id="contact">
 
@@ -287,6 +313,7 @@ border-top:1px solid #eee;
 <div class="contact-flex">
 
 <div class="contact-info">
+
 <p><strong>Booking Policy:</strong><br>
 A 25% non-refundable booking fee secures your date. Final balance due 7 days prior to the wedding.
 </p>
@@ -317,8 +344,11 @@ A 25% non-refundable booking fee secures your date. Final balance due 7 days pri
 </section>
 
 <footer>
-<p>&copy; 2026 Horizon & Company</p>
+
+<p>© 2026 Horizon & Company</p>
+
 </footer>
 
 </body>
+
 </html>

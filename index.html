@@ -10,6 +10,7 @@
             --gold: #8E7A5A;
             --charcoal: #1a1a1a;
             --light-grey: #fafaf9;
+            --border: #e5e5e5;
         }
 
         body {
@@ -28,7 +29,7 @@
             background: white;
             border-bottom: 1px solid #eee;
             z-index: 1000;
-            padding: 18px 0;
+            padding: 20px 0;
         }
 
         .nav-container {
@@ -37,7 +38,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 40px;
         }
 
         .nav-logo {
@@ -45,15 +46,15 @@
             font-size: 1.4rem;
             text-decoration: none;
             color: var(--charcoal);
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             text-transform: uppercase;
         }
 
         .menu a {
             text-decoration: none;
             color: var(--charcoal);
-            margin-left: 30px;
-            font-size: 0.8rem;
+            margin-left: 35px;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 600;
@@ -84,142 +85,192 @@
 
         .hero-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.35);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3);
             z-index: -1;
         }
 
         .hero-content h1 {
             font-family: 'Baskervville', serif;
-            font-size: 4rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            font-size: 3.8rem;
+            margin-bottom: 25px;
+            line-height: 1.1;
         }
 
         .hero-subtitle {
-            font-size: 2.2rem;
+            font-size: 2rem;
             display: block;
             margin-top: 10px;
             font-style: italic;
             opacity: 0.9;
+            font-weight: 300;
         }
 
         .hero-subtitle::before { content: "("; }
         .hero-subtitle::after { content: ")"; }
 
-        .hero-content p {
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 35px;
-        }
-
         .hero-btn {
+            display: inline-block;
+            margin-top: 30px;
             background: white;
             color: var(--charcoal);
-            padding: 14px 30px;
+            padding: 16px 35px;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 600;
-            transition: 0.3s;
+            transition: 0.4s;
         }
 
-        .hero-btn:hover {
-            background: var(--gold);
-            color: white;
-        }
+        .hero-btn:hover { background: var(--gold); color: white; }
 
-        /* COLLECTIONS */
+        /* SECTIONS */
         section {
-            padding: 90px 20px;
+            padding: 120px 40px;
             max-width: 1100px;
             margin: auto;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .section-title h2 {
             font-family: 'Baskervville', serif;
-            font-size: 2.6rem;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
         }
 
+        /* COLLECTIONS */
         .packages {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
         .card {
             background: white;
-            padding: 40px;
-            border: 1px solid #e5e5e5;
+            padding: 50px 20px;
+            border: 1px solid var(--border);
             text-align: center;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.4s ease;
         }
+
+        .card:hover { border-color: var(--gold); }
 
         .card.active {
             border: 2px solid var(--gold);
-            transform: translateY(-5px);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
 
         .card h3 {
             font-family: 'Baskervville', serif;
-            font-size: 1.6rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 400;
         }
 
-        .price {
+        .card .price {
             color: var(--gold);
             font-weight: 600;
             font-size: 1.3rem;
+            letter-spacing: 1px;
         }
 
         .package-details {
-            margin-top: 40px;
             background: white;
-            border: 1px solid #e5e5e5;
-            padding: 40px;
+            border: 1px solid var(--border);
+            padding: 60px;
             display: none;
         }
 
         .package-details h3 {
             font-family: 'Baskervville', serif;
-            font-size: 2rem;
-            margin-top: 0;
+            font-size: 2.2rem;
+            margin: 0 0 30px 0;
         }
 
-        .package-details ul {
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 40px;
             list-style: none;
             padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
         }
 
-        .package-details li::before {
-            content: "— ";
+        .details-grid li {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #444;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .details-grid li::before {
+            content: "—";
             color: var(--gold);
+            margin-right: 15px;
+            font-weight: bold;
         }
 
-        /* FOOTER & MISC */
+        /* CONTACT */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+        }
+
+        .contact-info p {
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            background: white;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .submit-btn {
+            background: var(--charcoal);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover { background: var(--gold); }
+
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 80px 40px;
+            border-top: 1px solid #eee;
+            background: white;
             font-size: 0.8rem;
-            color: #777;
+            color: #999;
+            letter-spacing: 1px;
         }
 
         @media(max-width: 900px) {
-            .hero-content h1 { font-size: 2.8rem; }
-            .hero-subtitle { font-size: 1.8rem; }
+            .packages, .contact-container { grid-template-columns: 1fr; }
+            .details-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-container { padding: 0 20px; }
+            .menu { display: none; } /* Mobile simplicity */
         }
     </style>
 </head>
@@ -243,7 +294,7 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <h1>The Moments You Lived.<br><span class="hero-subtitle">And The Ones You Missed</span></h1>
-        <p>Cinematic Wedding Films</p>
+        <p style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem;">Cinematic Wedding Films</p>
         <a href="#collections" class="hero-btn">View Collections</a>
     </div>
 </div>
@@ -251,7 +302,7 @@
 <section id="collections">
     <div class="section-title">
         <h2>Wedding Film Collections</h2>
-        <p>All films delivered in 4K via private online delivery</p>
+        <p style="color: #666; font-size: 0.9rem;">All films delivered in 4K via private online delivery</p>
     </div>
 
     <div class="packages">
@@ -263,7 +314,7 @@
             <h3>The Narrative</h3>
             <p class="price">£600</p>
         </div>
-        <div id="cinematic-card" class="card" onclick="showPackage('cinematic', this)">
+        <div id="cinematic-default" class="card" onclick="showPackage('cinematic', this)">
             <h3>The Cinematic</h3>
             <p class="price">£900</p>
         </div>
@@ -272,8 +323,35 @@
     <div id="package-details" class="package-details"></div>
 </section>
 
+<section id="contact" style="background: #f4f4f3;">
+    <div class="section-title">
+        <h2>Secure Your Date</h2>
+        <p>Currently booking 2026 & 2027</p>
+    </div>
+    
+    <div class="contact-container">
+        <div class="contact-info">
+            <p><strong>Inquiries</strong><br>hello@horizonandcompany.com</p>
+            <p><strong>Follow</strong><br>@horizonandco_uk</p>
+            <p style="font-size: 0.85rem; font-style: italic; border-top: 1px solid #ddd; pt-20; margin-top: 40px;">
+                A 25% non-refundable booking fee secures your date. Final balance due 7 days before the wedding.
+            </p>
+        </div>
+
+        <div class="contact-form">
+            <form action="#">
+                <input type="text" placeholder="Your Names" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="text" placeholder="Wedding Date & Venue" required>
+                <textarea rows="6" placeholder="Tell us about your day..." required></textarea>
+                <button type="submit" class="submit-btn">Send Enquiry</button>
+            </form>
+        </div>
+    </div>
+</section>
+
 <footer>
-    <p>© 2026 Horizon & Company | hello@horizonandcompany.com</p>
+    <p>© 2026 HORIZON & COMPANY | UK & EUROPE</p>
 </footer>
 
 <script>
@@ -284,32 +362,33 @@
         element.classList.add("active");
 
         let content = "";
+        
         if (type === "ceremony") {
             content = `<h3>The Ceremony Collection</h3>
-                <ul>
-                    <li>Full ceremony coverage (arrival to exit)</li>
-                    <li>Professionally edited multi-angle film</li>
-                    <li>Professional audio recording</li>
-                    <li>Cinematic colour grading</li>
+                <ul class="details-grid">
+                    <li>Full ceremony coverage (arrival to exit) [cite: 7]</li>
+                    <li>Professionally edited multi-angle film [cite: 8, 9]</li>
+                    <li>Professionally recorded audio [cite: 10]</li>
+                    <li>Cinematic colour grading [cite: 11]</li>
                 </ul>`;
         } else if (type === "narrative") {
             content = `<h3>The Narrative Collection</h3>
-                <ul>
-                    <li>Full day coverage (prep to first dance)</li>
-                    <li>5–8 minute cinematic highlights film</li>
-                    <li>Custom soundtrack</li>
-                    <li>Drone footage (where safe/permitted)</li>
-                    <li>Professional audio & creative editing</li>
+                <ul class="details-grid">
+                    <li>Full day coverage (prep to first dance) [cite: 14]</li>
+                    <li>5–8 minute cinematic highlights film [cite: 15]</li>
+                    <li>Custom soundtrack [cite: 15]</li>
+                    <li>Drone footage where safe and permitted [cite: 17]</li>
+                    <li>Creative editing & professional audio [cite: 16]</li>
                 </ul>`;
         } else if (type === "cinematic") {
             content = `<h3>The Cinematic Collection</h3>
-                <ul>
-                    <li>Full day coverage (prep to first dance)</li>
-                    <li>5–8 minute cinematic highlights film</li>
-                    <li>Full ceremony film delivered separately</li>
-                    <li>Full speeches film delivered separately</li>
-                    <li>Drone footage (where safe/permitted)</li>
-                    <li>Custom soundtrack & cinematic grading</li>
+                <ul class="details-grid">
+                    <li>Full day coverage (prep to first dance) [cite: 20]</li>
+                    <li>5–8 minute cinematic highlights film [cite: 21]</li>
+                    <li>Full ceremony film delivered separately [cite: 22]</li>
+                    <li>Full speeches film delivered separately [cite: 23]</li>
+                    <li>Drone footage where safe and permitted [cite: 26]</li>
+                    <li>Custom soundtrack & cinematic grading [cite: 21, 24]</li>
                 </ul>`;
         }
 
@@ -317,9 +396,9 @@
         panel.style.display = "block";
     }
 
-    // Auto-select Cinematic on load
+    // Pre-select Cinematic on load
     window.onload = function() {
-        document.getElementById('cinematic-card').click();
+        document.getElementById('cinematic-default').click();
     };
 </script>
 

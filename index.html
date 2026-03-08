@@ -7,7 +7,7 @@
 
 <title>Horizon & Co | Cinematic Wedding Films</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Inter:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
@@ -46,11 +46,11 @@ align-items:center;
 padding:0 20px;
 }
 
+/* LOGO UPDATED */
+
 .nav-logo{
-font-family:'Baskervville',serif;
-font-style:italic;
-font-weight:bold;
-font-size:1.6rem;
+font-family:'Great Vibes',cursive;
+font-size:2.4rem;
 text-decoration:none;
 color:var(--charcoal);
 }
@@ -102,7 +102,8 @@ z-index:-1;
 .hero-content h1{
 font-family:'Baskervville',serif;
 font-size:4rem;
-margin-bottom:10px;
+margin-bottom:20px;
+line-height:1.2;
 }
 
 .hero-content p{
@@ -146,7 +147,7 @@ font-size:2.6rem;
 margin-bottom:10px;
 }
 
-/* ABOUT (Improved Layout) */
+/* ABOUT */
 
 .about-grid{
 display:grid;
@@ -327,7 +328,7 @@ font-size:2.6rem;
 
 <div class="hero-content">
 
-<h1>Natural Light. Honest Emotion.</h1>
+<h1>The Moments You Lived.<br>And The Ones You Missed.</h1>
 <p>Cinematic Wedding Films</p>
 
 <a href="#collections" class="hero-btn">View Collections</a>
@@ -335,204 +336,3 @@ font-size:2.6rem;
 </div>
 
 </div>
-
-<!-- ABOUT -->
-
-<section id="about">
-
-<div class="about-grid">
-
-<div class="about-intro">
-
-<h2>Films That Capture The Moments You Missed</h2>
-
-<p class="about-lead">
-A wedding day moves quickly. While you are greeting guests, laughing with friends or sharing a quiet moment together, countless small moments are unfolding around you.
-</p>
-
-<p>
-A proud glance from across the room. A reassuring hand on a shoulder. A father leaning in to kiss his daughter on the head during the ceremony.
-</p>
-
-<p>
-These are the moments couples often do not realise happened until they see them again.
-</p>
-
-</div>
-
-<div class="about-story">
-
-<p>
-Our approach is calm, natural and unobtrusive. Rather than directing the day, we blend quietly into the background and allow real moments to unfold while capturing them with a cinematic eye.
-</p>
-
-<p>
-Behind the camera is over a decade of experience working across creative industries including music, film and visual production. That experience shapes the way every wedding film is crafted.
-</p>
-
-<p>
-The result is not simply a video of your wedding, but a film that allows you to experience the day again including the moments you never realised were happening.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- COLLECTIONS -->
-
-<section id="collections">
-
-<div class="section-title">
-<h2>The Collections</h2>
-<p>Each collection includes professional audio capture, cinematic colour grading and private 4K delivery.</p>
-</div>
-
-<div class="packages">
-
-<div class="card" onclick="showPackage('ceremony',this)">
-<h3>Ceremony Collection</h3>
-<p class="price">£450</p>
-</div>
-
-<div class="card" onclick="showPackage('narrative',this)">
-<h3>Narrative Collection</h3>
-<p class="price">£600</p>
-</div>
-
-<div class="card" onclick="showPackage('cinematic',this)">
-<h3>Cinematic Collection</h3>
-<p class="price">£900</p>
-</div>
-
-</div>
-
-<div id="package-details" class="package-details"></div>
-
-</section>
-
-<!-- CONTACT -->
-
-<section id="contact">
-
-<div class="section-title">
-<h2>Secure Your Date</h2>
-<p>Currently booking 2026 & 2027</p>
-</div>
-
-<div class="contact-flex">
-
-<div class="contact-info">
-
-<p><strong>Email</strong><br>hello@horizonandcompany.com</p>
-
-<p><strong>Instagram</strong><br>@horizonandco_uk</p>
-
-<p>
-A 25% non-refundable booking fee secures your date. Final balance due 7 days before the wedding.
-</p>
-
-</div>
-
-<div class="contact-form">
-
-<form id="contactForm">
-
-<input name="name" type="text" placeholder="Your Names" required>
-<input name="email" type="email" placeholder="Email Address" required>
-<input name="date" type="text" placeholder="Wedding Date & Venue" required>
-
-<textarea name="message" placeholder="Tell us about your day..." rows="5"></textarea>
-
-<button type="submit" class="submit-btn">Send Enquiry</button>
-
-<p class="success-message" id="success">Message ready to send in your email client.</p>
-
-</form>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>© 2026 Horizon & Company</p>
-
-</footer>
-
-<script>
-
-function showPackage(type, element){
-
-const panel=document.getElementById("package-details");
-const cards=document.querySelectorAll(".card");
-
-cards.forEach(card=>card.classList.remove("active"));
-element.classList.add("active");
-
-let content="";
-
-if(type==="ceremony"){
-content=`<h3>The Ceremony Collection (£450)</h3>
-<ul>
-<li>Full ceremony coverage</li>
-<li>Professionally edited ceremony film</li>
-<li>Professional audio recording</li>
-<li>Cinematic colour grading</li>
-</ul>`;
-}
-
-if(type==="narrative"){
-content=`<h3>The Narrative Collection (£600)</h3>
-<ul>
-<li>Full day filming</li>
-<li>5–8 minute cinematic highlights film</li>
-<li>Creative editing and colour grading</li>
-<li>Drone footage where safe and permitted</li>
-</ul>`;
-}
-
-if(type==="cinematic"){
-content=`<h3>The Cinematic Collection (£900)</h3>
-<ul>
-<li>Full day coverage</li>
-<li>Highlights film</li>
-<li>Full ceremony film</li>
-<li>Full speeches film</li>
-<li>Drone footage</li>
-</ul>`;
-}
-
-panel.innerHTML=content;
-panel.style.display="block";
-
-}
-
-window.addEventListener("DOMContentLoaded",()=>{
-const cards=document.querySelectorAll(".card");
-cards[1].classList.add("active");
-showPackage("narrative",cards[1]);
-});
-
-document.getElementById("contactForm").addEventListener("submit",function(e){
-
-e.preventDefault();
-
-const name=this.name.value;
-const email=this.email.value;
-const date=this.date.value;
-const message=this.message.value;
-
-window.location.href=`mailto:hello@horizonandcompany.com?subject=Wedding Enquiry&body=Name: ${name}%0D%0AEmail: ${email}%0D%0ADate: ${date}%0D%0A%0D%0A${message}`;
-
-document.getElementById("success").style.display="block";
-
-});
-
-</script>
-
-</body>
-</html>

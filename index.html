@@ -130,14 +130,14 @@ color:white;
 /* SECTIONS */
 
 section{
-padding:120px 20px;
+padding:90px 20px;
 max-width:1100px;
 margin:auto;
 }
 
 .section-title{
 text-align:center;
-margin-bottom:60px;
+margin-bottom:50px;
 }
 
 .section-title h2{
@@ -158,11 +158,15 @@ color:#555;
 
 .about h3{
 font-family:'Baskervville',serif;
-font-size:1.8rem;
+font-size:1.9rem;
 margin-bottom:20px;
 }
 
 /* COLLECTIONS */
+
+#collections{
+padding-top:60px;
+}
 
 .packages{
 display:grid;
@@ -200,7 +204,7 @@ font-size:1.4rem;
 }
 
 .package-details{
-margin-top:50px;
+margin-top:40px;
 background:white;
 border:1px solid #e5e5e5;
 padding:40px;
@@ -330,7 +334,7 @@ font-size:2.6rem;
 <h3>Films That Capture The Moments You Missed</h3>
 
 <p>
-A wedding day moves quickly. While you are greeting guests, laughing with friends or sharing a quiet moment together, dozens of small moments are unfolding around you.
+A wedding day moves quickly. While you are greeting guests, laughing with friends or sharing a quiet moment together, countless small moments are unfolding around you.
 </p>
 
 <p>
@@ -346,11 +350,11 @@ These are the moments couples often do not realise happened until they see them 
 <div>
 
 <p>
-Our approach is calm, natural and unobtrusive. Rather than directing the day, We blend quietly into the background and allow real moments to unfold while capturing them with a cinematic eye.
+Our approach is calm, natural and unobtrusive. Rather than directing the day, we blend quietly into the background and allow real moments to unfold while capturing them with a cinematic eye.
 </p>
 
 <p>
-Behind the camera is over a decade of experience working across creative industries including music, film and visual production. That background shapes the way every wedding film is crafted.
+Behind the camera is over a decade of experience working across creative industries including music, film and visual production. That experience shapes the way every wedding film is crafted.
 </p>
 
 <p>
@@ -423,9 +427,7 @@ A 25% non-refundable booking fee secures your date. Final balance due 7 days bef
 <form id="contactForm">
 
 <input name="name" type="text" placeholder="Your Names" required>
-
 <input name="email" type="email" placeholder="Email Address" required>
-
 <input name="date" type="text" placeholder="Wedding Date & Venue" required>
 
 <textarea name="message" placeholder="Tell us about your day..." rows="5"></textarea>
@@ -456,27 +458,24 @@ const panel=document.getElementById("package-details");
 const cards=document.querySelectorAll(".card");
 
 cards.forEach(card=>card.classList.remove("active"));
-
 element.classList.add("active");
 
 let content="";
 
 if(type==="ceremony"){
-content=`
-<h3>The Ceremony Collection (£450)</h3>
+content=`<h3>The Ceremony Collection (£450)</h3>
 <ul>
-<li>Full ceremony coverage from guest arrival to ceremony exit</li>
-<li>Professionally edited ceremony film with multiple angles</li>
+<li>Full ceremony coverage</li>
+<li>Professionally edited ceremony film</li>
 <li>Professional audio recording</li>
 <li>Cinematic colour grading</li>
 </ul>`;
 }
 
 if(type==="narrative"){
-content=`
-<h3>The Narrative Collection (£600)</h3>
+content=`<h3>The Narrative Collection (£600)</h3>
 <ul>
-<li>Full day filming from preparations through to first dance</li>
+<li>Full day filming</li>
 <li>5–8 minute cinematic highlights film</li>
 <li>Creative editing and colour grading</li>
 <li>Drone footage where safe and permitted</li>
@@ -484,15 +483,13 @@ content=`
 }
 
 if(type==="cinematic"){
-content=`
-<h3>The Cinematic Collection (£900)</h3>
+content=`<h3>The Cinematic Collection (£900)</h3>
 <ul>
-<li>Full day coverage from preparations through to first dance</li>
-<li>5–8 minute cinematic highlights film</li>
+<li>Full day coverage</li>
+<li>Highlights film</li>
 <li>Full ceremony film</li>
 <li>Full speeches film</li>
-<li>Professional audio and cinematic colour grading</li>
-<li>Drone footage where safe and permitted</li>
+<li>Drone footage</li>
 </ul>`;
 }
 
@@ -502,16 +499,10 @@ panel.style.display="block";
 }
 
 window.addEventListener("DOMContentLoaded",()=>{
-
 const cards=document.querySelectorAll(".card");
-
 cards[1].classList.add("active");
-
 showPackage("narrative",cards[1]);
-
 });
-
-/* simple email helper */
 
 document.getElementById("contactForm").addEventListener("submit",function(e){
 

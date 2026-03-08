@@ -34,11 +34,11 @@ width:100%;
 background:white;
 border-bottom:1px solid #eee;
 z-index:1000;
-padding:20px 0;
+padding:18px 0;
 }
 
 .nav-container{
-max-width:1100px;
+max-width:1200px;
 margin:0 auto;
 display:flex;
 justify-content:space-between;
@@ -102,7 +102,7 @@ z-index:-1;
 .hero-content h1{
 font-family:'Baskervville',serif;
 font-size:4rem;
-margin-bottom:10px;
+margin-bottom:15px;
 }
 
 .hero-content p{
@@ -111,10 +111,10 @@ letter-spacing:3px;
 text-transform:uppercase;
 }
 
-/* SECTIONS */
+/* GENERAL SECTIONS */
 
 section{
-padding:100px 20px;
+padding:110px 20px;
 max-width:1100px;
 margin:0 auto;
 }
@@ -126,23 +126,78 @@ margin-bottom:60px;
 
 .section-title h2{
 font-family:'Baskervville',serif;
-font-size:2.5rem;
+font-size:2.6rem;
 margin-bottom:10px;
+}
+
+.section-title p{
+color:#666;
+}
+
+/* ABOUT */
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.about-text{
+font-size:1rem;
+line-height:1.7;
+color:#555;
+}
+
+.about-text p{
+margin-bottom:18px;
+}
+
+.about-highlight{
+font-family:'Baskervville',serif;
+font-size:1.8rem;
+margin-bottom:15px;
+}
+
+/* PROCESS */
+
+.process{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+text-align:center;
+}
+
+.process h3{
+font-family:'Baskervville',serif;
+margin-bottom:10px;
+}
+
+.process p{
+font-size:0.9rem;
+color:#666;
+line-height:1.6;
 }
 
 /* COLLECTIONS */
 
 .packages{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:35px;
 }
 
 .card{
 background:white;
-padding:40px;
+padding:45px;
 border:1px solid #e5e5e5;
 text-align:center;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
 .card h3{
@@ -180,6 +235,8 @@ flex-wrap:wrap;
 
 .contact-info{
 flex:1;
+font-size:0.95rem;
+line-height:1.6;
 }
 
 .contact-form{
@@ -204,6 +261,10 @@ letter-spacing:2px;
 cursor:pointer;
 }
 
+.submit-btn:hover{
+background:var(--gold);
+}
+
 /* FOOTER */
 
 footer{
@@ -211,6 +272,22 @@ text-align:center;
 padding:60px;
 background:white;
 border-top:1px solid #eee;
+font-size:0.85rem;
+color:#777;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.about{
+grid-template-columns:1fr;
+}
+
+.hero-content h1{
+font-size:2.5rem;
+}
+
 }
 
 </style>
@@ -220,16 +297,19 @@ border-top:1px solid #eee;
 <body>
 
 <nav>
+
 <div class="nav-container">
 
 <a href="#" class="nav-logo">H & C</a>
 
 <div class="menu">
+<a href="#about">About</a>
 <a href="#collections">Collections</a>
 <a href="#contact">Contact</a>
 </div>
 
 </div>
+
 </nav>
 
 <!-- HERO -->
@@ -249,9 +329,112 @@ border-top:1px solid #eee;
 
 </div>
 
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="about">
+
+<div>
+
+<div class="about-highlight">
+Films That Feel Like Your Day
+</div>
+
+<div class="about-text">
+
+<p>
+At Horizon & Company we believe the best wedding films feel natural, emotional and timeless.
+</p>
+
+<p>
+Our approach is relaxed and unobtrusive, allowing real moments to unfold while we capture them with a cinematic eye.
+</p>
+
+<p>
+Based in the North West and filming across the UK and Europe, we focus on storytelling rather than staged moments.
+</p>
+
+<p>
+The result is a wedding film that reflects the atmosphere of your day and the people who matter most.
+</p>
+
+</div>
+
+</div>
+
+<div class="about-text">
+
+<p>
+Every film is crafted with careful editing, natural colour grading and professional audio so your memories feel as vivid years from now as they did in the moment.
+</p>
+
+<p>
+Some couples want a relaxed highlights film that captures the feeling of the day. Others prefer a deeper narrative edit featuring speeches and ceremony moments.
+</p>
+
+<p>
+We tailor each film to match the tone and personality of your wedding.
+</p>
+
+<p>
+Elegant. Emotional. Authentic.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- HOW WE FILM -->
+
+<section>
+
+<div class="section-title">
+<h2>How We Film</h2>
+<p>A calm documentary approach</p>
+</div>
+
+<div class="process">
+
+<div>
+
+<h3>Unobtrusive</h3>
+
+<p>
+We blend quietly into the background so you can enjoy your day without cameras dominating the moment.
+</p>
+
+</div>
+
+<div>
+
+<h3>Cinematic</h3>
+
+<p>
+Careful composition, movement and natural light allow us to capture your wedding with a refined cinematic feel.
+</p>
+
+</div>
+
+<div>
+
+<h3>Authentic</h3>
+
+<p>
+Real reactions, real emotion and real atmosphere are what make your wedding film truly personal.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
 <!-- COLLECTIONS -->
 
-<section id="collections">
+<section id="collections" style="background:#f3f3f1">
 
 <div class="section-title">
 <h2>The Collections</h2>
@@ -261,7 +444,9 @@ border-top:1px solid #eee;
 <div class="packages">
 
 <div class="card">
+
 <h3>The Archive</h3>
+
 <p class="price">£300</p>
 
 <ul>
@@ -272,8 +457,10 @@ border-top:1px solid #eee;
 
 </div>
 
-<div class="card" style="border-color:var(--gold);border-width:2px;">
+<div class="card" style="border:2px solid var(--gold)">
+
 <h3>The Cinematic</h3>
+
 <p class="price">£900</p>
 
 <ul>
@@ -286,7 +473,9 @@ border-top:1px solid #eee;
 </div>
 
 <div class="card">
+
 <h3>The Narrative</h3>
+
 <p class="price">£600</p>
 
 <ul>
@@ -314,12 +503,17 @@ border-top:1px solid #eee;
 
 <div class="contact-info">
 
-<p><strong>Booking Policy:</strong><br>
+<p><strong>Booking Policy</strong><br>
 A 25% non-refundable booking fee secures your date. Final balance due 7 days prior to the wedding.
 </p>
 
-<p><strong>Email:</strong> hello@horizonandcompany.com</p>
-<p><strong>Instagram:</strong> @horizonandco_uk</p>
+<p><strong>Email</strong><br>
+hello@horizonandcompany.com
+</p>
+
+<p><strong>Instagram</strong><br>
+@horizonandco_uk
+</p>
 
 </div>
 
@@ -328,7 +522,9 @@ A 25% non-refundable booking fee secures your date. Final balance due 7 days pri
 <form action="mailto:hello@horizonandcompany.com" method="post" enctype="text/plain">
 
 <input type="text" placeholder="Your Names" required>
+
 <input type="email" placeholder="Email Address" required>
+
 <input type="text" placeholder="Wedding Date & Venue" required>
 
 <textarea placeholder="Tell us about your day..." rows="5"></textarea>

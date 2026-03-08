@@ -221,7 +221,6 @@
             font-weight: 400;
         }
 
-        /* 3-Column Bullet Grid */
         .details-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -281,6 +280,16 @@
         }
 
         .submit-btn:hover { background: var(--gold); }
+
+        #form-status {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
 
         footer {
             text-align: center;
@@ -386,12 +395,13 @@
         </div>
 
         <div class="contact-form">
-            <form action="#">
-                <input type="text" placeholder="Your Names" required>
-                <input type="email" placeholder="Email Address" required>
-                <input type="text" placeholder="Wedding Date & Venue" required>
-                <textarea rows="6" placeholder="Tell us about your day..." required></textarea>
+            <form id="wedding-form" action="https://formspree.io/f/myknkygp" method="POST">
+                <input type="text" name="names" placeholder="Your Names" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="text" name="date_venue" placeholder="Wedding Date & Venue" required>
+                <textarea name="message" rows="6" placeholder="Tell us about your day..." required></textarea>
                 <button type="submit" class="submit-btn">Send Enquiry</button>
+                <div id="form-status">Thank you! Your enquiry has been sent. We will be in touch shortly.</div>
             </form>
         </div>
     </div>
@@ -448,6 +458,26 @@
 
     window.onload = function() {
         document.getElementById('cinematic-default').click();
+    };
+
+    // Form Handling
+    const form = document.getElementById("wedding-form");
+    const status = document.getElementById("form-status");
+
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+            status.style.display = "block";
+            form.reset();
+        } else {
+            alert("Oops! There was a problem submitting your form.");
+        }
     };
 </script>
 

@@ -139,8 +139,9 @@
 
         .section-title h2 {
             font-family: 'Baskervville', serif;
-            font-size: 2.8rem;
+            font-size: 3rem;
             margin-bottom: 10px;
+            font-weight: 400;
         }
 
         /* ABOUT */
@@ -177,7 +178,7 @@
 
         .card {
             background: white;
-            padding: 50px 20px;
+            padding: 60px 20px;
             border: 1px solid var(--border);
             text-align: center;
             cursor: pointer;
@@ -216,21 +217,23 @@
         .package-details h3 {
             font-family: 'Baskervville', serif;
             font-size: 2.2rem;
-            margin: 0 0 30px 0;
+            margin: 0 0 40px 0;
+            font-weight: 400;
         }
 
+        /* 3-Column Bullet Grid */
         .details-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px 30px;
             list-style: none;
             padding: 0;
         }
 
         .details-grid li {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #444;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #333;
             display: flex;
             align-items: flex-start;
         }
@@ -238,8 +241,8 @@
         .details-grid li::before {
             content: "—";
             color: var(--gold);
-            margin-right: 15px;
-            font-weight: bold;
+            margin-right: 12px;
+            flex-shrink: 0;
         }
 
         /* CONTACT */
@@ -342,28 +345,28 @@
 <section id="collections">
     <div class="section-title">
         <h2>Wedding Film Collections</h2>
-        <p style="color: #666; font-size: 0.9rem;">All films delivered in 4K via private online delivery [cite: 5, 27]</p>
+        <p style="color: #666; font-size: 0.9rem;">All films delivered in 4K via private online delivery</p>
     </div>
 
     <div class="packages">
         <div class="card" onclick="showPackage('ceremony', this)">
             <h3>The Ceremony</h3>
-            <p class="price">£450 [cite: 6]</p>
+            <p class="price">£450</p>
         </div>
         <div class="card" onclick="showPackage('narrative', this)">
             <h3>The Narrative</h3>
-            <p class="price">£600 [cite: 13]</p>
+            <p class="price">£600</p>
         </div>
         <div id="cinematic-default" class="card" onclick="showPackage('cinematic', this)">
             <h3>The Cinematic</h3>
-            <p class="price">£900 [cite: 18]</p>
+            <p class="price">£900</p>
         </div>
     </div>
 
     <div id="package-details" class="package-details"></div>
 
     <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 30px; font-style: italic;">
-        *UK & Europe bookings. Invoiced in GBP; travel fees may apply for destinations outside the UK.
+        *UK & Europe bookings. Invoiced in GBP; travel fees may apply.
     </p>
 </section>
 
@@ -375,7 +378,7 @@
     
     <div class="contact-container">
         <div class="contact-info">
-            <p><strong>Inquiries</strong><br>hello@horizonandcompany.com [cite: 27]</p>
+            <p><strong>Inquiries</strong><br>hello@horizonandcompany.com</p>
             <p><strong>Follow</strong><br>@horizonandco_uk</p>
             <p style="font-size: 0.85rem; font-style: italic; border-top: 1px solid #ddd; padding-top: 20px; margin-top: 40px;">
                 A 25% non-refundable booking fee secures your date. Final balance due 7 days before the wedding.
@@ -395,7 +398,7 @@
 </section>
 
 <footer>
-    <p>© 2026 HORIZON & COMPANY | UK & EUROPE </p>
+    <p>© 2026 HORIZON & COMPANY | UK & EUROPE</p>
 </footer>
 
 <script>
@@ -410,28 +413,32 @@
         if (type === "ceremony") {
             content = `<h3>The Ceremony Collection</h3>
                 <ul class="details-grid">
-                    <li>Full ceremony coverage from guest arrival to ceremony exit [cite: 7]</li>
-                    <li>Professionally edited ceremony film with multiple angles [cite: 8, 9]</li>
-                    <li>Professionally recorded audio [cite: 10]</li>
-                    <li>Cinematic colour grading [cite: 11]</li>
+                    <li>Full ceremony coverage from guest arrival to ceremony exit</li>
+                    <li>Professionally edited ceremony film with multiple angles</li>
+                    <li>Professionally recorded audio</li>
+                    <li>Cinematic colour grading</li>
+                    <li>Professional audio capture</li>
+                    <li>Private 4K online delivery</li>
                 </ul>`;
         } else if (type === "narrative") {
             content = `<h3>The Narrative Collection</h3>
                 <ul class="details-grid">
-                    <li>Full day coverage from preparations through to first dance [cite: 14]</li>
-                    <li>5–8 minute cinematic highlights film set to a custom soundtrack [cite: 15]</li>
-                    <li>Creative editing, colour grading and professional audio [cite: 16]</li>
-                    <li>Drone footage where safe and permitted [cite: 17]</li>
+                    <li>Full day coverage from preparations through to first dance</li>
+                    <li>5–8 minute cinematic highlights film set to a custom soundtrack</li>
+                    <li>Creative editing, colour grading and professional audio</li>
+                    <li>Drone footage where safe and permitted</li>
+                    <li>Professional audio capture</li>
+                    <li>Private 4K online delivery</li>
                 </ul>`;
         } else if (type === "cinematic") {
             content = `<h3>The Cinematic Collection</h3>
                 <ul class="details-grid">
-                    <li>Full day coverage from preparations through to first dance [cite: 20]</li>
-                    <li>5–8 minute cinematic highlights film set to a custom soundtrack [cite: 21]</li>
-                    <li>Full ceremony film delivered separately [cite: 22]</li>
-                    <li>Full speeches film delivered separately [cite: 23]</li>
-                    <li>Professional audio and cinematic colour grading throughout [cite: 24, 25]</li>
-                    <li>Drone footage where safe and permitted [cite: 26]</li>
+                    <li>Full day coverage (prep to first dance)</li>
+                    <li>5–8 minute cinematic highlights film</li>
+                    <li>Full ceremony film delivered separately</li>
+                    <li>Full speeches film delivered separately</li>
+                    <li>Drone footage (where safe/permitted)</li>
+                    <li>Custom soundtrack & cinematic grading</li>
                 </ul>`;
         }
 

@@ -39,7 +39,7 @@ padding:18px 0;
 
 .nav-container{
 max-width:1200px;
-margin:0 auto;
+margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -50,7 +50,7 @@ padding:0 20px;
 font-family:'Baskervville',serif;
 font-style:italic;
 font-weight:bold;
-font-size:1.5rem;
+font-size:1.6rem;
 text-decoration:none;
 color:var(--charcoal);
 }
@@ -102,21 +102,37 @@ z-index:-1;
 .hero-content h1{
 font-family:'Baskervville',serif;
 font-size:4rem;
-margin-bottom:15px;
+margin-bottom:10px;
 }
 
 .hero-content p{
-font-size:1rem;
 letter-spacing:3px;
 text-transform:uppercase;
+margin-bottom:35px;
+}
+
+.hero-btn{
+background:white;
+color:var(--charcoal);
+padding:14px 30px;
+text-decoration:none;
+font-size:0.8rem;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:600;
+}
+
+.hero-btn:hover{
+background:var(--gold);
+color:white;
 }
 
 /* SECTIONS */
 
 section{
-padding:110px 20px;
+padding:120px 20px;
 max-width:1100px;
-margin:0 auto;
+margin:auto;
 }
 
 .section-title{
@@ -128,6 +144,22 @@ margin-bottom:60px;
 font-family:'Baskervville',serif;
 font-size:2.6rem;
 margin-bottom:10px;
+}
+
+/* ABOUT */
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+line-height:1.7;
+color:#555;
+}
+
+.about h3{
+font-family:'Baskervville',serif;
+font-size:1.8rem;
+margin-bottom:20px;
 }
 
 /* COLLECTIONS */
@@ -159,14 +191,12 @@ border:2px solid var(--gold);
 .card h3{
 font-family:'Baskervville',serif;
 font-size:1.8rem;
-margin-top:0;
 }
 
-.card .price{
-font-weight:600;
+.price{
 color:var(--gold);
+font-weight:600;
 font-size:1.4rem;
-margin:20px 0;
 }
 
 .package-details{
@@ -175,31 +205,19 @@ background:white;
 border:1px solid #e5e5e5;
 padding:40px;
 display:none;
-animation:fadeIn .4s ease;
-}
-
-.package-details ul{
-line-height:1.8;
-color:#666;
-}
-
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(10px);}
-to{opacity:1; transform:translateY(0);}
 }
 
 /* CONTACT */
 
 .contact-flex{
 display:flex;
-gap:50px;
+gap:60px;
 flex-wrap:wrap;
 }
 
 .contact-info{
 flex:1;
-font-size:0.95rem;
-line-height:1.6;
+line-height:1.7;
 }
 
 .contact-form{
@@ -219,13 +237,19 @@ background:var(--charcoal);
 color:white;
 border:none;
 padding:15px 40px;
-text-transform:uppercase;
 letter-spacing:2px;
+text-transform:uppercase;
 cursor:pointer;
 }
 
 .submit-btn:hover{
 background:var(--gold);
+}
+
+.success-message{
+display:none;
+color:green;
+margin-top:10px;
 }
 
 /* FOOTER */
@@ -239,22 +263,39 @@ font-size:0.85rem;
 color:#777;
 }
 
+/* MOBILE */
+
+@media(max-width:900px){
+
+.about{
+grid-template-columns:1fr;
+}
+
+.hero-content h1{
+font-size:2.6rem;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <nav>
+
 <div class="nav-container">
 
 <a href="#" class="nav-logo">H & C</a>
 
 <div class="menu">
+<a href="#about">About</a>
 <a href="#collections">Collections</a>
 <a href="#contact">Contact</a>
 </div>
 
 </div>
+
 </nav>
 
 <!-- HERO -->
@@ -268,11 +309,59 @@ color:#777;
 <div class="hero-overlay"></div>
 
 <div class="hero-content">
+
 <h1>Natural Light. Honest Emotion.</h1>
 <p>Cinematic Wedding Films</p>
+
+<a href="#collections" class="hero-btn">View Collections</a>
+
 </div>
 
 </div>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="about">
+
+<div>
+
+<h3>Films That Capture The Moments You Missed</h3>
+
+<p>
+A wedding day moves quickly. While you are greeting guests, laughing with friends or sharing a quiet moment together, dozens of small moments are unfolding around you.
+</p>
+
+<p>
+A proud glance from across the room. A reassuring hand on a shoulder. A father leaning in to kiss his daughter on the head during the ceremony.
+</p>
+
+<p>
+These are the moments couples often do not realise happened until they see them again.
+</p>
+
+</div>
+
+<div>
+
+<p>
+My approach is calm, natural and unobtrusive. Rather than directing the day, I blend quietly into the background and allow real moments to unfold while capturing them with a cinematic eye.
+</p>
+
+<p>
+Behind the camera is over a decade of experience working across creative industries including music, film and visual production. That background shapes the way every wedding film is crafted.
+</p>
+
+<p>
+The result is not simply a video of your wedding, but a film that allows you to experience the day again including the moments you never realised were happening.
+</p>
+
+</div>
+
+</div>
+
+</section>
 
 <!-- COLLECTIONS -->
 
@@ -285,17 +374,17 @@ color:#777;
 
 <div class="packages">
 
-<div class="card" onclick="showPackage('ceremony', this)">
+<div class="card" onclick="showPackage('ceremony',this)">
 <h3>Ceremony Collection</h3>
 <p class="price">£450</p>
 </div>
 
-<div class="card" onclick="showPackage('narrative', this)">
+<div class="card" onclick="showPackage('narrative',this)">
 <h3>Narrative Collection</h3>
 <p class="price">£600</p>
 </div>
 
-<div class="card" onclick="showPackage('cinematic', this)">
+<div class="card" onclick="showPackage('cinematic',this)">
 <h3>Cinematic Collection</h3>
 <p class="price">£900</p>
 </div>
@@ -319,33 +408,31 @@ color:#777;
 
 <div class="contact-info">
 
-<p><strong>Booking Policy</strong><br>
-A 25% non-refundable booking fee secures your date. Final balance due 7 days prior to the wedding.
-</p>
+<p><strong>Email</strong><br>hello@horizonandcompany.com</p>
 
-<p><strong>Email</strong><br>
-hello@horizonandcompany.com
-</p>
+<p><strong>Instagram</strong><br>@horizonandco_uk</p>
 
-<p><strong>Instagram</strong><br>
-@horizonandco_uk
+<p>
+A 25% non-refundable booking fee secures your date. Final balance due 7 days before the wedding.
 </p>
 
 </div>
 
 <div class="contact-form">
 
-<form action="mailto:hello@horizonandcompany.com" method="post" enctype="text/plain">
+<form id="contactForm">
 
-<input type="text" placeholder="Your Names" required>
+<input name="name" type="text" placeholder="Your Names" required>
 
-<input type="email" placeholder="Email Address" required>
+<input name="email" type="email" placeholder="Email Address" required>
 
-<input type="text" placeholder="Wedding Date & Venue" required>
+<input name="date" type="text" placeholder="Wedding Date & Venue" required>
 
-<textarea placeholder="Tell us about your day..." rows="5"></textarea>
+<textarea name="message" placeholder="Tell us about your day..." rows="5"></textarea>
 
 <button type="submit" class="submit-btn">Send Enquiry</button>
+
+<p class="success-message" id="success">Message ready to send in your email client.</p>
 
 </form>
 
@@ -365,16 +452,12 @@ hello@horizonandcompany.com
 
 function showPackage(type, element){
 
-const panel = document.getElementById("package-details");
-const cards = document.querySelectorAll(".card");
+const panel=document.getElementById("package-details");
+const cards=document.querySelectorAll(".card");
 
-cards.forEach(card=>{
-card.classList.remove("active");
-});
+cards.forEach(card=>card.classList.remove("active"));
 
-if(element){
 element.classList.add("active");
-}
 
 let content="";
 
@@ -384,10 +467,9 @@ content=`
 <ul>
 <li>Full ceremony coverage from guest arrival to ceremony exit</li>
 <li>Professionally edited ceremony film with multiple angles</li>
-<li>Professionally recorded audio</li>
+<li>Professional audio recording</li>
 <li>Cinematic colour grading</li>
-</ul>
-`;
+</ul>`;
 }
 
 if(type==="narrative"){
@@ -395,11 +477,10 @@ content=`
 <h3>The Narrative Collection (£600)</h3>
 <ul>
 <li>Full day filming from preparations through to first dance</li>
-<li>5–8 minute cinematic highlights film set to a custom soundtrack</li>
-<li>Creative editing, colour grading and professional audio</li>
+<li>5–8 minute cinematic highlights film</li>
+<li>Creative editing and colour grading</li>
 <li>Drone footage where safe and permitted</li>
-</ul>
-`;
+</ul>`;
 }
 
 if(type==="cinematic"){
@@ -407,27 +488,43 @@ content=`
 <h3>The Cinematic Collection (£900)</h3>
 <ul>
 <li>Full day coverage from preparations through to first dance</li>
-<li>5–8 minute cinematic highlights film set to a custom soundtrack</li>
-<li>Full ceremony film delivered separately</li>
-<li>Full speeches film delivered separately</li>
-<li>Professional audio and cinematic colour grading throughout</li>
+<li>5–8 minute cinematic highlights film</li>
+<li>Full ceremony film</li>
+<li>Full speeches film</li>
+<li>Professional audio and cinematic colour grading</li>
 <li>Drone footage where safe and permitted</li>
-</ul>
-`;
+</ul>`;
 }
 
-panel.innerHTML = content;
-panel.style.display = "block";
+panel.innerHTML=content;
+panel.style.display="block";
 
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded",()=>{
 
-const cards = document.querySelectorAll(".card");
+const cards=document.querySelectorAll(".card");
 
 cards[1].classList.add("active");
 
-showPackage("narrative", cards[1]);
+showPackage("narrative",cards[1]);
+
+});
+
+/* simple email helper */
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const name=this.name.value;
+const email=this.email.value;
+const date=this.date.value;
+const message=this.message.value;
+
+window.location.href=`mailto:hello@horizonandcompany.com?subject=Wedding Enquiry&body=Name: ${name}%0D%0AEmail: ${email}%0D%0ADate: ${date}%0D%0A%0D%0A${message}`;
+
+document.getElementById("success").style.display="block";
 
 });
 

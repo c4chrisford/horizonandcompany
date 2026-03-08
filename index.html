@@ -146,26 +146,39 @@ font-size:2.6rem;
 margin-bottom:10px;
 }
 
-/* ABOUT */
+/* ABOUT (Improved Layout) */
 
-.about{
+.about-grid{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-line-height:1.7;
-color:#555;
+grid-template-columns:1.1fr 1fr;
+gap:80px;
+align-items:start;
 }
 
-.about h3{
+.about-intro h2{
 font-family:'Baskervville',serif;
-font-size:1.9rem;
-margin-bottom:20px;
+font-size:2.4rem;
+line-height:1.3;
+margin-bottom:30px;
+}
+
+.about-lead{
+font-size:1.1rem;
+color:#444;
+margin-bottom:25px;
+}
+
+.about-intro p,
+.about-story p{
+color:#666;
+line-height:1.8;
+margin-bottom:18px;
 }
 
 /* COLLECTIONS */
 
 #collections{
-padding-top:60px;
+padding-top:50px;
 }
 
 .packages{
@@ -271,7 +284,7 @@ color:#777;
 
 @media(max-width:900px){
 
-.about{
+.about-grid{
 grid-template-columns:1fr;
 }
 
@@ -327,13 +340,13 @@ font-size:2.6rem;
 
 <section id="about">
 
-<div class="about">
+<div class="about-grid">
 
-<div>
+<div class="about-intro">
 
-<h3>Films That Capture The Moments You Missed</h3>
+<h2>Films That Capture The Moments You Missed</h2>
 
-<p>
+<p class="about-lead">
 A wedding day moves quickly. While you are greeting guests, laughing with friends or sharing a quiet moment together, countless small moments are unfolding around you.
 </p>
 
@@ -347,7 +360,7 @@ These are the moments couples often do not realise happened until they see them 
 
 </div>
 
-<div>
+<div class="about-story">
 
 <p>
 Our approach is calm, natural and unobtrusive. Rather than directing the day, we blend quietly into the background and allow real moments to unfold while capturing them with a cinematic eye.

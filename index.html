@@ -152,6 +152,10 @@ transform:translateY(-6px);
 box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
+.card.active{
+border:2px solid var(--gold);
+}
+
 .card h3{
 font-family:'Baskervville',serif;
 font-size:1.8rem;
@@ -281,17 +285,17 @@ color:#777;
 
 <div class="packages">
 
-<div class="card" onclick="showPackage('ceremony')">
+<div class="card" onclick="showPackage('ceremony', this)">
 <h3>Ceremony Collection</h3>
 <p class="price">£450</p>
 </div>
 
-<div class="card" onclick="showPackage('narrative')" style="border:2px solid var(--gold)">
+<div class="card" onclick="showPackage('narrative', this)">
 <h3>Narrative Collection</h3>
 <p class="price">£600</p>
 </div>
 
-<div class="card" onclick="showPackage('cinematic')">
+<div class="card" onclick="showPackage('cinematic', this)">
 <h3>Cinematic Collection</h3>
 <p class="price">£900</p>
 </div>
@@ -359,9 +363,18 @@ hello@horizonandcompany.com
 
 <script>
 
-function showPackage(type){
+function showPackage(type, element){
 
-const panel=document.getElementById("package-details");
+const panel = document.getElementById("package-details");
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+card.classList.remove("active");
+});
+
+if(element){
+element.classList.add("active");
+}
 
 let content="";
 
@@ -403,14 +416,20 @@ content=`
 `;
 }
 
-panel.innerHTML=content;
-panel.style.display="block";
+panel.innerHTML = content;
+panel.style.display = "block";
 
 }
 
-window.onload = function() {
-showPackage('narrative');
-};
+window.addEventListener("DOMContentLoaded", () => {
+
+const cards = document.querySelectorAll(".card");
+
+cards[1].classList.add("active");
+
+showPackage("narrative", cards[1]);
+
+});
 
 </script>
 

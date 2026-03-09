@@ -9,6 +9,8 @@
 
 <meta name="description" content="Horizon & Co creates cinematic wedding films for couples across the UK and Europe. Natural storytelling, cinematic colour and timeless wedding videography.">
 
+<meta name="robots" content="index, follow">
+
 <link rel="icon" type="image/png" href="/favicon32.png">
 
 <!-- Google Analytics -->
@@ -347,9 +349,17 @@ letter-spacing:1px;
 
 @media(max-width:900px){
 
-.packages,
+.packages{
+grid-template-columns:1fr;
+}
+
 .about-grid{
 grid-template-columns:1fr;
+grid-template-areas:
+"header"
+"main"
+"side";
+gap:40px;
 }
 
 .hero-content h1{
@@ -364,6 +374,14 @@ display:none;
 padding:45px 20px;
 }
 
+.about-header h2{
+font-size:2.4rem;
+}
+
+.about-lead{
+font-size:1.1rem;
+}
+
 }
 
 </style>
@@ -373,16 +391,19 @@ padding:45px 20px;
 
 <nav>
 <div class="nav-container">
-<a href="#" class="nav-logo">Horizon & Co</a>
+
+<a href="#hero" class="nav-logo">Horizon & Co</a>
+
 <div class="menu">
 <a href="#about">About</a>
 <a href="#collections">Collections</a>
 <a href="#contact">Contact</a>
 </div>
+
 </div>
 </nav>
 
-<div class="hero">
+<div id="hero" class="hero">
 
 <video autoplay muted loop playsinline class="hero-video">
 <source src="videos/hero.m4v" type="video/mp4">
@@ -399,8 +420,8 @@ Cinematic Wedding Films
 </p>
 
 <a href="#collections" class="hero-btn">View Collections</a>
-
 </div>
+
 </div>
 
 <section id="about">

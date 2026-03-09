@@ -132,19 +132,7 @@
             margin: auto;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-family: 'Baskervville', serif;
-            font-size: 3rem;
-            margin-bottom: 10px;
-            font-weight: 400;
-        }
-
-        /* REFINED ABOUT SECTION */
+        /* UPDATED ABOUT SECTION */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -320,16 +308,6 @@
 
         .submit-btn:hover { background: var(--gold); }
 
-        #form-status {
-            display: none;
-            margin-top: 20px;
-            padding: 15px;
-            background: #e8f5e9;
-            color: #2e7d32;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
-
         footer {
             text-align: center;
             padding: 80px 40px;
@@ -341,14 +319,10 @@
         }
 
         @media(max-width: 900px) {
-            .packages, .contact-container { grid-template-columns: 1fr; }
+            .packages, .contact-container, .about-grid { grid-template-columns: 1fr; }
             .about-grid { 
                 grid-template-areas: "header" "main" "side";
-                grid-template-columns: 1fr;
-                gap: 40px;
             }
-            .about-header h2 { font-size: 2.5rem; }
-            .about-content-side { margin-top: 0; }
             .hero-content h1 { font-size: 2.5rem; }
             .nav-container { padding: 0 20px; }
             .menu { display: none; }
@@ -375,7 +349,7 @@
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1>The Moments You Lived.<br><span class="hero-subtitle">And The Ones You Missed</span></h1>
+        <h1>The Moments You Lived.<br><span class="hero-subtitle">Captured with Intent</span></h1>
         <p style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem;">Cinematic Wedding Films</p>
         <a href="#collections" class="hero-btn">View Collections</a>
     </div>
@@ -384,68 +358,68 @@
 <section id="about">
     <div class="about-grid">
         <div class="about-header">
-            <span class="eyebrow">The Philosophy</span>
-            <h2>Films That Capture The Moments You Missed</h2>
+            <span class="eyebrow">The Approach</span>
+            <h2>Atmospheric Storytelling</h2>
         </div>
         
         <div class="about-content-main">
             <p class="about-lead">
-                A wedding day moves quickly. While you are greeting guests and sharing quiet moments together, a thousand tiny stories are unfolding around you.
+                A wedding is more than a schedule of events; it is a unique energy that exists only once. 
             </p>
             <p>
-                A proud glance from a father across a crowded room. A reassuring hand on a shoulder. The quiet, shared laughter between old friends during the ceremony.
+                Our films are designed to preserve that atmosphere. From the grand gestures to the quiet exchanges, we focus on the authentic character of your day, ensuring the resulting film feels as real as the memories themselves.
             </p>
             <p>
-                These are the "invisible moments"—the ones couples often don’t realize happened until they see them on screen for the first time.
+                By blending quietly into the background, we capture the day as it naturally unfolds—the laughter, the nerves, and the subtle interactions that make your story personal.
             </p>
         </div>
 
         <div class="about-content-side">
             <p>
-                Our approach is intentionally calm and unobtrusive. We blend into the background to allow real life to unfold, capturing it with a refined, cinematic eye.
+                With over a decade of experience across music and high-end visual production, we treat every wedding as a distinct cinematic piece. 
             </p>
             <p>
-                With over a decade of experience in music and high-end visual production, we craft every film with the careful storytelling and refined editing your legacy deserves.
+                We prioritize careful storytelling and refined editing over staged poses, allowing you to stay present in the moment while we craft your legacy.
             </p>
             <p class="about-closing">
-                The result is more than a video; it is a film that allows you to experience the depth of your day again, including the moments you never knew were happening.
+                The result is a timeless, cinematic film that allows you to experience the true depth and emotion of your wedding day for years to come.
             </p>
         </div>
     </div>
 </section>
 
 <section id="collections">
-    <div class="section-title">
-        <h2>Wedding Film Collections</h2>
-        <p style="color: #666; font-size: 0.9rem;">All films delivered in 4K via private online delivery</p>
+    <div class="section-title" style="text-align:center; margin-bottom:60px;">
+        <h2 style="font-family:'Baskervville',serif; font-size:3rem; font-weight:400;">Wedding Film Collections</h2>
+        <p style="color: #666; font-size: 0.9rem;">All films delivered in 4K via private online delivery </p>
     </div>
 
     <div class="packages">
         <div class="card" onclick="toggleActive(this)">
             <h3>The Ceremony</h3>
-            <p class="price">£450</p>
+            <p class="price">£450 </p>
             <div class="card-details">
                 <ul>
                     <li>Full ceremony coverage (arrival to exit) </li>
                     <li>Professionally edited ceremony film (multiple angles) </li>
-                    <li>Professionally recorded audio capture </li>
-                    <li>Cinematic colour grading </li>
-                    <li>Private 4K online delivery [cite: 4, 5, 27]</li>
+                    <li>Professionally recorded audio capture</li>
+                    <li>Cinematic colour grading</li>
+                    <li>Private 4K online delivery </li>
                 </ul>
             </div>
         </div>
 
         <div class="card" onclick="toggleActive(this)">
             <h3>The Narrative</h3>
-            <p class="price">£600</p>
+            <p class="price">£600 </p>
             <div class="card-details">
                 <ul>
                     <li>Full day coverage (preparations to first dance) </li>
                     <li>5–8 minute cinematic highlights film </li>
-                    <li>Custom soundtrack & creative editing [cite: 15, 16]</li>
+                    <li>Custom soundtrack & creative editing</li>
                     <li>Drone footage where safe and permitted </li>
-                    <li>Professional audio & cinematic grading </li>
-                    <li>Private 4K online delivery [cite: 4, 5, 27]</li>
+                    <li>Professional audio & cinematic grading</li>
+                    <li>Private 4K online delivery </li>
                 </ul>
             </div>
         </div>
@@ -457,29 +431,29 @@
                 <ul>
                     <li>Full day coverage (preparations to first dance) </li>
                     <li>5–8 minute cinematic highlights film </li>
-                    <li>Full ceremony film delivered separately [cite: 22]</li>
-                    <li>Full speeches film delivered separately [cite: 23]</li>
+                    <li>Full ceremony film delivered separately</li>
+                    <li>Full speeches film delivered separately</li>
                     <li>Drone footage where safe and permitted </li>
-                    <li>Custom soundtrack & cinematic grading [cite: 21, 24, 25]</li>
+                    <li>Custom soundtrack & cinematic grading</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 30px; font-style: italic;">
-        *UK & Europe bookings. Invoiced in GBP; travel fees may apply. 
+        *UK & Europe bookings. Invoiced in GBP; travel fees may apply.
     </p>
 </section>
 
 <section id="contact" style="background: #f4f4f3;">
-    <div class="section-title">
-        <h2>Secure Your Date</h2>
+    <div style="text-align:center; margin-bottom:60px;">
+        <h2 style="font-family:'Baskervville',serif; font-size:3rem; font-weight:400;">Secure Your Date</h2>
         <p>Currently booking 2026 & 2027</p>
     </div>
     
     <div class="contact-container">
         <div class="contact-info">
-            <p><strong>Enquiries</strong><br>hello@horizonandcompany.com</p>
+            <p><strong>Inquiries</strong><br>hello@horizonandcompany.com</p>
             <p><strong>Follow</strong><br>@horizonandco_uk</p>
             <p style="font-size: 0.85rem; font-style: italic; border-top: 1px solid #ddd; padding-top: 20px; margin-top: 40px;">
                 A 25% non-refundable booking fee secures your date. Final balance due 7 days before the wedding.
@@ -487,13 +461,12 @@
         </div>
 
         <div class="contact-form">
-            <form id="wedding-form" action="https://formspree.io/f/myknkygp" method="POST">
+            <form action="https://formspree.io/f/myknkygp" method="POST">
                 <input type="text" name="names" placeholder="Your Names" required>
                 <input type="email" name="email" placeholder="Email Address" required>
                 <input type="text" name="date_venue" placeholder="Wedding Date & Venue" required>
                 <textarea name="message" rows="6" placeholder="Tell us about your day..." required></textarea>
                 <button type="submit" class="submit-btn">Send Enquiry</button>
-                <div id="form-status">Thank you! Your enquiry has been sent. We will be in touch shortly.</div>
             </form>
         </div>
     </div>
@@ -512,25 +485,6 @@
 
     window.onload = function() {
         document.getElementById('cinematic-default').click();
-    };
-
-    const form = document.getElementById("wedding-form");
-    const status = document.getElementById("form-status");
-
-    form.onsubmit = async (e) => {
-        e.preventDefault();
-        const data = new FormData(form);
-        const response = await fetch(form.action, {
-            method: form.method,
-            body: data,
-            headers: { 'Accept': 'application/json' }
-        });
-        if (response.ok) {
-            status.style.display = "block";
-            form.reset();
-        } else {
-            alert("Oops! There was a problem submitting your form.");
-        }
     };
 </script>
 

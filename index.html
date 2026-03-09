@@ -1,491 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horizon & Co | Cinematic Wedding Films</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #8E7A5A;
-            --charcoal: #1a1a1a;
-            --light-grey: #fafaf9;
-            --border: #e5e5e5;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horizon & Co | Cinematic Wedding Films</title>
 
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: var(--light-grey);
-            color: var(--charcoal);
-            scroll-behavior: smooth;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-        /* NAV */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: white;
-            border-bottom: 1px solid #eee;
-            z-index: 1000;
-            padding: 20px 0;
-        }
+<style>
 
-        .nav-container {
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-        }
+:root {
+--gold:#8E7A5A;
+--charcoal:#1a1a1a;
+--light-grey:#fafaf9;
+--border:#e5e5e5;
+}
 
-        .nav-logo {
-            font-family: 'Baskervville', serif;
-            font-size: 1.4rem;
-            text-decoration: none;
-            color: var(--charcoal);
-            letter-spacing: 6px;
-            text-transform: uppercase;
-        }
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:var(--light-grey);
+color:var(--charcoal);
+scroll-behavior:smooth;
+}
 
-        .menu a {
-            text-decoration: none;
-            color: var(--charcoal);
-            margin-left: 35px;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
+/* NAV */
 
-        /* HERO */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            overflow: hidden;
-        }
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:white;
+border-bottom:1px solid #eee;
+z-index:1000;
+padding:20px 0;
+}
 
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            z-index: -2;
-        }
+.nav-container{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 40px;
+}
 
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.3);
-            z-index: -1;
-        }
+.nav-logo{
+font-family:'Baskervville',serif;
+font-size:1.4rem;
+text-decoration:none;
+color:var(--charcoal);
+letter-spacing:6px;
+text-transform:uppercase;
+}
 
-        .hero-content h1 {
-            font-family: 'Baskervville', serif;
-            font-size: 3.8rem;
-            margin-bottom: 25px;
-            line-height: 1.1;
-        }
+.menu a{
+text-decoration:none;
+color:var(--charcoal);
+margin-left:35px;
+font-size:0.75rem;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:600;
+}
 
-        .hero-subtitle {
-            font-size: 2rem;
-            display: block;
-            margin-top: 10px;
-            font-style: italic;
-            opacity: 0.9;
-            font-weight: 300;
-        }
+/* HERO */
 
-        .hero-subtitle::before { content: "("; }
-        .hero-subtitle::after { content: ")"; }
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+overflow:hidden;
+}
 
-        .hero-btn {
-            display: inline-block;
-            margin-top: 30px;
-            background: white;
-            color: var(--charcoal);
-            padding: 16px 35px;
-            text-decoration: none;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            transition: 0.4s;
-        }
+.hero-video{
+position:absolute;
+top:50%;
+left:50%;
+min-width:100%;
+min-height:100%;
+transform:translate(-50%,-50%);
+object-fit:cover;
+z-index:-2;
+}
 
-        .hero-btn:hover { background: var(--gold); color: white; }
+.hero-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.3);
+z-index:-1;
+}
 
-        /* SECTIONS */
-        section {
-            padding: 120px 40px;
-            max-width: 1100px;
-            margin: auto;
-        }
+.hero-content h1{
+font-family:'Baskervville',serif;
+font-size:3.8rem;
+margin-bottom:25px;
+line-height:1.1;
+}
 
-        /* UPDATED ABOUT SECTION */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-areas: 
-                "header header"
-                "main side";
-            gap: 60px 100px;
-            align-items: start;
-        }
+.hero-subtitle{
+font-size:2rem;
+display:block;
+margin-top:10px;
+font-style:italic;
+opacity:0.9;
+font-weight:300;
+}
 
-        .about-header { grid-area: header; }
+.hero-subtitle::before{content:"(";}
+.hero-subtitle::after{content:")";}
 
-        .eyebrow {
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 0.75rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
+.hero-btn{
+display:inline-block;
+margin-top:30px;
+background:white;
+color:var(--charcoal);
+padding:16px 35px;
+text-decoration:none;
+font-size:0.75rem;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:600;
+transition:0.4s;
+}
 
-        .about-header h2 {
-            font-family: 'Baskervville', serif;
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin: 0;
-            font-weight: 400;
-        }
+.hero-btn:hover{
+background:var(--gold);
+color:white;
+}
 
-        .about-content-main { grid-area: main; }
-        .about-content-side { grid-area: side; margin-top: 40px; }
+/* SECTIONS */
 
-        .about-lead {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            color: var(--charcoal);
-            font-style: italic;
-            margin-bottom: 30px;
-        }
+section{
+padding:120px 40px;
+max-width:1100px;
+margin:auto;
+}
 
-        .about-grid p {
-            color: #555;
-            line-height: 1.8;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
+/* ABOUT */
 
-        .about-closing {
-            font-weight: 600;
-            color: var(--charcoal) !important;
-            border-top: 1px solid var(--border);
-            padding-top: 30px;
-            margin-top: 40px;
-        }
+.about-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+grid-template-areas:
+"header header"
+"main side";
+gap:60px 100px;
+align-items:start;
+}
 
-        /* COLLECTIONS */
-        .packages {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-bottom: 40px;
-            align-items: start;
-        }
+.about-header{grid-area:header;}
 
-        .card {
-            background: white;
-            padding: 60px 20px;
-            border: 1px solid var(--border);
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-        }
+.eyebrow{
+display:block;
+text-transform:uppercase;
+letter-spacing:4px;
+font-size:0.75rem;
+color:var(--gold);
+margin-bottom:20px;
+}
 
-        .card:hover { border-color: var(--gold); }
+.about-header h2{
+font-family:'Baskervville',serif;
+font-size:3.5rem;
+line-height:1.1;
+margin:0;
+font-weight:400;
+}
 
-        .card.active {
-            border: 2px solid var(--gold);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        }
+.about-content-main{grid-area:main;}
+.about-content-side{grid-area:side;margin-top:40px;}
 
-        .card h3 {
-            font-family: 'Baskervville', serif;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            font-weight: 400;
-        }
+.about-lead{
+font-size:1.25rem;
+line-height:1.6;
+color:var(--charcoal);
+font-style:italic;
+margin-bottom:30px;
+}
 
-        .card .price {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 1.3rem;
-            letter-spacing: 1px;
-            margin: 0;
-        }
+.about-grid p{
+color:#555;
+line-height:1.8;
+font-size:0.95rem;
+margin-bottom:20px;
+}
 
-        .card-details {
-            text-align: left;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border);
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
+.about-closing{
+font-weight:600;
+color:var(--charcoal)!important;
+border-top:1px solid var(--border);
+padding-top:30px;
+margin-top:40px;
+}
 
-        .card.active .card-details {
-            display: block;
-        }
+/* COLLECTIONS */
 
-        .card-details ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+.packages{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-bottom:40px;
+align-items:start;
+}
 
-        .card-details li {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #333;
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
+.card{
+background:white;
+padding:60px 20px;
+border:1px solid var(--border);
+text-align:center;
+cursor:pointer;
+transition:all .4s ease;
+display:flex;
+flex-direction:column;
+}
 
-        .card-details li::before {
-            content: "—";
-            color: var(--gold);
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
+.card:hover{
+border-color:var(--gold);
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+.card.active{
+border:2px solid var(--gold);
+transform:translateY(-4px);
+box-shadow:0 10px 30px rgba(0,0,0,0.03);
+}
 
-        /* CONTACT */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 80px;
-        }
+.card h3{
+font-family:'Baskervville',serif;
+font-size:1.8rem;
+margin-bottom:15px;
+font-weight:400;
+}
 
-        .contact-info p {
-            line-height: 1.8;
-            margin-bottom: 30px;
-            color: #555;
-        }
+.card .price{
+color:var(--gold);
+font-weight:600;
+font-size:1.3rem;
+letter-spacing:1px;
+margin:0;
+}
 
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 18px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            background: white;
-            font-family: inherit;
-            box-sizing: border-box;
-        }
+.card-details{
+text-align:left;
+margin-top:30px;
+padding-top:30px;
+border-top:1px solid var(--border);
+display:none;
+animation:fadeIn .4s ease;
+}
 
-        .submit-btn {
-            background: var(--charcoal);
-            color: white;
-            border: none;
-            padding: 18px 45px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+.card.active .card-details{
+display:block;
+}
 
-        .submit-btn:hover { background: var(--gold); }
+.card-details ul{
+list-style:none;
+padding:0;
+margin:0;
+}
 
-        footer {
-            text-align: center;
-            padding: 80px 40px;
-            border-top: 1px solid #eee;
-            background: white;
-            font-size: 0.8rem;
-            color: #999;
-            letter-spacing: 1px;
-        }
+.card-details li{
+font-size:.95rem;
+line-height:1.6;
+color:#333;
+display:flex;
+align-items:flex-start;
+margin-bottom:15px;
+}
 
-        @media(max-width: 900px) {
-            .packages, .contact-container, .about-grid { grid-template-columns: 1fr; }
-            .about-grid { 
-                grid-template-areas: "header" "main" "side";
-            }
-            .hero-content h1 { font-size: 2.5rem; }
-            .nav-container { padding: 0 20px; }
-            .menu { display: none; }
-            .card { padding: 40px 20px; }
-        }
-    </style>
+.card-details li::before{
+content:"—";
+color:var(--gold);
+margin-right:15px;
+flex-shrink:0;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(10px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* CONTACT */
+
+.hs-form-frame{
+max-width:700px;
+margin:auto;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:80px 40px;
+border-top:1px solid #eee;
+background:white;
+font-size:.8rem;
+color:#999;
+letter-spacing:1px;
+}
+
+@media(max-width:900px){
+
+.packages,
+.about-grid{
+grid-template-columns:1fr;
+}
+
+.about-grid{
+grid-template-areas:
+"header"
+"main"
+"side";
+}
+
+.hero-content h1{
+font-size:2.5rem;
+}
+
+.nav-container{
+padding:0 20px;
+}
+
+.menu{
+display:none;
+}
+
+.card{
+padding:40px 20px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
 <nav>
-    <div class="nav-container">
-        <a href="#" class="nav-logo">Horizon & Co</a>
-        <div class="menu">
-            <a href="#about">About</a>
-            <a href="#collections">Collections</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </div>
+<div class="nav-container">
+<a href="#" class="nav-logo">Horizon & Co</a>
+<div class="menu">
+<a href="#about">About</a>
+<a href="#collections">Collections</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
 </nav>
 
 <div class="hero">
-    <video autoplay muted loop playsinline class="hero-video">
-        <source src="videos/hero.m4v" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <h1>The Moments You Lived.<br><span class="hero-subtitle">And The Ones That You Missed</span></h1>
-        <p style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem;">Cinematic Wedding Films</p>
-        <a href="#collections" class="hero-btn">View Collections</a>
-    </div>
+<video autoplay muted loop playsinline class="hero-video">
+<source src="videos/hero.m4v" type="video/mp4">
+</video>
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+<h1>The Moments You Lived.<br><span class="hero-subtitle">And The Ones That You Missed</span></h1>
+<p style="letter-spacing:4px;text-transform:uppercase;font-size:0.85rem;">Cinematic Wedding Films</p>
+<a href="#collections" class="hero-btn">View Collections</a>
+</div>
 </div>
 
 <section id="about">
-    <div class="about-grid">
-        <div class="about-header">
-            <span class="eyebrow">The Approach</span>
-            <h2>Atmospheric Storytelling</h2>
-        </div>
-        
-        <div class="about-content-main">
-            <p class="about-lead">
-                A wedding is more than a schedule of events; it is a unique energy that exists only once. 
-            </p>
-            <p>
-                Our films are designed to preserve that atmosphere. From the grand gestures to the quiet exchanges, we focus on the authentic character of your day, ensuring the resulting film feels as real as the memories themselves.
-            </p>
-            <p>
-                By blending quietly into the background, we capture the day as it naturally unfolds, the laughter, the nerves, and the subtle interactions that make your story personal.
-            </p>
-        </div>
 
-        <div class="about-content-side">
-            <p>
-                With over a decade of experience across music and high-end visual production, we treat every wedding as a distinct cinematic piece. 
-            </p>
-            <p>
-                We prioritise careful storytelling and refined editing over staged poses, allowing you to stay present in the moment while we craft your legacy.
-            </p>
-            <p class="about-closing">
-                The result is a timeless, cinematic film that allows you to experience the true depth and emotion of your wedding day for years to come.
-            </p>
-        </div>
-    </div>
+<div class="about-grid">
+
+<div class="about-header">
+<span class="eyebrow">The Approach</span>
+<h2>Atmospheric Storytelling</h2>
+</div>
+
+<div class="about-content-main">
+
+<p class="about-lead">
+A wedding is more than a schedule of events; it is a unique energy that exists only once.
+</p>
+
+<p>
+Our films are designed to preserve that atmosphere. From the grand gestures to the quiet exchanges, we focus on the authentic character of your day, ensuring the resulting film feels as real as the memories themselves.
+</p>
+
+<p>
+By blending quietly into the background, we capture the day as it naturally unfolds, the laughter, the nerves, and the subtle interactions that make your story personal.
+</p>
+
+</div>
+
+<div class="about-content-side">
+
+<p>
+With over a decade of experience across music and high-end visual production, we treat every wedding as a distinct cinematic piece.
+</p>
+
+<p>
+We prioritise careful storytelling and refined editing over staged poses, allowing you to stay present in the moment while we craft your legacy.
+</p>
+
+<p class="about-closing">
+The result is a timeless, cinematic film that allows you to experience the true depth and emotion of your wedding day for years to come.
+</p>
+
+</div>
+
+</div>
+
 </section>
 
 <section id="collections">
-    <div class="section-title" style="text-align:center; margin-bottom:60px;">
-        <h2 style="font-family:'Baskervville',serif; font-size:3rem; font-weight:400;">Wedding Film Collections</h2>
-        <p style="color: #666; font-size: 0.9rem;">All films delivered in 4K via private online delivery </p>
-    </div>
 
-    <div class="packages">
-        <div class="card" onclick="toggleActive(this)">
-            <h3>The Ceremony</h3>
-            <p class="price">£450 </p>
-            <div class="card-details">
-                <ul>
-                    <li>Full ceremony coverage (arrival to exit) </li>
-                    <li>Professionally edited ceremony film (multiple angles) </li>
-                    <li>Professionally recorded audio capture</li>
-                    <li>Cinematic colour grading</li>
-                    <li>Private 4K online delivery </li>
-                </ul>
-            </div>
-        </div>
+<div class="section-title" style="text-align:center;margin-bottom:60px;">
+<h2 style="font-family:'Baskervville',serif;font-size:3rem;font-weight:400;">Wedding Film Collections</h2>
+<p style="color:#666;font-size:0.9rem;">All films delivered in 4K via private online delivery</p>
+</div>
 
-        <div class="card" onclick="toggleActive(this)">
-            <h3>The Narrative</h3>
-            <p class="price">£600 </p>
-            <div class="card-details">
-                <ul>
-                    <li>Full day coverage (preparations to first dance) </li>
-                    <li>5–8 minute cinematic highlights film </li>
-                    <li>Custom soundtrack & creative editing</li>
-                    <li>Drone footage where safe and permitted </li>
-                    <li>Professional audio & cinematic grading</li>
-                    <li>Private 4K online delivery </li>
-                </ul>
-            </div>
-        </div>
+<div class="packages">
 
-        <div id="cinematic-default" class="card" onclick="toggleActive(this)">
-            <h3>The Cinematic</h3>
-            <p class="price">£900</p>
-            <div class="card-details">
-                <ul>
-                    <li>Full day coverage (preparations to first dance) </li>
-                    <li>5–8 minute cinematic highlights film </li>
-                    <li>Full ceremony film delivered separately</li>
-                    <li>Full speeches film delivered separately</li>
-                    <li>Drone footage where safe and permitted </li>
-                    <li>Custom soundtrack & cinematic grading</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<div class="card" onclick="toggleActive(this)">
+<h3>The Ceremony</h3>
+<p class="price">£450</p>
+<div class="card-details">
+<ul>
+<li>Full ceremony coverage (arrival to exit)</li>
+<li>Professionally edited ceremony film (multiple angles)</li>
+<li>Professionally recorded audio capture</li>
+<li>Cinematic colour grading</li>
+<li>Private 4K online delivery</li>
+</ul>
+</div>
+</div>
 
-    <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 30px; font-style: italic;">
-        *UK & Europe bookings. Invoiced in GBP; travel fees may apply.
-    </p>
+<div class="card" onclick="toggleActive(this)">
+<h3>The Narrative</h3>
+<p class="price">£600</p>
+<div class="card-details">
+<ul>
+<li>Full day coverage (preparations to first dance)</li>
+<li>5–8 minute cinematic highlights film</li>
+<li>Custom soundtrack & creative editing</li>
+<li>Drone footage where safe and permitted</li>
+<li>Professional audio & cinematic grading</li>
+<li>Private 4K online delivery</li>
+</ul>
+</div>
+</div>
+
+<div id="cinematic-default" class="card" onclick="toggleActive(this)">
+<h3>The Cinematic</h3>
+<p class="price">£900</p>
+<div class="card-details">
+<ul>
+<li>Full day coverage (preparations to first dance)</li>
+<li>5–8 minute cinematic highlights film</li>
+<li>Full ceremony film delivered separately</li>
+<li>Full speeches film delivered separately</li>
+<li>Drone footage where safe and permitted</li>
+<li>Custom soundtrack & cinematic grading</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<p style="text-align:center;font-size:0.85rem;color:#888;margin-top:30px;font-style:italic;">
+*UK & Europe bookings. Invoiced in GBP; travel fees may apply.
+</p>
+
 </section>
 
-<section id="contact" style="background: #f4f4f3;">
-    <div style="text-align:center; margin-bottom:60px;">
-        <h2 style="font-family:'Baskervville',serif; font-size:3rem; font-weight:400;">Secure Your Date</h2>
-        <p>Currently booking 2026 & 2027</p>
-    </div>
-    
-    <div class="contact-container">
-        <div class="contact-info">
-            <p><strong>Inquiries</strong><br>hello@horizonandcompany.com</p>
-            <p><strong>Follow</strong><br>@horizonandco_uk</p>
-            <p style="font-size: 0.85rem; font-style: italic; border-top: 1px solid #ddd; padding-top: 20px; margin-top: 40px;">
-                A 25% non-refundable booking fee secures your date. Final balance due 7 days before the wedding.
-            </p>
-        </div>
+<section id="contact" style="background:#f4f4f3;">
 
-        <div class="contact-form">
-            <form action="https://formspree.io/f/myknkygp" method="POST">
-                <input type="text" name="names" placeholder="Your Names" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <input type="text" name="date_venue" placeholder="Wedding Date & Venue" required>
-                <textarea name="message" rows="6" placeholder="Tell us about your day..." required></textarea>
-                <button type="submit" class="submit-btn">Send Enquiry</button>
-            </form>
-        </div>
-    </div>
+<div style="text-align:center;margin-bottom:60px;">
+<h2 style="font-family:'Baskervville',serif;font-size:3rem;font-weight:400;">Check Availability</h2>
+<p>Currently booking 2026 & 2027 weddings</p>
+</div>
+
+<script src="https://js-eu1.hsforms.net/forms/embed/147975706.js" defer></script>
+<div class="hs-form-frame"
+data-region="eu1"
+data-form-id="a57bfb7d-d14e-4b3f-8128-8b35a508b15b"
+data-portal-id="147975706">
+</div>
+
 </section>
 
 <footer>
-    <p>© 2026 HORIZON & COMPANY | UK & EUROPE </p>
+<p>© 2026 HORIZON & COMPANY | UK & EUROPE</p>
 </footer>
 
 <script>
-    function toggleActive(element) {
-        const cards = document.querySelectorAll(".card");
-        cards.forEach(card => card.classList.remove("active"));
-        element.classList.add("active");
-    }
 
-    window.onload = function() {
-        document.getElementById('cinematic-default').click();
-    };
+function toggleActive(element){
+const cards=document.querySelectorAll(".card");
+cards.forEach(card=>card.classList.remove("active"));
+element.classList.add("active");
+}
+
+window.onload=function(){
+document.getElementById('cinematic-default').click();
+};
+
 </script>
 
 </body>

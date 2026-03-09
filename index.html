@@ -174,6 +174,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             margin-bottom: 40px;
+            align-items: start;
         }
 
         .card {
@@ -185,7 +186,6 @@
             transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
-            justify-content: center;
         }
 
         .card:hover { border-color: var(--gold); }
@@ -211,45 +211,27 @@
             margin: 0;
         }
 
-        /* Detail Panel for Desktop */
-        .package-details {
-            background: white;
-            border: 1px solid var(--border);
-            padding: 60px;
-            display: none;
-            min-height: 300px;
-        }
-
-        .package-details h3 {
-            font-family: 'Baskervville', serif;
-            font-size: 2.2rem;
-            margin: 0 0 40px 0;
-            font-weight: 400;
-        }
-
-        /* In-Card Details for Mobile */
-        .mobile-details {
-            display: none;
+        /* Universal Details Styling (Mobile and Desktop) */
+        .card-details {
             text-align: left;
             margin-top: 30px;
             padding-top: 30px;
             border-top: 1px solid var(--border);
+            display: none; /* Only show when card is active */
             animation: fadeIn 0.4s ease;
         }
 
-        .card.active .mobile-details {
+        .card.active .card-details {
             display: block;
         }
 
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px 40px;
+        .card-details ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
 
-        .details-grid li, .mobile-details li {
+        .card-details li {
             font-size: 0.95rem;
             line-height: 1.6;
             color: #333;
@@ -258,7 +240,7 @@
             margin-bottom: 15px;
         }
 
-        .details-grid li::before, .mobile-details li::before {
+        .card-details li::before {
             content: "—";
             color: var(--gold);
             margin-right: 15px;
@@ -329,8 +311,6 @@
 
         @media(max-width: 900px) {
             .packages, .contact-container, .about-grid { grid-template-columns: 1fr; }
-            .details-grid { display: none; } /* Hide desktop grid on mobile */
-            .package-details { display: none !important; } /* Hide desktop panel */
             .hero-content h1 { font-size: 2.5rem; }
             .nav-container { padding: 0 20px; }
             .menu { display: none; }
@@ -386,11 +366,11 @@
     </div>
 
     <div class="packages">
-        <div class="card" onclick="showPackage('ceremony', this)">
+        <div class="card" onclick="toggleActive(this)">
             <h3>The Ceremony</h3>
             <p class="price">£450</p>
-            <div class="mobile-details">
-                <ul style="list-style: none; padding: 0;">
+            <div class="card-details">
+                <ul>
                     <li>Full ceremony coverage (arrival to exit)</li>
                     <li>Professionally edited ceremony film (multiple angles)</li>
                     <li>Professionally recorded audio capture</li>
@@ -399,11 +379,12 @@
                 </ul>
             </div>
         </div>
-        <div class="card" onclick="showPackage('narrative', this)">
+
+        <div class="card" onclick="toggleActive(this)">
             <h3>The Narrative</h3>
             <p class="price">£600</p>
-            <div class="mobile-details">
-                <ul style="list-style: none; padding: 0;">
+            <div class="card-details">
+                <ul>
                     <li>Full day coverage (preparations to first dance)</li>
                     <li>5–8 minute cinematic highlights film</li>
                     <li>Custom soundtrack & creative editing</li>
@@ -413,11 +394,12 @@
                 </ul>
             </div>
         </div>
-        <div id="cinematic-default" class="card" onclick="showPackage('cinematic', this)">
+
+        <div id="cinematic-default" class="card" onclick="toggleActive(this)">
             <h3>The Cinematic</h3>
             <p class="price">£900</p>
-            <div class="mobile-details">
-                <ul style="list-style: none; padding: 0;">
+            <div class="card-details">
+                <ul>
                     <li>Full day coverage (preparations to first dance)</li>
                     <li>5–8 minute cinematic highlights film</li>
                     <li>Full ceremony film delivered separately</li>
@@ -428,8 +410,6 @@
             </div>
         </div>
     </div>
-
-    <div id="package-details" class="package-details"></div>
 
     <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 30px; font-style: italic;">
         *UK & Europe bookings. Invoiced in GBP; travel fees may apply.
@@ -469,57 +449,16 @@
 </footer>
 
 <script>
-    function showPackage(type, element) {
-        const panel = document.getElementById("package-details");
+    function toggleActive(element) {
         const cards = document.querySelectorAll(".card");
         cards.forEach(card => card.classList.remove("active"));
         element.classList.add("active");
-
-        // Desktop only logic for the bottom panel
-        if (window.innerWidth > 900) {
-            let content = "";
-            
-            if (type === "ceremony") {
-                content = `<h3>The Ceremony Collection</h3>
-                    <ul class="details-grid">
-                        <li>Full ceremony coverage (arrival to exit)</li>
-                        <li>Professionally edited ceremony film (multiple angles)</li>
-                        <li>Professionally recorded audio capture</li>
-                        <li>Cinematic colour grading</li>
-                        <li>Private 4K online delivery</li>
-                    </ul>`;
-            } else if (type === "narrative") {
-                content = `<h3>The Narrative Collection</h3>
-                    <ul class="details-grid">
-                        <li>Full day coverage (preparations to first dance)</li>
-                        <li>5–8 minute cinematic highlights film</li>
-                        <li>Custom soundtrack & creative editing</li>
-                        <li>Drone footage where safe and permitted</li>
-                        <li>Professional audio & cinematic grading</li>
-                        <li>Private 4K online delivery</li>
-                    </ul>`;
-            } else if (type === "cinematic") {
-                content = `<h3>The Cinematic Collection</h3>
-                    <ul class="details-grid">
-                        <li>Full day coverage (preparations to first dance)</li>
-                        <li>5–8 minute cinematic highlights film</li>
-                        <li>Full ceremony film delivered separately</li>
-                        <li>Full speeches film delivered separately</li>
-                        <li>Drone footage where safe and permitted</li>
-                        <li>Custom soundtrack & cinematic grading</li>
-                    </ul>`;
-            }
-
-            panel.innerHTML = content;
-            panel.style.display = "block";
-        }
     }
 
     window.onload = function() {
         document.getElementById('cinematic-default').click();
     };
 
-    // Form Handling
     const form = document.getElementById("wedding-form");
     const status = document.getElementById("form-status");
 

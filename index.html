@@ -144,27 +144,45 @@
             font-weight: 400;
         }
 
-        /* ABOUT SECTION UPDATED */
+        /* REFINED ABOUT SECTION */
         .about-grid {
             display: grid;
-            grid-template-columns: 1.1fr 1fr;
-            gap: 80px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: 
+                "header header"
+                "main side";
+            gap: 60px 100px;
             align-items: start;
         }
 
-        .about-intro h2 {
+        .about-header { grid-area: header; }
+
+        .eyebrow {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.75rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .about-header h2 {
             font-family: 'Baskervville', serif;
-            font-size: 2.8rem;
-            line-height: 1.2;
-            margin-bottom: 35px;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin: 0;
             font-weight: 400;
         }
 
+        .about-content-main { grid-area: main; }
+        .about-content-side { grid-area: side; margin-top: 40px; }
+
         .about-lead {
-            font-size: 1.15rem;
-            margin-bottom: 25px;
+            font-size: 1.25rem;
             line-height: 1.6;
             color: var(--charcoal);
+            font-style: italic;
+            margin-bottom: 30px;
         }
 
         .about-grid p {
@@ -172,6 +190,14 @@
             line-height: 1.8;
             font-size: 0.95rem;
             margin-bottom: 20px;
+        }
+
+        .about-closing {
+            font-weight: 600;
+            color: var(--charcoal) !important;
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+            margin-top: 40px;
         }
 
         /* COLLECTIONS */
@@ -315,7 +341,14 @@
         }
 
         @media(max-width: 900px) {
-            .packages, .contact-container, .about-grid { grid-template-columns: 1fr; }
+            .packages, .contact-container { grid-template-columns: 1fr; }
+            .about-grid { 
+                grid-template-areas: "header" "main" "side";
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .about-header h2 { font-size: 2.5rem; }
+            .about-content-side { margin-top: 0; }
             .hero-content h1 { font-size: 2.5rem; }
             .nav-container { padding: 0 20px; }
             .menu { display: none; }
@@ -350,16 +383,33 @@
 
 <section id="about">
     <div class="about-grid">
-        <div class="about-intro">
+        <div class="about-header">
+            <span class="eyebrow">The Philosophy</span>
             <h2>Films That Capture The Moments You Missed</h2>
-            <p class="about-lead">A wedding day moves quickly. While you are greeting guests, laughing with friends or sharing a quiet moment together, countless moments are unfolding around you.</p>
-            <p>A proud glance across the room. A reassuring hand on a shoulder. A father quietly kissing his daughter on the head during the ceremony.</p>
-            <p>These are the moments couples often do not realise happened until they see them again.</p>
         </div>
-        <div>
-            <p>Our approach is calm, natural and unobtrusive. We blend quietly into the background and allow real moments to unfold while capturing them with a cinematic eye.</p>
-            <p>With over a decade of experience across film, music and visual production, every wedding film is crafted with careful storytelling and refined editing.</p>
-            <p>The result is not simply a video of your wedding, but a film that allows you to experience the day again including the moments you never realised were happening.</p>
+        
+        <div class="about-content-main">
+            <p class="about-lead">
+                A wedding day moves quickly. While you are greeting guests and sharing quiet moments together, a thousand tiny stories are unfolding around you.
+            </p>
+            <p>
+                A proud glance from a father across a crowded room. A reassuring hand on a shoulder. The quiet, shared laughter between old friends during the ceremony.
+            </p>
+            <p>
+                These are the "invisible moments"—the ones couples often don’t realize happened until they see them on screen for the first time.
+            </p>
+        </div>
+
+        <div class="about-content-side">
+            <p>
+                Our approach is intentionally calm and unobtrusive. We blend into the background to allow real life to unfold, capturing it with a refined, cinematic eye.
+            </p>
+            <p>
+                With over a decade of experience in music and high-end visual production, we craft every film with the careful storytelling and refined editing your legacy deserves.
+            </p>
+            <p class="about-closing">
+                The result is more than a video; it is a film that allows you to experience the depth of your day again, including the moments you never knew were happening.
+            </p>
         </div>
     </div>
 </section>
@@ -376,11 +426,11 @@
             <p class="price">£450</p>
             <div class="card-details">
                 <ul>
-                    <li>Full ceremony coverage (arrival to exit)</li>
-                    <li>Professionally edited ceremony film (multiple angles)</li>
-                    <li>Professionally recorded audio capture</li>
-                    <li>Cinematic colour grading</li>
-                    <li>Private 4K online delivery</li>
+                    <li>Full ceremony coverage (arrival to exit) </li>
+                    <li>Professionally edited ceremony film (multiple angles) </li>
+                    <li>Professionally recorded audio capture </li>
+                    <li>Cinematic colour grading </li>
+                    <li>Private 4K online delivery [cite: 4, 5, 27]</li>
                 </ul>
             </div>
         </div>
@@ -390,12 +440,12 @@
             <p class="price">£600</p>
             <div class="card-details">
                 <ul>
-                    <li>Full day coverage (preparations to first dance)</li>
-                    <li>5–8 minute cinematic highlights film</li>
-                    <li>Custom soundtrack & creative editing</li>
-                    <li>Drone footage where safe and permitted</li>
-                    <li>Professional audio & cinematic grading</li>
-                    <li>Private 4K online delivery</li>
+                    <li>Full day coverage (preparations to first dance) </li>
+                    <li>5–8 minute cinematic highlights film </li>
+                    <li>Custom soundtrack & creative editing [cite: 15, 16]</li>
+                    <li>Drone footage where safe and permitted </li>
+                    <li>Professional audio & cinematic grading </li>
+                    <li>Private 4K online delivery [cite: 4, 5, 27]</li>
                 </ul>
             </div>
         </div>
@@ -405,19 +455,19 @@
             <p class="price">£900</p>
             <div class="card-details">
                 <ul>
-                    <li>Full day coverage (preparations to first dance)</li>
-                    <li>5–8 minute cinematic highlights film</li>
-                    <li>Full ceremony film delivered separately</li>
-                    <li>Full speeches film delivered separately</li>
-                    <li>Drone footage where safe and permitted</li>
-                    <li>Custom soundtrack & cinematic grading</li>
+                    <li>Full day coverage (preparations to first dance) </li>
+                    <li>5–8 minute cinematic highlights film </li>
+                    <li>Full ceremony film delivered separately [cite: 22]</li>
+                    <li>Full speeches film delivered separately [cite: 23]</li>
+                    <li>Drone footage where safe and permitted </li>
+                    <li>Custom soundtrack & cinematic grading [cite: 21, 24, 25]</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 30px; font-style: italic;">
-        *UK & Europe bookings. Invoiced in GBP; travel fees may apply.
+        *UK & Europe bookings. Invoiced in GBP; travel fees may apply. 
     </p>
 </section>
 
@@ -450,7 +500,7 @@
 </section>
 
 <footer>
-    <p>© 2026 HORIZON & COMPANY | UK & EUROPE</p>
+    <p>© 2026 HORIZON & COMPANY | UK & EUROPE </p>
 </footer>
 
 <script>

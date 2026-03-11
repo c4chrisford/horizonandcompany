@@ -50,43 +50,75 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* NAV */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: white;
-  border-bottom: 1px solid #eee;
-  z-index: 1000;
-  padding: 20px 0;
+/* NAV & DROPDOWN */
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:white;
+border-bottom:1px solid #eee;
+z-index:1000;
+padding:20px 0;
 }
-
-.nav-container {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
+.nav-container{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 40px;
 }
-
-.nav-logo {
-  font-family: 'Baskervville', serif;
-  font-size: 1.4rem;
-  text-decoration: none;
-  color: var(--charcoal);
-  letter-spacing: 6px;
-  text-transform: uppercase;
+.nav-logo{
+font-family:'Baskervville',serif;
+font-size:1.4rem;
+text-decoration:none;
+color:var(--charcoal);
+letter-spacing:6px;
+text-transform:uppercase;
 }
-
+.menu { display: flex; align-items: center; }
 .menu a {
-  text-decoration: none;
-  color: var(--charcoal);
-  margin-left: 35px;
-  font-size: .75rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 600;
+text-decoration:none;
+color:var(--charcoal);
+margin-left:35px;
+font-size:.75rem;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:600;
+transition: color 0.3s;
+}
+.menu a:hover { color: var(--gold); }
+
+/* DESKTOP DROPDOWN */
+.dropdown { position: relative; display: inline-block; }
+.dropdown-content { 
+  display: none; 
+  position: absolute; 
+  background: white; 
+  min-width: 180px; 
+  box-shadow: 0px 15px 30px rgba(0,0,0,0.08); 
+  top: 100%; 
+  left: 35px; 
+  border: 1px solid var(--border); 
+}
+.dropdown-content a { 
+  display: block; 
+  margin: 0; 
+  padding: 15px 20px; 
+  font-size: 0.7rem; 
+  border-bottom: 1px solid #f9f9f9; 
+}
+.dropdown-content a:last-child { border-bottom: none; }
+.dropdown:hover .dropdown-content { display: block; animation: fadeIn 0.3s ease; }
+
+/* MOBILE HAMBURGER BUTTON */
+.mobile-btn { 
+  display: none; 
+  background: none; 
+  border: none; 
+  font-size: 1.5rem; 
+  cursor: pointer; 
+  color: var(--charcoal); 
 }
 
 /* EDITORIAL STATIC HERO */
@@ -289,9 +321,38 @@ footer { text-align:center; padding:80px 40px; border-top:1px solid #eee; backgr
   .manifesto h2 { font-size: 2.2rem; }
   .pull-quote { font-size: 1.8rem; }
   .packages { grid-template-columns: 1fr; }
-  .menu { display: none; }
   .card { padding: 45px 20px; }
   .form-row { flex-direction: column; gap: 20px; }
+  
+  /* MOBILE MENU FIX */
+  .mobile-btn { display: block; }
+  .menu { 
+    display: none; 
+    flex-direction: column; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    width: 100%; 
+    background: white; 
+    border-bottom: 1px solid var(--border); 
+    padding: 20px 0; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
+    align-items: flex-start;
+  }
+  .menu.active { display: flex; animation: fadeIn 0.3s ease; }
+  .menu a { margin: 15px 40px; }
+  
+  /* Mobile Dropdown adjustment */
+  .dropdown-content { 
+    position: static; 
+    box-shadow: none; 
+    border: none; 
+    border-left: 2px solid var(--gold); 
+    margin-left: 40px; 
+    padding: 5px 0;
+  }
+  .dropdown:hover .dropdown-content { display: none; } 
+  .dropdown.active .dropdown-content { display: block; } 
 }
 </style>
 </head>
@@ -300,12 +361,27 @@ footer { text-align:center; padding:80px 40px; border-top:1px solid #eee; backgr
 
 <nav>
 <div class="nav-container">
+
 <a href="/" class="nav-logo">Horizon & Co</a>
-<div class="menu">
-<a href="#approach">Approach</a>
-<a href="#collections">Collections</a>
-<a href="#contact">Contact</a>
+
+<button class="mobile-btn" onclick="toggleMobileMenu()">☰</button>
+
+<div class="menu" id="nav-menu">
+  <a href="/" onclick="closeMobileMenu()">Home</a>
+  
+  <div class="dropdown" onclick="toggleMobileDropdown(this)">
+    <a style="cursor:pointer;">Locations ▾</a>
+    <div class="dropdown-content">
+      <a href="/liverpool.html">Liverpool</a>
+      <a href="/cheshire.html">Cheshire</a>
+      <a href="/north-wales.html">North Wales</a>
+    </div>
+  </div>
+  
+  <a href="#collections" onclick="closeMobileMenu()">Collections</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
 </div>
+
 </div>
 </nav>
 
@@ -509,6 +585,25 @@ function toggleActive(element){
   const cards=document.querySelectorAll(".card");
   cards.forEach(card=>card.classList.remove("active"));
   element.classList.add("active");
+}
+
+// NEW: Toggle Mobile Hamburger Menu
+function toggleMobileMenu() {
+  document.getElementById('nav-menu').classList.toggle('active');
+}
+
+// NEW: Close Mobile Menu on Click
+function closeMobileMenu() {
+  if(window.innerWidth <= 900) {
+    document.getElementById('nav-menu').classList.remove('active');
+  }
+}
+
+// NEW: Toggle Dropdown specifically for mobile clicks
+function toggleMobileDropdown(element) {
+  if(window.innerWidth <= 900) {
+    element.classList.toggle('active');
+  }
 }
 
 document.getElementById('horizon-contact-form').addEventListener('submit', function(e) {

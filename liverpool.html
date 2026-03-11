@@ -314,9 +314,18 @@ footer { text-align:center; padding:80px 40px; border-top:1px solid #eee; backgr
 .footer-seo-links a:hover { color: var(--gold); }
 
 /* MOBILE */
+/* MOBILE */
 @media(max-width: 900px) {
-  .hero-content { padding: 0 30px 80px 30px; }
-  .hero-content h1 { font-size: 3rem; }
+  /* Fixes the iOS massive zoom bug and adjusts for the mobile address bar */
+  .hero-static { 
+    background-attachment: scroll; 
+    height: 85vh; 
+  }
+  
+  /* Better text sizing and breathing room for narrow phone screens */
+  .hero-content { padding: 0 25px 90px 25px; }
+  .hero-content h1 { font-size: 2.6rem; }
+  .hero-subtitle { font-size: 1.15rem; }
   .editorial-row, .editorial-row.reverse { flex-direction: column; gap: 40px; margin-bottom: 80px; }
   .manifesto h2 { font-size: 2.2rem; }
   .pull-quote { font-size: 1.8rem; }

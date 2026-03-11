@@ -526,14 +526,14 @@ document.getElementById('horizon-contact-form').addEventListener('submit', funct
       { "name": "firstname", "value": document.getElementById('firstname').value },
       { "name": "lastname", "value": document.getElementById('lastname').value },
       { "name": "email", "value": document.getElementById('email').value },
-      
-      // RESTORED FIX: Using your custom property to ensure the phone number maps correctly
       { "name": "phone_from_form", "value": document.getElementById('phone').value },
-      
       { "name": "wedding_date", "value": document.getElementById('wedding_date').value },
       { "name": "wedding_venue", "value": document.getElementById('venue').value },
       { "name": "collection_of_interest", "value": document.getElementById('collection').value },
-      { "name": "enquiry_stage", "value": "new_enquiry" },
+      
+      // FIXED: Lowercase internal value, ensuring HubSpot accepts the stage mapping
+      { "name": "enquiry_stage", "value": "New Enquiry" },
+      
       { "name": "message", "value": document.getElementById('message').value }
     ]
   };

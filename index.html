@@ -204,6 +204,18 @@ section{ padding:120px 40px; max-width:1100px; margin:auto; }
 .about-grid p{ color:#555; line-height:1.8; font-size:.95rem; margin-bottom:20px; }
 .about-closing{ font-weight:600; border-top:1px solid var(--border); padding-top:30px; margin-top:40px; }
 
+.filmmaker-text{
+order:1;
+}
+
+.filmmaker-image{
+order:2;
+}
+
+.filmmaker-wrap{
+gap:40px !important;
+}
+
 /* DESTINATIONS GRID */
 .destination-card {
  position: relative;
@@ -421,9 +433,9 @@ footer{ text-align:center; padding:80px 40px; border-top:1px solid #eee; backgro
 </section>
 
 <section id="filmmaker" style="background: var(--light-grey); border-top: 1px solid var(--border); padding-top: 120px; padding-bottom: 120px;">
-  <div style="max-width: 1000px; margin: auto; display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
+  <div class="filmmaker-wrap" style="max-width: 1000px; margin: auto; display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
     
-    <div style="flex: 1; min-width: 300px;">
+    <div class="filmmaker-image" style="flex: 1; min-width: 300px;">
       <img src="images/profile.jpg" alt="Chris Ford, Founder & Creative Director of Horizon & Company" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-radius: 4px;">
       
       <div style="margin-top: 18px; text-align: left;">
@@ -432,7 +444,7 @@ footer{ text-align:center; padding:80px 40px; border-top:1px solid #eee; backgro
       </div>
     </div>
 
-    <div style="flex: 1.2; min-width: 300px;">
+    <div class="filmmaker-text" style="flex: 1.2; min-width: 300px;">
       <span class="eyebrow">Behind Horizon & Co</span>
       <h2 style="font-family:'Baskervville',serif;font-size:2.8rem;font-weight:400; margin: 0 0 20px 0; color: var(--charcoal);">Behind the Lens</h2>
       

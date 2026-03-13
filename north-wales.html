@@ -289,9 +289,36 @@ section {
 .card.active .card-details { display:block; }
 .card-details ul { list-style:none; padding:0; margin:0; }
 .card-details li { font-size:.95rem; line-height:1.6; display:flex; margin-bottom:14px; }
-.card-details li::before { content:"—"; color:var(--gold); margin-right:12px; }
+.card-details li::before { content:"-"; color:var(--gold); margin-right:12px; }
 
 @keyframes fadeIn { from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:translateY(0);} }
+
+/* FAQ ACCORDION */
+.faq-container { max-width: 800px; margin: 0 auto; text-align: left; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-question { 
+  width: 100%; 
+  text-align: left; 
+  background: none; 
+  border: none; 
+  padding: 25px 0; 
+  font-family: 'Inter', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  color: var(--charcoal); 
+  cursor: pointer; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  transition: color 0.3s; 
+}
+.faq-question:hover { color: var(--gold); }
+.faq-icon { font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease; color: var(--gold); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-answer p { margin: 0 0 25px 0; color: #555; line-height: 1.8; font-size: 0.95rem; padding-right: 40px; }
+.faq-item.active .faq-answer { max-height: 500px; }
+.faq-item.active .faq-icon { transform: rotate(45deg); }
 
 /* CUSTOM FORM STYLING */
 .custom-form-container { max-width: 650px; margin: 0 auto; text-align: left; }
@@ -448,7 +475,7 @@ footer { text-align:center; padding:80px 40px; border-top:1px solid #eee; backgr
   </div>
   <div class="editorial-text">
     <h3>Wild Romance & Unique Venues</h3>
-    <p>North Wales is home to a beautiful variety of venues—from the unique charm of Portmeirion to cosy coastal hotels and ancient stone barns.</p>
+    <p>North Wales is home to a beautiful variety of venues - from the unique charm of Portmeirion to cosy coastal hotels and ancient stone barns.</p>
     <p>Our storytelling focuses on preserving the unique character of your chosen space. We capture the historic textures and bespoke details of your venue alongside the natural flow of your day, resulting in a cinematic film that reflects your true personality.</p>
   </div>
 </div>
@@ -488,7 +515,7 @@ Cinematic quality and natural storytelling, designed for every celebration. All 
 <div class="card-details">
 <ul>
 <li>Full day coverage (preparations to first dance)</li>
-<li>5–8 minute cinematic highlights film</li>
+<li>5-8 minute cinematic highlights film</li>
 <li>Full ceremony film</li>
 <li>Full speeches film</li>
 <li>Drone footage where permitted</li>
@@ -505,7 +532,7 @@ Cinematic quality and natural storytelling, designed for every celebration. All 
 <div class="card-details">
 <ul>
 <li>Full day coverage</li>
-<li>5–8 minute cinematic highlights film</li>
+<li>5-8 minute cinematic highlights film</li>
 <li>Drone footage where permitted</li>
 <li>Professional audio capture</li>
 <li>Private 4K online delivery</li>
@@ -515,7 +542,63 @@ Cinematic quality and natural storytelling, designed for every celebration. All 
 </div>
 </section>
 
-<section id="contact" style="background:#fff;">
+<section id="faqs" style="background: white;">
+  <div style="text-align: center; margin-bottom: 50px;">
+    <span class="eyebrow">The Details</span>
+    <h2 style="font-family:'Baskervville',serif;font-size:3rem;font-weight:400; margin:0;">Frequently Asked Questions</h2>
+  </div>
+
+  <div class="faq-container">
+    
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFAQ(this)">
+        How do we secure our date? <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>To keep things simple and fair, dates are secured on a first-come, first-served basis. Once you confirm you'd like to book, we require a 25% non-refundable booking fee and a signed digital contract to lock your date in our diary. The remaining balance isn't due until 30 days before your wedding.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFAQ(this)">
+        Do you charge for travel? <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Travel within 50 miles of our base is completely free of charge. For weddings further afield across the UK or Europe, we simply charge standard travel and accommodation costs at cost-value, which we will agree with you upfront before you book.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFAQ(this)">
+        Do we get to choose the music for our film? <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Music is 50% of the emotion in any film. With a background as a signed music producer and director - running a recording studio in Liverpool, shooting music videos, and having tracks played on national radio - audio is my secret weapon. While copyright laws mean we cannot use standard commercial pop songs, I use my industry experience to source and edit premium, cinematic soundtracks. I do not just drop a nice song over your footage; I score your film like a movie, perfectly matching the pacing, energy, and unique atmosphere of your day.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFAQ(this)">
+        How long does it take to get our video? <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>We believe in taking the time to edit your film perfectly rather than rushing it. During peak wedding season, our standard delivery time is 8-12 weeks. Your films will be delivered in stunning 4K via a private online gallery that you can download from and share with family and friends.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFAQ(this)">
+        Are you fully insured? <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Absolutely. We carry comprehensive Public Liability and Professional Indemnity insurance. If your venue requires a copy of our insurance certificate beforehand, just let us know and we will happily email it straight over to their coordinator.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" style="background:#f4f4f3;">
 <div style="text-align:center;margin-bottom:60px;">
 <h2 style="font-family:'Baskervville',serif;font-size:3rem;font-weight:400;">
 Check Availability
@@ -616,6 +699,16 @@ function toggleMobileDropdown(element) {
   }
 }
 
+// Toggle FAQs
+function toggleFAQ(element) {
+  const item = element.parentElement;
+  // Optional: Close other open FAQs when opening a new one
+  document.querySelectorAll('.faq-item').forEach(faq => {
+    if (faq !== item) faq.classList.remove('active');
+  });
+  item.classList.toggle('active');
+}
+
 document.getElementById('horizon-contact-form').addEventListener('submit', function(e) {
   e.preventDefault();
   const submitBtn = document.getElementById('submit-btn');
@@ -635,7 +728,7 @@ document.getElementById('horizon-contact-form').addEventListener('submit', funct
       { "name": "wedding_date", "value": document.getElementById('wedding_date').value },
       { "name": "wedding_venue", "value": document.getElementById('venue').value },
       { "name": "collection_of_interest", "value": document.getElementById('collection').value },
-      { "name": "enquiry_stage", "value": "New Enquiry" },
+      { "name": "enquiry_stage", "value": "new_enquiry" },
       { "name": "message", "value": document.getElementById('message').value }
     ]
   };

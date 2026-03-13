@@ -91,28 +91,6 @@ transition: color 0.3s;
 }
 .menu a:hover { color: var(--gold); }
 
-/* DESKTOP DROPDOWN */
-.dropdown { position: relative; display: inline-block; }
-.dropdown-content { 
-  display: none; 
-  position: absolute; 
-  background: white; 
-  min-width: 180px; 
-  box-shadow: 0px 15px 30px rgba(0,0,0,0.08); 
-  top: 100%; 
-  left: 35px; 
-  border: 1px solid var(--border); 
-}
-.dropdown-content a { 
-  display: block; 
-  margin: 0; 
-  padding: 15px 20px; 
-  font-size: 0.7rem; 
-  border-bottom: 1px solid #f9f9f9; 
-}
-.dropdown-content a:last-child { border-bottom: none; }
-.dropdown:hover .dropdown-content { display: block; animation: fadeIn 0.3s ease; }
-
 /* MOBILE HAMBURGER BUTTON */
 .mobile-btn { 
   display: none; 
@@ -310,8 +288,6 @@ footer{ text-align:center; padding:80px 40px; border-top:1px solid #eee; backgro
   .card{padding:45px 20px;}
   .about-header h2{font-size:2.4rem;}
   .form-row { flex-direction: column; gap: 20px; }
-  
-  /* MOBILE MENU FIX */
   .mobile-btn { display: block; }
   .menu { 
     display: none; 
@@ -328,18 +304,6 @@ footer{ text-align:center; padding:80px 40px; border-top:1px solid #eee; backgro
   }
   .menu.active { display: flex; animation: fadeIn 0.3s ease; }
   .menu a { margin: 15px 40px; }
-  
-  /* Mobile Dropdown adjustment */
-  .dropdown-content { 
-    position: static; 
-    box-shadow: none; 
-    border: none; 
-    border-left: 2px solid var(--gold); 
-    margin-left: 40px; 
-    padding: 5px 0;
-  }
-  .dropdown:hover .dropdown-content { display: none; } /* Disable hover on mobile */
-  .dropdown.active .dropdown-content { display: block; } /* Use click on mobile */
 }
 
 </style>
@@ -349,27 +313,14 @@ footer{ text-align:center; padding:80px 40px; border-top:1px solid #eee; backgro
 
 <nav>
 <div class="nav-container">
-
 <a href="#hero" class="nav-logo">Horizon & Co</a>
-
 <button class="mobile-btn" onclick="toggleMobileMenu()">☰</button>
-
 <div class="menu" id="nav-menu">
   <a href="#about" onclick="closeMobileMenu()">About</a>
-  
-  <div class="dropdown" onclick="toggleMobileDropdown(this)">
-    <a href="#destinations" style="cursor:pointer;">Locations ▾</a>
-    <div class="dropdown-content">
-      <a href="/liverpool.html">Liverpool</a>
-      <a href="/cheshire.html">Cheshire</a>
-      <a href="/north-wales.html">North Wales</a>
-    </div>
-  </div>
-  
+  <a href="#destinations" onclick="closeMobileMenu()">Locations</a>
   <a href="#collections" onclick="closeMobileMenu()">Collections</a>
   <a href="#contact" onclick="closeMobileMenu()">Contact</a>
 </div>
-
 </div>
 </nav>
 
@@ -381,25 +332,59 @@ footer{ text-align:center; padding:80px 40px; border-top:1px solid #eee; backgro
 <div class="hero-content">
 <h1>The Moments You Lived.<br>
 <span class="hero-subtitle">And The Ones That You Missed</span></h1>
-<p style="letter-spacing:4px;text-transform:uppercase;font-size:.85rem;">
-Cinematic Wedding Films
-</p>
+<p style="letter-spacing:4px;text-transform:uppercase;font-size:.85rem;">Cinematic Wedding Films</p>
 <a href="#collections" class="hero-btn">View Collections</a>
 </div>
 </div>
 
-<section id="filmmaker" style="background: white; border-top: 1px solid var(--border); padding-top: 120px; padding-bottom: 120px;">
+<section id="about">
+<div class="about-grid">
+<div class="about-header">
+<span class="eyebrow">The Approach</span>
+<h2>Natural & Authentic Storytelling</h2>
+</div>
+<div class="about-content-main">
+<p class="about-lead">A wedding is more than a schedule of events; it is a unique energy that exists only once.</p>
+<p>Our films are designed to preserve that atmosphere. From the grand, joyful celebrations to the quiet, nervous exchanges, we focus on the authentic character of your day, ensuring the resulting film feels as real as the memories themselves.</p>
+<p>We believe you should be completely present on your wedding day, which is why we prioritise documentary storytelling over awkward, staged poses.</p>
+</div>
+<div class="about-content-side">
+<p>You won't find us orchestrating moments or making you repeat actions for the camera. By blending quietly into the background, we capture the laughter, the tears, and the subtle interactions that make your story completely personal.</p>
+<p class="about-closing">The result is a beautifully crafted, timeless legacy that lets you relive the genuine emotion of your celebration for years to come.</p>
+</div>
+</div>
+</section>
+
+<section id="featured-film" style="background: white; border-top: 1px solid var(--border); padding-top: 120px; padding-bottom: 120px;">
+  <div style="text-align: center; margin-bottom: 60px;">
+    <span class="eyebrow">Featured Work</span>
+    <h2 style="font-family:'Baskervville',serif;font-size:3rem;font-weight:400; margin:0;">Andy & Lesley</h2>
+    <p style="color:#666;font-size:.95rem; margin-top: 15px; max-width: 600px; margin-left: auto; margin-right: auto;">
+      Grosvenor Pulford Hotel & Spa, Chester.<br>
+      A glimpse into our cinematic storytelling, preserving the genuine atmosphere of the day exactly as it happened.
+    </p>
+  </div>
+  <div style="max-width: 900px; margin: auto; box-shadow: 0 25px 50px rgba(0,0,0,0.1); background: var(--charcoal);">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe src="https://player.vimeo.com/video/1172566916?color=8E7A5A&title=0&byline=0&portrait=0" 
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+              frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 40px;">
+      <a href="#contact" class="hero-btn" style="background: white; color: var(--charcoal); border: 1px solid var(--border);">Check Your Date</a>
+  </div>
+</section>
+
+<section id="filmmaker" style="background: var(--light-grey); border-top: 1px solid var(--border); padding-top: 120px; padding-bottom: 120px;">
   <div style="max-width: 1000px; margin: auto; display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
-    
     <div style="flex: 1; min-width: 300px;">
       <img src="images/profile.jpg" alt="Horizon & Company Filmmaker" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-radius: 4px;">
     </div>
-
     <div style="flex: 1.2; min-width: 300px;">
       <span class="eyebrow">Meet The Filmmaker</span>
-      <h2 style="font-family:'Baskervville',serif;font-size:2.8rem;font-weight:400; margin: 0 0 20px 0; color: var(--charcoal);">
-        Behind the Lens
-      </h2>
+      <h2 style="font-family:'Baskervville',serif;font-size:2.8rem;font-weight:400; margin: 0 0 20px 0; color: var(--charcoal);">Behind the Lens</h2>
       <p style="font-size: 1rem; line-height: 1.8; color: #555; margin-bottom: 20px;">
         Horizon & Co was built on a love of storytelling, atmosphere, and the kind of moments that are felt just as deeply as they are seen.
       </p>
@@ -414,348 +399,125 @@ Cinematic Wedding Films
       </p>
       <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='2'><rect width='50' height='2' fill='%238E7A5A'/></svg>" alt="divider">
     </div>
-
   </div>
 </section>
 
-<section id="featured-film" style="background: white; border-top: 1px solid var(--border); padding-top: 120px;">
-  <div style="text-align: center; margin-bottom: 60px;">
-    <span class="eyebrow">Featured Work</span>
-    <h2 style="font-family:'Baskervville',serif;font-size:3rem;font-weight:400; margin:0;">Andy & Lesley</h2>
-    <p style="color:#666;font-size:.95rem; margin-top: 15px; max-width: 600px; margin-left: auto; margin-right: auto;">
-      Grosvenor Pulford Hotel & Spa, Chester.<br>
-      A glimpse into our cinematic storytelling, preserving the joy, energy, and genuine atmosphere of the day exactly as it happened.
-    </p>
-  </div>
-  
-  <div style="max-width: 900px; margin: auto; box-shadow: 0 25px 50px rgba(0,0,0,0.1); background: var(--charcoal);">
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      
-      <iframe src="https://player.vimeo.com/video/1172566916?color=8E7A5A&title=0&byline=0&portrait=0" 
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-              frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
-      </iframe>
-      
-    </div>
-  </div>
-  
-  <div style="text-align: center; margin-top: 40px;">
-      <a href="#contact" class="hero-btn" style="background: white; color: var(--charcoal); border: 1px solid var(--border);">Check Your Date</a>
-  </div>
-</section>
-
-<section id="destinations" style="background:var(--light-grey); border-top:1px solid var(--border);">
+<section id="destinations" style="background: white; border-top:1px solid var(--border);">
 <div style="text-align:center;margin-bottom:60px;">
   <span class="eyebrow">Where We Film</span>
   <h2 style="font-family:'Baskervville',serif;font-size:3rem;font-weight:400; margin:0;">Featured Destinations</h2>
 </div>
-
 <div class="packages">
   <a href="/liverpool.html" class="destination-card">
-    <img src="images/albert-dock-liverpool-wedding-videographer.jpg" alt="Liverpool Wedding Videographer">
-    <div class="destination-overlay">
-      <h3>Liverpool</h3>
-      <p>City Weddings & Urban Charm</p>
-    </div>
+    <img src="images/albert-dock-liverpool-wedding-videographer.jpg" alt="Liverpool">
+    <div class="destination-overlay"><h3>Liverpool</h3><p>City Weddings & Urban Charm</p></div>
   </a>
-
   <a href="/cheshire.html" class="destination-card">
-    <img src="images/cheshire-wedding-videographer-luxury-estate.jpg" alt="Cheshire Wedding Videographer">
-    <div class="destination-overlay">
-      <h3>Cheshire</h3>
-      <p>Barns, Hotels & Country Houses</p>
-    </div>
+    <img src="images/cheshire-wedding-videographer-luxury-estate.jpg" alt="Cheshire">
+    <div class="destination-overlay"><h3>Cheshire</h3><p>Barns, Hotels & Country Houses</p></div>
   </a>
-
   <a href="/north-wales.html" class="destination-card">
-    <img src="images/north-wales-wedding-videographer-anglesey.jpg" alt="North Wales Wedding Videographer">
-    <div class="destination-overlay">
-      <h3>North Wales</h3>
-      <p>Wild & Natural Settings</p>
-    </div>
+    <img src="images/north-wales-wedding-videographer-anglesey.jpg" alt="North Wales">
+    <div class="destination-overlay"><h3>North Wales</h3><p>Wild & Natural Settings</p></div>
   </a>
 </div>
 </section>
 
-<section id="collections">
+<section id="collections" style="background: var(--light-grey); border-top: 1px solid var(--border);">
 <div style="text-align:center;margin-bottom:60px;">
-<h2 style="font-family:'Baskervville',serif;font-size:3rem;font-weight:400;">
-Wedding Videography Collections
-</h2>
-<p style="color:#666;font-size:.9rem;">
-Cinematic quality and natural storytelling, designed for every celebration. All films delivered in 4K.
-</p>
+<h2 style="font-family:'Baskervville',serif;font-size:3rem;font-weight:400;">Wedding Videography Collections</h2>
+<p style="color:#666;font-size:.9rem;">Cinematic quality and natural storytelling. All films delivered in 4K.</p>
 </div>
-
 <div class="packages">
 <div class="card" onclick="toggleActive(this)">
-<h3>The Ceremony</h3>
-<p class="price">£450</p>
-<p class="expand-hint">View coverage ↓</p>
-<div class="card-details">
-<ul>
-<li>Full ceremony coverage (arrival to exit)</li>
-<li>Multi-camera ceremony film</li>
-<li>Professional audio capture</li>
-<li>Cinematic colour grading</li>
-<li>Private 4K online delivery</li>
-</ul>
+<h3>The Ceremony</h3><p class="price">£450</p>
+<div class="card-details"><ul><li>Full ceremony coverage</li><li>Multi-camera film</li><li>Pro audio capture</li><li>4K online delivery</li></ul></div>
 </div>
-</div>
-
 <div id="cinematic-default" class="card active" onclick="toggleActive(this)">
-<h3>The Cinematic</h3>
-<p class="price">£900</p>
-<p class="expand-hint">Most popular ↓</p>
-<div class="card-details">
-<ul>
-<li>Full day coverage (preparations to first dance)</li>
-<li>5-8 minute cinematic highlights film</li>
-<li>Full ceremony film</li>
-<li>Full speeches film</li>
-<li>Drone footage where permitted</li>
-<li>Custom soundtrack & cinematic grading</li>
-<li>Private 4K online delivery</li>
-</ul>
+<h3>The Cinematic</h3><p class="price">£900</p>
+<div class="card-details"><ul><li>Full day coverage</li><li>5-8 min highlight film</li><li>Full ceremony & speeches</li><li>Drone footage</li><li>4K delivery</li></ul></div>
 </div>
-</div>
-
 <div class="card" onclick="toggleActive(this)">
-<h3>The Narrative</h3>
-<p class="price">£600</p>
-<p class="expand-hint">View coverage ↓</p>
-<div class="card-details">
-<ul>
-<li>Full day coverage</li>
-<li>5-8 minute cinematic highlights film</li>
-<li>Drone footage where permitted</li>
-<li>Professional audio capture</li>
-<li>Private 4K online delivery</li>
-</ul>
+<h3>The Narrative</h3><p class="price">£600</p>
+<div class="card-details"><ul><li>Full day coverage</li><li>5-8 min highlight film</li><li>Drone footage</li><li>4K online delivery</li></ul></div>
 </div>
 </div>
-</div>
-<p style="text-align:center;font-size:.85rem;color:#888;margin-top:30px;font-style:italic;">
-*UK & Europe bookings. Invoiced in GBP; travel fees may apply.
-</p>
 </section>
 
-<section id="faqs" style="background: white;">
+<section id="faqs" style="background: white; border-top: 1px solid var(--border);">
   <div style="text-align: center; margin-bottom: 50px;">
     <span class="eyebrow">The Details</span>
     <h2 style="font-family:'Baskervville',serif;font-size:3rem;font-weight:400; margin:0;">Frequently Asked Questions</h2>
   </div>
-
   <div class="faq-container">
-    
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFAQ(this)">
-        How do we secure our date? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>To keep things simple and fair, dates are secured on a first-come, first-served basis. Once you confirm you'd like to book, we require a 25% non-refundable booking fee and a signed digital contract to lock your date in our diary. The remaining balance isn't due until 30 days before your wedding.</p>
-      </div>
+      <button class="faq-question" onclick="toggleFAQ(this)">How do we secure our date? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Dates are secured on a first-come, first-served basis with a 25% booking fee and signed digital contract.</p></div>
     </div>
-
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFAQ(this)">
-        Do you charge for travel? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Travel within 50 miles of our base is completely free of charge. For weddings further afield across the UK or Europe, we simply charge standard travel and accommodation costs at cost-value, which we will agree with you upfront before you book.</p>
-      </div>
+      <button class="faq-question" onclick="toggleFAQ(this)">Do we choose the music? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>My professional background allows me to source and score high-end cinematic soundtracks that match the pacing and emotion of your day perfectly.</p></div>
     </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFAQ(this)">
-        Do we get to choose the music for our film? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Music is 50% of the emotion in any film. With a background as a signed music producer and director - running a recording studio in Liverpool, shooting music videos, and having tracks played on national radio - audio is my secret weapon. While copyright laws mean we cannot use standard commercial pop songs, I use my industry experience to source and edit premium, cinematic soundtracks. I do not just drop a nice song over your footage; I score your film like a movie, perfectly matching the pacing, energy, and unique atmosphere of your day.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFAQ(this)">
-        How long does it take to get our video? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>We believe in taking the time to edit your film perfectly rather than rushing it. During peak wedding season, our standard delivery time is 6-10 weeks. Your films will be delivered in stunning 4K via a private online gallery that you can download from and share with family and friends.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFAQ(this)">
-        Are you fully insured? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Absolutely. We carry comprehensive Public Liability and Professional Indemnity insurance. If your venue requires a copy of our insurance certificate beforehand, just let us know and we will happily email it straight over to their coordinator.</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<section id="contact" style="background:#f4f4f3;">
+<section id="contact" style="background:#f4f4f3; border-top: 1px solid var(--border);">
 <div style="text-align:center;margin-bottom:60px;">
-<h2 style="font-family:'Baskervville',serif;font-size:3rem;font-weight:400;">
-Check Availability
-</h2>
-<p style="margin-top:10px;">
-Currently booking 2026 & 2027 weddings
-</p>
-<p style="font-size:0.9rem;color:#666;margin-top:15px;">
-Whether you are planning years in advance or looking for a last-minute date, <br>share a few details below and we’ll confirm availability within 24 hours.
-</p>
+<h2 style="font-family:'Baskervville',serif;font-size:3rem;font-weight:400;">Check Availability</h2>
+<p style="font-size:0.9rem;color:#666;margin-top:15px;">Share a few details below and we’ll confirm availability within 24 hours.</p>
 </div>
-
 <div class="custom-form-container">
   <form id="horizon-contact-form">
     <div class="form-row">
-      <div class="form-group">
-        <label for="firstname">First Name</label>
-        <input type="text" id="firstname" name="firstname" required>
-      </div>
-      <div class="form-group">
-        <label for="lastname">Last Name (Optional)</label>
-        <input type="text" id="lastname" name="lastname">
-      </div>
+      <div class="form-group"><label>First Name</label><input type="text" id="firstname" required></div>
+      <div class="form-group"><label>Last Name</label><input type="text" id="lastname"></div>
     </div>
     <div class="form-row">
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone">
-      </div>
+      <div class="form-group"><label>Email</label><input type="email" id="email" required></div>
+      <div class="form-group"><label>Wedding Date</label><input type="date" id="wedding_date" required></div>
     </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label for="wedding_date">Wedding Date</label>
-        <input type="date" id="wedding_date" name="wedding_date" required>
-      </div>
-      <div class="form-group">
-        <label for="venue">Venue(s) / Location</label>
-        <input type="text" id="venue" name="venue" placeholder="e.g. St George's Hall">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="collection">Collection of Interest</label>
-      <select id="collection" name="collection" required>
-        <option value="" disabled selected>Please select...</option>
-        <option value="The Ceremony">The Ceremony</option>
-        <option value="The Narrative">The Narrative</option>
-        <option value="The Cinematic">The Cinematic</option>
-        <option value="Not Sure Yet">Not Sure Yet</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="message">Tell me a little about your plans...</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-    </div>
-    <button type="submit" id="submit-btn" class="hero-btn" style="width: 100%; margin-top: 10px;">Request Availability</button>
-    <div id="form-success" style="display: none; margin-top: 20px; color: var(--gold); font-style: italic; text-align: center;">
-      Thank you. Your enquiry has been received and we will be in touch within 24 hours.
-    </div>
+    <div class="form-group"><label>Tell me about your plans...</label><textarea id="message" rows="4" required></textarea></div>
+    <button type="submit" id="submit-btn" class="hero-btn" style="width: 100%;">Request Availability</button>
+    <div id="form-success" style="display: none; margin-top: 20px; color: var(--gold); text-align: center;">Enquiry received. We'll be in touch soon.</div>
   </form>
 </div>
 </section>
 
 <footer>
 <p>© 2026 HORIZON & COMPANY | UK & EUROPE</p>
-<div class="footer-seo-links">
-    <p style="margin-bottom: 10px; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px;">Locations We Cover</p>
-    <a href="/liverpool.html">Liverpool</a> | 
-    <a href="/cheshire.html">Cheshire</a> | 
-    <a href="/north-wales.html">North Wales</a>
-</div>
 </footer>
 
 <script>
-// Toggle Collections Active State
-function toggleActive(element){
-  const cards=document.querySelectorAll(".card");
-  cards.forEach(card=>card.classList.remove("active"));
-  element.classList.add("active");
+function toggleActive(el){
+  document.querySelectorAll(".card").forEach(c=>c.classList.remove("active"));
+  el.classList.add("active");
 }
+function toggleMobileMenu(){ document.getElementById('nav-menu').classList.toggle('active'); }
+function closeMobileMenu(){ document.getElementById('nav-menu').classList.remove('active'); }
+function toggleFAQ(el){ el.parentElement.classList.toggle('active'); }
 
-// NEW: Toggle Mobile Hamburger Menu
-function toggleMobileMenu() {
-  document.getElementById('nav-menu').classList.toggle('active');
-}
-
-// NEW: Close Mobile Menu on Click (so it doesn't stay open when scrolling down)
-function closeMobileMenu() {
-  if(window.innerWidth <= 900) {
-    document.getElementById('nav-menu').classList.remove('active');
-  }
-}
-
-// NEW: Toggle Dropdown specifically for mobile clicks
-function toggleMobileDropdown(element) {
-  if(window.innerWidth <= 900) {
-    element.classList.toggle('active');
-  }
-}
-
-// Toggle FAQs
-function toggleFAQ(element) {
-  const item = element.parentElement;
-  // Optional: Close other open FAQs when opening a new one
-  document.querySelectorAll('.faq-item').forEach(faq => {
-    if (faq !== item) faq.classList.remove('active');
-  });
-  item.classList.toggle('active');
-}
-
-// HUBSPOT FORM SCRIPT
 document.getElementById('horizon-contact-form').addEventListener('submit', function(e) {
   e.preventDefault();
-  
-  const submitBtn = document.getElementById('submit-btn');
-  submitBtn.innerText = 'Sending...';
-  submitBtn.disabled = true;
-
-  const portalId = '147975706';
-  const formId = 'a57bfb7d-d14e-4b3f-8128-8b35a508b15b';
-  const url = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
-
-  const data = {
-    "fields": [
-      { "name": "firstname", "value": document.getElementById('firstname').value },
-      { "name": "lastname", "value": document.getElementById('lastname').value },
-      { "name": "email", "value": document.getElementById('email').value },
-      { "name": "phone_from_form", "value": document.getElementById('phone').value },
-      { "name": "wedding_date", "value": document.getElementById('wedding_date').value },
-      { "name": "wedding_venue", "value": document.getElementById('venue').value },
-      { "name": "collection_of_interest", "value": document.getElementById('collection').value },
-      { "name": "enquiry_stage", "value": "new_enquiry" },
-      { "name": "message", "value": document.getElementById('message').value }
-    ]
-  };
-
-  fetch(url, {
+  const btn = document.getElementById('submit-btn');
+  btn.innerText = 'Sending...';
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/147975706/a57bfb7d-d14e-4b3f-8128-8b35a508b15b', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  })
-  .then(async response => {
-    if (response.ok) {
+    body: JSON.stringify({
+      "fields": [
+        { "name": "firstname", "value": document.getElementById('firstname').value },
+        { "name": "lastname", "value": document.getElementById('lastname').value },
+        { "name": "email", "value": document.getElementById('email').value },
+        { "name": "wedding_date", "value": document.getElementById('wedding_date').value },
+        { "name": "message", "value": document.getElementById('message').value }
+      ]
+    })
+  }).then(res => {
+    if(res.ok) {
       document.getElementById('horizon-contact-form').reset();
-      submitBtn.style.display = 'none';
+      btn.style.display = 'none';
       document.getElementById('form-success').style.display = 'block';
-    } else {
-      submitBtn.innerText = 'Request Availability';
-      submitBtn.disabled = false;
-      alert('Error sending form. Please email hello@horizonandcompany.com directly.');
     }
-  })
-  .catch(error => {
-    submitBtn.innerText = 'Request Availability';
-    submitBtn.disabled = false;
-    alert('Network error. Please email hello@horizonandcompany.com directly.');
   });
 });
 </script>

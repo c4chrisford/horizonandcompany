@@ -1,0 +1,66 @@
+<nav>
+  <div class="nav-container">
+
+    <a href="/" class="nav-logo">Horizon & Co</a>
+
+    <button
+      class="mobile-btn"
+      onclick="toggleMobileMenu()"
+      aria-label="Open navigation menu">
+      ☰
+    </button>
+
+    <div class="menu" id="nav-menu">
+
+      <a href="/" onclick="closeMobileMenu()">
+        Home
+      </a>
+
+      <a href="/wedding-films.html" onclick="closeMobileMenu()">
+        Wedding Films
+      </a>
+
+      <div
+        class="dropdown"
+        onclick="toggleMobileDropdown(this)">
+
+        <a
+          href="javascript:void(0)"
+          style="cursor:pointer;">
+          Locations ▾
+        </a>
+
+        <div class="dropdown-content">
+
+          <a href="/liverpool.html">
+            Liverpool
+          </a>
+
+          <a href="/cheshire.html">
+            Cheshire
+          </a>
+
+          <a href="/north-wales.html">
+            North Wales
+          </a>
+
+        </div>
+
+      </div>
+
+      <a href="/#collections" onclick="closeMobileMenu()">
+        Packages
+      </a>
+
+      <a href="/#filmmaker" onclick="closeMobileMenu()">
+        About
+      </a>
+
+      <a href="/#contact" onclick="closeMobileMenu()">
+        Contact
+      </a>
+
+    </div>
+
+  </div>
+</nav>

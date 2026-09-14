@@ -10,16 +10,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
    HOMEPAGE
    ========================================= */
 
-/* HERO SUPPORTING TEXT */
-
-.hero-location{
-  margin-top:18px;
-  font-size:.72rem;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  opacity:.85;
-}
-
 
 /* =========================================
    INTRO / POSITIONING
@@ -33,48 +23,33 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 .home-intro h2{
   font-family:'Baskervville',serif;
-  font-size:3.6rem;
-  line-height:1.12;
+  font-size:3.5rem;
+  line-height:1.15;
   font-weight:400;
   margin:0 0 28px;
 }
 
 .home-intro-lead{
-  max-width:760px;
+  max-width:740px;
   margin:0 auto 24px;
   font-family:'Baskervville',serif;
-  font-size:1.5rem;
+  font-size:1.45rem;
   line-height:1.6;
   font-style:italic;
   color:var(--charcoal);
 }
 
 .home-intro p{
-  max-width:760px;
+  max-width:740px;
   margin:0 auto 18px;
   color:#555;
   font-size:1rem;
   line-height:1.85;
 }
 
-.home-principle{
-  max-width:720px;
-  margin:50px auto 0;
-  padding-top:42px;
-  border-top:1px solid var(--border);
-}
-
-.home-principle p{
-  font-family:'Baskervville',serif;
-  font-size:1.9rem;
-  line-height:1.45;
-  color:var(--charcoal);
-  margin:0;
-}
-
 
 /* =========================================
-   WEDDING FILMS + SOCIAL PROOF
+   REAL WEDDINGS
    ========================================= */
 
 .home-stories{
@@ -148,7 +123,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   inset:0;
   background:linear-gradient(
     to top,
-    rgba(0,0,0,.65),
+    rgba(0,0,0,.62),
     rgba(0,0,0,.02) 65%
   );
 }
@@ -238,26 +213,51 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   text-transform:uppercase;
 }
 
-.story-summary{
-  max-width:820px;
-  margin:65px auto 0;
+.stories-cta{
   text-align:center;
-}
-
-.story-summary p{
-  font-family:'Baskervville',serif;
-  font-size:2rem;
-  line-height:1.45;
-  margin:0 0 30px;
+  margin-top:45px;
 }
 
 
 /* =========================================
-   FILMMAKER / CREATIVE PROCESS
+   SOCIAL PROOF
+   ========================================= */
+
+.home-review-feature{
+  background:var(--light-grey);
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+
+.home-review-feature-inner{
+  max-width:850px;
+  margin:auto;
+}
+
+.home-review-feature blockquote{
+  font-family:'Baskervville',serif;
+  font-size:2rem;
+  line-height:1.5;
+  font-style:italic;
+  margin:0 auto 25px;
+  color:var(--charcoal);
+}
+
+.home-review-name{
+  color:#777;
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin:0;
+}
+
+
+/* =========================================
+   FILMMAKER
    ========================================= */
 
 .home-process{
-  background:var(--light-grey);
+  background:white;
   border-top:1px solid var(--border);
 }
 
@@ -293,28 +293,13 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   margin:0 0 18px;
 }
 
-.process-highlight{
-  margin-top:32px;
-  padding-top:28px;
-  border-top:1px solid #ddd;
-}
-
-.process-highlight p{
-  font-family:'Baskervville',serif;
-  font-size:1.35rem;
-  font-style:italic;
-  line-height:1.55;
-  color:var(--charcoal);
-  margin:0;
-}
-
 
 /* =========================================
    LOCATIONS
    ========================================= */
 
 .home-locations{
-  background:white;
+  background:var(--light-grey);
   border-top:1px solid var(--border);
 }
 
@@ -353,38 +338,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 /* =========================================
-   CONTACT CONVERSION STRIP
-   ========================================= */
-
-.pre-contact{
-  background:var(--charcoal);
-  color:white;
-  text-align:center;
-  max-width:none;
-}
-
-.pre-contact-inner{
-  max-width:760px;
-  margin:auto;
-}
-
-.pre-contact h2{
-  font-family:'Baskervville',serif;
-  font-size:3.2rem;
-  line-height:1.18;
-  font-weight:400;
-  margin:0 0 22px;
-}
-
-.pre-contact p{
-  max-width:620px;
-  margin:0 auto 32px;
-  color:#ccc;
-  line-height:1.8;
-}
-
-
-/* =========================================
    MOBILE
    ========================================= */
 
@@ -411,7 +364,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     font-size:2.5rem;
   }
 
-  .story-summary p{
+  .home-review-feature blockquote{
     font-size:1.65rem;
   }
 
@@ -427,10 +380,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   .home-intro h2{
     font-size:2.35rem;
-  }
-
-  .pre-contact h2{
-    font-size:2.5rem;
   }
 
 }
@@ -460,8 +409,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       The Moments You Lived.<br>
 
       <span class="hero-subtitle">
-        And The Ones That You Missed
+        And The Ones Happening Around You
       </span>
+
     </h1>
 
     <p
@@ -471,10 +421,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         font-size:.85rem;
       ">
       Cinematic Wedding Films
-    </p>
-
-    <p class="hero-location">
-      Cheshire - Liverpool - Wirral - North Wales - UK
     </p>
 
     <a
@@ -489,7 +435,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 <!-- =========================================
-     POSITIONING
+     APPROACH
      ========================================= -->
 
 <section id="about">
@@ -497,37 +443,28 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   <div class="home-intro">
 
     <span class="eyebrow">
-      More Than A Wedding Video
+      The Approach
     </span>
 
     <h2>
-      A film that feels like you.
+      A film that feels like your wedding.
     </h2>
 
     <p class="home-intro-lead">
-      No two couples have the same story. No two wedding films should feel the same.
+      Beautifully made, but never at the expense of what actually happened.
     </p>
 
     <p>
-      Some weddings are loud, fast and completely carefree.
-      Others are reflective, intimate and deeply emotional.
-      Most are a mixture of everything in between.
+      We film quietly and let the day unfold naturally.
+      The laughter, the nerves, the reactions and the little moments
+      happening around you are what give the film its character.
     </p>
 
     <p>
-      We spend the day quietly paying attention to you, your families,
-      your friendships and the atmosphere around us. Then the soundtrack,
-      dialogue, pacing and edit are built around what made your wedding yours.
+      In the edit, the people, speeches and atmosphere guide the
+      soundtrack, pacing and story. The result is polished and cinematic,
+      while still feeling unmistakably yours.
     </p>
-
-    <div class="home-principle">
-
-      <p>
-        We don't bring a formula to your wedding.<br>
-        Your wedding gives us the film.
-      </p>
-
-    </div>
 
   </div>
 
@@ -549,14 +486,13 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </span>
 
     <h2>
-      Same filmmaker.<br>
-      Completely different films.
+      Every wedding has its own feeling.
     </h2>
 
     <p>
-      These two weddings show exactly what we mean.
-      The creative choices changed because the people, emotion
-      and energy changed.
+      Andy &amp; Lesley's story was reflective and emotional.
+      Kirsty &amp; Connor's was playful, energetic and full of humour.
+      Their films naturally became different too.
     </p>
 
   </div>
@@ -604,9 +540,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
           </p>
 
           <p class="story-description">
-            Their speeches looked back on life, the difference Lesley had
-            made to Andy and the feeling of finally finding the right person.
-            The film needed space, strings and moments allowed to breathe.
+            A story shaped by family, memories and the feeling of finding
+            the right person at the right point in life.
           </p>
 
           <span class="story-watch">
@@ -616,6 +551,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </div>
 
       </a>
+
 
       <div class="story-proof">
 
@@ -676,9 +612,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
           </p>
 
           <p class="story-description">
-            Their wedding was full of humour, movement and big personalities.
-            A stronger beat, faster rhythm and playful edit matched the energy,
-            while the speeches revealed the affection underneath it all.
+            A playful, fast-moving film shaped around their humour,
+            big personalities and the warmth underneath it all.
           </p>
 
           <span class="story-watch">
@@ -688,6 +623,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </div>
 
       </a>
+
 
       <div class="story-proof">
 
@@ -717,12 +653,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 
-  <div class="story-summary">
-
-    <p>
-      We didn't decide those styles before we arrived.<br>
-      The people in them did.
-    </p>
+  <div class="stories-cta">
 
     <a
       href="/wedding-films.html"
@@ -732,7 +663,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         color:var(--charcoal);
         border:1px solid var(--border);
       ">
-      Watch The Films
+      Explore Wedding Films
     </a>
 
   </div>
@@ -744,14 +675,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
      SOCIAL PROOF
      ========================================= -->
 
-<section
-  style="
-    background:var(--light-grey);
-    border-top:1px solid var(--border);
-    text-align:center;
-  ">
+<section class="home-review-feature">
 
-  <div style="max-width:850px;margin:auto;">
+  <div class="home-review-feature-inner">
 
     <span class="eyebrow">
       Kind Words
@@ -764,27 +690,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       &#9733;&#9733;&#9733;&#9733;&#9733;
     </div>
 
-    <blockquote
-      style="
-        font-family:'Baskervville',serif;
-        font-size:2rem;
-        line-height:1.5;
-        font-style:italic;
-        margin:0 auto 25px;
-        color:var(--charcoal);
-      ">
+    <blockquote>
       &ldquo;He blended in seamlessly to our day - this meant he captured
       some really special moments that we didn't even get to see on the day.&rdquo;
     </blockquote>
 
-    <p
-      style="
-        color:#777;
-        font-size:.7rem;
-        text-transform:uppercase;
-        letter-spacing:2px;
-        margin:0;
-      ">
+    <p class="home-review-name">
       Aimee - Google Review
     </p>
 
@@ -820,42 +731,27 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </span>
 
       <h2>
-        Understanding the people.<br>
-        Then finding the film.
+        Quiet on the day.<br>
+        Thoughtful in the edit.
       </h2>
 
       <p>
-        Filming is only half of the process. The character of the finished
-        film really emerges when the footage, speeches, reactions and
-        relationships are brought together in the edit.
+        On the wedding day, the approach is deliberately relaxed and
+        unobtrusive. The less you think about the camera, the more honest
+        the moments become.
       </p>
 
       <p>
-        It means knowing when a moment needs space, when the pace should
-        lift, when a piece of dialogue matters more than a beautiful shot
-        and when the soundtrack needs to carry the emotion.
+        In the edit, the speeches, reactions and relationships begin to
+        shape the film. Some moments need space, others need pace, and
+        sometimes a few words matter more than the most beautiful shot.
       </p>
 
       <p>
         A background in music production brings particular attention to
-        sound, rhythm and structure. Music isn't simply placed underneath
-        the footage - it becomes part of the storytelling.
+        sound, rhythm and atmosphere, helping the finished film feel
+        immersive rather than simply a collection of highlights.
       </p>
-
-      <p>
-        On the wedding day itself, the approach is deliberately relaxed
-        and unobtrusive. The less you think about the camera, the more
-        honest the moments become.
-      </p>
-
-      <div class="process-highlight">
-
-        <p>
-          The aim isn't to make your wedding look like somebody else's.<br>
-          It's to make yours feel unmistakably like yours.
-        </p>
-
-      </div>
 
     </div>
 
@@ -893,6 +789,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   <div class="packages">
 
 
+    <!-- LIVERPOOL -->
+
     <a
       href="/liverpool.html"
       class="destination-card">
@@ -917,6 +815,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </a>
 
 
+    <!-- CHESHIRE -->
+
     <a
       href="/cheshire.html"
       class="destination-card">
@@ -940,6 +840,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
     </a>
 
+
+    <!-- NORTH WALES -->
 
     <a
       href="/north-wales.html"
@@ -976,7 +878,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 <section
   id="collections"
   style="
-    background:var(--light-grey);
+    background:white;
     border-top:1px solid var(--border);
   ">
 
@@ -1004,8 +906,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         margin:18px auto 0;
       ">
       The coverage changes. The creative care doesn't.
-      Every collection is filmed and edited around the personality,
-      atmosphere and story of your wedding.
+      Choose the collection that best fits how much of the day
+      you would like preserved.
     </p>
 
   </div>
@@ -1138,6 +1040,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       Optional Extras
     </h3>
 
+
     <div class="extras-grid">
 
       <div class="extra-item">
@@ -1191,7 +1094,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 <section
   id="faqs"
   style="
-    background:white;
+    background:var(--light-grey);
     border-top:1px solid var(--border);
   ">
 
@@ -1259,9 +1162,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         <p>
           Not necessarily, and that is intentional. Every wedding has
-          a different personality. The soundtrack, pacing, dialogue and
-          edit are shaped around your own celebration rather than forcing
-          every couple into the same style.
+          a different atmosphere. The soundtrack, pacing, dialogue and
+          edit are shaped around your own celebration rather than trying
+          to make every wedding feel the same.
         </p>
 
       </div>
@@ -1286,8 +1189,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         <p>
           Very little. The approach is primarily documentary-led and
           unobtrusive. There may be occasional light guidance where it
-          helps create a beautiful shot, but genuine moments are never
-          repeatedly staged just for the camera.
+          helps create a beautiful shot, but genuine moments are not
+          repeatedly staged for the camera.
         </p>
 
       </div>
@@ -1375,42 +1278,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 <!-- =========================================
-     PRE-CONTACT CTA
-     ========================================= -->
-
-<section class="pre-contact">
-
-  <div class="pre-contact-inner">
-
-    <span
-      class="eyebrow"
-      style="color:var(--gold);">
-      Your Wedding
-    </span>
-
-    <h2>
-      We know what their films felt like.<br>
-      Now tell us about you.
-    </h2>
-
-    <p>
-      Your wedding doesn't need to resemble either film above.
-      Tell us who you are, what you're planning and what matters to you.
-      That's where your film starts.
-    </p>
-
-    <a
-      href="#contact"
-      class="hero-btn">
-      Check Your Date
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================
      CONTACT
      ========================================= -->
 
@@ -1424,7 +1291,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   <div style="text-align:center;margin-bottom:60px;">
 
     <span class="eyebrow">
-      Check Availability
+      Your Wedding
     </span>
 
     <h2
@@ -1434,7 +1301,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         font-weight:400;
         margin:0;
       ">
-      Tell us your story.
+      Check Your Date
     </h2>
 
     <p style="margin-top:12px;">
@@ -1449,7 +1316,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         line-height:1.7;
         max-width:620px;
       ">
-      Tell us your date, venue and a little about yourselves.
+      Tell us your date, venue and a little about the two of you.
       We'll confirm availability and recommend the collection that
       best fits your plans.
     </p>
@@ -1638,8 +1505,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
           font-style:italic;
           text-align:center;
         ">
-        Thank you. Your enquiry has been received and we will be in
-        touch within 24 hours.
+        Thank you. Your enquiry has been received and we will be
+        in touch within 24 hours.
       </div>
 
     </form>

@@ -4,42 +4,213 @@ title: "Thornton Hall Wedding Videographer | Kirsty & Connor | Horizon & Company
 description: "Kirsty and Connor's wedding film at Thornton Hall Hotel & Spa. A relaxed, joyful Wirral wedding captured naturally by Horizon & Company."
 ---
 
+<style>
+
+.thornton-hero{
+  padding-top:170px;
+  padding-bottom:85px;
+  background:var(--light-grey);
+  text-align:center;
+}
+
+.thornton-hero-inner{
+  max-width:850px;
+  margin:auto;
+}
+
+.thornton-hero h1{
+  font-family:'Baskervville',serif;
+  font-size:4rem;
+  line-height:1.1;
+  font-weight:400;
+  margin:0 0 18px;
+  color:var(--charcoal);
+}
+
+.thornton-meta{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.75rem;
+  margin:0;
+}
+
+.thornton-main{
+  background:white;
+  border-top:1px solid var(--border);
+}
+
+.thornton-grid{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:80px;
+  align-items:start;
+  margin-bottom:65px;
+}
+
+.thornton-grid h2{
+  font-family:'Baskervville',serif;
+  font-size:2.9rem;
+  line-height:1.2;
+  font-weight:400;
+  margin:0;
+}
+
+.thornton-copy p{
+  color:#555;
+  font-size:1rem;
+  line-height:1.9;
+  margin-top:0;
+  margin-bottom:18px;
+}
+
+.thornton-copy p:last-child{
+  margin-bottom:0;
+}
+
+.thornton-video{
+  max-width:1050px;
+  margin:auto;
+}
+
+.thornton-video-frame{
+  position:relative;
+  padding-bottom:56.25%;
+  height:0;
+  overflow:hidden;
+  background:#111;
+  box-shadow:0 25px 55px rgba(0,0,0,.10);
+}
+
+.thornton-video-frame iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.thornton-review{
+  background:var(--light-grey);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  text-align:center;
+}
+
+.thornton-review-inner{
+  max-width:900px;
+  margin:auto;
+}
+
+.thornton-stars{
+  color:var(--gold);
+  letter-spacing:5px;
+  font-size:1rem;
+  margin-bottom:28px;
+}
+
+.thornton-review blockquote{
+  font-family:'Baskervville',serif;
+  font-size:2rem;
+  line-height:1.45;
+  font-style:italic;
+  margin:0 auto 28px;
+  color:var(--charcoal);
+}
+
+.thornton-review-name{
+  margin:0;
+  font-size:.72rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#777;
+}
+
+.thornton-cta{
+  background:var(--charcoal);
+  color:white;
+  text-align:center;
+  max-width:none;
+}
+
+.thornton-cta-inner{
+  max-width:760px;
+  margin:auto;
+}
+
+.thornton-cta h2{
+  font-family:'Baskervville',serif;
+  font-size:3.2rem;
+  line-height:1.2;
+  font-weight:400;
+  margin:0 0 24px;
+}
+
+.thornton-cta p{
+  color:#ccc;
+  line-height:1.8;
+  font-size:.95rem;
+  max-width:620px;
+  margin:0 auto 34px;
+}
+
+.thornton-links{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+@media(max-width:900px){
+
+  .thornton-grid{
+    grid-template-columns:1fr;
+    gap:35px;
+    margin-bottom:50px;
+  }
+
+  .thornton-review blockquote{
+    font-size:1.65rem;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .thornton-hero h1{
+    font-size:2.8rem;
+  }
+
+  .thornton-grid h2{
+    font-size:2.4rem;
+  }
+
+  .thornton-cta h2{
+    font-size:2.6rem;
+  }
+
+}
+
+</style>
+
+
 <!-- HERO -->
 
-<section
-  style="
-    padding-top:170px;
-    padding-bottom:70px;
-    background:var(--light-grey);
-    text-align:center;
-  ">
+<section class="thornton-hero">
 
-  <div style="max-width:850px;margin:auto;">
+  <div class="thornton-hero-inner">
 
     <span class="eyebrow">
       Real Wedding
     </span>
 
-    <h1
-      style="
-        font-family:'Baskervville',serif;
-        font-size:4rem;
-        line-height:1.1;
-        font-weight:400;
-        margin:0 0 20px;
-        color:var(--charcoal);
-      ">
+    <h1>
       Kirsty &amp; Connor
     </h1>
 
-    <p
-      style="
-        color:var(--gold);
-        text-transform:uppercase;
-        letter-spacing:2px;
-        font-size:.75rem;
-        margin:0;
-      ">
+    <p class="thornton-meta">
       Thornton Hall Hotel &amp; Spa - Wirral
     </p>
 
@@ -47,24 +218,12 @@ description: "Kirsty and Connor's wedding film at Thornton Hall Hotel & Spa. A r
 
 </section>
 
-<!-- STORY -->
 
-<section
-  style="
-    background:white;
-    border-top:1px solid var(--border);
-  ">
+<!-- WEDDING + FILM -->
 
-  <div
-    class="wedding-story-grid"
-    style="
-      max-width:950px;
-      margin:auto;
-      display:grid;
-      grid-template-columns:.8fr 1.2fr;
-      gap:90px;
-      align-items:start;
-    ">
+<section class="thornton-main">
+
+  <div class="thornton-grid">
 
     <div>
 
@@ -72,131 +231,68 @@ description: "Kirsty and Connor's wedding film at Thornton Hall Hotel & Spa. A r
         The Wedding
       </span>
 
-      <h2
-        style="
-          font-family:'Baskervville',serif;
-          font-size:2.8rem;
-          line-height:1.2;
-          font-weight:400;
-          margin:0;
-        ">
+      <h2>
         Full of laughter,<br>
         from beginning to end.
       </h2>
 
     </div>
 
+    <div class="thornton-copy">
 
-    <div>
-
-      <p
-        style="
-          color:#555;
-          font-size:1rem;
-          line-height:1.9;
-          margin-top:0;
-        ">
+      <p>
         Kirsty and Connor's wedding at Thornton Hall Hotel &amp; Spa
-        was the kind of celebration that never felt too serious.
-        From the ceremony through to the speeches and celebrations,
-        their personalities came through in every part of the day.
+        was relaxed, expressive and full of personality from the start.
+        The ceremony, speeches and celebrations all carried the same
+        sense of humour and warmth.
       </p>
 
-      <p
-        style="
-          color:#555;
-          font-size:1rem;
-          line-height:1.9;
-        ">
-        Rather than trying to manufacture those moments, the focus
-        was simply on being there when they happened - the glances,
-        reactions, laughter and little exchanges between the couple,
-        their families and friends.
+      <p>
+        Rather than manufacturing moments for the camera, the focus was
+        on being there when they happened - the glances, reactions,
+        laughter and little exchanges between the couple, their families
+        and friends.
       </p>
 
-      <p
-        style="
-          color:#555;
-          font-size:1rem;
-          line-height:1.9;
-          margin-bottom:0;
-        ">
-        The resulting film reflects exactly that: relaxed, emotional
-        and full of the humour and energy that made their wedding
-        completely their own.
+      <p>
+        Thornton Hall gave the day plenty of visual variety too, from the
+        outdoor ceremony and gardens to the quieter moments away from the
+        main celebration. The resulting film feels energetic, emotional
+        and completely true to them.
       </p>
 
     </div>
 
   </div>
 
-</section>
 
+  <div class="thornton-video">
 
-<!-- FILM -->
+    <div style="text-align:center;margin-bottom:38px;">
 
-<section
-  style="
-    background:var(--light-grey);
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--border);
-  ">
+      <span class="eyebrow">
+        Their Story
+      </span>
 
-  <div style="text-align:center;margin-bottom:55px;">
+      <h2
+        style="
+          font-family:'Baskervville',serif;
+          font-size:3rem;
+          font-weight:400;
+          margin:0;
+        ">
+        Watch the Wedding Film
+      </h2>
 
-    <span class="eyebrow">
-      Their Story
-    </span>
+    </div>
 
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3rem;
-        font-weight:400;
-        margin:0;
-      ">
-      Watch the Wedding Film
-    </h2>
-
-  </div>
-
-
-  <div
-    style="
-      max-width:1000px;
-      margin:auto;
-    ">
-
-    <div
-      style="
-        position:relative;
-        padding-bottom:56.25%;
-        height:0;
-        overflow:hidden;
-        background:#111;
-      ">
+    <div class="thornton-video-frame">
 
       <iframe
         src="https://www.youtube.com/embed/wpxDWhmKgyk"
         title="Kirsty and Connor's wedding film at Thornton Hall Hotel and Spa"
-        style="
-          position:absolute;
-          top:0;
-          left:0;
-          width:100%;
-          height:100%;
-          border:0;
-        "
         loading="lazy"
-        allow="
-          accelerometer;
-          autoplay;
-          clipboard-write;
-          encrypted-media;
-          gyroscope;
-          picture-in-picture;
-          web-share
-        "
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
 
@@ -207,183 +303,29 @@ description: "Kirsty and Connor's wedding film at Thornton Hall Hotel & Spa. A r
 </section>
 
 
-<!-- VENUE -->
+<!-- FULL REVIEW -->
 
-<section
-  style="
-    background:white;
-  ">
+<section class="thornton-review">
 
-  <div
-    class="wedding-story-grid"
-    style="
-      max-width:950px;
-      margin:auto;
-      display:grid;
-      grid-template-columns:.8fr 1.2fr;
-      gap:90px;
-      align-items:start;
-    ">
-
-    <div>
-
-      <span class="eyebrow">
-        The Venue
-      </span>
-
-      <h2
-        style="
-          font-family:'Baskervville',serif;
-          font-size:2.8rem;
-          line-height:1.2;
-          font-weight:400;
-          margin:0;
-        ">
-        Thornton Hall<br>
-        Hotel &amp; Spa
-      </h2>
-
-    </div>
-
-
-    <div>
-
-      <p
-        style="
-          color:#555;
-          font-size:1rem;
-          line-height:1.9;
-          margin-top:0;
-        ">
-        Thornton Hall gave Kirsty and Connor's wedding a brilliant
-        mixture of settings to work with, from the ceremony and
-        celebrations to the quieter outdoor moments away from
-        the main reception.
-      </p>
-
-      <p
-        style="
-          color:#555;
-          font-size:1rem;
-          line-height:1.9;
-          margin-bottom:0;
-        ">
-        That variety allowed the film to move naturally between
-        intimate moments and the energy of the wider celebration,
-        while still keeping the focus firmly on the people and
-        personality of the day.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- APPROACH -->
-
-<section
-  style="
-    background:var(--light-grey);
-    border-top:1px solid var(--border);
-  ">
-
-  <div
-    style="
-      max-width:800px;
-      margin:auto;
-      text-align:center;
-    ">
+  <div class="thornton-review-inner">
 
     <span class="eyebrow">
-      Wedding Videography
+      Kind Words
     </span>
 
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3rem;
-        line-height:1.2;
-        font-weight:400;
-        margin:0 0 30px;
-      ">
-      Getting married at Thornton Hall?
-    </h2>
+    <div
+      class="thornton-stars"
+      aria-label="5 star Google review">
+      &#9733;&#9733;&#9733;&#9733;&#9733;
+    </div>
 
-    <p
-      style="
-        color:#555;
-        font-size:1rem;
-        line-height:1.9;
-        margin:0 auto 35px;
-        max-width:700px;
-      ">
-      Horizon &amp; Company creates natural, cinematic wedding films
-      across Wirral, Cheshire, Liverpool and beyond. Our approach
-      is deliberately unobtrusive, allowing you to enjoy your
-      wedding while we capture the moments happening around you.
+    <blockquote>
+      &ldquo;Our wedding video were so amazing we loved it. He was so thoughtful too as he put the subtitled on for us as we are deaf couple. We were so pleased he had done that, it made a huge difference for us making us so involved the video knowing what they are saying. He is amazing videographer.&rdquo;
+    </blockquote>
+
+    <p class="thornton-review-name">
+      Kirsty - Google Review
     </p>
-
-    <a
-      href="/#contact"
-      class="hero-btn">
-      Check Your Date
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- MORE WEDDINGS -->
-
-<section
-  style="
-    background:white;
-    border-top:1px solid var(--border);
-    text-align:center;
-  ">
-
-  <div style="max-width:750px;margin:auto;">
-
-    <span class="eyebrow">
-      Real Weddings
-    </span>
-
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:2.8rem;
-        font-weight:400;
-        margin:0 0 25px;
-      ">
-      Explore More Wedding Films
-    </h2>
-
-    <p
-      style="
-        color:#666;
-        font-size:.95rem;
-        line-height:1.8;
-        margin:0 auto 35px;
-        max-width:600px;
-      ">
-      Every wedding has a different atmosphere. Explore more real
-      celebrations and see how each story takes on a character of
-      its own.
-    </p>
-
-    <a
-      href="/wedding-films.html"
-      class="hero-btn"
-      style="
-        background:white;
-        color:var(--charcoal);
-        border:1px solid var(--border);
-      ">
-      View Wedding Films
-    </a>
 
   </div>
 
@@ -392,73 +334,47 @@ description: "Kirsty and Connor's wedding film at Thornton Hall Hotel & Spa. A r
 
 <!-- CTA -->
 
-<section
-  style="
-    background:var(--charcoal);
-    color:white;
-    text-align:center;
-    max-width:none;
-  ">
+<section class="thornton-cta">
 
-  <div style="max-width:750px;margin:auto;">
+  <div class="thornton-cta-inner">
 
     <span
       class="eyebrow"
       style="color:var(--gold);">
-      Your Wedding
+      Thornton Hall Wedding Videography
     </span>
 
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3.2rem;
-        line-height:1.2;
-        font-weight:400;
-        margin:0 0 25px;
-      ">
-      Your story could be next.
+    <h2>
+      Planning your wedding at Thornton Hall?
     </h2>
 
-    <p
-      style="
-        color:#ccc;
-        line-height:1.8;
-        font-size:.95rem;
-        max-width:600px;
-        margin:0 auto 35px;
-      ">
-      Tell us a little about your wedding plans and we'll confirm
-      whether your date is available.
+    <p>
+      Horizon &amp; Company creates natural, cinematic wedding films across
+      Wirral, Cheshire, Liverpool and beyond. Tell us a little about your
+      plans and we'll confirm whether your date is available.
     </p>
 
-    <a
-      href="/#contact"
-      class="hero-btn">
-      Check Your Date
-    </a>
+    <div class="thornton-links">
+
+      <a
+        href="/#contact"
+        class="hero-btn">
+        Check Your Date
+      </a>
+
+      <a
+        href="/wedding-films.html"
+        class="hero-btn"
+        style="
+          background:transparent;
+          color:white;
+          border:1px solid rgba(255,255,255,.35);
+        ">
+        More Wedding Films
+      </a>
+
+    </div>
 
   </div>
 
 </section>
-
-
-<style>
-
-@media(max-width:900px){
-
-  .wedding-story-grid{
-    grid-template-columns:1fr !important;
-    gap:35px !important;
-  }
-
-}
-
-@media(max-width:600px){
-
-  h1{
-    font-size:2.8rem !important;
-  }
-
-}
-
-</style>

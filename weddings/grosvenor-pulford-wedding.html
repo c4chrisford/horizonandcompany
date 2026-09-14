@@ -4,18 +4,109 @@ title: Grosvenor Pulford Wedding Videographer | Andy & Lesley | Horizon & Compan
 description: Watch Andy and Lesley's cinematic wedding film at Grosvenor Pulford Hotel & Spa near Chester. Natural, documentary-style Cheshire wedding videography by Horizon & Company.
 ---
 
+<style>
+
+/* Full-width wedding page sections */
+
+.wedding-page-section{
+  max-width:none;
+  width:100%;
+  margin:0;
+  box-sizing:border-box;
+}
+
+.wedding-inner{
+  max-width:1100px;
+  margin:0 auto;
+}
+
+.wedding-inner-narrow{
+  max-width:850px;
+  margin:0 auto;
+}
+
+.wedding-story-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-areas:
+    "header header"
+    "main side";
+  gap:60px 100px;
+}
+
+.wedding-story-header{
+  grid-area:header;
+}
+
+.wedding-story-main{
+  grid-area:main;
+}
+
+.wedding-story-side{
+  grid-area:side;
+  margin-top:40px;
+}
+
+.wedding-story-grid p{
+  color:#555;
+  line-height:1.8;
+  font-size:.95rem;
+  margin-bottom:20px;
+}
+
+.wedding-story-lead{
+  font-size:1.25rem !important;
+  line-height:1.6 !important;
+  font-style:italic;
+  margin-bottom:30px !important;
+  color:var(--charcoal) !important;
+}
+
+.wedding-story-closing{
+  font-weight:600;
+  border-top:1px solid var(--border);
+  padding-top:30px;
+  margin-top:40px;
+}
+
+@media(max-width:900px){
+
+  .wedding-page-section{
+    padding-left:25px !important;
+    padding-right:25px !important;
+  }
+
+  .wedding-story-grid{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "side";
+    gap:40px;
+  }
+
+  .wedding-story-side{
+    margin-top:0;
+  }
+
+}
+
+</style>
+
+
 <!-- HERO -->
 
 <section
+  class="wedding-page-section"
   style="
-    padding-top:170px;
-    padding-bottom:90px;
-    text-align:center;
+    padding-top:180px;
+    padding-bottom:110px;
     background:white;
     border-bottom:1px solid var(--border);
+    text-align:center;
   ">
 
-  <div style="max-width:850px;margin:auto;">
+  <div class="wedding-inner-narrow">
 
     <span class="eyebrow">
       A Real Cheshire Wedding
@@ -24,10 +115,10 @@ description: Watch Andy and Lesley's cinematic wedding film at Grosvenor Pulford
     <h1
       style="
         font-family:'Baskervville',serif;
-        font-size:3.8rem;
+        font-size:4rem;
         font-weight:400;
         line-height:1.1;
-        margin:0 0 20px;
+        margin:0 0 22px;
       ">
       Andy & Lesley
     </h1>
@@ -35,9 +126,9 @@ description: Watch Andy and Lesley's cinematic wedding film at Grosvenor Pulford
     <p
       style="
         font-family:'Baskervville',serif;
-        font-size:1.5rem;
+        font-size:1.55rem;
         font-style:italic;
-        margin:0 0 25px;
+        margin:0 0 28px;
         color:#555;
       ">
       Grosvenor Pulford Hotel & Spa
@@ -45,7 +136,7 @@ description: Watch Andy and Lesley's cinematic wedding film at Grosvenor Pulford
 
     <p
       style="
-        max-width:700px;
+        max-width:720px;
         margin:0 auto;
         color:#666;
         line-height:1.8;
@@ -58,115 +149,226 @@ description: Watch Andy and Lesley's cinematic wedding film at Grosvenor Pulford
 
 </section>
 
+
 <!-- FILM -->
 
 <section
+  class="wedding-page-section"
   style="
     background:var(--light-grey);
-    padding-top:100px;
-    padding-bottom:110px;
+    padding-top:110px;
+    padding-bottom:120px;
   ">
 
-  <div style="text-align:center;margin-bottom:50px;">
+  <div class="wedding-inner">
 
-    <span class="eyebrow">
-      The Wedding Film
-    </span>
-
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3rem;
-        font-weight:400;
-        margin:0;
-      ">
-      Their Story
-    </h2>
-
-  </div>
-
-  <div
-    style="
-      max-width:950px;
-      margin:auto;
-      box-shadow:0 25px 55px rgba(0,0,0,.12);
-      background:var(--charcoal);
-    ">
-
-    <div
-      style="
-        position:relative;
-        padding-bottom:56.25%;
-        height:0;
-        overflow:hidden;
-      ">
-
-      <iframe
-        src="https://player.vimeo.com/video/1172566916?color=8E7A5A&title=0&byline=0&portrait=0"
-        style="
-          position:absolute;
-          top:0;
-          left:0;
-          width:100%;
-          height:100%;
-        "
-        frameborder="0"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- STORY -->
-
-<section style="background:white;">
-
-  <div class="about-grid">
-
-    <div class="about-header">
+    <div style="text-align:center;margin-bottom:50px;">
 
       <span class="eyebrow">
-        Grosvenor Pulford Wedding Film
+        The Wedding Film
       </span>
 
-      <h2>
-        Natural moments in a beautiful Cheshire setting.
+      <h2
+        style="
+          font-family:'Baskervville',serif;
+          font-size:3rem;
+          font-weight:400;
+          margin:0;
+        ">
+        Their Story
       </h2>
 
     </div>
 
-    <div class="about-content-main">
+    <div
+      style="
+        max-width:950px;
+        margin:auto;
+        box-shadow:0 25px 55px rgba(0,0,0,.12);
+        background:var(--charcoal);
+      ">
 
-      <p class="about-lead">
-        The aim was simple: preserve the atmosphere of the day without turning the wedding into a film set.
-      </p>
+      <div
+        style="
+          position:relative;
+          padding-bottom:56.25%;
+          height:0;
+          overflow:hidden;
+        ">
 
-      <p>
-        Andy and Lesley's wedding at Grosvenor Pulford Hotel & Spa was filmed with a documentary-led approach, allowing the celebration to unfold naturally while quietly capturing the reactions, conversations and moments happening around them.
-      </p>
+        <iframe
+          src="https://player.vimeo.com/video/1172566916?color=8E7A5A&title=0&byline=0&portrait=0"
+          style="
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+          "
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
 
-      <p>
-        Rather than repeatedly staging scenes for the camera, the focus remained on genuine interactions and the character of the day itself.
-      </p>
+      </div>
 
     </div>
 
-    <div class="about-content-side">
+  </div>
 
-      <p>
-        Grosvenor Pulford offers a mixture of elegant interiors, landscaped grounds and intimate spaces, giving a wedding film plenty of visual variety while still keeping the couple and their guests at the heart of the story.
+</section>
+
+
+<!-- STORY -->
+
+<section
+  class="wedding-page-section"
+  style="
+    background:white;
+    border-top:1px solid var(--border);
+    padding-top:120px;
+    padding-bottom:120px;
+  ">
+
+  <div class="wedding-inner">
+
+    <div class="wedding-story-grid">
+
+      <div class="wedding-story-header">
+
+        <span class="eyebrow">
+          Grosvenor Pulford Wedding Film
+        </span>
+
+        <h2
+          style="
+            font-family:'Baskervville',serif;
+            font-size:3.4rem;
+            font-weight:400;
+            margin:0;
+          ">
+          Natural moments in a beautiful Cheshire setting.
+        </h2>
+
+      </div>
+
+      <div class="wedding-story-main">
+
+        <p class="wedding-story-lead">
+          The aim was simple: preserve the atmosphere of the day without turning the wedding into a film set.
+        </p>
+
+        <p>
+          Andy and Lesley's wedding at Grosvenor Pulford Hotel & Spa was filmed with a documentary-led approach, allowing the celebration to unfold naturally while quietly capturing the reactions, conversations and moments happening around them.
+        </p>
+
+        <p>
+          Rather than repeatedly staging scenes for the camera, the focus remained on genuine interactions and the character of the day itself.
+        </p>
+
+      </div>
+
+      <div class="wedding-story-side">
+
+        <p>
+          Grosvenor Pulford offers a mixture of elegant interiors, landscaped grounds and intimate spaces, giving a wedding film plenty of visual variety while still keeping the couple and their guests at the heart of the story.
+        </p>
+
+        <p>
+          The finished film combines cinematic composition, natural colour, professional audio and carefully considered pacing to create something that feels polished without losing the spontaneity of the celebration.
+        </p>
+
+        <p class="wedding-story-closing">
+          A wedding film should not simply show what happened. It should bring back how the day felt.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- QUOTE -->
+
+<section
+  class="wedding-page-section"
+  style="
+    background:#fafaf9;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding-top:120px;
+    padding-bottom:120px;
+    text-align:center;
+  ">
+
+  <div class="wedding-inner-narrow">
+
+    <p
+      style="
+        font-family:'Baskervville',serif;
+        font-size:2.7rem;
+        font-style:italic;
+        line-height:1.35;
+        margin:0;
+        color:var(--charcoal);
+      ">
+      “We focus on the moments you lived, and the ones that you missed. Creating a legacy that feels as authentic as your memories.”
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- VENUE -->
+
+<section
+  class="wedding-page-section"
+  style="
+    background:white;
+    padding-top:120px;
+    padding-bottom:120px;
+  ">
+
+  <div class="wedding-inner-narrow">
+
+    <div style="text-align:center;">
+
+      <span class="eyebrow">
+        Getting Married Here?
+      </span>
+
+      <h2
+        style="
+          font-family:'Baskervville',serif;
+          font-size:3.2rem;
+          font-weight:400;
+          margin:0 0 30px;
+        ">
+        Grosvenor Pulford Wedding Videography
+      </h2>
+
+      <p
+        style="
+          color:#555;
+          font-size:1rem;
+          line-height:1.8;
+          margin:0 0 20px;
+        ">
+        If you're planning a wedding at Grosvenor Pulford Hotel & Spa, the venue offers a strong combination of elegant indoor spaces and attractive grounds that work particularly well for natural, cinematic wedding films.
       </p>
 
-      <p>
-        The finished film combines cinematic composition, natural colour, professional audio and carefully considered pacing to create something that feels polished without losing the spontaneity of the celebration.
-      </p>
-
-      <p class="about-closing">
-        A wedding film should not simply show what happened. It should bring back how the day felt.
+      <p
+        style="
+          color:#555;
+          font-size:1rem;
+          line-height:1.8;
+          margin:0;
+        ">
+        Horizon & Company films weddings across Cheshire and Chester with an unobtrusive documentary approach, focusing on real moments rather than heavily staged sequences.
       </p>
 
     </div>
@@ -175,18 +377,23 @@ description: Watch Andy and Lesley's cinematic wedding film at Grosvenor Pulford
 
 </section>
 
-<!-- VENUE SEO SECTION -->
+
+<!-- EXPLORE MORE -->
 
 <section
+  class="wedding-page-section"
   style="
-    background:#f4f4f3;
+    background:var(--light-grey);
     border-top:1px solid var(--border);
+    padding-top:110px;
+    padding-bottom:110px;
+    text-align:center;
   ">
 
-  <div style="max-width:800px;margin:auto;text-align:center;">
+  <div class="wedding-inner-narrow">
 
     <span class="eyebrow">
-      Getting Married Here?
+      Explore More
     </span>
 
     <h2
@@ -196,130 +403,94 @@ description: Watch Andy and Lesley's cinematic wedding film at Grosvenor Pulford
         font-weight:400;
         margin:0 0 25px;
       ">
-      Grosvenor Pulford Wedding Videography
+      More Wedding Films
     </h2>
 
     <p
       style="
-        color:#555;
-        font-size:1rem;
+        max-width:620px;
+        margin:0 auto 35px;
+        color:#666;
         line-height:1.8;
-        margin:0 0 20px;
       ">
-      If you're planning a wedding at Grosvenor Pulford Hotel & Spa, the venue offers a strong combination of elegant indoor spaces and attractive grounds that work particularly well for natural, cinematic wedding films.
+      Explore more real weddings and see how each film is shaped around the atmosphere and personality of the day.
     </p>
 
-    <p
+    <a
+      href="/wedding-films.html"
+      class="hero-btn"
       style="
-        color:#555;
-        font-size:1rem;
-        line-height:1.8;
-        margin:0;
+        background:var(--charcoal);
+        color:white;
+        margin:5px;
       ">
-      Horizon & Company films weddings across Cheshire and Chester with an unobtrusive documentary approach, focusing on real moments rather than heavily staged sequences.
-    </p>
+      View Wedding Films
+    </a>
+
+    <a
+      href="/cheshire.html"
+      class="hero-btn"
+      style="
+        background:white;
+        color:var(--charcoal);
+        border:1px solid var(--border);
+        margin:5px;
+      ">
+      Cheshire Weddings
+    </a>
 
   </div>
 
 </section>
 
-<!-- EXPLORE -->
-
-<section
-  style="
-    background:white;
-    border-top:1px solid var(--border);
-    text-align:center;
-  ">
-
-  <span class="eyebrow">
-    Explore More
-  </span>
-
-  <h2
-    style="
-      font-family:'Baskervville',serif;
-      font-size:3rem;
-      font-weight:400;
-      margin:0 0 25px;
-    ">
-    More Wedding Films
-  </h2>
-
-  <p
-    style="
-      max-width:600px;
-      margin:0 auto 30px;
-      color:#666;
-      line-height:1.8;
-    ">
-    Explore more real weddings and see how each film is shaped around the atmosphere and personality of the day.
-  </p>
-
-  <a
-    href="/wedding-films.html"
-    class="hero-btn"
-    style="
-      background:var(--charcoal);
-      color:white;
-      margin-right:10px;
-    ">
-    View Wedding Films
-  </a>
-
-  <a
-    href="/cheshire.html"
-    class="hero-btn"
-    style="
-      background:white;
-      color:var(--charcoal);
-      border:1px solid var(--border);
-    ">
-    Cheshire Weddings
-  </a>
-
-</section>
 
 <!-- CTA -->
 
 <section
+  class="wedding-page-section"
   style="
     background:var(--charcoal);
     color:white;
+    padding-top:120px;
+    padding-bottom:120px;
     text-align:center;
   ">
 
-  <span
-    class="eyebrow"
-    style="color:#c7b28d;">
-    Your Wedding
-  </span>
+  <div class="wedding-inner-narrow">
 
-  <h2
-    style="
-      font-family:'Baskervville',serif;
-      font-size:3rem;
-      font-weight:400;
-      margin:0 0 20px;
-      color:white;
-    ">
-    Planning a Wedding at Grosvenor Pulford?
-  </h2>
+    <span
+      class="eyebrow"
+      style="color:#c7b28d;">
+      Your Wedding
+    </span>
 
-  <p
-    style="
-      max-width:650px;
-      margin:0 auto 30px;
-      color:#ddd;
-      line-height:1.8;
-    ">
-    Tell us your date and a little about your plans and we’ll confirm availability.
-  </p>
+    <h2
+      style="
+        font-family:'Baskervville',serif;
+        font-size:3.2rem;
+        font-weight:400;
+        margin:0 0 20px;
+        color:white;
+      ">
+      Planning a Wedding at Grosvenor Pulford?
+    </h2>
 
-  <a
-    href="/#contact"
-    class="hero-btn">
-    Check Your Date
-  </a>
+    <p
+      style="
+        max-width:650px;
+        margin:0 auto 35px;
+        color:#ddd;
+        line-height:1.8;
+      ">
+      Tell us your date and a little about your plans and we’ll confirm availability.
+    </p>
+
+    <a
+      href="/#contact"
+      class="hero-btn">
+      Check Your Date
+    </a>
+
+  </div>
 
 </section>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{ page.title }}</title>
+
+{% if page.description %}
+<meta name="description" content="{{ page.description }}">
+{% endif %}
+
+<meta name="robots" content="index, follow">
+
+<link rel="icon" type="image/png" href="/faviconbw32.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Horizon & Company",
+  "alternateName": "Horizon & Co",
+  "url": "https://horizonandcompany.com",
+  "logo": "https://horizonandcompany.com/faviconbw.png"
+}
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QGP4YXX982"></script>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QGP4YXX982');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+
+{% include header.html %}
+
+{{ content }}
+
+{% include footer.html %}
+
+<script src="/js/site.js"></script>
+
+</body>
+</html>

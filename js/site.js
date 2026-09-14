@@ -104,72 +104,53 @@ if (contactForm) {
     const url =
       `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
 
-    const firstName =
-      document.getElementById("firstname")?.value || "";
-
-    const lastName =
-      document.getElementById("lastname")?.value || "";
-
-    const email =
-      document.getElementById("email")?.value || "";
-
-    const phone =
-      document.getElementById("phone")?.value || "";
-
-    const weddingDate =
-      document.getElementById("wedding_date")?.value || "";
-
-    const venue =
-      document.getElementById("venue")?.value || "";
-
-    const collection =
-      document.getElementById("collection")?.value || "";
-
-    const message =
-      document.getElementById("message")?.value || "";
-
     const data = {
 
       fields: [
 
         {
           name: "firstname",
-          value: firstName
+          value: document.getElementById("firstname")?.value || ""
         },
 
         {
           name: "lastname",
-          value: lastName
+          value: document.getElementById("lastname")?.value || ""
         },
 
         {
           name: "email",
-          value: email
+          value: document.getElementById("email")?.value || ""
         },
 
         {
-          name: "phone",
-          value: phone
+          name: "phone_from_form",
+          value: document.getElementById("phone")?.value || ""
         },
 
         {
           name: "wedding_date",
-          value: weddingDate
+          value: document.getElementById("wedding_date")?.value || ""
         },
 
         {
-          name: "venue",
-          value: venue
+          name: "wedding_venue",
+          value: document.getElementById("venue")?.value || ""
         },
 
         {
-          name: "collection",
-          value: collection
+          name: "collection_of_interest",
+          value: document.getElementById("collection")?.value || ""
+        },
+
+        {
+          name: "enquiry_stage",
+          value: "new_enquiry"
         },
 
         {
           name: "message",
-          value: message
+          value: document.getElementById("message")?.value || ""
         }
 
       ]

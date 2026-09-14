@@ -1,15 +1,271 @@
 ---
 layout: default
 title: "Horizon & Company | Relaxed & Cinematic UK Wedding Videographer"
-description: "Horizon & Company creates natural, documentary-style cinematic wedding films for couples across the UK. Authentic storytelling without the awkward posing."
+description: "Natural, cinematic wedding films by Horizon & Company. Documentary-led wedding videography across Cheshire, Liverpool, Wirral, North Wales and the UK."
 ---
+
+<style>
+
+/* HOMEPAGE PORTFOLIO */
+
+.home-films{
+  background:white;
+  border-top:1px solid var(--border);
+  padding-top:120px;
+  padding-bottom:120px;
+}
+
+.home-films-header{
+  max-width:760px;
+  margin:0 auto 65px;
+  text-align:center;
+}
+
+.home-films-header h2{
+  font-family:'Baskervville',serif;
+  font-size:3.2rem;
+  font-weight:400;
+  line-height:1.15;
+  margin:0 0 22px;
+}
+
+.home-films-header p{
+  color:#666;
+  line-height:1.8;
+  font-size:.95rem;
+  max-width:650px;
+  margin:auto;
+}
+
+.home-film-grid{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+.home-film-card{
+  display:block;
+  text-decoration:none;
+  color:var(--charcoal);
+  background:var(--light-grey);
+  border:1px solid var(--border);
+  overflow:hidden;
+  transition:transform .4s ease,box-shadow .4s ease;
+}
+
+.home-film-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 45px rgba(0,0,0,.08);
+}
+
+.home-film-image{
+  position:relative;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  background:#ddd;
+}
+
+.home-film-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .6s ease;
+}
+
+.home-film-card:hover .home-film-image img{
+  transform:scale(1.035);
+}
+
+.home-film-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.62),
+    rgba(0,0,0,.03) 65%
+  );
+}
+
+.home-film-location{
+  position:absolute;
+  left:28px;
+  bottom:24px;
+  color:white;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.68rem;
+}
+
+.home-film-copy{
+  padding:32px;
+}
+
+.home-film-copy h3{
+  font-family:'Baskervville',serif;
+  font-size:2.1rem;
+  font-weight:400;
+  margin:0 0 8px;
+}
+
+.home-film-venue{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.68rem;
+  margin:0 0 20px;
+}
+
+.home-film-copy p{
+  color:#666;
+  font-size:.9rem;
+  line-height:1.75;
+  margin:0 0 25px;
+}
+
+.home-film-link{
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.68rem;
+  font-weight:600;
+}
+
+/* REVIEWS */
+
+.home-reviews{
+  background:var(--light-grey);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.home-reviews-header{
+  text-align:center;
+  margin-bottom:55px;
+}
+
+.home-reviews-header h2{
+  font-family:'Baskervville',serif;
+  font-size:3rem;
+  font-weight:400;
+  margin:0;
+}
+
+.home-review-grid{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.home-review-card{
+  background:white;
+  border:1px solid var(--border);
+  padding:50px 45px;
+}
+
+.home-review-stars{
+  color:var(--gold);
+  letter-spacing:4px;
+  font-size:.9rem;
+  margin-bottom:25px;
+}
+
+.home-review-card blockquote{
+  font-family:'Baskervville',serif;
+  font-size:1.55rem;
+  line-height:1.5;
+  font-style:italic;
+  margin:0 0 28px;
+  color:var(--charcoal);
+}
+
+.home-review-card p{
+  margin:0;
+  color:#777;
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+.review-context{
+  display:block;
+  color:#aaa;
+  margin-top:7px;
+  font-size:.65rem;
+}
+
+/* ABOUT REFINEMENT */
+
+.home-intro{
+  max-width:850px;
+  margin:auto;
+  text-align:center;
+}
+
+.home-intro h2{
+  font-family:'Baskervville',serif;
+  font-size:3.3rem;
+  font-weight:400;
+  margin:0 0 30px;
+}
+
+.home-intro p{
+  color:#555;
+  line-height:1.85;
+  font-size:1rem;
+  max-width:760px;
+  margin:0 auto 18px;
+}
+
+.home-intro .about-lead{
+  color:var(--charcoal);
+  font-family:'Baskervville',serif;
+  font-size:1.45rem;
+  line-height:1.6;
+  font-style:italic;
+  max-width:720px;
+  margin-bottom:25px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .home-film-grid,
+  .home-review-grid{
+    grid-template-columns:1fr;
+  }
+
+  .home-film-grid{
+    gap:25px;
+  }
+
+  .home-review-card{
+    padding:40px 30px;
+  }
+
+  .home-intro h2,
+  .home-films-header h2,
+  .home-reviews-header h2{
+    font-size:2.5rem;
+  }
+
+}
+
+</style>
+
 
 <!-- HERO -->
 
 <div id="hero" class="hero">
 
   <video autoplay muted loop playsinline class="hero-video">
-    <source src="/videos/cinematic-uk-wedding-videographer-horizon-co.mp4" type="video/mp4">
+    <source
+      src="/videos/cinematic-uk-wedding-videographer-horizon-co.mp4"
+      type="video/mp4">
   </video>
 
   <div class="hero-overlay"></div>
@@ -18,15 +274,24 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 
     <h1>
       The Moments You Lived.<br>
-      <span class="hero-subtitle">And The Ones That You Missed</span>
+      <span class="hero-subtitle">
+        And The Ones That You Missed
+      </span>
     </h1>
 
-    <p style="letter-spacing:4px;text-transform:uppercase;font-size:.85rem;">
+    <p
+      style="
+        letter-spacing:4px;
+        text-transform:uppercase;
+        font-size:.85rem;
+      ">
       Cinematic Wedding Films
     </p>
 
-    <a href="#collections" class="hero-btn">
-      View Collections
+    <a
+      href="#real-weddings"
+      class="hero-btn">
+      Watch Real Weddings
     </a>
 
   </div>
@@ -34,170 +299,161 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 </div>
 
 
-<!-- ABOUT -->
+<!-- APPROACH -->
 
 <section id="about">
 
-  <div class="about-grid">
+  <div class="home-intro">
 
-    <div class="about-header">
+    <span class="eyebrow">
+      The Approach
+    </span>
 
-      <span class="eyebrow">
-        The Approach
-      </span>
+    <h2>
+      Natural &amp; Authentic Storytelling
+    </h2>
 
-      <h2>
-        Natural &amp; Authentic Storytelling
-      </h2>
+    <p class="about-lead">
+      Your wedding should feel like your wedding, not a production created for the camera.
+    </p>
 
-    </div>
+    <p>
+      We work quietly around the celebration, capturing the laughter,
+      nervous exchanges, reactions and moments you may not even notice
+      happening around you.
+    </p>
 
-    <div class="about-content-main">
-
-      <p class="about-lead">
-        A wedding is more than a schedule of events; it is a unique energy that exists only once.
-      </p>
-
-      <p>
-        Our films are designed to preserve that atmosphere. From the grand, joyful celebrations to the quiet, nervous exchanges, we focus on the authentic character of your day, ensuring the resulting film feels as real as the memories themselves.
-      </p>
-
-      <p>
-        We believe you should be completely present on your wedding day, which is why we prioritise documentary storytelling over awkward, staged poses.
-      </p>
-
-    </div>
-
-    <div class="about-content-side">
-
-      <p>
-        You won't find us orchestrating moments or making you repeat actions for the camera. By blending quietly into the background, we capture the laughter, the tears, and the subtle interactions that make your story completely personal.
-      </p>
-
-      <p class="about-closing">
-        The result is a beautifully crafted, timeless legacy that lets you relive the genuine emotion of your celebration for years to come.
-      </p>
-
-    </div>
+    <p>
+      The cinematic side comes through composition, professional audio,
+      colour and the edit itself, creating a polished film without turning
+      genuine moments into staged ones.
+    </p>
 
   </div>
 
 </section>
 
 
-<!-- FEATURED WEDDING -->
+<!-- REAL WEDDINGS -->
 
 <section
-  id="featured-film"
-  style="
-    background:white;
-    border-top:1px solid var(--border);
-    padding-top:120px;
-    padding-bottom:120px;
-  ">
+  id="real-weddings"
+  class="home-films">
 
-  <div style="text-align:center;margin-bottom:55px;">
+  <div class="home-films-header">
 
     <span class="eyebrow">
-      Featured Wedding
+      Real Wedding Films
     </span>
 
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3rem;
-        font-weight:400;
-        margin:0;
-      ">
-      Andy &amp; Lesley
+    <h2>
+      Real couples. Real celebrations.
     </h2>
 
-    <p
-      style="
-        color:#666;
-        font-size:.95rem;
-        margin:15px auto 0;
-        max-width:620px;
-        line-height:1.7;
-      ">
-      Grosvenor Pulford Hotel &amp; Spa, Cheshire
+    <p>
+      Every wedding has a different rhythm and personality.
+      Explore two recent films and see how each story takes on
+      a character of its own.
     </p>
 
   </div>
 
-  <a
-    href="/weddings/grosvenor-pulford-wedding.html"
-    style="
-      display:block;
-      max-width:900px;
-      margin:auto;
-      text-decoration:none;
-      color:var(--charcoal);
-      background:var(--light-grey);
-      border:1px solid var(--border);
-    ">
 
-    <div
-      style="
-        aspect-ratio:16/9;
-        overflow:hidden;
-        position:relative;
-      ">
+  <div class="home-film-grid">
 
-      <img
-        src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
-        alt="Andy and Lesley wedding at Grosvenor Pulford Hotel and Spa in Cheshire"
-        style="
-          width:100%;
-          height:100%;
-          object-fit:cover;
-          object-position:center;
-          display:block;
-          transition:transform .6s ease;
-        ">
 
-      <div
-        style="
-          position:absolute;
-          inset:0;
-          background:linear-gradient(to top,rgba(0,0,0,.55),transparent 60%);
-        ">
-      </div>
+    <!-- ANDY & LESLEY -->
 
-      <div
-        style="
-          position:absolute;
-          left:35px;
-          bottom:30px;
-          color:white;
-        ">
+    <a
+      href="/weddings/grosvenor-pulford-wedding.html"
+      class="home-film-card">
 
-        <span
-          style="
-            display:block;
-            font-size:.7rem;
-            letter-spacing:2px;
-            text-transform:uppercase;
-            margin-bottom:8px;
-          ">
-          Real Wedding Film
-        </span>
+      <div class="home-film-image">
 
-        <span
-          style="
-            font-family:'Baskervville',serif;
-            font-size:1.8rem;
-          ">
-          Watch Their Story &rarr;
+        <img
+          src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
+          alt="Andy and Lesley wedding at Grosvenor Pulford Hotel and Spa">
+
+        <div class="home-film-overlay"></div>
+
+        <span class="home-film-location">
+          Cheshire
         </span>
 
       </div>
 
-    </div>
+      <div class="home-film-copy">
 
-  </a>
+        <h3>
+          Andy &amp; Lesley
+        </h3>
 
-  <div style="text-align:center;margin-top:35px;">
+        <p class="home-film-venue">
+          Grosvenor Pulford Hotel &amp; Spa
+        </p>
+
+        <p>
+          A warm, relaxed Cheshire celebration captured around the
+          reactions, laughter and natural moments happening throughout
+          their day.
+        </p>
+
+        <span class="home-film-link">
+          Watch Their Film &rarr;
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <!-- KIRSTY & CONNOR -->
+
+    <a
+      href="/weddings/thornton-hall-wedding.html"
+      class="home-film-card">
+
+      <div class="home-film-image">
+
+        <img
+          src="/images/kirsty-connor-thornton-hall-wedding.jpg"
+          alt="Kirsty and Connor wedding at Thornton Hall Hotel and Spa">
+
+        <div class="home-film-overlay"></div>
+
+        <span class="home-film-location">
+          Wirral
+        </span>
+
+      </div>
+
+      <div class="home-film-copy">
+
+        <h3>
+          Kirsty &amp; Connor
+        </h3>
+
+        <p class="home-film-venue">
+          Thornton Hall Hotel &amp; Spa
+        </p>
+
+        <p>
+          Funny, expressive and completely themselves. A joyful wedding
+          film shaped around their humour, emotion and the energy of the day.
+        </p>
+
+        <span class="home-film-link">
+          Watch Their Film &rarr;
+        </span>
+
+      </div>
+
+    </a>
+
+  </div>
+
+
+  <div style="text-align:center;margin-top:45px;">
 
     <a
       href="/wedding-films.html"
@@ -207,8 +463,82 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
         color:var(--charcoal);
         border:1px solid var(--border);
       ">
-      View All Wedding Films
+      Explore Wedding Films
     </a>
+
+  </div>
+
+</section>
+
+
+<!-- REVIEWS -->
+
+<section class="home-reviews">
+
+  <div class="home-reviews-header">
+
+    <span class="eyebrow">
+      Kind Words
+    </span>
+
+    <h2>
+      From the couples themselves.
+    </h2>
+
+  </div>
+
+
+  <div class="home-review-grid">
+
+
+    <!-- AIMEE -->
+
+    <div class="home-review-card">
+
+      <div
+        class="home-review-stars"
+        aria-label="5 star Google review">
+        &#9733;&#9733;&#9733;&#9733;&#9733;
+      </div>
+
+      <blockquote>
+        &ldquo;He blended in seamlessly to our day - this meant he captured
+        some really special moments that we didn't even get to see on the day.&rdquo;
+      </blockquote>
+
+      <p>
+        Aimee
+        <span class="review-context">
+          Google Review
+        </span>
+      </p>
+
+    </div>
+
+
+    <!-- KIRSTY -->
+
+    <div class="home-review-card">
+
+      <div
+        class="home-review-stars"
+        aria-label="5 star Google review">
+        &#9733;&#9733;&#9733;&#9733;&#9733;
+      </div>
+
+      <blockquote>
+        &ldquo;The subtitles made a huge difference for us, making us so involved
+        in the video and able to know what everyone was saying.&rdquo;
+      </blockquote>
+
+      <p>
+        Kirsty
+        <span class="review-context">
+          Thornton Hall Wedding - Google Review
+        </span>
+      </p>
+
+    </div>
 
   </div>
 
@@ -220,7 +550,7 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 <section
   id="filmmaker"
   style="
-    background:var(--light-grey);
+    background:white;
     border-top:1px solid var(--border);
     padding-top:120px;
     padding-bottom:120px;
@@ -239,7 +569,10 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 
     <div
       class="filmmaker-image"
-      style="flex:1;min-width:300px;">
+      style="
+        flex:1;
+        min-width:300px;
+      ">
 
       <img
         src="/images/profile.jpg"
@@ -252,7 +585,11 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
           border-radius:4px;
         ">
 
-      <div style="margin-top:18px;text-align:left;">
+      <div
+        style="
+          margin-top:18px;
+          text-align:left;
+        ">
 
         <p
           style="
@@ -279,12 +616,16 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 
     </div>
 
+
     <div
       class="filmmaker-text"
-      style="flex:1.2;min-width:300px;">
+      style="
+        flex:1.2;
+        min-width:300px;
+      ">
 
       <span class="eyebrow">
-        The Intention
+        Behind The Lens
       </span>
 
       <h2
@@ -295,28 +636,55 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
           margin:0 0 20px;
           color:var(--charcoal);
         ">
-        Behind the Lens
+        Calm on the day.<br>
+        Particular in the edit.
       </h2>
 
-      <p style="font-size:1rem;line-height:1.8;color:#555;margin-bottom:20px;">
-        Horizon &amp; Co was built on a love of storytelling, atmosphere and the moments that give a wedding day its meaning.
+      <p
+        style="
+          font-size:1rem;
+          line-height:1.8;
+          color:#555;
+          margin-bottom:20px;
+        ">
+        Horizon &amp; Company was built around a love of storytelling,
+        atmosphere and the small moments that give a wedding its personality.
       </p>
 
-      <p style="font-size:1rem;line-height:1.8;color:#555;margin-bottom:20px;">
-        The work is shaped by years of experience across wedding films, music videos and high-end creative productions, bringing a cinematic eye together with a calm, unobtrusive presence on the day.
+      <p
+        style="
+          font-size:1rem;
+          line-height:1.8;
+          color:#555;
+          margin-bottom:20px;
+        ">
+        My approach on the day is deliberately unobtrusive. I want you,
+        your family and your friends to forget about the camera rather than
+        spend the celebration performing for it.
       </p>
 
-      <p style="font-size:1rem;line-height:1.8;color:#555;margin-bottom:20px;">
-        A background in music production and studio work brings particular care to sound, pacing and atmosphere, allowing each film to feel immersive, natural and emotionally rich.
+      <p
+        style="
+          font-size:1rem;
+          line-height:1.8;
+          color:#555;
+          margin-bottom:20px;
+        ">
+        A background in music production brings particular attention to
+        sound, pacing and atmosphere in the edit, helping each film feel
+        immersive rather than simply a collection of beautiful shots.
       </p>
 
-      <p style="font-size:1rem;line-height:1.8;color:#555;margin-bottom:30px;">
-        The result is a wedding film that feels effortless, honest and beautifully crafted, preserving the emotion of the day exactly as it was lived.
+      <p
+        style="
+          font-size:1rem;
+          line-height:1.8;
+          color:#555;
+          margin-bottom:30px;
+        ">
+        The aim is simple: something beautifully crafted that still feels
+        unmistakably like your wedding.
       </p>
-
-      <img
-        src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='2'><rect width='50' height='2' fill='%238E7A5A'/></svg>"
-        alt="">
 
     </div>
 
@@ -330,7 +698,7 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 <section
   id="destinations"
   style="
-    background:white;
+    background:var(--light-grey);
     border-top:1px solid var(--border);
   ">
 
@@ -350,9 +718,25 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
       Featured Destinations
     </h2>
 
+    <p
+      style="
+        color:#666;
+        max-width:600px;
+        margin:18px auto 0;
+        line-height:1.8;
+        font-size:.9rem;
+      ">
+      Based in the North West and available for weddings throughout
+      the UK and Europe.
+    </p>
+
   </div>
 
+
   <div class="packages">
+
+
+    <!-- LIVERPOOL -->
 
     <a
       href="/liverpool.html"
@@ -376,6 +760,9 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 
     </a>
 
+
+    <!-- CHESHIRE -->
+
     <a
       href="/cheshire.html"
       class="destination-card">
@@ -397,6 +784,9 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
       </div>
 
     </a>
+
+
+    <!-- NORTH WALES -->
 
     <a
       href="/north-wales.html"
@@ -430,7 +820,7 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 <section
   id="collections"
   style="
-    background:var(--light-grey);
+    background:white;
     border-top:1px solid var(--border);
   ">
 
@@ -458,16 +848,21 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
         max-width:650px;
         margin:18px auto 0;
       ">
-      Natural, cinematic wedding films crafted around the atmosphere and personality of your day. All films are delivered in 4K.
+      Natural, cinematic wedding films crafted around the atmosphere
+      and personality of your day. All films are delivered in 4K.
     </p>
 
   </div>
 
+
   <div class="packages">
+
 
     <!-- NARRATIVE -->
 
-    <div class="card" onclick="toggleActive(this)">
+    <div
+      class="card"
+      onclick="toggleActive(this)">
 
       <h3>
         The Narrative
@@ -495,6 +890,7 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
       </div>
 
     </div>
+
 
     <!-- CINEMATIC -->
 
@@ -532,9 +928,12 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 
     </div>
 
+
     <!-- CEREMONY -->
 
-    <div class="card" onclick="toggleActive(this)">
+    <div
+      class="card"
+      onclick="toggleActive(this)">
 
       <h3>
         The Ceremony
@@ -591,8 +990,10 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
         max-width:600px;
         margin:15px auto 0;
       ">
-      Add something extra to your collection, from complete ceremony and speeches films to a social edit ready to share.
+      Add something extra to your collection, from complete ceremony
+      and speeches films to a social edit ready to share.
     </p>
+
 
     <div class="extras-grid">
 
@@ -631,7 +1032,8 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
         max-width:650px;
         margin:25px auto 0;
       ">
-      Full ceremony and speeches films are already included with The Cinematic collection.
+      Full ceremony and speeches films are already included with
+      The Cinematic collection.
     </p>
 
   </div>
@@ -643,7 +1045,10 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 
 <section
   id="faqs"
-  style="background:white;">
+  style="
+    background:var(--light-grey);
+    border-top:1px solid var(--border);
+  ">
 
   <div style="text-align:center;margin-bottom:50px;">
 
@@ -663,7 +1068,9 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 
   </div>
 
+
   <div class="faq-container">
+
 
     <div class="faq-item">
 
@@ -673,16 +1080,17 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 
         How do we secure our date?
 
-        <span class="faq-icon">
-          +
-        </span>
+        <span class="faq-icon">+</span>
 
       </button>
 
       <div class="faq-answer">
 
         <p>
-          To keep things simple and fair, dates are secured on a first-come, first-served basis. Once you confirm you'd like to book, we require a 25% non-refundable booking fee and a signed digital contract to lock your date in our diary. The remaining balance isn't due until 30 days before your wedding.
+          Dates are secured on a first-come, first-served basis.
+          Once you confirm you'd like to book, we require a 25%
+          non-refundable booking fee and a signed digital contract.
+          The remaining balance is due 30 days before your wedding.
         </p>
 
       </div>
@@ -698,16 +1106,16 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 
         Do you charge for travel?
 
-        <span class="faq-icon">
-          +
-        </span>
+        <span class="faq-icon">+</span>
 
       </button>
 
       <div class="faq-answer">
 
         <p>
-          Travel within 50 miles of our base is completely free of charge. For weddings further afield across the UK or Europe, we simply charge standard travel and accommodation costs at cost value, which we will agree with you upfront before you book.
+          Travel within 50 miles of our base is included. For weddings
+          further afield across the UK or Europe, additional travel and
+          accommodation costs are agreed with you before booking.
         </p>
 
       </div>
@@ -721,22 +1129,20 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
         class="faq-question"
         onclick="toggleFAQ(this)">
 
-        Do we get to choose the music for our film?
+        Do we get to choose the music?
 
-        <span class="faq-icon">
-          +
-        </span>
+        <span class="faq-icon">+</span>
 
       </button>
 
       <div class="faq-answer">
 
         <p>
-          Music plays a huge role in the emotion and atmosphere of a wedding film. Because of copyright restrictions, we are not able to use standard commercial songs in your final film, but this is also what allows the soundtrack to feel more cinematic and carefully considered.
-          <br><br>
-          With a background in music production and audio-led storytelling, each film is crafted with just as much attention to what is heard as what is seen. Rather than simply placing a track over the footage, we carefully shape the pacing, tone and soundtrack so the finished film feels natural, immersive and true to the emotion of your day.
-          <br><br>
-          The result is a wedding film that feels personal, elevated and beautifully matched to the moments it captures.
+          Music plays a major part in the emotion and pacing of the film.
+          Because of copyright restrictions, standard commercial music
+          cannot usually be used in the finished film. Instead, the
+          soundtrack is selected and edited to complement the atmosphere
+          and story of your wedding.
         </p>
 
       </div>
@@ -750,18 +1156,18 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
         class="faq-question"
         onclick="toggleFAQ(this)">
 
-        How long does it take to get our video?
+        How long does delivery take?
 
-        <span class="faq-icon">
-          +
-        </span>
+        <span class="faq-icon">+</span>
 
       </button>
 
       <div class="faq-answer">
 
         <p>
-          We believe in taking the time to edit your film carefully rather than rushing it. During peak wedding season, our standard delivery time is 6-10 weeks. Your films will be delivered in 4K via a private online gallery that you can download from and share with family and friends.
+          During peak wedding season, our standard delivery time is
+          approximately 6-10 weeks. Your finished films are delivered
+          digitally in 4K for you to download, keep and share.
         </p>
 
       </div>
@@ -777,16 +1183,16 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 
         Are you fully insured?
 
-        <span class="faq-icon">
-          +
-        </span>
+        <span class="faq-icon">+</span>
 
       </button>
 
       <div class="faq-answer">
 
         <p>
-          Yes. We carry comprehensive Public Liability and Professional Indemnity insurance. If your venue requires a copy of our insurance certificate beforehand, just let us know and we will happily email it directly to their coordinator.
+          Yes. We carry Public Liability and Professional Indemnity
+          insurance. If your venue requires evidence of cover before
+          the wedding, we can provide this directly to them.
         </p>
 
       </div>
@@ -802,9 +1208,16 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
 
 <section
   id="contact"
-  style="background:#f4f4f3;">
+  style="
+    background:#f4f4f3;
+    border-top:1px solid var(--border);
+  ">
 
   <div style="text-align:center;margin-bottom:60px;">
+
+    <span class="eyebrow">
+      Your Wedding
+    </span>
 
     <h2
       style="
@@ -827,16 +1240,17 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
         margin-top:15px;
         line-height:1.7;
       ">
-      Whether you are planning years in advance or looking for a last-minute date,
-      <br>
-      share a few details below and we'll confirm availability within 24 hours.
+      Tell us your wedding date, venue and a little about what you're
+      planning and we'll confirm availability within 24 hours.
     </p>
 
   </div>
 
+
   <div class="custom-form-container">
 
     <form id="horizon-contact-form">
+
 
       <div class="form-row">
 
@@ -928,7 +1342,7 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
             type="text"
             id="venue"
             name="venue"
-            placeholder="e.g. Hope Street Hotel">
+            placeholder="e.g. Thornton Hall Hotel">
 
         </div>
 
@@ -1009,7 +1423,8 @@ description: "Horizon & Company creates natural, documentary-style cinematic wed
           font-style:italic;
           text-align:center;
         ">
-        Thank you. Your enquiry has been received and we will be in touch within 24 hours.
+        Thank you. Your enquiry has been received and we will be in
+        touch within 24 hours.
       </div>
 
     </form>

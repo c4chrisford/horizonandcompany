@@ -1,294 +1,459 @@
 ---
 layout: default
 title: Wedding Films | Horizon & Company | Cinematic Wedding Videography
-description: Explore real wedding films by Horizon & Company. Natural, cinematic wedding videography capturing authentic celebrations across Cheshire, Liverpool, North Wales and the UK.
+description: Watch real cinematic wedding films by Horizon & Company, including weddings at Grosvenor Pulford Hotel & Spa and Thornton Hall Hotel & Spa across Cheshire and Wirral.
 ---
 
-<!-- PORTFOLIO HERO -->
+<style>
 
-<section
-  style="
-    padding-top:180px;
-    padding-bottom:100px;
-    background:var(--light-grey);
-    text-align:center;
-  ">
+.films-hero{
+  padding-top:175px;
+  padding-bottom:105px;
+  background:var(--light-grey);
+  text-align:center;
+}
 
-  <div style="max-width:850px;margin:auto;">
+.films-hero-inner{
+  max-width:850px;
+  margin:auto;
+}
+
+.films-hero h1{
+  font-family:'Baskervville',serif;
+  font-size:4rem;
+  line-height:1.08;
+  font-weight:400;
+  margin:0 0 28px;
+}
+
+.films-hero p{
+  max-width:700px;
+  margin:0 auto;
+  color:#555;
+  font-size:1.05rem;
+  line-height:1.8;
+}
+
+.film-feature{
+  padding-top:115px;
+  padding-bottom:125px;
+}
+
+.film-feature.white{
+  background:white;
+}
+
+.film-feature.grey{
+  background:var(--light-grey);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.film-inner{
+  max-width:1050px;
+  margin:auto;
+}
+
+.film-heading{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:end;
+  margin-bottom:45px;
+}
+
+.film-heading h2{
+  font-family:'Baskervville',serif;
+  font-size:3.2rem;
+  line-height:1.1;
+  font-weight:400;
+  margin:0;
+}
+
+.film-venue{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.72rem;
+  margin:12px 0 0;
+}
+
+.film-intro{
+  color:#555;
+  line-height:1.8;
+  font-size:.95rem;
+  margin:0;
+  max-width:500px;
+}
+
+.video-frame{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  background:#111;
+  overflow:hidden;
+  box-shadow:0 25px 55px rgba(0,0,0,.10);
+}
+
+.video-frame iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.film-footer{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:60px;
+  margin-top:38px;
+  align-items:start;
+}
+
+.film-footer p{
+  color:#666;
+  font-size:.92rem;
+  line-height:1.8;
+  margin:0;
+}
+
+.film-link{
+  text-align:right;
+}
+
+.film-link a{
+  color:var(--charcoal);
+  text-decoration:none;
+  font-size:.72rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-weight:600;
+  border-bottom:1px solid var(--gold);
+  padding-bottom:5px;
+}
+
+.review-section{
+  background:white;
+  text-align:center;
+  border-top:1px solid var(--border);
+}
+
+.review-inner{
+  max-width:850px;
+  margin:auto;
+}
+
+.review-stars{
+  color:var(--gold);
+  letter-spacing:6px;
+  font-size:1rem;
+  margin-bottom:28px;
+}
+
+.review-quote{
+  font-family:'Baskervville',serif;
+  font-size:2.4rem;
+  line-height:1.4;
+  font-style:italic;
+  margin:0 auto 25px;
+  color:var(--charcoal);
+}
+
+.review-name{
+  margin:0;
+  font-size:.72rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#777;
+}
+
+.approach-section{
+  background:var(--light-grey);
+  border-top:1px solid var(--border);
+}
+
+.approach-grid-films{
+  max-width:950px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:90px;
+}
+
+.approach-grid-films h2{
+  font-family:'Baskervville',serif;
+  font-size:3rem;
+  line-height:1.15;
+  font-weight:400;
+  margin:0;
+}
+
+.approach-grid-films p{
+  color:#555;
+  font-size:.98rem;
+  line-height:1.85;
+  margin-top:0;
+}
+
+.films-cta{
+  background:var(--charcoal);
+  color:white;
+  text-align:center;
+}
+
+.films-cta-inner{
+  max-width:750px;
+  margin:auto;
+}
+
+.films-cta h2{
+  font-family:'Baskervville',serif;
+  font-size:3.2rem;
+  line-height:1.15;
+  font-weight:400;
+  margin:0 0 22px;
+}
+
+.films-cta p{
+  max-width:600px;
+  margin:0 auto 30px;
+  color:#ccc;
+  line-height:1.8;
+}
+
+@media(max-width:900px){
+
+  .film-heading,
+  .film-footer,
+  .approach-grid-films{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .film-link{
+    text-align:left;
+  }
+
+  .film-heading h2{
+    font-size:2.6rem;
+  }
+
+  .review-quote{
+    font-size:1.9rem;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .films-hero h1{
+    font-size:2.8rem;
+  }
+
+  .films-hero{
+    padding-top:145px;
+    padding-bottom:75px;
+  }
+
+}
+
+</style>
+
+
+<!-- HERO -->
+
+<section class="films-hero">
+
+  <div class="films-hero-inner">
 
     <span class="eyebrow">
       Real Weddings
     </span>
 
-    <h1
-      style="
-        font-family:'Baskervville',serif;
-        font-size:4rem;
-        line-height:1.1;
-        font-weight:400;
-        margin:0 0 30px;
-        color:var(--charcoal);
-      ">
+    <h1>
       Wedding Films
     </h1>
 
-    <p
-      style="
-        max-width:700px;
-        margin:0 auto;
-        color:#555;
-        font-size:1.05rem;
-        line-height:1.8;
-      ">
-      Every wedding has its own atmosphere, energy and story.
-      Explore a selection of real celebrations captured naturally,
-      without staging the moments that make them meaningful.
+    <p>
+      Real celebrations, real personalities and the moments that cannot be
+      repeated. Every film is shaped around the people, atmosphere and energy
+      of the wedding rather than a formula.
     </p>
 
   </div>
 
 </section>
 
-<!-- INTRO -->
 
-<section
-  style="
-    background:white;
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--border);
-  ">
+<!-- ANDY & LESLEY -->
 
-  <div
-    style="
-      max-width:800px;
-      margin:auto;
-      text-align:center;
-    ">
+<section class="film-feature white">
 
-    <span class="eyebrow">
-      The Stories
-    </span>
+  <div class="film-inner">
 
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3rem;
-        line-height:1.2;
-        font-weight:400;
-        margin:0 0 30px;
-      ">
-      More than a highlights reel.
-    </h2>
+    <div class="film-heading">
 
-    <p
-      style="
-        color:#555;
-        font-size:1rem;
-        line-height:1.9;
-        margin:0;
-      ">
-      The nervous moments before the ceremony. The reaction from across
-      the room. The speech that catches everyone by surprise. The people
-      on the dance floor who thought nobody was watching.
-      <br><br>
-      These are the moments we build our films around — creating something
-      that doesn't simply show what your wedding looked like, but brings
-      you back to how it felt.
-    </p>
+      <div>
 
-  </div>
-
-</section>
-
-<!-- WEDDING FILMS -->
-
-<section
-  style="
-    background:var(--light-grey);
-    padding-top:120px;
-    padding-bottom:120px;
-  ">
-
-  <div style="text-align:center;margin-bottom:70px;">
-
-    <span class="eyebrow">
-      Featured Weddings
-    </span>
-
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3rem;
-        font-weight:400;
-        margin:0;
-      ">
-      Real Stories
-    </h2>
-
-  </div>
-
-  <!-- PORTFOLIO GRID -->
-
-  <div
-    style="
-      max-width:1050px;
-      margin:auto;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:35px;
-    ">
-
-    <!-- ANDY & LESLEY -->
-
-    <a
-      href="/weddings/grosvenor-pulford-wedding.html"
-      class="wedding-film-card"
-      style="
-        display:block;
-        text-decoration:none;
-        color:var(--charcoal);
-        background:white;
-        border:1px solid var(--border);
-        overflow:hidden;
-        transition:transform .4s ease,box-shadow .4s ease;
-      ">
-
-      <div
-        style="
-          position:relative;
-          aspect-ratio:16/10;
-          overflow:hidden;
-          background:#ddd;
-        ">
-
-        <img
-          src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
-          alt="Andy and Lesley wedding at Grosvenor Pulford Hotel and Spa in Cheshire"
-          style="
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            object-position:center;
-            display:block;
-            transition:transform .6s ease;
-          ">
-
-        <div
-          style="
-            position:absolute;
-            inset:0;
-            background:linear-gradient(
-              to top,
-              rgba(0,0,0,.45),
-              transparent 60%
-            );
-          ">
-        </div>
-
-        <span
-          style="
-            position:absolute;
-            left:25px;
-            bottom:22px;
-            color:white;
-            font-size:.7rem;
-            text-transform:uppercase;
-            letter-spacing:2px;
-          ">
-          Cheshire
+        <span class="eyebrow">
+          Cheshire Wedding Film
         </span>
 
-      </div>
-
-      <div style="padding:30px;">
-
-        <h3
-          style="
-            font-family:'Baskervville',serif;
-            font-size:2rem;
-            font-weight:400;
-            margin:0 0 8px;
-          ">
+        <h2>
           Andy & Lesley
-        </h3>
+        </h2>
 
-        <p
-          style="
-            color:var(--gold);
-            text-transform:uppercase;
-            letter-spacing:2px;
-            font-size:.7rem;
-            margin:0 0 20px;
-          ">
+        <p class="film-venue">
           Grosvenor Pulford Hotel & Spa
         </p>
 
-        <p
-          style="
-            color:#666;
-            line-height:1.7;
-            font-size:.9rem;
-            margin:0 0 25px;
-          ">
-          A relaxed Cheshire celebration filled with laughter,
-          emotion and the wonderfully unscripted moments that make
-          a wedding completely personal.
-        </p>
+      </div>
 
-        <span
-          style="
-            font-size:.7rem;
-            text-transform:uppercase;
-            letter-spacing:2px;
-            font-weight:600;
-          ">
-          Watch Their Film →
-        </span>
+      <p class="film-intro">
+        A warm, relaxed Cheshire wedding built around the moments between the
+        moments - glances, laughter, reactions and the atmosphere created by
+        the people around them.
+      </p>
+
+    </div>
+
+
+    <div class="video-frame">
+
+      <iframe
+        src="https://www.youtube.com/embed/oc7l4F5AuB4"
+        title="Andy and Lesley wedding film at Grosvenor Pulford Hotel and Spa"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+
+    <div class="film-footer">
+
+      <p>
+        Filmed at Grosvenor Pulford Hotel & Spa near Chester, their wedding
+        combined elegant surroundings with an easy-going celebration that
+        allowed the story to unfold naturally.
+      </p>
+
+      <div class="film-link">
+
+        <a href="/weddings/grosvenor-pulford-wedding.html">
+          Explore Their Wedding →
+        </a>
 
       </div>
 
-    </a>
-
-    <!--
-    ======================================================
-    FUTURE WEDDING CARD
-
-    When we add another wedding, duplicate the Andy & Lesley
-    card above and change:
-
-    1. Page URL
-    2. Image
-    3. Couple names
-    4. Venue
-    5. Location
-    6. Description
-
-    This keeps the portfolio scalable.
-    ======================================================
-    -->
+    </div>
 
   </div>
 
 </section>
 
+
+<!-- KIRSTY & CONNOR -->
+
+<section class="film-feature grey">
+
+  <div class="film-inner">
+
+    <div class="film-heading">
+
+      <div>
+
+        <span class="eyebrow">
+          Wirral Wedding Film
+        </span>
+
+        <h2>
+          Kirsty & Connor
+        </h2>
+
+        <p class="film-venue">
+          Thornton Hall Hotel & Spa
+        </p>
+
+      </div>
+
+      <p class="film-intro">
+        Funny, expressive and completely themselves. Kirsty and Connor's film
+        was shaped around the humour, emotion and infectious energy that ran
+        through their entire day.
+      </p>
+
+    </div>
+
+
+    <div class="video-frame">
+
+      <iframe
+        src="https://www.youtube.com/embed/wpxDWhmKgyk"
+        title="Kirsty and Connor wedding film at Thornton Hall Hotel and Spa"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+
+    <div class="film-footer">
+
+      <p>
+        As a deaf couple, accessibility mattered too. Their finished films were
+        created with subtitles so the speeches, reactions and voices throughout
+        the day could be experienced as part of the story rather than simply
+        watched from the outside.
+      </p>
+
+      <div class="film-link">
+
+        <a href="/weddings/thornton-hall-wedding.html">
+          Explore Their Wedding →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- REVIEW -->
+
+<section class="review-section">
+
+  <div class="review-inner">
+
+    <div class="review-stars">
+      ★★★★★
+    </div>
+
+    <p class="review-quote">
+      “The subtitles made a huge difference for us. It made us feel so involved
+      in the video and able to know what everyone was saying.”
+    </p>
+
+    <p class="review-name">
+      Kirsty - Google Review
+    </p>
+
+  </div>
+
+</section>
+
+
 <!-- APPROACH -->
 
-<section
-  style="
-    background:white;
-    border-top:1px solid var(--border);
-  ">
+<section class="approach-section">
 
-  <div
-    style="
-      max-width:900px;
-      margin:auto;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:80px;
-      align-items:center;
-    "
-    class="portfolio-approach-grid">
+  <div class="approach-grid-films">
 
     <div>
 
@@ -296,14 +461,7 @@ description: Explore real wedding films by Horizon & Company. Natural, cinematic
         The Approach
       </span>
 
-      <h2
-        style="
-          font-family:'Baskervville',serif;
-          font-size:2.8rem;
-          line-height:1.2;
-          font-weight:400;
-          margin:0;
-        ">
+      <h2>
         Your wedding.<br>
         Not a production.
       </h2>
@@ -312,28 +470,21 @@ description: Explore real wedding films by Horizon & Company. Natural, cinematic
 
     <div>
 
-      <p
-        style="
-          color:#555;
-          line-height:1.8;
-          font-size:.95rem;
-          margin-top:0;
-        ">
-        You shouldn't spend your wedding day thinking about the camera.
-        Our documentary-led approach means we work quietly around the
-        celebration rather than constantly directing it.
+      <p>
+        The aim is not to spend your wedding day creating footage for a film.
+        The aim is to let you experience the wedding while the film is created
+        around what genuinely happens.
       </p>
 
-      <p
-        style="
-          color:#555;
-          line-height:1.8;
-          font-size:.95rem;
-          margin-bottom:0;
-        ">
-        The cinematic side happens through composition, sound,
-        colour and editing — not by turning genuine moments into
-        staged ones.
+      <p>
+        We work quietly and unobtrusively, then bring the cinematic side in
+        afterwards through composition, professional audio, colour, pacing and
+        storytelling.
+      </p>
+
+      <p>
+        The result should feel polished enough to watch like a film, while still
+        feeling unmistakably like your own wedding.
       </p>
 
     </div>
@@ -342,131 +493,12 @@ description: Explore real wedding films by Horizon & Company. Natural, cinematic
 
 </section>
 
-<!-- LOCATIONS -->
-
-<section
-  style="
-    background:var(--light-grey);
-    border-top:1px solid var(--border);
-  ">
-
-  <div style="text-align:center;margin-bottom:60px;">
-
-    <span class="eyebrow">
-      Where We Film
-    </span>
-
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3rem;
-        font-weight:400;
-        margin:0;
-      ">
-      Weddings Across the North West & Beyond
-    </h2>
-
-    <p
-      style="
-        color:#666;
-        font-size:.95rem;
-        line-height:1.8;
-        max-width:650px;
-        margin:20px auto 0;
-      ">
-      Based in the North West and available for weddings throughout
-      the UK and Europe.
-    </p>
-
-  </div>
-
-  <div class="packages">
-
-    <a
-      href="/liverpool.html"
-      class="destination-card">
-
-      <img
-        src="/images/albert-dock-liverpool-wedding-videographer.jpg"
-        alt="Liverpool wedding videographer">
-
-      <div class="destination-overlay">
-
-        <h3>
-          Liverpool
-        </h3>
-
-        <p>
-          City Weddings & Urban Charm
-        </p>
-
-      </div>
-
-    </a>
-
-    <a
-      href="/cheshire.html"
-      class="destination-card">
-
-      <img
-        src="/images/cheshire-wedding-videographer-luxury-estate.jpg"
-        alt="Cheshire wedding videographer">
-
-      <div class="destination-overlay">
-
-        <h3>
-          Cheshire
-        </h3>
-
-        <p>
-          Barns, Hotels & Country Houses
-        </p>
-
-      </div>
-
-    </a>
-
-    <a
-      href="/north-wales.html"
-      class="destination-card">
-
-      <img
-        src="/images/north-wales-wedding-videographer-anglesey.jpg"
-        alt="North Wales wedding videographer">
-
-      <div class="destination-overlay">
-
-        <h3>
-          North Wales
-        </h3>
-
-        <p>
-          Wild & Natural Settings
-        </p>
-
-      </div>
-
-    </a>
-
-  </div>
-
-</section>
 
 <!-- CTA -->
 
-<section
-  style="
-    background:var(--charcoal);
-    color:white;
-    text-align:center;
-    max-width:none;
-  ">
+<section class="films-cta">
 
-  <div
-    style="
-      max-width:750px;
-      margin:auto;
-    ">
+  <div class="films-cta-inner">
 
     <span
       class="eyebrow"
@@ -474,28 +506,13 @@ description: Explore real wedding films by Horizon & Company. Natural, cinematic
       Your Story
     </span>
 
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3.2rem;
-        line-height:1.2;
-        font-weight:400;
-        margin:0 0 25px;
-      ">
-      Imagine yours here.
+    <h2>
+      Ready to tell yours?
     </h2>
 
-    <p
-      style="
-        color:#ccc;
-        line-height:1.8;
-        font-size:.95rem;
-        max-width:600px;
-        margin:0 auto 35px;
-      ">
-      If our approach feels right for your wedding, tell us a little
-      about what you're planning and we'll confirm whether your date
-      is available.
+    <p>
+      Tell us your wedding date, venue and a little about what you're planning
+      and we'll confirm availability.
     </p>
 
     <a
@@ -507,33 +524,3 @@ description: Explore real wedding films by Horizon & Company. Natural, cinematic
   </div>
 
 </section>
-
-<style>
-
-.wedding-film-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 45px rgba(0,0,0,.08);
-}
-
-.wedding-film-card:hover img{
-  transform:scale(1.04);
-}
-
-@media(max-width:900px){
-
-  .portfolio-approach-grid{
-    grid-template-columns:1fr !important;
-    gap:35px !important;
-  }
-
-}
-
-@media(max-width:600px){
-
-  h1{
-    font-size:2.8rem !important;
-  }
-
-}
-
-</style>

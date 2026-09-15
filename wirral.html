@@ -1,997 +1,906 @@
 ---
 layout: default
-title: "Wedding Videographer Wirral | Horizon & Company | Natural Cinematic Films"
-description: "Natural, cinematic wedding videography across the Wirral. Documentary-style wedding films capturing real moments, emotion and atmosphere without turning your day into a production."
-location_styles: true
-body_class: location-page location-wirral
+title: "Thornton Hall Wedding Videographer | Kirsty & Connor | Horizon & Company"
+description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton Hall Hotel & Spa in Wirral. A personality-led cinematic wedding film by Horizon & Company."
 ---
 
-<!-- HERO -->
+<style>
 
-<div class="hero-static">
+/* =========================================
+   KIRSTY & CONNOR WEDDING PAGE
+   ========================================= */
 
-  <div class="hero-overlay"></div>
+.thornton-hero{
+  padding-top:170px;
+  padding-bottom:85px;
+  background:var(--light-grey);
+  text-align:center;
+}
 
-  <div class="hero-content">
+.thornton-hero-inner{
+  max-width:900px;
+  margin:auto;
+}
 
-    <span
-      style="
-        letter-spacing:4px;
-        text-transform:uppercase;
-        font-size:.85rem;
-        color:var(--gold);
-        display:block;
-        margin-bottom:15px;
-      ">
-      Coast, Countryside &amp; Character Venues
+.thornton-hero h1{
+  font-family:'Baskervville',serif;
+  font-size:4rem;
+  line-height:1.1;
+  font-weight:400;
+  margin:0 0 18px;
+  color:var(--charcoal);
+}
+
+.thornton-meta{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.75rem;
+  margin:0;
+}
+
+.thornton-intro{
+  max-width:760px;
+  margin:32px auto 0;
+  font-family:'Baskervville',serif;
+  font-size:1.5rem;
+  line-height:1.6;
+  font-style:italic;
+  color:#555;
+}
+
+
+/* =========================================
+   FEATURE IMAGE
+   ========================================= */
+
+.thornton-feature{
+  background:white;
+  padding:0;
+}
+
+.thornton-feature-image{
+  max-width:1400px;
+  margin:auto;
+  height:min(68vw,760px);
+  min-height:430px;
+  overflow:hidden;
+}
+
+.thornton-feature-image img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center 42%;
+}
+
+
+/* =========================================
+   STORY
+   ========================================= */
+
+.thornton-main{
+  background:white;
+  border-top:1px solid var(--border);
+}
+
+.thornton-story-grid{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:80px;
+  align-items:start;
+  margin-bottom:100px;
+}
+
+.thornton-story-grid h2{
+  font-family:'Baskervville',serif;
+  font-size:2.9rem;
+  line-height:1.2;
+  font-weight:400;
+  margin:0;
+}
+
+.thornton-copy p{
+  color:#555;
+  font-size:1rem;
+  line-height:1.9;
+  margin-top:0;
+  margin-bottom:18px;
+}
+
+.thornton-copy p:last-child{
+  margin-bottom:0;
+}
+
+
+/* =========================================
+   VENUE SHOWCASE
+   ========================================= */
+
+.thornton-venue{
+  max-width:1180px;
+  margin:0 auto 120px;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;
+  background:var(--light-grey);
+}
+
+.thornton-venue-image{
+  min-height:500px;
+  height:100%;
+  overflow:hidden;
+}
+
+.thornton-venue-image img{
+  width:100%;
+  height:100%;
+  min-height:500px;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+.thornton-venue-copy{
+  padding:65px 55px;
+}
+
+.thornton-venue-copy h2{
+  font-family:'Baskervville',serif;
+  font-size:2.6rem;
+  line-height:1.2;
+  font-weight:400;
+  margin:0 0 24px;
+}
+
+.thornton-venue-copy p{
+  color:#555;
+  font-size:.95rem;
+  line-height:1.9;
+  margin:0 0 18px;
+}
+
+.thornton-venue-copy p:last-child{
+  margin-bottom:0;
+}
+
+
+/* =========================================
+   CINEMATIC IMAGE BREAK
+   ========================================= */
+
+.thornton-image-break{
+  background:white;
+  padding:0 0 120px;
+}
+
+.thornton-image-break-inner{
+  max-width:1200px;
+  margin:auto;
+  position:relative;
+  height:min(60vw,680px);
+  min-height:420px;
+  overflow:hidden;
+}
+
+.thornton-image-break img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+}
+
+.thornton-image-break-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.52),
+      rgba(0,0,0,0) 55%
+    );
+}
+
+.thornton-image-break-copy{
+  position:absolute;
+  left:55px;
+  right:55px;
+  bottom:45px;
+  max-width:680px;
+  color:white;
+}
+
+.thornton-image-break-copy span{
+  display:block;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.68rem;
+  margin-bottom:12px;
+  color:#e4d0aa;
+}
+
+.thornton-image-break-copy p{
+  font-family:'Baskervville',serif;
+  font-size:2rem;
+  line-height:1.35;
+  margin:0;
+}
+
+
+/* =========================================
+   VIDEO
+   ========================================= */
+
+.thornton-video-section{
+  background:white;
+  padding:110px 0 120px;
+}
+
+.thornton-video{
+  max-width:1050px;
+  margin:auto;
+}
+
+.thornton-video-heading{
+  max-width:760px;
+  margin:0 auto 40px;
+  text-align:center;
+}
+
+.thornton-video-heading h2{
+  font-family:'Baskervville',serif;
+  font-size:3rem;
+  font-weight:400;
+  margin:0 0 18px;
+}
+
+.thornton-video-heading p{
+  color:#666;
+  line-height:1.8;
+  margin:0;
+}
+
+.thornton-video-frame{
+  position:relative;
+  padding-bottom:56.25%;
+  height:0;
+  overflow:hidden;
+  background:#111;
+  box-shadow:0 25px 55px rgba(0,0,0,.10);
+}
+
+.thornton-video-frame iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+
+/* =========================================
+   CREATIVE EDIT
+   ========================================= */
+
+.thornton-creative{
+  background:var(--light-grey);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.thornton-creative-inner{
+  max-width:950px;
+  margin:auto;
+}
+
+.thornton-creative-heading{
+  max-width:760px;
+  margin:0 auto 65px;
+  text-align:center;
+}
+
+.thornton-creative-heading h2{
+  font-family:'Baskervville',serif;
+  font-size:3rem;
+  line-height:1.2;
+  font-weight:400;
+  margin:0 0 24px;
+}
+
+.thornton-creative-heading p{
+  color:#555;
+  font-size:1rem;
+  line-height:1.85;
+  margin:0;
+}
+
+.thornton-moments{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.thornton-moment{
+  background:white;
+  border:1px solid var(--border);
+  padding:45px 40px;
+}
+
+.thornton-moment span{
+  display:block;
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.68rem;
+  margin-bottom:18px;
+}
+
+.thornton-moment blockquote{
+  font-family:'Baskervville',serif;
+  font-size:1.5rem;
+  line-height:1.5;
+  font-style:italic;
+  margin:0;
+  color:var(--charcoal);
+}
+
+.thornton-reflection{
+  max-width:800px;
+  margin:60px auto 0;
+  text-align:center;
+}
+
+.thornton-reflection p{
+  font-family:'Baskervville',serif;
+  font-size:1.8rem;
+  line-height:1.5;
+  margin:0;
+}
+
+
+/* =========================================
+   REVIEW
+   ========================================= */
+
+.thornton-review{
+  background:white;
+  text-align:center;
+}
+
+.thornton-review-inner{
+  max-width:900px;
+  margin:auto;
+}
+
+.thornton-stars{
+  color:var(--gold);
+  letter-spacing:5px;
+  font-size:1rem;
+  margin-bottom:28px;
+}
+
+.thornton-review blockquote{
+  font-family:'Baskervville',serif;
+  font-size:1.8rem;
+  line-height:1.5;
+  font-style:italic;
+  margin:0 auto 30px;
+  color:var(--charcoal);
+}
+
+.thornton-review-name{
+  margin:0;
+  font-size:.72rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#777;
+}
+
+
+/* =========================================
+   CTA
+   ========================================= */
+
+.thornton-cta{
+  background:var(--charcoal);
+  color:white;
+  text-align:center;
+  max-width:none;
+}
+
+.thornton-cta-inner{
+  max-width:760px;
+  margin:auto;
+}
+
+.thornton-cta h2{
+  font-family:'Baskervville',serif;
+  font-size:3.2rem;
+  line-height:1.2;
+  font-weight:400;
+  margin:0 0 24px;
+}
+
+.thornton-cta p{
+  color:#ccc;
+  line-height:1.8;
+  font-size:.95rem;
+  max-width:620px;
+  margin:0 auto 34px;
+}
+
+.thornton-links{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media(max-width:900px){
+
+  .thornton-story-grid,
+  .thornton-moments,
+  .thornton-venue{
+    grid-template-columns:1fr;
+  }
+
+  .thornton-story-grid{
+    gap:35px;
+    margin-bottom:70px;
+  }
+
+  .thornton-venue{
+    margin-bottom:90px;
+  }
+
+  .thornton-venue-image,
+  .thornton-venue-image img{
+    min-height:380px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .thornton-hero{
+    padding-top:140px;
+    padding-bottom:65px;
+  }
+
+  .thornton-hero h1{
+    font-size:2.8rem;
+  }
+
+  .thornton-intro{
+    font-size:1.25rem;
+  }
+
+  .thornton-feature-image{
+    height:65vw;
+    min-height:320px;
+  }
+
+  .thornton-story-grid h2,
+  .thornton-video-heading h2,
+  .thornton-creative-heading h2,
+  .thornton-venue-copy h2{
+    font-size:2.4rem;
+  }
+
+  .thornton-venue-copy{
+    padding:45px 30px;
+  }
+
+  .thornton-image-break-inner{
+    min-height:470px;
+  }
+
+  .thornton-image-break-copy{
+    left:28px;
+    right:28px;
+    bottom:30px;
+  }
+
+  .thornton-image-break-copy p{
+    font-size:1.55rem;
+  }
+
+  .thornton-video-section{
+    padding-top:80px;
+    padding-bottom:90px;
+  }
+
+  .thornton-cta h2{
+    font-size:2.6rem;
+  }
+
+  .thornton-moment{
+    padding:35px 28px;
+  }
+
+  .thornton-review blockquote{
+    font-size:1.5rem;
+  }
+
+}
+
+</style>
+
+
+<!-- =========================================
+     HERO
+     ========================================= -->
+
+<section class="thornton-hero">
+
+  <div class="thornton-hero-inner">
+
+    <span class="eyebrow">
+      Real Wedding
     </span>
 
     <h1>
-      Wedding Videographer Wirral
+      Kirsty &amp; Connor
     </h1>
 
-    <span class="hero-subtitle">
-      Natural Wedding Films &amp; Cinematic Storytelling
-    </span>
+    <p class="thornton-meta">
+      Thornton Hall Hotel &amp; Spa - Wirral
+    </p>
+
+    <p class="thornton-intro">
+      A wedding film full of movement, laughter and the kind of energy
+      you can only get from two people completely comfortable being themselves.
+    </p>
 
   </div>
 
-</div>
+</section>
 
 
-<!-- INTRO -->
+<!-- =========================================
+     FEATURE IMAGE
+     ========================================= -->
 
-<section id="approach">
+<section class="thornton-feature">
 
-  <div class="manifesto">
+  <div class="thornton-feature-image">
+
+    <img
+      src="/images/Kirsty-connor-laughter.png"
+      alt="Kirsty and Connor laughing during their wedding at Thornton Hall Hotel and Spa in Wirral">
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     STORY
+     ========================================= -->
+
+<section class="thornton-main">
+
+  <div class="thornton-story-grid">
+
+    <div>
+
+      <span class="eyebrow">
+        The Wedding
+      </span>
+
+      <h2>
+        Fun.<br>
+        Carefree.<br>
+        Full of energy.
+      </h2>
+
+    </div>
+
+    <div class="thornton-copy">
+
+      <p>
+        Kirsty and Connor's wedding at Thornton Hall Hotel &amp; Spa
+        had personality everywhere. Their friends and family were funny,
+        affectionate and completely relaxed, and that gave the whole day
+        a natural sense of momentum.
+      </p>
+
+      <p>
+        There were the big moments, but also plenty of the slightly chaotic
+        ones - stories about Connor in wedding dresses and Borat-style
+        swimwear, laughter during the speeches and the kind of reactions
+        that could never have been staged.
+      </p>
+
+      <p>
+        Underneath all of that humour was something much warmer. Friends
+        described Connor as kind, supportive and exactly what Kirsty needed.
+        That combination of fun and genuine affection became the heart of
+        the finished film.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       VENUE
+       ========================================= -->
+
+  <div class="thornton-venue">
+
+    <div class="thornton-venue-image">
+
+      <img
+        src="/images/thornton-hall-wedding-venue-wirral.jpg"
+        alt="Thornton Hall Hotel and Spa wedding venue in Wirral">
+
+    </div>
+
+    <div class="thornton-venue-copy">
+
+      <span class="eyebrow">
+        Thornton Hall
+      </span>
+
+      <h2>
+        A Wirral wedding with room for the day to unfold.
+      </h2>
+
+      <p>
+        Set in Thornton Hough on the Wirral, Thornton Hall Hotel &amp; Spa
+        gave Kirsty and Connor's wedding a mixture of elegant interiors,
+        gardens and relaxed spaces for the celebrations to move naturally
+        from one part of the day to the next.
+      </p>
+
+      <p>
+        For the film, the venue became the backdrop rather than the subject.
+        The focus stayed on the people inside it - the reactions, humour
+        and little interactions that gave the day its personality.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     DOCUMENTARY MOMENT
+     ========================================= -->
+
+<section class="thornton-image-break">
+
+  <div class="thornton-image-break-inner">
+
+    <img
+      src="/images/kirsty-connor-cheers.png"
+      alt="Wedding guests raising a glass during speeches at Thornton Hall in Wirral">
+
+    <div class="thornton-image-break-overlay"></div>
+
+    <div class="thornton-image-break-copy">
+
+      <span>
+        The Moments Around You
+      </span>
+
+      <p>
+        Some of the best parts of a wedding film are the moments
+        you never realised were happening.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     VIDEO
+     ========================================= -->
+
+<section class="thornton-video-section">
+
+  <div class="thornton-video">
+
+    <div class="thornton-video-heading">
+
+      <span class="eyebrow">
+        Their Story
+      </span>
+
+      <h2>
+        Watch the Wedding Film
+      </h2>
+
+      <p>
+        A faster, more rhythmic film built around movement, humour and
+        celebration, while still making space for the words that revealed
+        what Kirsty and Connor mean to the people around them.
+      </p>
+
+    </div>
+
+    <div class="thornton-video-frame">
+
+      <iframe
+        src="https://www.youtube.com/embed/wpxDWhmKgyk"
+        title="Kirsty and Connor wedding film at Thornton Hall Hotel and Spa"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     THE CREATIVE CHOICE
+     ========================================= -->
+
+<section class="thornton-creative">
+
+  <div class="thornton-creative-inner">
+
+    <div class="thornton-creative-heading">
+
+      <span class="eyebrow">
+        The Edit
+      </span>
+
+      <h2>
+        Letting their energy set the rhythm.
+      </h2>
+
+      <p>
+        Kirsty and Connor didn't need a slow, overly romantic wedding film.
+        Their personalities called for something brighter, faster and more
+        playful - without losing the emotion underneath it.
+      </p>
+
+    </div>
+
+    <div class="thornton-moments">
+
+      <div class="thornton-moment">
+
+        <span>
+          From Kirsty's Friend
+        </span>
+
+        <blockquote>
+          &ldquo;He's got a heart of gold. He's so kind and supportive,
+          and he makes Kirsty so happy.&rdquo;
+        </blockquote>
+
+      </div>
+
+      <div class="thornton-moment">
+
+        <span>
+          From The Speeches
+        </span>
+
+        <blockquote>
+          &ldquo;Thank you for loving, supporting her and being her person
+          she has chosen to live the rest of her life with.&rdquo;
+        </blockquote>
+
+      </div>
+
+    </div>
+
+    <div class="thornton-reflection">
+
+      <p>
+        The humour gave the film its pace. The relationships gave it its heart.
+        The edit needed both.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     REVIEW
+     ========================================= -->
+
+<section class="thornton-review">
+
+  <div class="thornton-review-inner">
 
     <span class="eyebrow">
-      The Approach
+      Kind Words
+    </span>
+
+    <div
+      class="thornton-stars"
+      aria-label="5 star Google review">
+      &#9733;&#9733;&#9733;&#9733;&#9733;
+    </div>
+
+    <blockquote>
+      &ldquo;Our wedding video were so amazing we loved it. He was so thoughtful
+      too as he put the subtitled on for us as we are deaf couple. We were so
+      pleased he had done that, it made a huge difference for us making us so
+      involved the video knowing what they are saying. He is amazing videographer.&rdquo;
+    </blockquote>
+
+    <p class="thornton-review-name">
+      Kirsty - Google Review
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     CTA
+     ========================================= -->
+
+<section class="thornton-cta">
+
+  <div class="thornton-cta-inner">
+
+    <span
+      class="eyebrow"
+      style="color:var(--gold);">
+      Thornton Hall Wedding Videography
     </span>
 
     <h2>
-      Wedding films that feel like your day.
+      Your personality should be in the film.
     </h2>
 
     <p>
-      From elegant country hotels and village venues to celebrations close
-      to the Wirral coastline, the peninsula offers a huge variety of
-      settings for a wedding day.
+      Horizon &amp; Company creates natural, cinematic wedding films shaped
+      around the people and atmosphere of the day. Tell us about yourselves,
+      your venue and what you're planning and we'll confirm whether your
+      date is available.
     </p>
 
-    <p>
-      Our approach is natural and documentary-led. We do not want your
-      wedding to feel like a film set. Instead, we work quietly around the
-      day as it unfolds, capturing the conversations, reactions, laughter
-      and unexpected moments that make it uniquely yours.
-    </p>
-
-    <p>
-      The result is a cinematic wedding film built around the people and
-      atmosphere of your celebration, rather than a collection of staged
-      shots.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- FEATURED WIRRAL WEDDING -->
-
-<section
-  style="
-    background:white;
-    padding-top:120px;
-    padding-bottom:100px;
-  ">
-
-  <div style="text-align:center;margin-bottom:45px;">
-
-    <span class="eyebrow">
-      A Wirral Wedding
-    </span>
-
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:2.8rem;
-        font-weight:400;
-        margin:0;
-      ">
-      Kirsty &amp; Connor
-    </h2>
-
-    <p
-      style="
-        color:#666;
-        font-size:.95rem;
-        margin-top:10px;
-      ">
-      Thornton Hall Hotel &amp; Spa
-    </p>
-
-  </div>
-
-  <a
-    href="/weddings/thornton-hall-wedding.html"
-    style="
-      display:block;
-      max-width:900px;
-      margin:auto;
-      text-decoration:none;
-      color:white;
-      position:relative;
-      overflow:hidden;
-      background:var(--charcoal);
-      box-shadow:0 25px 50px rgba(0,0,0,.1);
-    ">
-
-    <div
-      style="
-        aspect-ratio:16/9;
-        overflow:hidden;
-        position:relative;
-      ">
-
-      <img
-        src="/images/kirsty-connor-thornton-hall-wedding.jpg"
-        alt="Kirsty and Connor wedding at Thornton Hall Hotel and Spa on the Wirral"
-        style="
-          width:100%;
-          height:100%;
-          object-fit:cover;
-          object-position:center;
-          display:block;
-        ">
-
-      <div
-        style="
-          position:absolute;
-          inset:0;
-          background:linear-gradient(
-            to top,
-            rgba(0,0,0,.65),
-            rgba(0,0,0,.05) 60%
-          );
-        ">
-      </div>
-
-      <div
-        style="
-          position:absolute;
-          left:35px;
-          right:35px;
-          bottom:30px;
-        ">
-
-        <span
-          style="
-            display:block;
-            font-size:.7rem;
-            letter-spacing:2px;
-            text-transform:uppercase;
-            margin-bottom:8px;
-          ">
-          Real Wedding Film
-        </span>
-
-        <span
-          style="
-            font-family:'Baskervville',serif;
-            font-size:2rem;
-          ">
-          Watch Kirsty &amp; Connor's Wedding &rarr;
-        </span>
-
-      </div>
-
-    </div>
-
-  </a>
-
-  <div style="text-align:center;margin-top:30px;">
-
-    <a
-      href="/weddings/thornton-hall-wedding.html"
-      class="hero-btn"
-      style="
-        background:var(--charcoal);
-        color:white;
-      ">
-      View Thornton Hall Wedding
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- QUOTE -->
-
-<div class="pull-quote-section">
-
-  <p class="pull-quote">
-    &ldquo;The moments you lived. And the ones happening around you.&rdquo;
-  </p>
-
-</div>
-
-
-<!-- WIRRAL AESTHETIC -->
-
-<section
-  style="
-    padding-top:120px;
-    padding-bottom:60px;
-  ">
-
-  <div style="text-align:center;margin-bottom:80px;">
-
-    <span class="eyebrow">
-      The Wirral Aesthetic
-    </span>
-
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3rem;
-        font-weight:400;
-        margin:0;
-      ">
-      A Setting With Character
-    </h2>
-
-  </div>
-
-
-  <!-- COUNTRY & VILLAGE -->
-
-  <div class="editorial-row">
-
-    <div class="editorial-image">
-
-      <img
-        src="/images/wirral-country-wedding-videographer.jpg"
-        alt="Country wedding videographer on the Wirral">
-
-    </div>
-
-    <div class="editorial-text">
-
-      <h3>
-        Country Houses &amp; Village Weddings
-      </h3>
-
-      <p>
-        Areas such as Thornton Hough and the surrounding Wirral countryside
-        offer a completely different atmosphere from the nearby cities.
-        Green spaces, historic villages and elegant venues create a relaxed
-        setting that works beautifully on film.
-      </p>
-
-      <p>
-        Rather than constantly directing the day, we make use of the venue,
-        natural light and surroundings while keeping the focus on the people
-        and interactions happening within them.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <!-- COAST -->
-
-  <div class="editorial-row reverse">
-
-    <div class="editorial-image">
-
-      <img
-        src="/images/wirral-coastal-wedding-film.jpg"
-        alt="Coastal wedding videography on the Wirral">
-
-    </div>
-
-    <div class="editorial-text">
-
-      <h3>
-        The Wirral Coast
-      </h3>
-
-      <p>
-        From West Kirby and Hoylake to the wider coastline, the Wirral has
-        some of the most distinctive natural scenery in the North West.
-      </p>
-
-      <p>
-        Open skies, changing light and coastal landscapes can add another
-        layer to a wedding film without taking you away from the celebration
-        for hours. A few carefully chosen moments are often all that is
-        needed to establish a sense of place.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <!-- CHARACTER -->
-
-  <div class="editorial-row">
-
-    <div class="editorial-image">
-
-      <img
-        src="/images/wirral-character-wedding-venue.jpg"
-        alt="Character wedding venue videography Wirral">
-
-    </div>
-
-    <div class="editorial-text">
-
-      <h3>
-        Historic &amp; Characterful Settings
-      </h3>
-
-      <p>
-        The Wirral is filled with places where historic architecture,
-        mature gardens and characterful interiors sit alongside modern
-        celebrations.
-      </p>
-
-      <p>
-        We use those surroundings to establish the atmosphere of the day,
-        but the story always comes back to the people within them: the
-        nervous moments before the ceremony, the reactions during the
-        speeches and the energy once the evening begins.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- COLLECTIONS -->
-
-<section
-  id="collections"
-  style="
-    background:var(--light-grey);
-    border-top:1px solid var(--border);
-  ">
-
-  <div style="text-align:center;margin-bottom:60px;">
-
-    <span class="eyebrow">
-      Wedding Films
-    </span>
-
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3rem;
-        font-weight:400;
-        margin:0;
-      ">
-      Wirral Wedding Collections
-    </h2>
-
-    <p
-      style="
-        color:#666;
-        font-size:.9rem;
-        line-height:1.7;
-        max-width:650px;
-        margin:18px auto 0;
-      ">
-      Natural, cinematic wedding films crafted around the atmosphere and
-      personality of your day. All films are delivered in 4K.
-    </p>
-
-  </div>
-
-
-  <div class="packages">
-
-    <!-- NARRATIVE -->
-
-    <div
-      class="card"
-      onclick="toggleActive(this)">
-
-      <h3>
-        The Narrative
-      </h3>
-
-      <p class="price">
-        &pound;695
-      </p>
-
-      <p class="expand-hint">
-        View coverage &darr;
-      </p>
-
-      <div class="card-details">
-
-        <ul>
-          <li>Up to 8 hours of wedding day coverage</li>
-          <li>4-6 minute cinematic highlights film</li>
-          <li>Drone footage where permitted</li>
-          <li>Professional audio capture</li>
-          <li>Cinematic colour grading</li>
-          <li>Private 4K online delivery</li>
-        </ul>
-
-      </div>
-
-    </div>
-
-
-    <!-- CINEMATIC -->
-
-    <div
-      id="cinematic-default"
-      class="card active"
-      onclick="toggleActive(this)">
-
-      <h3>
-        The Cinematic
-      </h3>
-
-      <p class="price">
-        &pound;1,095
-      </p>
-
-      <p class="expand-hint">
-        Most popular &darr;
-      </p>
-
-      <div class="card-details">
-
-        <ul>
-          <li>Full day coverage from preparations to first dance</li>
-          <li>5-7 minute cinematic highlights film</li>
-          <li>Full multi-camera ceremony film</li>
-          <li>Full speeches film</li>
-          <li>Professional multi-source audio capture</li>
-          <li>Drone footage where permitted</li>
-          <li>Cinematic colour grading</li>
-          <li>Private 4K online delivery</li>
-        </ul>
-
-      </div>
-
-    </div>
-
-
-    <!-- CEREMONY -->
-
-    <div
-      class="card"
-      onclick="toggleActive(this)">
-
-      <h3>
-        The Ceremony
-      </h3>
-
-      <p class="price">
-        &pound;450
-      </p>
-
-      <p class="expand-hint">
-        View coverage &darr;
-      </p>
-
-      <div class="card-details">
-
-        <ul>
-          <li>Ceremony coverage from arrival to exit</li>
-          <li>Multi-camera ceremony film</li>
-          <li>Professional audio capture</li>
-          <li>Cinematic colour grading</li>
-          <li>Private 4K online delivery</li>
-        </ul>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- OPTIONAL EXTRAS -->
-
-  <div class="optional-extras">
-
-    <span class="eyebrow">
-      Make It Yours
-    </span>
-
-    <h3
-      style="
-        font-family:'Baskervville',serif;
-        font-size:2rem;
-        font-weight:400;
-        margin:0;
-      ">
-      Optional Extras
-    </h3>
-
-    <p
-      style="
-        color:#666;
-        font-size:.9rem;
-        line-height:1.7;
-        max-width:600px;
-        margin:15px auto 0;
-      ">
-      Add something extra to your collection, from complete ceremony
-      and speeches films to a social edit ready to share.
-    </p>
-
-    <div class="extras-grid">
-
-      <div class="extra-item">
-        <strong>Full Ceremony Film</strong>
-        <span class="extra-price">&pound;250</span>
-      </div>
-
-      <div class="extra-item">
-        <strong>Full Speeches Film</strong>
-        <span class="extra-price">&pound;250</span>
-      </div>
-
-      <div class="extra-item">
-        <strong>Social Highlight Reel</strong>
-        <span class="extra-price">&pound;95</span>
-      </div>
-
-      <div class="extra-item">
-        <strong>Subtitled Films</strong>
-        <span class="extra-price">&pound;75</span>
-      </div>
-
-      <div class="extra-item">
-        <strong>Additional Coverage</strong>
-        <span class="extra-price">&pound;75/hr</span>
-      </div>
-
-    </div>
-
-    <p
-      style="
-        color:#888;
-        font-size:.8rem;
-        line-height:1.7;
-        max-width:650px;
-        margin:25px auto 0;
-      ">
-      Full ceremony and speeches films are already included with
-      The Cinematic collection.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- FAQ -->
-
-<section
-  id="faqs"
-  style="background:white;">
-
-  <div style="text-align:center;margin-bottom:50px;">
-
-    <span class="eyebrow">
-      The Details
-    </span>
-
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3rem;
-        font-weight:400;
-        margin:0;
-      ">
-      Frequently Asked Questions
-    </h2>
-
-  </div>
-
-  <div class="faq-container">
-
-
-    <div class="faq-item">
-
-      <button
-        class="faq-question"
-        onclick="toggleFAQ(this)">
-
-        Do you film weddings across the Wirral?
-
-        <span class="faq-icon">+</span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Yes. We film weddings throughout the Wirral, including Thornton
-          Hough, Heswall, West Kirby, Hoylake, Port Sunlight and the surrounding
-          areas. We also regularly cover weddings across Liverpool, Cheshire
-          and North Wales.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="faq-item">
-
-      <button
-        class="faq-question"
-        onclick="toggleFAQ(this)">
-
-        How do we secure our date?
-
-        <span class="faq-icon">+</span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          To keep things simple and fair, dates are secured on a first-come,
-          first-served basis. Once you confirm you'd like to book, we require
-          a 25% non-refundable booking fee and a signed digital contract to
-          lock your date in our diary. The remaining balance isn't due until
-          30 days before your wedding.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="faq-item">
-
-      <button
-        class="faq-question"
-        onclick="toggleFAQ(this)">
-
-        Do you charge for travel?
-
-        <span class="faq-icon">+</span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Travel within 50 miles of our base is completely free of charge.
-          For weddings further afield across the UK or Europe, we simply
-          charge standard travel and accommodation costs at cost value,
-          which we will agree with you upfront before you book.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="faq-item">
-
-      <button
-        class="faq-question"
-        onclick="toggleFAQ(this)">
-
-        Do we get to choose the music for our film?
-
-        <span class="faq-icon">+</span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Music plays a huge role in the emotion and atmosphere of a wedding
-          film. Because of copyright restrictions, we are not able to use
-          standard commercial songs in your final film, but this is also what
-          allows the soundtrack to feel more cinematic and carefully considered.
-          <br><br>
-          With a background in music production and audio-led storytelling,
-          each film is crafted with just as much attention to what is heard as
-          what is seen. Rather than simply placing a track over the footage,
-          we carefully shape the pacing, tone and soundtrack so the finished
-          film feels natural, immersive and true to the emotion of your day.
-          <br><br>
-          The result is a wedding film that feels personal, elevated and
-          beautifully matched to the moments it captures.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="faq-item">
-
-      <button
-        class="faq-question"
-        onclick="toggleFAQ(this)">
-
-        How long does it take to get our video?
-
-        <span class="faq-icon">+</span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          We believe in taking the time to edit your film carefully rather
-          than rushing it. During peak wedding season, our standard delivery
-          time is 6-10 weeks. Your films will be delivered in 4K via a private
-          online gallery that you can download from and share with family and
-          friends.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="faq-item">
-
-      <button
-        class="faq-question"
-        onclick="toggleFAQ(this)">
-
-        Are you fully insured?
-
-        <span class="faq-icon">+</span>
-
-      </button>
-
-      <div class="faq-answer">
-
-        <p>
-          Yes. We carry comprehensive Public Liability and Professional
-          Indemnity insurance. If your venue requires a copy of our insurance
-          certificate beforehand, just let us know and we will happily email
-          it directly to their coordinator.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section
-  id="contact"
-  style="background:#f4f4f3;">
-
-  <div style="text-align:center;margin-bottom:60px;">
-
-    <h2
-      style="
-        font-family:'Baskervville',serif;
-        font-size:3rem;
-        font-weight:400;
-      ">
-      Check Availability
-    </h2>
-
-    <p style="margin-top:10px;">
-      Currently booking 2026 &amp; 2027 Wirral weddings.
-    </p>
-
-    <p
-      style="
-        font-size:.9rem;
-        color:#666;
-        margin-top:15px;
-        line-height:1.7;
-      ">
-      Whether you are planning years in advance or looking for a
-      last-minute date,
-      <br>
-      share a few details below and we'll confirm availability within 24 hours.
-    </p>
-
-  </div>
-
-  <div class="custom-form-container">
-
-    <form id="horizon-contact-form">
-
-      <div class="form-row">
-
-        <div class="form-group">
-
-          <label for="firstname">
-            First Name
-          </label>
-
-          <input
-            type="text"
-            id="firstname"
-            name="firstname"
-            required>
-
-        </div>
-
-        <div class="form-group">
-
-          <label for="lastname">
-            Last Name (Optional)
-          </label>
-
-          <input
-            type="text"
-            id="lastname"
-            name="lastname">
-
-        </div>
-
-      </div>
-
-
-      <div class="form-row">
-
-        <div class="form-group">
-
-          <label for="email">
-            Email Address
-          </label>
-
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required>
-
-        </div>
-
-        <div class="form-group">
-
-          <label for="phone">
-            Phone Number
-          </label>
-
-          <input
-            type="tel"
-            id="phone"
-            name="phone">
-
-        </div>
-
-      </div>
-
-
-      <div class="form-row">
-
-        <div class="form-group">
-
-          <label for="wedding_date">
-            Wedding Date
-          </label>
-
-          <input
-            type="date"
-            id="wedding_date"
-            name="wedding_date"
-            required>
-
-        </div>
-
-        <div class="form-group">
-
-          <label for="venue">
-            Venue(s) / Location
-          </label>
-
-          <input
-            type="text"
-            id="venue"
-            name="venue"
-            placeholder="e.g. Thornton Hall Hotel &amp; Spa">
-
-        </div>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label for="collection">
-          Collection of Interest
-        </label>
-
-        <select
-          id="collection"
-          name="collection"
-          required>
-
-          <option
-            value=""
-            disabled
-            selected>
-            Please select...
-          </option>
-
-          <option value="The Narrative">
-            The Narrative - &pound;695
-          </option>
-
-          <option value="The Cinematic">
-            The Cinematic - &pound;1,095
-          </option>
-
-          <option value="The Ceremony">
-            The Ceremony - &pound;450
-          </option>
-
-          <option value="Not Sure Yet">
-            Not Sure Yet
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label for="message">
-          Tell me a little about your plans...
-        </label>
-
-        <textarea
-          id="message"
-          name="message"
-          rows="4"
-          required></textarea>
-
-      </div>
-
-
-      <button
-        type="submit"
-        id="submit-btn"
+    <div class="thornton-links">
+
+      <a
+        href="/#contact"
+        class="hero-btn">
+        Check Your Date
+      </a>
+
+      <a
+        href="/wirral.html"
         class="hero-btn"
         style="
-          width:100%;
-          margin-top:10px;
+          background:transparent;
+          color:white;
+          border:1px solid rgba(255,255,255,.35);
         ">
-        Request Availability
-      </button>
+        Wirral Wedding Videography
+      </a>
 
-      <div
-        id="form-success"
-        style="
-          display:none;
-          margin-top:20px;
-          color:var(--gold);
-          font-style:italic;
-          text-align:center;
-        ">
-        Thank you. Your enquiry has been received and we will be in touch
-        within 24 hours.
-      </div>
-
-    </form>
+    </div>
 
   </div>
 

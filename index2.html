@@ -8,7 +8,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 /* =========================================================
    HORIZON & COMPANY
-   COMPLETE SCROLL-DRIVEN HOMEPAGE
+   SCROLL-DRIVEN HOMEPAGE
    ========================================================= */
 
 :root{
@@ -29,11 +29,11 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 /* =========================================================
-   FULL-BLEED SAFETY
+   FULL BLEED
    ========================================================= */
 
 .home-hero-scroll,
-.home-feeling,
+.home-day,
 .home-promise,
 .home-stories,
 .home-review-feature,
@@ -49,7 +49,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   max-width:none !important;
 
   left:50% !important;
-  right:auto !important;
 
   margin-left:-50vw !important;
   margin-right:0 !important;
@@ -57,20 +56,26 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   box-sizing:border-box;
 }
 
-.home-hero-scroll,
-.home-hero-sticky,
-.home-hero-sticky *,
-.home-feeling,
-.home-feeling * ,
-.home-promise,
+.home-hero-scroll *,
+.home-day *,
 .home-promise *{
   box-sizing:border-box;
 }
 
 
 /* =========================================================
-   GENERIC SECTION SPACING
+   COMMON
    ========================================================= */
+
+.eyebrow{
+  color:var(--gold);
+
+  font-size:.64rem;
+  font-weight:600;
+
+  letter-spacing:3.4px;
+  text-transform:uppercase;
+}
 
 .home-stories,
 .home-review-feature,
@@ -83,23 +88,14 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   padding:120px 5vw;
 }
 
-.eyebrow{
-  color:var(--gold);
-
-  font-size:.64rem;
-  font-weight:600;
-
-  letter-spacing:3.4px;
-  text-transform:uppercase;
-}
-
 
 /* =========================================================
-   GENERIC REVEALS
+   REVEALS
    ========================================================= */
 
 [data-reveal]{
   opacity:0;
+
   transform:translateY(34px);
 
   transition:
@@ -117,7 +113,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 [data-reveal].is-visible{
   opacity:1;
-  transform:translate(0,0);
+
+  transform:none;
 }
 
 
@@ -127,11 +124,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
    ========================================================= */
 
 .home-hero-scroll{
-  height:310vh;
+  height:315vh;
 
   background:#111;
-
-  overflow:visible;
 
   border:0 !important;
   outline:0 !important;
@@ -162,39 +157,39 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 
-/* TRUE FULL-WIDTH MEDIA */
+/* absolutely force the video to the viewport */
 
 .hero-media{
   position:absolute;
 
-  inset:0;
+  left:50%;
+  top:0;
 
-  width:100%;
-  height:100%;
+  width:100vw;
+  height:100vh;
+
+  transform:translateX(-50%);
 
   overflow:hidden;
 
-  z-index:0;
-
   background:#111;
 
-  transform:scale(1.035);
-
-  will-change:transform;
+  z-index:0;
 }
 
 .home-hero-sticky .hero-video{
   position:absolute !important;
 
-  inset:0 !important;
+  left:50% !important;
+  top:50% !important;
 
   display:block !important;
 
-  width:100% !important;
-  height:100% !important;
+  width:100vw !important;
+  height:100vh !important;
 
-  min-width:100% !important;
-  min-height:100% !important;
+  min-width:100vw !important;
+  min-height:100vh !important;
 
   max-width:none !important;
   max-height:none !important;
@@ -202,14 +197,19 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   margin:0 !important;
   padding:0 !important;
 
+  transform:
+    translate(-50%,-50%)
+    scale(1.045) !important;
+
   object-fit:cover !important;
   object-position:center center !important;
-
-  transform:none !important;
 
   border:0 !important;
   outline:0 !important;
 }
+
+
+/* overlay */
 
 .home-hero-sticky .hero-overlay{
   position:absolute;
@@ -224,9 +224,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.19) 0%,
-      rgba(0,0,0,.27) 52%,
-      rgba(0,0,0,.39) 100%
+      rgba(0,0,0,.16) 0%,
+      rgba(0,0,0,.26) 55%,
+      rgba(0,0,0,.38) 100%
     );
 
   pointer-events:none;
@@ -235,44 +235,43 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 
-/* HERO CONTENT */
+/* content */
 
 .home-hero-content{
   position:absolute !important;
 
-  inset:0 !important;
+  left:50% !important;
+  top:0 !important;
 
   z-index:2;
 
   width:min(1120px,92vw) !important;
   max-width:none !important;
 
-  height:100% !important;
+  height:100vh !important;
 
-  margin:0 auto !important;
-
-  left:50% !important;
+  margin:0 !important;
+  padding:0 !important;
 
   transform:translateX(-50%);
 
   display:flex;
+
   flex-direction:column;
 
-  justify-content:center;
   align-items:center;
-
-  padding:0 !important;
+  justify-content:center;
 }
 
 
-/* HERO STAGE */
+/* stage */
 
 .hero-stage{
   position:relative;
 
   width:100%;
-  height:290px;
 
+  height:290px;
   flex:0 0 290px;
 }
 
@@ -291,37 +290,34 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   padding:0 24px;
 
   opacity:0;
+  visibility:hidden;
 
   transform:
-    translate3d(0,110px,0)
-    scale(.965);
+    translate3d(0,100px,0)
+    scale(.97);
 
-  filter:blur(4px);
+  filter:blur(3px);
 
   pointer-events:none;
 
   will-change:
-    transform,
     opacity,
+    transform,
     filter;
 }
 
-.hero-slide.active{
-  pointer-events:auto;
-}
 
-
-/* HERO TITLE */
+/* brand */
 
 .hero-brand h1{
-  max-width:1040px;
+  max-width:1020px;
 
   margin:0;
 
   font-family:'Baskervville',serif;
 
   font-size:
-    clamp(3.8rem,5.2vw,5.35rem);
+    clamp(3.5rem,5vw,5.15rem);
 
   line-height:1;
 
@@ -335,7 +331,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   text-shadow:
     0 3px 24px
-    rgba(0,0,0,.40);
+    rgba(0,0,0,.4);
 }
 
 .hero-brand .hero-subtitle{
@@ -356,7 +352,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 
-/* HERO REVIEWS */
+/* reviews */
 
 .hero-review-kicker{
   display:block;
@@ -384,14 +380,14 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 .hero-review-quote{
-  max-width:920px;
+  max-width:900px;
 
   margin:0 auto 20px;
 
   font-family:'Baskervville',serif;
 
   font-size:
-    clamp(2rem,3.15vw,3rem);
+    clamp(1.9rem,3vw,2.9rem);
 
   line-height:1.23;
 
@@ -422,7 +418,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 
-/* HERO ACTIONS */
+/* buttons */
 
 .hero-fixed{
   position:relative;
@@ -437,11 +433,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   align-items:center;
 
-  margin-top:2px;
-
-  will-change:
-    opacity,
-    transform;
+  margin-top:4px;
 }
 
 .hero-actions{
@@ -471,20 +463,18 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   font-size:.67rem;
   font-weight:600;
 
-  letter-spacing:2.2px;
-
   line-height:1;
 
-  text-transform:uppercase;
+  letter-spacing:2.2px;
 
   text-align:center;
   text-decoration:none;
+  text-transform:uppercase;
 
   transition:
+    transform .3s ease,
     background .3s ease,
-    color .3s ease,
-    border-color .3s ease,
-    transform .3s ease;
+    color .3s ease;
 }
 
 .hero-action-primary{
@@ -495,36 +485,26 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   border:1px solid white !important;
 }
 
-.hero-action-primary:hover{
-  transform:translateY(-2px);
-}
-
 .hero-action-secondary{
   background:
-    rgba(0,0,0,.17) !important;
+    rgba(0,0,0,.16) !important;
 
   color:white !important;
 
   border:
     1px solid
-    rgba(255,255,255,.72) !important;
+    rgba(255,255,255,.7) !important;
 
   backdrop-filter:blur(4px);
   -webkit-backdrop-filter:blur(4px);
 }
 
-.hero-action-secondary:hover{
-  background:white !important;
-
-  color:var(--charcoal) !important;
-
-  border-color:white !important;
-
+.hero-action:hover{
   transform:translateY(-2px);
 }
 
 
-/* DOTS */
+/* dots */
 
 .hero-controls{
   display:flex;
@@ -547,17 +527,10 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   padding:0;
 
   border:0;
-
-  border-radius:10px;
+  border-radius:20px;
 
   background:
-    rgba(255,255,255,.38);
-
-  cursor:pointer;
-
-  transition:
-    width .3s ease,
-    background .3s ease;
+    rgba(255,255,255,.40);
 }
 
 .hero-dot.active{
@@ -567,7 +540,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 
-/* SCROLL CUE */
+/* cue */
 
 .hero-scroll-cue{
   position:absolute;
@@ -575,10 +548,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   z-index:5;
 
   left:50%;
-  bottom:22px;
+  bottom:23px;
 
-  transform:
-    translateX(-50%);
+  transform:translateX(-50%);
 
   display:flex;
 
@@ -589,40 +561,39 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   color:
     rgba(255,255,255,.72);
 
-  font-size:.55rem;
+  font-size:.54rem;
   font-weight:600;
 
-  letter-spacing:2.7px;
+  letter-spacing:2.8px;
 
   text-transform:uppercase;
-
-  pointer-events:none;
 }
 
 .hero-scroll-cue::after{
   content:"";
 
-  width:43px;
+  width:44px;
   height:1px;
 
   background:
-    rgba(255,255,255,.53);
+    rgba(255,255,255,.55);
 }
 
 
 /* =========================================================
-   WEDDING DAY — ALTERNATING STORY
+   YOUR WEDDING DAY
+
+   LEFT SIDE REMAINS.
+   RIGHT SIDE MOVES THROUGH 4 IMAGES.
    ========================================================= */
 
-.home-feeling{
-  height:460vh;
+.home-day{
+  height:470vh;
 
   background:var(--home-cream);
-
-  overflow:visible;
 }
 
-.home-feeling-sticky{
+.home-day-sticky{
   position:sticky;
 
   top:0;
@@ -635,33 +606,39 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   background:var(--home-cream);
 }
 
-.home-feeling-inner{
+.home-day-inner{
   position:relative;
 
-  width:min(1280px,90vw);
+  width:min(1260px,89vw);
   height:100%;
 
   margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    .87fr 1.13fr;
+
+  gap:100px;
+
+  align-items:center;
 }
 
 
-/* BACKGROUND WORD */
+/* background */
 
-.home-feeling-word{
+.home-day-word{
   position:absolute;
 
   left:50%;
-  top:52%;
+  top:53%;
 
-  z-index:0;
-
-  transform:
-    translate(-50%,-50%);
+  transform:translate(-50%,-50%);
 
   font-family:'Baskervville',serif;
 
   font-size:
-    clamp(11rem,21vw,22rem);
+    clamp(10rem,20vw,21rem);
 
   line-height:.8;
 
@@ -671,374 +648,233 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     rgba(25,24,22,.022);
 
   pointer-events:none;
-
-  transition:
-    opacity .16s ease;
-
-  will-change:
-    transform,
-    opacity;
 }
 
 
-/* SHARED SCENE */
+/* fixed left */
 
-.feeling-scene{
-  position:absolute;
+.home-day-copy{
+  position:relative;
 
-  inset:0;
+  z-index:4;
 
-  z-index:2;
-
-  display:grid;
-
-  grid-template-columns:
-    minmax(0,1fr)
-    minmax(0,1fr);
-
-  gap:92px;
-
-  align-items:center;
-
-  opacity:0;
-
-  pointer-events:none;
-
-  will-change:
-    transform,
-    opacity,
-    filter;
+  max-width:570px;
 }
 
-
-/* INTRO */
-
-.feeling-intro-scene{
-  grid-template-columns:
-    1.08fr .92fr;
-}
-
-.feeling-intro-copy{
-  max-width:660px;
-}
-
-.feeling-intro-copy .eyebrow{
+.home-day-copy .eyebrow{
   display:block;
 
-  margin-bottom:28px;
+  margin-bottom:27px;
 }
 
-.feeling-intro-title{
+.home-day-copy h2{
   margin:0;
 
   font-family:'Baskervville',serif;
 
   font-size:
-    clamp(4rem,6vw,6.5rem);
+    clamp(3.8rem,5.3vw,5.65rem);
 
-  line-height:.92;
+  line-height:.93;
 
   font-weight:400;
 
-  letter-spacing:-.055em;
+  letter-spacing:-.052em;
 
   color:var(--charcoal);
 }
 
-.feeling-intro-title span{
+.home-day-copy h2 span{
   display:block;
 }
 
-.feeling-intro-title em{
+.home-day-copy h2 em{
   display:block;
 
-  max-width:600px;
+  margin-top:20px;
 
-  margin-top:23px;
+  font-size:.52em;
 
-  font-size:.50em;
-
-  line-height:1.08;
+  line-height:1.07;
 
   font-weight:400;
-
   font-style:italic;
 
-  letter-spacing:-.035em;
+  letter-spacing:-.034em;
 
-  color:#777169;
+  color:#766f67;
 }
 
-.feeling-intro-copy > p{
-  max-width:540px;
+.home-day-copy > p{
+  max-width:500px;
 
-  margin:34px 0 0;
+  margin:33px 0 0;
 
-  color:#67635e;
-
-  font-size:.98rem;
-
-  line-height:1.82;
-}
-
-.feeling-intro-scroll{
-  display:flex;
-
-  align-items:center;
-
-  gap:13px;
-
-  margin-top:36px;
-
-  color:#91897f;
-
-  font-size:.54rem;
-  font-weight:600;
-
-  letter-spacing:3px;
-
-  text-transform:uppercase;
-}
-
-.feeling-intro-scroll::after{
-  content:"";
-
-  width:62px;
-  height:1px;
-
-  background:
-    linear-gradient(
-      to right,
-      var(--gold),
-      rgba(159,129,82,0)
-    );
-}
-
-
-/* INTRO IMAGE */
-
-.feeling-intro-image{
-  position:relative;
-
-  width:100%;
-
-  height:min(72vh,690px);
-
-  overflow:hidden;
-
-  background:#ddd;
-}
-
-.feeling-intro-image::before{
-  content:"";
-
-  position:absolute;
-
-  z-index:2;
-
-  inset:22px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.26);
-
-  pointer-events:none;
-}
-
-.feeling-intro-image img{
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  display:block;
-
-  transform:scale(1.05);
-}
-
-
-/* NUMBERED SCENE */
-
-.feeling-story-copy{
-  position:relative;
-
-  max-width:550px;
-}
-
-.feeling-story-image{
-  position:relative;
-
-  height:min(68vh,650px);
-
-  overflow:hidden;
-
-  background:#ddd;
-
-  box-shadow:
-    0 28px 70px
-    rgba(0,0,0,.07);
-}
-
-.feeling-story-image::after{
-  content:"";
-
-  position:absolute;
-
-  z-index:2;
-
-  inset:19px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.28);
-
-  pointer-events:none;
-}
-
-.feeling-story-image img{
-  width:100%;
-  height:100%;
-
-  display:block;
-
-  object-fit:cover;
-
-  transform:scale(1.06);
-
-  will-change:transform;
-}
-
-
-/* ALTERNATING */
-
-.feeling-scene-image-right
-.feeling-story-copy{
-  order:1;
-}
-
-.feeling-scene-image-right
-.feeling-story-image{
-  order:2;
-}
-
-.feeling-scene-image-left
-.feeling-story-image{
-  order:1;
-}
-
-.feeling-scene-image-left
-.feeling-story-copy{
-  order:2;
-}
-
-
-/* STORY COPY */
-
-.home-concern-number{
-  display:block;
-
-  margin-bottom:8px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(4.9rem,6.5vw,6.7rem);
-
-  line-height:.8;
-
-  color:var(--gold);
-}
-
-.home-concern-kicker{
-  display:block;
-
-  margin-bottom:24px;
-
-  color:#898279;
-
-  font-size:.56rem;
-  font-weight:600;
-
-  letter-spacing:3.2px;
-
-  text-transform:uppercase;
-}
-
-.feeling-story-copy h3{
-  max-width:570px;
-
-  margin:0 0 22px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(2.7rem,3.7vw,4rem);
-
-  line-height:1;
-
-  font-weight:400;
-
-  letter-spacing:-.038em;
-
-  color:var(--charcoal);
-}
-
-.feeling-story-copy p{
-  max-width:485px;
-
-  margin:0;
-
-  color:#65615c;
+  color:#67625d;
 
   font-size:.96rem;
 
   line-height:1.82;
 }
 
-.home-concern-note{
-  display:block;
 
-  max-width:450px;
+/* changing caption beneath intro */
 
-  margin-top:27px;
+.day-copy-caption{
+  position:relative;
 
-  padding-top:18px;
+  min-height:96px;
+
+  margin-top:38px;
+
+  padding-top:22px;
 
   border-top:
     1px solid
     rgba(36,35,33,.13);
+}
+
+.day-copy-caption-item{
+  position:absolute;
+
+  left:0;
+  top:22px;
+
+  width:100%;
+
+  opacity:0;
+
+  transform:
+    translateY(15px);
+
+  pointer-events:none;
+}
+
+.day-copy-caption-item span{
+  display:block;
+
+  margin-bottom:7px;
+
+  color:var(--gold);
+
+  font-size:.57rem;
+  font-weight:600;
+
+  letter-spacing:2.8px;
+
+  text-transform:uppercase;
+}
+
+.day-copy-caption-item p{
+  max-width:430px;
+
+  margin:0;
 
   font-family:'Baskervville',serif;
 
-  font-size:1.08rem;
+  font-size:1.23rem;
 
-  line-height:1.5;
+  line-height:1.45;
 
   font-style:italic;
 
-  color:#777169;
+  color:#5f5b55;
 }
 
 
-/* IMAGE LABEL */
+/* right image reel */
 
-.feeling-image-label{
-  position:absolute;
+.home-day-visual{
+  position:relative;
 
   z-index:3;
 
-  left:28px;
-  bottom:28px;
+  width:100%;
 
-  max-width:260px;
+  height:min(74vh,710px);
+
+  overflow:hidden;
+
+  background:#dad7d1;
+}
+
+.day-image{
+  position:absolute;
+
+  inset:0;
+
+  opacity:0;
+
+  transform:
+    translate3d(0,80px,0)
+    scale(1.055);
+
+  will-change:
+    opacity,
+    transform;
+}
+
+.day-image img{
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+
+  object-position:center;
+
+  transform:scale(1.045);
+}
+
+.day-image:nth-child(4) img{
+  object-position:center 38%;
+}
+
+.day-image-shade{
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.28),
+      transparent 45%
+    );
+}
+
+.day-image-border{
+  position:absolute;
+
+  inset:20px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.27);
+
+  pointer-events:none;
+}
+
+.day-image-meta{
+  position:absolute;
+
+  left:30px;
+  right:30px;
+  bottom:29px;
+
+  display:flex;
+
+  align-items:flex-end;
+  justify-content:space-between;
 
   color:white;
 }
 
-.feeling-image-label span{
+.day-image-meta-copy span{
   display:block;
 
-  margin-bottom:9px;
+  margin-bottom:8px;
 
   color:#ead0a5;
 
@@ -1050,49 +886,43 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   text-transform:uppercase;
 }
 
-.feeling-image-label p{
+.day-image-meta-copy p{
+  max-width:370px;
+
   margin:0;
 
   font-family:'Baskervville',serif;
 
-  font-size:1.28rem;
+  font-size:
+    clamp(1.35rem,2vw,1.85rem);
 
-  line-height:1.4;
+  line-height:1.25;
 
   font-style:italic;
 
   text-shadow:
     0 2px 15px
-    rgba(0,0,0,.35);
+    rgba(0,0,0,.4);
 }
 
-.feeling-image-shade{
-  position:absolute;
+.day-image-count{
+  font-family:'Baskervville',serif;
 
-  inset:0;
+  font-size:2rem;
 
-  z-index:1;
-
-  background:
-    linear-gradient(
-      180deg,
-      transparent 45%,
-      rgba(0,0,0,.30) 100%
-    );
+  color:
+    rgba(255,255,255,.9);
 }
 
 
-/* PROGRESS */
+/* progress */
 
-.feeling-progress{
+.home-day-progress{
   position:absolute;
 
   left:0;
   right:0;
-
-  bottom:30px;
-
-  z-index:8;
+  bottom:27px;
 
   height:1px;
 
@@ -1100,7 +930,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     rgba(36,35,33,.11);
 }
 
-.feeling-progress span{
+.home-day-progress span{
   display:block;
 
   width:0%;
@@ -1111,11 +941,15 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 /* =========================================================
-   PROMISE — SECOND ALTERNATING STORY
+   WHAT THE FILM GIVES YOU
+
+   NEW PURPOSE:
+   NOT ANOTHER "BE PRESENT / SEE MORE" SECTION.
+   THIS IS ABOUT WHAT FILM PRESERVES.
    ========================================================= */
 
 .home-promise{
-  height:430vh;
+  height:415vh;
 
   background:white;
 }
@@ -1133,50 +967,42 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   background:white;
 }
 
+.home-promise-inner{
+  position:relative;
+
+  width:min(1260px,89vw);
+  height:100%;
+
+  margin:auto;
+}
+
 .home-promise-word{
   position:absolute;
 
   left:50%;
-  top:50%;
+  top:52%;
 
-  z-index:0;
-
-  transform:
-    translate(-50%,-50%);
+  transform:translate(-50%,-50%);
 
   font-family:'Baskervville',serif;
 
   font-size:
     clamp(9rem,18vw,19rem);
 
-  font-style:italic;
-
   line-height:.8;
+
+  font-style:italic;
 
   white-space:nowrap;
 
   color:
-    rgba(0,0,0,.022);
+    rgba(0,0,0,.021);
 
   pointer-events:none;
-
-  transition:
-    opacity .16s ease;
-
-  will-change:
-    transform,
-    opacity;
 }
 
-.home-promise-inner{
-  position:relative;
-  z-index:2;
 
-  width:min(1260px,90vw);
-  height:100%;
-
-  margin:auto;
-}
+/* each promise scene */
 
 .promise-scene{
   position:absolute;
@@ -1186,16 +1012,15 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   display:grid;
 
   grid-template-columns:
-    minmax(0,1fr)
-    minmax(0,1fr);
+    1fr 1fr;
 
-  gap:90px;
+  gap:95px;
 
   align-items:center;
 
   opacity:0;
 
-  pointer-events:none;
+  visibility:hidden;
 
   will-change:
     opacity,
@@ -1203,49 +1028,30 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     filter;
 }
 
-
-/* ALTERNATE */
-
-.promise-scene.promise-image-right
-.promise-scene-image{
+.promise-scene.reverse
+.promise-image{
   order:2;
 }
 
-.promise-scene.promise-image-right
-.promise-scene-copy{
+.promise-scene.reverse
+.promise-copy{
   order:1;
 }
 
 
-/* IMAGE */
+/* image */
 
-.promise-scene-image{
+.promise-image{
   position:relative;
 
-  height:min(70vh,700px);
+  height:min(69vh,670px);
 
   overflow:hidden;
 
   background:#ddd;
 }
 
-.promise-scene-image::after{
-  content:"";
-
-  position:absolute;
-
-  inset:22px;
-
-  z-index:2;
-
-  border:
-    1px solid
-    rgba(255,255,255,.30);
-
-  pointer-events:none;
-}
-
-.promise-scene-image img{
+.promise-image img{
   width:100%;
   height:100%;
 
@@ -1254,46 +1060,54 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   object-fit:cover;
 
   transform:scale(1.055);
-
-  will-change:transform;
 }
 
-.promise-scene-image-shade{
+.promise-image-overlay{
   position:absolute;
 
   inset:0;
-
-  z-index:1;
 
   background:
     linear-gradient(
       to top,
       rgba(0,0,0,.24),
-      transparent 45%
+      transparent 46%
     );
 }
 
-.promise-image-label{
+.promise-image::after{
+  content:"";
+
   position:absolute;
 
-  z-index:3;
+  inset:21px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.28);
+
+  pointer-events:none;
+}
+
+.promise-image-caption{
+  position:absolute;
 
   left:30px;
-  bottom:30px;
+  bottom:29px;
 
-  max-width:280px;
+  z-index:3;
 
   color:white;
 }
 
-.promise-image-label span{
+.promise-image-caption span{
   display:block;
 
-  margin-bottom:10px;
+  margin-bottom:8px;
 
   color:#ead0a5;
 
-  font-size:.58rem;
+  font-size:.56rem;
   font-weight:600;
 
   letter-spacing:2.8px;
@@ -1301,44 +1115,46 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   text-transform:uppercase;
 }
 
-.promise-image-label p{
+.promise-image-caption p{
   margin:0;
 
   font-family:'Baskervville',serif;
 
-  font-size:1.38rem;
+  font-size:1.35rem;
 
-  line-height:1.4;
+  line-height:1.38;
 
   font-style:italic;
 
   text-shadow:
     0 2px 15px
-    rgba(0,0,0,.35);
+    rgba(0,0,0,.4);
 }
 
 
-/* COPY */
+/* copy */
 
-.promise-scene-copy{
-  max-width:565px;
+.promise-copy{
+  position:relative;
+
+  max-width:570px;
 }
 
-.promise-scene-copy .eyebrow{
+.promise-copy .eyebrow{
   display:block;
 
   margin-bottom:22px;
 }
 
-.promise-scene-copy h2{
-  margin:0 0 30px;
+.promise-copy h2{
+  margin:0 0 29px;
 
   font-family:'Baskervville',serif;
 
   font-size:
-    clamp(3.2rem,4.8vw,5rem);
+    clamp(3.15rem,4.55vw,4.75rem);
 
-  line-height:.96;
+  line-height:.98;
 
   font-weight:400;
 
@@ -1347,49 +1163,46 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   color:var(--charcoal);
 }
 
-.promise-main{
-  display:block;
-}
-
-.promise-accent{
+.promise-copy h2 em{
   display:block;
 
-  margin-top:14px;
+  margin-top:13px;
 
-  font-size:.56em;
+  font-size:.57em;
 
   line-height:1.12;
 
+  font-weight:400;
   font-style:italic;
 
   color:var(--gold);
 }
 
-.promise-scene-lead{
+.promise-lead{
   max-width:530px;
 
   margin:0;
 
   font-family:'Baskervville',serif;
 
-  font-size:1.4rem;
+  font-size:1.38rem;
 
-  line-height:1.55;
+  line-height:1.52;
 
   font-style:italic;
 
   color:var(--charcoal);
 }
 
-.promise-moment-number{
+.promise-number{
   display:block;
 
-  margin-bottom:14px;
+  margin-bottom:10px;
 
   font-family:'Baskervville',serif;
 
   font-size:
-    clamp(4.7rem,6.5vw,6.5rem);
+    clamp(4.5rem,6vw,6.2rem);
 
   line-height:.8;
 
@@ -1399,7 +1212,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .promise-kicker{
   display:block;
 
-  margin-bottom:24px;
+  margin-bottom:23px;
 
   color:#888178;
 
@@ -1411,7 +1224,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   text-transform:uppercase;
 }
 
-.promise-scene-copy h3{
+.promise-copy h3{
   max-width:560px;
 
   margin:0 0 21px;
@@ -1419,7 +1232,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   font-family:'Baskervville',serif;
 
   font-size:
-    clamp(2.6rem,3.6vw,3.8rem);
+    clamp(2.5rem,3.5vw,3.65rem);
 
   line-height:1;
 
@@ -1428,14 +1241,14 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   letter-spacing:-.034em;
 }
 
-.promise-scene-copy > p:not(.promise-scene-lead){
+.promise-copy > p:not(.promise-lead){
   max-width:500px;
 
   margin:0;
 
   color:#666;
 
-  font-size:.97rem;
+  font-size:.96rem;
 
   line-height:1.82;
 }
@@ -1443,9 +1256,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .promise-note{
   display:block;
 
-  max-width:470px;
+  max-width:465px;
 
-  margin-top:28px;
+  margin-top:27px;
 
   padding-top:18px;
 
@@ -1455,7 +1268,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   font-family:'Baskervville',serif;
 
-  font-size:1.08rem;
+  font-size:1.06rem;
 
   line-height:1.5;
 
@@ -1469,15 +1282,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   left:0;
   right:0;
-
-  bottom:30px;
-
-  z-index:8;
+  bottom:27px;
 
   height:1px;
 
   background:
-    rgba(0,0,0,.11);
+    rgba(36,35,33,.11);
 }
 
 .promise-progress span{
@@ -1511,8 +1321,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   top:75px;
   left:50%;
 
-  transform:
-    translateX(-50%);
+  transform:translateX(-50%);
 
   font-family:'Baskervville',serif;
 
@@ -1536,8 +1345,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   max-width:850px;
 
-  margin:
-    0 auto 100px;
+  margin:0 auto 100px;
 
   text-align:center;
 }
@@ -1549,8 +1357,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 .home-stories-header h2{
-  margin:
-    0 0 26px;
+  margin:0 0 26px;
 
   font-family:'Baskervville',serif;
 
@@ -1588,7 +1395,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   line-height:1.8;
 }
 
-
 .editorial-story{
   position:relative;
 
@@ -1596,8 +1402,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   max-width:1180px;
 
-  margin:
-    0 auto 135px;
+  margin:0 auto 135px;
 
   display:grid;
 
@@ -1640,12 +1445,10 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   bottom:-18px;
 
   border-right:
-    1px solid
-    rgba(0,0,0,.14);
+    1px solid rgba(0,0,0,.14);
 
   border-bottom:
-    1px solid
-    rgba(0,0,0,.14);
+    1px solid rgba(0,0,0,.14);
 
   z-index:-1;
 }
@@ -1658,8 +1461,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   border-right:0;
 
   border-left:
-    1px solid
-    rgba(0,0,0,.14);
+    1px solid rgba(0,0,0,.14);
 }
 
 .editorial-story-image a{
@@ -1678,8 +1480,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   object-fit:cover;
 
   transition:
-    transform .8s
-    cubic-bezier(.2,.7,.2,1);
+    transform .8s cubic-bezier(.2,.7,.2,1);
 }
 
 .editorial-story-image:hover img{
@@ -1740,8 +1541,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 .editorial-story-copy h3{
-  margin:
-    0 0 10px;
+  margin:0 0 10px;
 
   font-family:'Baskervville',serif;
 
@@ -1755,8 +1555,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 .editorial-story-venue{
-  margin:
-    0 0 28px;
+  margin:0 0 28px;
 
   color:var(--gold);
 
@@ -1768,8 +1567,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 .editorial-story-tone{
-  margin:
-    0 0 20px;
+  margin:0 0 20px;
 
   font-family:'Baskervville',serif;
 
@@ -1781,8 +1579,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 .editorial-story-description{
-  margin:
-    0 0 28px;
+  margin:0 0 28px;
 
   color:#626262;
 
@@ -1792,11 +1589,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 .editorial-story-quote{
-  margin:
-    31px 0;
+  margin:31px 0;
 
-  padding:
-    25px 0;
+  padding:25px 0;
 
   border-top:
     1px solid rgba(0,0,0,.15);
@@ -1806,8 +1601,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 .editorial-story-quote blockquote{
-  margin:
-    0 0 12px;
+  margin:0 0 12px;
 
   font-family:'Baskervville',serif;
 
@@ -1895,14 +1689,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   margin:auto;
 }
 
-.home-review-feature
-.eyebrow{
+.home-review-feature .eyebrow{
   color:var(--gold);
 }
 
 .home-review-stars{
-  margin:
-    22px 0 30px;
+  margin:22px 0 30px;
 
   color:#f1c76a;
 
@@ -1914,8 +1706,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .home-review-feature blockquote{
   max-width:940px;
 
-  margin:
-    0 auto 32px;
+  margin:0 auto 32px;
 
   font-family:'Baskervville',serif;
 
@@ -1939,9 +1730,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   font-size:.68rem;
 
-  text-transform:uppercase;
-
   letter-spacing:2.5px;
+
+  text-transform:uppercase;
 }
 
 
@@ -2030,13 +1821,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   aspect-ratio:4/5;
 
-  object-fit:cover;
-
   display:block;
+
+  object-fit:cover;
 }
 
-.home-process-copy
-.eyebrow{
+.home-process-copy .eyebrow{
   display:block;
 
   margin-bottom:19px;
@@ -2045,8 +1835,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .home-process-copy h2{
   max-width:680px;
 
-  margin:
-    0 0 30px;
+  margin:0 0 30px;
 
   font-family:'Baskervville',serif;
 
@@ -2077,28 +1866,23 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .home-process-lead{
   max-width:600px;
 
-  margin:
-    0 0 27px !important;
+  margin:0 0 27px !important;
 
   font-family:'Baskervville',serif;
 
-  font-size:
-    1.45rem !important;
+  font-size:1.45rem !important;
 
-  line-height:
-    1.52 !important;
+  line-height:1.52 !important;
 
   font-style:italic;
 
-  color:
-    var(--charcoal) !important;
+  color:var(--charcoal) !important;
 }
 
 .home-process-copy p{
   max-width:620px;
 
-  margin:
-    0 0 18px;
+  margin:0 0 18px;
 
   color:#595959;
 
@@ -2144,7 +1928,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 /* =========================================================
-   PHOTOGRAPHY PARTNERSHIP
+   PARTNERSHIP
    ========================================================= */
 
 .home-partner{
@@ -2264,8 +2048,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 }
 
 .home-partner-mark h3{
-  margin:
-    0 0 14px;
+  margin:0 0 14px;
 
   font-family:'Baskervville',serif;
 
@@ -2292,8 +2075,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   font-style:italic;
 }
 
-.home-partner-copy
-.eyebrow{
+.home-partner-copy .eyebrow{
   display:block;
 
   margin-bottom:20px;
@@ -2302,8 +2084,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .home-partner-copy h2{
   max-width:670px;
 
-  margin:
-    0 0 30px;
+  margin:0 0 30px;
 
   font-family:'Baskervville',serif;
 
@@ -2334,8 +2115,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .home-partner-copy p{
   max-width:650px;
 
-  margin:
-    0 0 18px;
+  margin:0 0 18px;
 
   color:#5f5f5f;
 
@@ -2347,8 +2127,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .partner-benefits{
   max-width:650px;
 
-  margin:
-    34px 0 32px;
+  margin:34px 0 32px;
 
   display:grid;
 
@@ -2381,15 +2160,13 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   width:9px;
   height:1px;
 
-  background:
-    var(--gold);
+  background:var(--gold);
 }
 
 .partner-link{
   display:inline-block;
 
-  color:
-    var(--charcoal);
+  color:var(--charcoal);
 
   text-decoration:none;
 
@@ -2401,8 +2178,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   text-transform:uppercase;
 
   border-bottom:
-    1px solid
-    var(--charcoal);
+    1px solid var(--charcoal);
 
   padding-bottom:5px;
 }
@@ -2426,8 +2202,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   left:50%;
   top:40px;
 
-  transform:
-    translateX(-50%);
+  transform:translateX(-50%);
 
   white-space:nowrap;
 
@@ -2451,22 +2226,19 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   max-width:850px;
 
-  margin:
-    0 auto 75px;
+  margin:0 auto 75px;
 
   text-align:center;
 }
 
-.home-locations-header
-.eyebrow{
+.home-locations-header .eyebrow{
   display:block;
 
   margin-bottom:20px;
 }
 
 .home-locations-header h2{
-  margin:
-    0 0 22px;
+  margin:0 0 22px;
 
   font-family:'Baskervville',serif;
 
@@ -2499,9 +2271,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   color:#666;
 
-  line-height:1.8;
-
   font-size:.92rem;
+
+  line-height:1.8;
 }
 
 .home-destination-grid{
@@ -2525,8 +2297,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .destination-card:nth-child(2),
 .home-destination-grid
 .destination-card:nth-child(4){
-  transform:
-    translateY(28px);
+  transform:translateY(28px);
 }
 
 
@@ -2537,8 +2308,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .home-collections{
   overflow:hidden;
 
-  background:
-    var(--home-cream);
+  background:var(--home-cream);
 
   border-top:
     1px solid var(--border);
@@ -2552,8 +2322,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   left:50%;
   top:40px;
 
-  transform:
-    translateX(-50%);
+  transform:translateX(-50%);
 
   white-space:nowrap;
 
@@ -2575,14 +2344,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   max-width:820px;
 
-  margin:
-    0 auto 75px;
+  margin:0 auto 75px;
 
   text-align:center;
 }
 
-.collection-intro
-.eyebrow{
+.collection-intro .eyebrow{
   display:block;
 
   margin-bottom:21px;
@@ -2618,8 +2385,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .collection-intro p{
   max-width:680px;
 
-  margin:
-    25px auto 0;
+  margin:25px auto 0;
 
   color:#666;
 
@@ -2670,14 +2436,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   max-width:800px;
 
-  margin:
-    0 auto 55px;
+  margin:0 auto 55px;
 
   text-align:center;
 }
 
-.home-faq-header
-.eyebrow{
+.home-faq-header .eyebrow{
   display:block;
 
   margin-bottom:20px;
@@ -2752,14 +2516,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   max-width:800px;
 
-  margin:
-    0 auto 62px;
+  margin:0 auto 62px;
 
   text-align:center;
 }
 
-.home-contact-header
-.eyebrow{
+.home-contact-header .eyebrow{
   display:block;
 
   margin-bottom:20px;
@@ -2797,8 +2559,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .home-contact-header p{
   max-width:650px;
 
-  margin:
-    22px auto 0;
+  margin:22px auto 0;
 
   color:#666;
 
@@ -2807,13 +2568,58 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 /* =========================================================
-   RESPONSIVE
+   SHORT SCREEN PROTECTION
+   prevents copy clipping
+   ========================================================= */
+
+@media(max-height:800px) and (min-width:901px){
+
+  .home-day-inner,
+  .home-promise-inner{
+    width:min(1180px,88vw);
+  }
+
+  .home-day-copy h2{
+    font-size:
+      clamp(3.2rem,4.6vw,4.7rem);
+  }
+
+  .home-day-visual{
+    height:70vh;
+  }
+
+  .promise-image{
+    height:65vh;
+  }
+
+  .promise-copy h2{
+    font-size:
+      clamp(2.8rem,4vw,4rem);
+  }
+
+  .promise-copy h3{
+    font-size:
+      clamp(2.15rem,3vw,3rem);
+  }
+
+  .promise-number{
+    font-size:4.3rem;
+  }
+
+  .promise-note{
+    margin-top:18px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
    ========================================================= */
 
 @media(max-width:1050px){
 
-  .feeling-scene,
-  .promise-scene{
+  .home-day-inner{
     gap:55px;
   }
 
@@ -2839,7 +2645,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 @media(max-width:900px){
 
-  /* HERO */
+  /* hero */
 
   .home-hero-scroll{
     height:auto;
@@ -2853,10 +2659,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   .hero-slide{
     opacity:0 !important;
+    visibility:hidden !important;
   }
 
   .hero-slide:first-child{
     opacity:1 !important;
+    visibility:visible !important;
 
     transform:none !important;
 
@@ -2868,84 +2676,69 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   }
 
 
-  /* WEDDING DAY */
+  /* day */
 
-  .home-feeling{
+  .home-day{
     height:auto;
   }
 
-  .home-feeling-sticky{
+  .home-day-sticky{
     position:relative;
 
     height:auto;
 
-    padding:
-      95px 0;
+    padding:90px 0;
   }
 
-  .home-feeling-inner{
+  .home-day-inner{
+    width:min(720px,88vw);
+
     height:auto;
 
-    width:min(720px,88vw);
+    display:block;
   }
 
-  .home-feeling-word,
-  .feeling-progress{
+  .home-day-word,
+  .home-day-progress{
     display:none;
   }
 
-  .feeling-scene{
+  .home-day-copy{
+    max-width:680px;
+
+    margin-bottom:55px;
+  }
+
+  .day-copy-caption{
+    display:none;
+  }
+
+  .home-day-visual{
+    height:auto;
+
+    overflow:visible;
+
+    background:transparent;
+  }
+
+  .day-image{
     position:relative;
 
     inset:auto;
 
-    grid-template-columns:1fr;
+    height:auto;
 
-    gap:40px;
+    aspect-ratio:4/5;
+
+    margin-bottom:28px;
 
     opacity:1 !important;
 
     transform:none !important;
-
-    filter:none !important;
-
-    padding:
-      60px 0;
-
-    border-bottom:
-      1px solid
-      rgba(36,35,33,.12);
-  }
-
-  .feeling-intro-scene{
-    grid-template-columns:1fr;
-  }
-
-  .feeling-intro-image{
-    height:auto;
-
-    aspect-ratio:4/5;
-  }
-
-  .feeling-story-image{
-    height:auto;
-
-    aspect-ratio:4/5;
-  }
-
-  .feeling-scene-image-right
-  .feeling-story-copy,
-  .feeling-scene-image-right
-  .feeling-story-image,
-  .feeling-scene-image-left
-  .feeling-story-copy,
-  .feeling-scene-image-left
-  .feeling-story-image{
-    order:initial;
   }
 
 
-  /* PROMISE */
+  /* promise */
 
   .home-promise{
     height:auto;
@@ -2956,14 +2749,13 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
     height:auto;
 
-    padding:
-      95px 0;
+    padding:90px 0;
   }
 
   .home-promise-inner{
-    height:auto;
-
     width:min(720px,88vw);
+
+    height:auto;
   }
 
   .home-promise-word,
@@ -2978,37 +2770,36 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
     grid-template-columns:1fr;
 
-    gap:40px;
+    gap:38px;
 
     opacity:1 !important;
+    visibility:visible !important;
 
     transform:none !important;
-
     filter:none !important;
 
-    padding:
-      60px 0;
+    padding:52px 0;
 
     border-bottom:
       1px solid
       rgba(36,35,33,.12);
   }
 
-  .promise-scene.promise-image-right
-  .promise-scene-image,
-  .promise-scene.promise-image-right
-  .promise-scene-copy{
+  .promise-scene.reverse
+  .promise-image,
+  .promise-scene.reverse
+  .promise-copy{
     order:initial;
   }
 
-  .promise-scene-image{
+  .promise-image{
     height:auto;
 
     aspect-ratio:4/5;
   }
 
 
-  /* NORMAL */
+  /* normal sections */
 
   .editorial-story,
   .editorial-story.reverse,
@@ -3056,18 +2847,11 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   }
 
   .hero-brand h1{
-    font-size:2.6rem;
-  }
-
-  .hero-brand
-  .hero-subtitle{
-    font-size:.51em;
+    font-size:2.55rem;
   }
 
   .hero-review-quote{
     font-size:1.62rem;
-
-    line-height:1.3;
   }
 
   .hero-actions{
@@ -3083,8 +2867,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     width:100%;
     height:52px;
 
-    padding:
-      0 8px;
+    padding:0 8px;
 
     font-size:.55rem;
 
@@ -3092,26 +2875,21 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   }
 
 
-  .feeling-intro-title{
-    font-size:3.2rem;
+  .home-day-copy h2{
+    font-size:3.1rem;
   }
 
-  .feeling-intro-title em{
-    font-size:.62em;
+  .home-day-copy h2 em{
+    font-size:.61em;
   }
 
-  .home-concern-number,
-  .promise-moment-number{
-    font-size:4.1rem;
-  }
 
-  .feeling-story-copy h3,
-  .promise-scene-copy h3{
-    font-size:2.55rem;
-  }
-
-  .promise-scene-copy h2{
+  .promise-copy h2{
     font-size:2.8rem;
+  }
+
+  .promise-copy h3{
+    font-size:2.45rem;
   }
 
 
@@ -3123,8 +2901,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   .home-collections,
   .home-faq,
   .home-contact{
-    padding:
-      85px 6vw;
+    padding:85px 6vw;
   }
 
   .home-stories-header h2,
@@ -3229,8 +3006,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       <div class="hero-stage">
 
 
-        <!-- INTRO -->
-
         <div
           class="hero-slide"
           data-hero-scene="0">
@@ -3251,8 +3026,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         </div>
 
-
-        <!-- REVIEW 1 -->
 
         <div
           class="hero-slide"
@@ -3279,8 +3052,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         </div>
 
-
-        <!-- REVIEW 2 -->
 
         <div
           class="hero-slide"
@@ -3374,272 +3145,286 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 <!-- ======================================================
-     YOUR WEDDING DAY
+     ONE DAY — FOUR MOMENTS
      ====================================================== -->
 
 <section
   id="headspace"
-  class="home-feeling">
+  class="home-day">
 
-  <div class="home-feeling-sticky">
+  <div class="home-day-sticky">
 
 
     <div
-      class="home-feeling-word"
-      id="feeling-word"
+      class="home-day-word"
       aria-hidden="true">
       ONE DAY
     </div>
 
 
-    <div class="home-feeling-inner">
+    <div class="home-day-inner">
 
 
-      <!-- INTRO -->
+      <!-- LEFT REMAINS FIXED -->
 
-      <div
-        class="feeling-scene feeling-intro-scene"
-        data-feeling-scene="0"
-        data-word="ONE DAY">
+      <div class="home-day-copy">
+
+        <span class="eyebrow">
+          Your Wedding Day
+        </span>
 
 
-        <div class="feeling-intro-copy">
+        <h2>
 
-          <span class="eyebrow">
-            Your Wedding Day
+          <span>
+            You spend months planning it.
           </span>
 
+          <em>
+            Then somehow, it becomes a memory in a day.
+          </em>
 
-          <h2 class="feeling-intro-title">
-
-            <span>
-              You spend months planning it.
-            </span>
-
-            <em>
-              Then somehow, it becomes a memory in a day.
-            </em>
-
-          </h2>
+        </h2>
 
 
-          <p>
-            You'll remember how it felt. But no one gets to see
-            every part of their own wedding while they're living it.
-          </p>
+        <p>
+          You'll remember how it felt. But no one gets to stand everywhere,
+          hear every conversation and notice every reaction while they're
+          living the day themselves.
+        </p>
+
+
+        <div class="day-copy-caption">
 
 
           <div
-            class="feeling-intro-scroll"
-            aria-hidden="true">
-            Keep scrolling
-          </div>
-
-        </div>
-
-
-        <div class="feeling-intro-image">
-
-          <img
-            src="/images/kirsty-connor-thornton-hall-wedding.jpg"
-            alt="Natural wedding moment at Thornton Hall"
-            loading="lazy">
-
-        </div>
-
-
-      </div>
-
-
-      <!-- 01 -->
-
-      <div
-        class="feeling-scene feeling-scene-image-right"
-        data-feeling-scene="1"
-        data-word="PRESENT">
-
-
-        <div class="feeling-story-copy">
-
-          <span class="home-concern-number">
-            01
-          </span>
-
-          <span class="home-concern-kicker">
-            Be There
-          </span>
-
-
-          <h3>
-            You shouldn't have to perform for your wedding film.
-          </h3>
-
-
-          <p>
-            You should be talking, laughing, hugging people and actually
-            experiencing your wedding — not recreating moments because
-            somebody needs another take.
-          </p>
-
-
-          <span class="home-concern-note">
-            The best moments usually happen when nobody is trying to create one.
-          </span>
-
-        </div>
-
-
-        <div class="feeling-story-image">
-
-          <img
-            src="/images/Kirsty-connor-laughter.png"
-            alt="Kirsty and Connor laughing naturally at their wedding"
-            loading="lazy">
-
-          <div class="feeling-image-shade"></div>
-
-          <div class="feeling-image-label">
+            class="day-copy-caption-item"
+            data-day-caption="0">
 
             <span>
-              Be Present
+              The Anticipation
             </span>
 
             <p>
-              Your wedding.<br>
-              Not a film set.
+              The day starts quietly, long before everyone is in the same room.
             </p>
 
           </div>
 
-        </div>
 
+          <div
+            class="day-copy-caption-item"
+            data-day-caption="1">
+
+            <span>
+              The Ceremony
+            </span>
+
+            <p>
+              Then suddenly the thing you've spent months planning is actually happening.
+            </p>
+
+          </div>
+
+
+          <div
+            class="day-copy-caption-item"
+            data-day-caption="2">
+
+            <span>
+              The People
+            </span>
+
+            <p>
+              Around you, hundreds of tiny reactions are happening at the same time.
+            </p>
+
+          </div>
+
+
+          <div
+            class="day-copy-caption-item"
+            data-day-caption="3">
+
+            <span>
+              The Celebration
+            </span>
+
+            <p>
+              By the evening, the nerves have gone and the day has become completely yours.
+            </p>
+
+          </div>
+
+
+        </div>
 
       </div>
 
 
-      <!-- 02 -->
+      <!-- RIGHT MOVES THROUGH FOUR MOMENTS -->
 
-      <div
-        class="feeling-scene feeling-scene-image-left"
-        data-feeling-scene="2"
-        data-word="MISSED">
+      <div class="home-day-visual">
 
 
-        <div class="feeling-story-image">
+        <!-- 01 -->
+
+        <div
+          class="day-image"
+          data-day-image="0">
+
+          <img
+            src="/images/kirsty-connor-thornton-hall-wedding.jpg"
+            alt="Bride and groom together during their wedding day"
+            loading="lazy">
+
+          <div class="day-image-shade"></div>
+
+          <div class="day-image-border"></div>
+
+
+          <div class="day-image-meta">
+
+            <div class="day-image-meta-copy">
+
+              <span>
+                Before It Begins
+              </span>
+
+              <p>
+                The nerves, the anticipation,
+                the last quiet moments.
+              </p>
+
+            </div>
+
+
+            <div class="day-image-count">
+              01
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- 02 -->
+
+        <div
+          class="day-image"
+          data-day-image="1">
 
           <img
             src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
-            alt="Natural wedding moment at Grosvenor Pulford"
+            alt="Wedding ceremony and emotional moments at Grosvenor Pulford"
             loading="lazy">
 
-          <div class="feeling-image-shade"></div>
+          <div class="day-image-shade"></div>
 
-          <div class="feeling-image-label">
+          <div class="day-image-border"></div>
 
-            <span>
-              See More
-            </span>
 
-            <p>
-              A whole day is happening<br>
-              around you.
-            </p>
+          <div class="day-image-meta">
+
+            <div class="day-image-meta-copy">
+
+              <span>
+                The Ceremony
+              </span>
+
+              <p>
+                The part you've imagined
+                finally becomes real.
+              </p>
+
+            </div>
+
+
+            <div class="day-image-count">
+              02
+            </div>
 
           </div>
 
         </div>
 
 
-        <div class="feeling-story-copy">
+        <!-- 03 -->
 
-          <span class="home-concern-number">
-            02
-          </span>
+        <div
+          class="day-image"
+          data-day-image="2">
 
-          <span class="home-concern-kicker">
-            See What You Missed
-          </span>
+          <img
+            src="/images/Kirsty-connor-laughter.png"
+            alt="Kirsty and Connor laughing naturally during their wedding"
+            loading="lazy">
 
+          <div class="day-image-shade"></div>
 
-          <h3>
-            While you're living one moment, another is happening somewhere else.
-          </h3>
-
-
-          <p>
-            Your parents laughing together. A reaction during the vows.
-            Your friends causing chaos outside. A look across the room
-            that lasted less than a second.
-          </p>
+          <div class="day-image-border"></div>
 
 
-          <span class="home-concern-note">
-            Some of the moments you'll value most are the ones you never knew happened.
-          </span>
+          <div class="day-image-meta">
 
-        </div>
+            <div class="day-image-meta-copy">
 
+              <span>
+                Everything Around You
+              </span>
 
-      </div>
+              <p>
+                The laughter, reactions
+                and moments you never planned.
+              </p>
 
-
-      <!-- 03 -->
-
-      <div
-        class="feeling-scene feeling-scene-image-right"
-        data-feeling-scene="3"
-        data-word="YOURS">
+            </div>
 
 
-        <div class="feeling-story-copy">
+            <div class="day-image-count">
+              03
+            </div>
 
-          <span class="home-concern-number">
-            03
-          </span>
-
-          <span class="home-concern-kicker">
-            Keep The Feeling
-          </span>
-
-
-          <h3>
-            When you watch it back, it should feel unmistakably like you.
-          </h3>
-
-
-          <p>
-            Not a template with different names dropped into it.
-            Your people, humour, voices, emotion and energy should
-            decide what your film becomes.
-          </p>
-
-
-          <span class="home-concern-note">
-            Same filmmaker. A story that could only belong to the two of you.
-          </span>
+          </div>
 
         </div>
 
 
-        <div class="feeling-story-image">
+        <!-- 04 -->
+
+        <div
+          class="day-image"
+          data-day-image="3">
 
           <img
             src="/images/kirsty-connor-thornton-hall-wedding.jpg"
-            alt="Personal cinematic wedding film moment"
+            alt="Cinematic wedding moment captured naturally"
             loading="lazy">
 
-          <div class="feeling-image-shade"></div>
+          <div class="day-image-shade"></div>
 
-          <div class="feeling-image-label">
+          <div class="day-image-border"></div>
 
-            <span>
-              Your Story
-            </span>
 
-            <p>
-              The film should feel<br>
-              unmistakably yours.
-            </p>
+          <div class="day-image-meta">
+
+            <div class="day-image-meta-copy">
+
+              <span>
+                Then It's A Memory
+              </span>
+
+              <p>
+                Months of planning.
+                One extraordinary day.
+              </p>
+
+            </div>
+
+
+            <div class="day-image-count">
+              04
+            </div>
 
           </div>
 
@@ -3650,10 +3435,10 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
       <div
-        class="feeling-progress"
+        class="home-day-progress"
         aria-hidden="true">
 
-        <span id="feeling-progress-bar"></span>
+        <span id="day-progress-bar"></span>
 
       </div>
 
@@ -3666,7 +3451,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 <!-- ======================================================
-     WHAT THE FILM GIVES YOU
+     WHAT FILM PRESERVES
      ====================================================== -->
 
 <section
@@ -3678,7 +3463,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
     <div
       class="home-promise-word"
-      id="promise-word"
       aria-hidden="true">
       REMEMBER
     </div>
@@ -3691,29 +3475,27 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
       <div
         class="promise-scene"
-        data-promise-scene="0"
-        data-word="REMEMBER">
+        data-promise-scene="0">
 
 
-        <div class="promise-scene-image">
+        <div class="promise-image">
 
           <img
-            src="/images/kirsty-connor-thornton-hall-wedding.jpg"
-            alt="Natural moment from a Thornton Hall wedding film"
+            src="/images/Kirsty-connor-laughter.png"
+            alt="A natural moment preserved in a wedding film"
             loading="lazy">
 
-          <div class="promise-scene-image-shade"></div>
+          <div class="promise-image-overlay"></div>
 
-
-          <div class="promise-image-label">
+          <div class="promise-image-caption">
 
             <span>
-              The Difference
+              More Than Pictures
             </span>
 
             <p>
-              You live the day.<br>
-              I notice the rest.
+              Movement. Voices.<br>
+              Atmosphere.
             </p>
 
           </div>
@@ -3721,7 +3503,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </div>
 
 
-        <div class="promise-scene-copy">
+        <div class="promise-copy">
 
           <span class="eyebrow">
             What The Film Gives You
@@ -3730,20 +3512,18 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
           <h2>
 
-            <span class="promise-main">
-              Relive what you remember.
-            </span>
+            Relive what you remember.
 
-            <span class="promise-accent">
-              Discover what you missed.
-            </span>
+            <em>
+              Recover everything time starts to soften.
+            </em>
 
           </h2>
 
 
-          <p class="promise-scene-lead">
-            Your wedding film isn't only about preserving the moments
-            you were there for. It's about giving you the rest of the day too.
+          <p class="promise-lead">
+            Photographs can take you back to how the day looked.
+            Film brings back how it sounded, moved and felt.
           </p>
 
         </div>
@@ -3752,33 +3532,31 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </div>
 
 
-      <!-- 01 -->
+      <!-- VOICES -->
 
       <div
-        class="promise-scene promise-image-right"
-        data-promise-scene="1"
-        data-word="PRESENT">
+        class="promise-scene reverse"
+        data-promise-scene="1">
 
 
-        <div class="promise-scene-image">
+        <div class="promise-image">
 
           <img
-            src="/images/Kirsty-connor-laughter.png"
-            alt="Natural joyful wedding moment"
+            src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
+            alt="Wedding speeches preserved on film"
             loading="lazy">
 
-          <div class="promise-scene-image-shade"></div>
+          <div class="promise-image-overlay"></div>
 
-
-          <div class="promise-image-label">
+          <div class="promise-image-caption">
 
             <span>
-              Be Present
+              Their Voices
             </span>
 
             <p>
-              Nothing to recreate.<br>
-              Nothing to perform.
+              The words become part
+              of the memory.
             </p>
 
           </div>
@@ -3786,30 +3564,31 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </div>
 
 
-        <div class="promise-scene-copy">
+        <div class="promise-copy">
 
-          <span class="promise-moment-number">
+          <span class="promise-number">
             01
           </span>
 
           <span class="promise-kicker">
-            While It Happens
+            Keep Their Voices
           </span>
 
 
           <h3>
-            Be present while it's actually happening.
+            Hear the words exactly as they were said.
           </h3>
 
 
           <p>
-            Spend the day with your people rather than thinking about
-            where the camera is. Genuine moments rarely need directing.
+            Your vows. A parent's speech. A terrible best-man joke.
+            The laugh immediately afterwards. Those voices become more
+            valuable with time, not less.
           </p>
 
 
           <span class="promise-note">
-            Your wedding should still feel like a wedding — not a film set.
+            A film doesn't just show you who was there. It lets you hear them again.
           </span>
 
         </div>
@@ -3818,33 +3597,31 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </div>
 
 
-      <!-- 02 -->
+      <!-- ATMOSPHERE -->
 
       <div
         class="promise-scene"
-        data-promise-scene="2"
-        data-word="DISCOVER">
+        data-promise-scene="2">
 
 
-        <div class="promise-scene-image">
+        <div class="promise-image">
 
           <img
-            src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
-            alt="Wedding moment captured naturally at Grosvenor Pulford"
+            src="/images/kirsty-connor-thornton-hall-wedding.jpg"
+            alt="Wedding atmosphere preserved cinematically"
             loading="lazy">
 
-          <div class="promise-scene-image-shade"></div>
+          <div class="promise-image-overlay"></div>
 
-
-          <div class="promise-image-label">
+          <div class="promise-image-caption">
 
             <span>
-              See More
+              The Atmosphere
             </span>
 
             <p>
-              Your day was bigger<br>
-              than the moments you saw.
+              Not just what happened.<br>
+              What it felt like.
             </p>
 
           </div>
@@ -3852,31 +3629,31 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </div>
 
 
-        <div class="promise-scene-copy">
+        <div class="promise-copy">
 
-          <span class="promise-moment-number">
+          <span class="promise-number">
             02
           </span>
 
           <span class="promise-kicker">
-            What You Missed
+            Keep The Feeling
           </span>
 
 
           <h3>
-            Then see everything you weren't there for.
+            Remember the energy in the room.
           </h3>
 
 
           <p>
-            The reaction behind you. Your parents laughing together.
-            Someone trying not to cry during the ceremony. The little
-            stories happening while you're living another one.
+            The nervous quiet before the ceremony. Everyone erupting
+            into laughter during a speech. The music starting and the
+            room changing completely once the evening begins.
           </p>
 
 
           <span class="promise-note">
-            Sometimes the footage you didn't know existed becomes the part you treasure most.
+            The tiny changes in atmosphere are often what make a wedding feel real again.
           </span>
 
         </div>
@@ -3885,33 +3662,31 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </div>
 
 
-      <!-- 03 -->
+      <!-- PEOPLE -->
 
       <div
-        class="promise-scene promise-image-right"
-        data-promise-scene="3"
-        data-word="HEAR">
+        class="promise-scene reverse"
+        data-promise-scene="3">
 
 
-        <div class="promise-scene-image">
+        <div class="promise-image">
 
           <img
-            src="/images/kirsty-connor-thornton-hall-wedding.jpg"
-            alt="Wedding film preserving the voices and atmosphere of the day"
+            src="/images/Kirsty-connor-laughter.png"
+            alt="Wedding guests and couple sharing natural moments"
             loading="lazy">
 
-          <div class="promise-scene-image-shade"></div>
+          <div class="promise-image-overlay"></div>
 
-
-          <div class="promise-image-label">
+          <div class="promise-image-caption">
 
             <span>
-              Hear It Again
+              Your People
             </span>
 
             <p>
-              Not just the image.<br>
-              The voice behind it.
+              The people who made
+              the day what it was.
             </p>
 
           </div>
@@ -3919,31 +3694,31 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </div>
 
 
-        <div class="promise-scene-copy">
+        <div class="promise-copy">
 
-          <span class="promise-moment-number">
+          <span class="promise-number">
             03
           </span>
 
           <span class="promise-kicker">
-            Give It A Voice
+            Keep The People
           </span>
 
 
           <h3>
-            And hear the voices exactly as they were.
+            See everyone as they really were that day.
           </h3>
 
 
           <p>
-            The vows. The terrible jokes. The speeches. The laughter
-            in the room. Photographs preserve how something looked.
-            Film gives you its voice back too.
+            Not simply standing for a photograph, but talking, moving,
+            laughing, crying and interacting with each other. The parts
+            that reveal personality rather than just appearance.
           </p>
 
 
           <span class="promise-note">
-            Years later, hearing someone's voice can matter just as much as seeing their face.
+            Years later, ordinary little moments can become the extraordinary ones.
           </span>
 
         </div>
@@ -4005,8 +3780,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 
-  <!-- ANDY & LESLEY -->
-
   <article class="editorial-story">
 
 
@@ -4020,7 +3793,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
           src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
           alt="Andy and Lesley wedding film at Grosvenor Pulford Hotel and Spa in Cheshire"
           loading="lazy">
-
 
         <span class="editorial-story-badge">
           Cheshire Wedding
@@ -4041,26 +3813,21 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         01
       </span>
 
-
       <span class="eyebrow">
         Real Wedding
       </span>
-
 
       <h3>
         Andy &amp; Lesley
       </h3>
 
-
       <p class="editorial-story-venue">
         Grosvenor Pulford Hotel &amp; Spa
       </p>
 
-
       <p class="editorial-story-tone">
         Emotional. Reflective. Full of history.
       </p>
-
 
       <p class="editorial-story-description">
         Their film became a story about family, memory and finding
@@ -4095,8 +3862,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </article>
 
 
-  <!-- KIRSTY & CONNOR -->
-
   <article class="editorial-story reverse">
 
 
@@ -4110,7 +3875,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
           src="/images/Kirsty-connor-laughter.png"
           alt="Kirsty and Connor laughing during their Thornton Hall wedding"
           loading="lazy">
-
 
         <span class="editorial-story-badge">
           Wirral Wedding
@@ -4131,26 +3895,21 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         02
       </span>
 
-
       <span class="eyebrow">
         Real Wedding
       </span>
-
 
       <h3>
         Kirsty &amp; Connor
       </h3>
 
-
       <p class="editorial-story-venue">
         Thornton Hall Hotel &amp; Spa
       </p>
 
-
       <p class="editorial-story-tone">
         Fun. Carefree. Full of energy.
       </p>
-
 
       <p class="editorial-story-description">
         This one needed movement, humour and pace. The personalities
@@ -4188,7 +3947,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 <!-- ======================================================
-     SOCIAL PROOF
+     REVIEW
      ====================================================== -->
 
 <section class="home-review-feature">
@@ -4201,19 +3960,16 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       What You'll Get Back
     </span>
 
-
     <div
       class="home-review-stars"
       aria-label="5 star Google review">
       &#9733;&#9733;&#9733;&#9733;&#9733;
     </div>
 
-
     <blockquote>
       &ldquo;He captured some really special moments
       that we didn't even get to see on the day.&rdquo;
     </blockquote>
-
 
     <p class="home-review-name">
       Aimee &middot; Google Review
@@ -4313,8 +4069,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
       </div>
 
-
     </div>
+
 
   </div>
 
@@ -4433,8 +4189,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         Visit Ruby Salmon Photography &rarr;
       </a>
 
-
     </div>
+
 
   </div>
 
@@ -5059,7 +4815,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
       <div class="form-row">
 
-
         <div class="form-group">
 
           <label for="firstname">
@@ -5088,12 +4843,10 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         </div>
 
-
       </div>
 
 
       <div class="form-row">
-
 
         <div class="form-group">
 
@@ -5123,12 +4876,10 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         </div>
 
-
       </div>
 
 
       <div class="form-row">
-
 
         <div class="form-group">
 
@@ -5158,7 +4909,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
             placeholder="e.g. Thornton Hall Hotel">
 
         </div>
-
 
       </div>
 
@@ -5262,10 +5012,6 @@ document.addEventListener(
   function(){
 
 
-    /* =====================================================
-       GLOBAL
-       ===================================================== */
-
     const reduceMotion =
       window.matchMedia(
         '(prefers-reduced-motion: reduce)'
@@ -5289,7 +5035,7 @@ document.addEventListener(
     }
 
 
-    function sectionProgress(
+    function getProgress(
       section
     ){
 
@@ -5312,219 +5058,12 @@ document.addEventListener(
       }
 
 
-      const travelled =
-        clamp(
-          -rect.top,
-          0,
-          available
-        );
-
-
-      return travelled /
-        available;
-
-    }
-
-
-
-    /* =====================================================
-       GENERIC PINNED SCENE ENGINE
-
-       This intentionally uses a slightly narrower
-       visible range than before.
-
-       Result:
-       old copy gets out of the way before new
-       copy becomes fully readable.
-       ===================================================== */
-
-    function updateSceneSet(
-      section,
-      scenes,
-      options
-    ){
-
-      if(
-        !section ||
-        !scenes.length ||
-        window.innerWidth <= 900 ||
-        reduceMotion
-      ){
-        return {
-          progress:0,
-          activeIndex:0
-        };
-      }
-
-
-      const progress =
-        sectionProgress(
-          section
-        );
-
-
-      const maxIndex =
-        scenes.length - 1;
-
-
-      const position =
-        progress *
-        maxIndex;
-
-
-      let activeIndex =
-        Math.round(
-          position
-        );
-
-
-      activeIndex =
-        clamp(
-          activeIndex,
-          0,
-          maxIndex
-        );
-
-
-      scenes.forEach(
-        function(
-          scene,
-          index
-        ){
-
-          const relative =
-            index -
-            position;
-
-
-          const distance =
-            Math.abs(
-              relative
-            );
-
-
-          /*
-             Hard crossfade window.
-
-             At around +/-0.58 old content
-             has almost completely disappeared.
-          */
-
-          let opacity =
-            1 -
-            (
-              distance *
-              1.82
-            );
-
-
-          opacity =
-            clamp(
-              opacity,
-              0,
-              1
-            );
-
-
-          if(
-            distance > .62
-          ){
-            opacity = 0;
-          }
-
-
-          const direction =
-            relative >= 0
-              ? 1
-              : -1;
-
-
-          const y =
-            direction *
-            Math.min(
-              distance,
-              1
-            ) *
-            options.travel;
-
-
-          const scale =
-            1 -
-            Math.min(
-              distance,
-              1
-            ) *
-            .025;
-
-
-          const blur =
-            Math.min(
-              distance,
-              1
-            ) *
-            2.8;
-
-
-          scene.style.opacity =
-            opacity;
-
-
-          scene.style.transform =
-            'translate3d(0,' +
-            y +
-            'px,0) scale(' +
-            scale +
-            ')';
-
-
-          scene.style.filter =
-            'blur(' +
-            blur +
-            'px)';
-
-
-          scene.style.visibility =
-            opacity <= .01
-              ? 'hidden'
-              : 'visible';
-
-
-          scene.style.zIndex =
-            index === activeIndex
-              ? '6'
-              : '2';
-
-
-          /*
-             Image movement follows the scroll.
-          */
-
-          const image =
-            scene.querySelector(
-              options.imageSelector
-            );
-
-
-          if(image){
-
-            image.style.transform =
-              'scale(1.07) translateY(' +
-              (
-                relative *
-                -22
-              ) +
-              'px)';
-
-          }
-
-        }
+      return clamp(
+        -rect.top /
+        available,
+        0,
+        1
       );
-
-
-      return {
-        progress:progress,
-        activeIndex:activeIndex
-      };
 
     }
 
@@ -5562,15 +5101,15 @@ document.addEventListener(
       );
 
 
-    const heroMedia =
-      document.querySelector(
-        '.hero-media'
-      );
-
-
     const heroOverlay =
       document.querySelector(
         '.hero-overlay'
+      );
+
+
+    const heroVideo =
+      document.querySelector(
+        '.hero-video'
       );
 
 
@@ -5584,95 +5123,48 @@ document.addEventListener(
 
       if(
         !heroSection ||
-        !heroScenes.length
+        window.innerWidth <= 900
       ){
         return;
-      }
-
-
-      if(
-        window.innerWidth <= 900 ||
-        reduceMotion
-      ){
-
-        heroScenes.forEach(
-          function(
-            scene,
-            index
-          ){
-
-            scene.style.opacity =
-              index === 0
-                ? '1'
-                : '0';
-
-
-            scene.style.transform =
-              'none';
-
-
-            scene.style.filter =
-              'none';
-
-          }
-        );
-
-
-        return;
-
       }
 
 
       const progress =
-        sectionProgress(
+        getProgress(
           heroSection
         );
 
 
       /*
-         Reserve later section for the
-         clean-video moment.
+         Reviews consume first 68% of scroll.
 
-         0 - .64 = intro/review/review
-         .64 onwards = disappear + clean film
+         The last third is deliberately
+         clean film before releasing the section.
       */
 
-      const storyProgress =
+      const sceneProgress =
         clamp(
-          progress / .64,
+          progress / .68,
           0,
           1
         );
 
 
       const position =
-        storyProgress *
-        2;
-
-
-      let activeIndex =
-        Math.round(
-          position
-        );
-
-
-      activeIndex =
-        clamp(
-          activeIndex,
-          0,
-          2
-        );
-
-
-      const overallExit =
-        clamp(
-          (
-            progress -
-            .64
-          ) /
-          .12,
-          0,
+        sceneProgress *
+        (
+          heroScenes.length -
           1
+        );
+
+
+      const activeIndex =
+        clamp(
+          Math.round(
+            position
+          ),
+          0,
+          heroScenes.length - 1
         );
 
 
@@ -5695,10 +5187,8 @@ document.addEventListener(
 
           let opacity =
             1 -
-            (
-              distance *
-              1.75
-            );
+            distance *
+            1.8;
 
 
           opacity =
@@ -5709,25 +5199,21 @@ document.addEventListener(
             );
 
 
-          if(
-            distance > .62
-          ){
-            opacity = 0;
-          }
+          const exit =
+            clamp(
+              (
+                progress -
+                .67
+              ) /
+              .11,
+              0,
+              1
+            );
 
 
           opacity *=
             1 -
-            overallExit;
-
-
-          const y =
-            relative *
-            100 -
-            (
-              overallExit *
-              190
-            );
+            exit;
 
 
           scene.style.opacity =
@@ -5735,14 +5221,19 @@ document.addEventListener(
 
 
           scene.style.visibility =
-            opacity <= .01
-              ? 'hidden'
-              : 'visible';
+            opacity > .02
+              ? 'visible'
+              : 'hidden';
 
 
           scene.style.transform =
             'translate3d(0,' +
-            y +
+            (
+              relative *
+              105 -
+              exit *
+              180
+            ) +
             'px,0) scale(' +
             (
               1 -
@@ -5762,15 +5253,9 @@ document.addEventListener(
                 distance,
                 1
               ) *
-              2.8
+              2.6
             ) +
             'px)';
-
-
-          scene.classList.toggle(
-            'active',
-            index === activeIndex
-          );
 
         }
       );
@@ -5791,20 +5276,15 @@ document.addEventListener(
       );
 
 
-      /*
-         Buttons remain for intro + reviews.
-         Only leave once third message has played.
-      */
-
       if(heroFixed){
 
-        const fixedExit =
+        const exit =
           clamp(
             (
               progress -
-              .65
+              .68
             ) /
-            .12,
+            .1,
             0,
             1
           );
@@ -5812,16 +5292,16 @@ document.addEventListener(
 
         heroFixed.style.opacity =
           1 -
-          fixedExit;
+          exit;
 
 
         heroFixed.style.transform =
-          'translate3d(0,' +
+          'translateY(' +
           (
-            fixedExit *
+            exit *
             -90
           ) +
-          'px,0)';
+          'px)';
 
       }
 
@@ -5831,10 +5311,8 @@ document.addEventListener(
         heroCue.style.opacity =
           clamp(
             1 -
-            (
-              progress *
-              6
-            ),
+            progress *
+            7,
             0,
             1
           );
@@ -5842,36 +5320,13 @@ document.addEventListener(
       }
 
 
-      /*
-         Remove slight initial crop towards
-         clean full-video moment.
-      */
-
-      if(heroMedia){
-
-        const scale =
-          1.035 -
-          (
-            progress *
-            .035
-          );
-
-
-        heroMedia.style.transform =
-          'scale(' +
-          scale +
-          ')';
-
-      }
-
-
       if(heroOverlay){
 
-        const cleanProgress =
+        const clean =
           clamp(
             (
               progress -
-              .68
+              .7
             ) /
             .18,
             0,
@@ -5881,18 +5336,32 @@ document.addEventListener(
 
         heroOverlay.style.opacity =
           1 -
-          (
-            cleanProgress *
-            .62
-          );
+          clean *
+          .62;
+
+      }
+
+
+      if(
+        heroVideo &&
+        !reduceMotion
+      ){
+
+        const zoom =
+          1.045 -
+          progress *
+          .025;
+
+
+        heroVideo.style.transform =
+          'translate(-50%,-50%) scale(' +
+          zoom +
+          ')';
 
       }
 
     }
 
-
-
-    /* HERO DOTS */
 
     heroDots.forEach(
       function(dot){
@@ -5906,7 +5375,7 @@ document.addEventListener(
             }
 
 
-            const target =
+            const index =
               parseInt(
                 dot.getAttribute(
                   'data-hero-target'
@@ -5915,11 +5384,11 @@ document.addEventListener(
               );
 
 
-            if(
-              Number.isNaN(target)
-            ){
-              return;
-            }
+            const sectionTop =
+              window.scrollY +
+              heroSection
+                .getBoundingClientRect()
+                .top;
 
 
             const available =
@@ -5927,30 +5396,25 @@ document.addEventListener(
               window.innerHeight;
 
 
-            const top =
-              window.scrollY +
-              heroSection
-                .getBoundingClientRect()
-                .top;
-
-
-            const targetStoryProgress =
-              target / 2;
+            const sceneFraction =
+              index /
+              Math.max(
+                heroScenes.length - 1,
+                1
+              );
 
 
             const targetProgress =
-              targetStoryProgress *
-              .64;
+              sceneFraction *
+              .68;
 
 
             window.scrollTo({
 
               top:
-                top +
-                (
-                  available *
-                  targetProgress
-                ),
+                sectionTop +
+                available *
+                targetProgress,
 
               behavior:'smooth'
 
@@ -5965,171 +5429,171 @@ document.addEventListener(
 
 
     /* =====================================================
-       WEDDING DAY
+       DAY IMAGE REEL
        ===================================================== */
 
-    const feelingSection =
+    const daySection =
       document.querySelector(
-        '.home-feeling'
+        '.home-day'
       );
 
 
-    const feelingScenes =
+    const dayImages =
       Array.from(
         document.querySelectorAll(
-          '[data-feeling-scene]'
+          '[data-day-image]'
         )
       );
 
 
-    const feelingWord =
-      document.getElementById(
-        'feeling-word'
+    const dayCaptions =
+      Array.from(
+        document.querySelectorAll(
+          '[data-day-caption]'
+        )
       );
 
 
-    const feelingProgressBar =
+    const dayProgressBar =
       document.getElementById(
-        'feeling-progress-bar'
+        'day-progress-bar'
       );
 
 
-    let feelingWordTimer =
-      null;
-
-
-    function changeFeelingWord(
-      word
-    ){
+    function updateDay(){
 
       if(
-        !feelingWord ||
-        feelingWord.dataset.currentWord ===
-        word
+        !daySection ||
+        window.innerWidth <= 900
       ){
         return;
       }
 
 
-      feelingWord.dataset.currentWord =
-        word;
-
-
-      feelingWord.style.opacity =
-        '0';
-
-
-      if(feelingWordTimer){
-
-        clearTimeout(
-          feelingWordTimer
-        );
-
-      }
-
-
-      feelingWordTimer =
-        window.setTimeout(
-          function(){
-
-            feelingWord.textContent =
-              word;
-
-
-            feelingWord.style.opacity =
-              '1';
-
-          },
-          100
-        );
-
-    }
-
-
-    function updateFeeling(){
-
-      const state =
-        updateSceneSet(
-
-          feelingSection,
-
-          feelingScenes,
-
-          {
-            travel:150,
-
-            imageSelector:
-              '.feeling-story-image img, .feeling-intro-image img'
-          }
-
+      const progress =
+        getProgress(
+          daySection
         );
 
 
-      if(
-        window.innerWidth <= 900 ||
-        reduceMotion
-      ){
-        return;
-      }
-
-
-      const activeScene =
-        feelingScenes[
-          state.activeIndex
-        ];
-
-
-      if(activeScene){
-
-        changeFeelingWord(
-          activeScene.getAttribute(
-            'data-word'
-          ) ||
-          'ONE DAY'
+      const position =
+        progress *
+        (
+          dayImages.length -
+          1
         );
 
-      }
+
+      dayImages.forEach(
+        function(
+          image,
+          index
+        ){
+
+          const relative =
+            index -
+            position;
 
 
-      if(feelingWord){
+          const distance =
+            Math.abs(
+              relative
+            );
 
-        const x =
+
+          let opacity =
+            1 -
+            distance *
+            1.55;
+
+
+          opacity =
+            clamp(
+              opacity,
+              0,
+              1
+            );
+
+
+          image.style.opacity =
+            opacity;
+
+
+          image.style.visibility =
+            opacity > .01
+              ? 'visible'
+              : 'hidden';
+
+
+          image.style.transform =
+            'translate3d(0,' +
+            (
+              relative *
+              105
+            ) +
+            'px,0) scale(' +
+            (
+              1.055 -
+              Math.min(
+                distance,
+                1
+              ) *
+              .025
+            ) +
+            ')';
+
+        }
+      );
+
+
+      dayCaptions.forEach(
+        function(
+          caption,
+          index
+        ){
+
+          const relative =
+            index -
+            position;
+
+
+          const distance =
+            Math.abs(
+              relative
+            );
+
+
+          const opacity =
+            clamp(
+              1 -
+              distance *
+              2.2,
+              0,
+              1
+            );
+
+
+          caption.style.opacity =
+            opacity;
+
+
+          caption.style.transform =
+            'translateY(' +
+            (
+              relative *
+              18
+            ) +
+            'px)';
+
+        }
+      );
+
+
+      if(dayProgressBar){
+
+        dayProgressBar.style.width =
           (
-            state.progress -
-            .5
-          ) *
-          38;
-
-
-        const y =
-          (
-            state.progress -
-            .5
-          ) *
-          -75;
-
-
-        feelingWord.style.transform =
-          'translate3d(calc(-50% + ' +
-          x +
-          'px),calc(-50% + ' +
-          y +
-          'px),0) scale(' +
-          (
-            1 +
-            state.progress *
-            .04
-          ) +
-          ')';
-
-      }
-
-
-      if(feelingProgressBar){
-
-        feelingProgressBar.style.width =
-          (
-            state.progress *
+            progress *
             100
           ) +
           '%';
@@ -6158,148 +5622,150 @@ document.addEventListener(
       );
 
 
-    const promiseWord =
-      document.getElementById(
-        'promise-word'
-      );
-
-
     const promiseProgressBar =
       document.getElementById(
         'promise-progress-bar'
       );
 
 
-    let promiseWordTimer =
-      null;
-
-
-    function changePromiseWord(
-      word
-    ){
-
-      if(
-        !promiseWord ||
-        promiseWord.dataset.currentWord ===
-        word
-      ){
-        return;
-      }
-
-
-      promiseWord.dataset.currentWord =
-        word;
-
-
-      promiseWord.style.opacity =
-        '0';
-
-
-      if(promiseWordTimer){
-
-        clearTimeout(
-          promiseWordTimer
-        );
-
-      }
-
-
-      promiseWordTimer =
-        window.setTimeout(
-          function(){
-
-            promiseWord.textContent =
-              word;
-
-
-            promiseWord.style.opacity =
-              '1';
-
-          },
-          100
-        );
-
-    }
-
-
     function updatePromise(){
 
-      const state =
-        updateSceneSet(
-
-          promiseSection,
-
-          promiseScenes,
-
-          {
-            travel:145,
-
-            imageSelector:
-              '.promise-scene-image img'
-          }
-
-        );
-
-
       if(
-        window.innerWidth <= 900 ||
-        reduceMotion
+        !promiseSection ||
+        window.innerWidth <= 900
       ){
         return;
       }
 
 
-      const activeScene =
-        promiseScenes[
-          state.activeIndex
-        ];
-
-
-      if(activeScene){
-
-        changePromiseWord(
-          activeScene.getAttribute(
-            'data-word'
-          ) ||
-          'REMEMBER'
+      const progress =
+        getProgress(
+          promiseSection
         );
 
-      }
+
+      const position =
+        progress *
+        (
+          promiseScenes.length -
+          1
+        );
 
 
-      if(promiseWord){
+      promiseScenes.forEach(
+        function(
+          scene,
+          index
+        ){
 
-        const x =
-          (
-            state.progress -
-            .5
-          ) *
-          -60;
-
-
-        const y =
-          (
-            state.progress -
-            .5
-          ) *
-          42;
+          const relative =
+            index -
+            position;
 
 
-        promiseWord.style.transform =
-          'translate3d(calc(-50% + ' +
-          x +
-          'px),calc(-50% + ' +
-          y +
-          'px),0)';
+          const distance =
+            Math.abs(
+              relative
+            );
 
-      }
+
+          let opacity =
+            1 -
+            distance *
+            1.75;
+
+
+          opacity =
+            clamp(
+              opacity,
+              0,
+              1
+            );
+
+
+          /*
+             deliberately prevent neighbouring
+             panels both remaining readable
+          */
+
+          if(
+            distance >
+            .62
+          ){
+            opacity = 0;
+          }
+
+
+          scene.style.opacity =
+            opacity;
+
+
+          scene.style.visibility =
+            opacity > .01
+              ? 'visible'
+              : 'hidden';
+
+
+          scene.style.transform =
+            'translate3d(0,' +
+            (
+              relative *
+              125
+            ) +
+            'px,0) scale(' +
+            (
+              1 -
+              Math.min(
+                distance,
+                1
+              ) *
+              .025
+            ) +
+            ')';
+
+
+          scene.style.filter =
+            'blur(' +
+            (
+              Math.min(
+                distance,
+                1
+              ) *
+              2.4
+            ) +
+            'px)';
+
+
+          const image =
+            scene.querySelector(
+              '.promise-image img'
+            );
+
+
+          if(
+            image &&
+            !reduceMotion
+          ){
+
+            image.style.transform =
+              'scale(1.065) translateY(' +
+              (
+                relative *
+                -18
+              ) +
+              'px)';
+
+          }
+
+        }
+      );
 
 
       if(promiseProgressBar){
 
         promiseProgressBar.style.width =
           (
-            state.progress *
+            progress *
             100
           ) +
           '%';
@@ -6338,7 +5804,6 @@ document.addEventListener(
 
       const revealObserver =
         new IntersectionObserver(
-
           function(entries){
 
             entries.forEach(
@@ -6366,14 +5831,12 @@ document.addEventListener(
             );
 
           },
-
           {
             threshold:.14,
 
             rootMargin:
               '0px 0px -6% 0px'
           }
-
         );
 
 
@@ -6398,27 +5861,23 @@ document.addEventListener(
     window.toggleActive =
       function(card){
 
-        const cards =
-          document.querySelectorAll(
+        document
+          .querySelectorAll(
             '.packages .card'
-          );
+          )
+          .forEach(
+            function(item){
 
+              if(item !== card){
 
-        cards.forEach(
-          function(item){
+                item.classList.remove(
+                  'active'
+                );
 
-            if(
-              item !== card
-            ){
-
-              item.classList.remove(
-                'active'
-              );
+              }
 
             }
-
-          }
-        );
+          );
 
 
         card.classList.toggle(
@@ -6459,7 +5918,7 @@ document.addEventListener(
           );
 
 
-        const currentlyOpen =
+        const open =
           item.classList.contains(
             'active'
           );
@@ -6470,43 +5929,41 @@ document.addEventListener(
             '.faq-item.active'
           )
           .forEach(
-            function(openItem){
+            function(other){
 
-              if(
-                openItem === item
-              ){
+              if(other === item){
                 return;
               }
 
 
-              openItem.classList.remove(
+              other.classList.remove(
                 'active'
               );
 
 
-              const openAnswer =
-                openItem.querySelector(
+              const otherAnswer =
+                other.querySelector(
                   '.faq-answer'
                 );
 
 
-              const openIcon =
-                openItem.querySelector(
+              const otherIcon =
+                other.querySelector(
                   '.faq-icon'
                 );
 
 
-              if(openAnswer){
+              if(otherAnswer){
 
-                openAnswer.style.maxHeight =
+                otherAnswer.style.maxHeight =
                   null;
 
               }
 
 
-              if(openIcon){
+              if(otherIcon){
 
-                openIcon.textContent =
+                otherIcon.textContent =
                   '+';
 
               }
@@ -6515,7 +5972,7 @@ document.addEventListener(
           );
 
 
-        if(currentlyOpen){
+        if(open){
 
           item.classList.remove(
             'active'
@@ -6567,24 +6024,24 @@ document.addEventListener(
 
 
     /* =====================================================
-       SCROLL LOOP
+       SCROLL
        ===================================================== */
 
     let ticking = false;
 
 
-    function updateEverything(){
+    function update(){
 
       updateHero();
 
-      updateFeeling();
+      updateDay();
 
       updatePromise();
 
     }
 
 
-    function handleScroll(){
+    function onScroll(){
 
       if(ticking){
         return;
@@ -6594,10 +6051,10 @@ document.addEventListener(
       ticking = true;
 
 
-      window.requestAnimationFrame(
+      requestAnimationFrame(
         function(){
 
-          updateEverything();
+          update();
 
           ticking = false;
 
@@ -6609,7 +6066,7 @@ document.addEventListener(
 
     window.addEventListener(
       'scroll',
-      handleScroll,
+      onScroll,
       {
         passive:true
       }
@@ -6618,15 +6075,11 @@ document.addEventListener(
 
     window.addEventListener(
       'resize',
-      function(){
-
-        updateEverything();
-
-      }
+      update
     );
 
 
-    updateEverything();
+    update();
 
 
   }

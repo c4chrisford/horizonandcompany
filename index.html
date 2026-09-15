@@ -18,10 +18,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 .home-hero-content{
   width:min(980px, 92vw);
   height:100%;
+
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+
   box-sizing:border-box;
 }
 
@@ -32,9 +34,10 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 .hero-stage{
   position:relative;
+
   width:100%;
-  height:285px;
-  flex:0 0 285px;
+  height:260px;
+  flex:0 0 260px;
 
   display:flex;
   align-items:center;
@@ -51,16 +54,2745 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   justify-content:center;
 
   padding:0 30px;
+
   box-sizing:border-box;
 
   opacity:0;
   visibility:hidden;
+
   transform:translateY(8px);
 
   transition:
     opacity .65s ease,
     transform .65s ease,
     visibility .65s ease;
+
+  pointer-events:none;
+}
+
+.hero-slide.active{
+  opacity:1;
+  visibility:visible;
+
+  transform:translateY(0);
+}
+
+
+/* =========================================
+   HERO BRAND SLIDE
+   ========================================= */
+
+.hero-brand h1{
+  max-width:950px;
+
+  margin:0;
+
+  font-family:'Baskervville',serif;
+  font-size:4.15rem;
+  line-height:1.05;
+  font-weight:400;
+
+  color:white;
+
+  text-align:center;
+
+  text-shadow:
+    0 3px 24px rgba(0,0,0,.35);
+}
+
+.hero-brand .hero-subtitle{
+  display:block;
+
+  margin-top:16px;
+
+  font-family:'Baskervville',serif;
+  font-size:1.9rem;
+  line-height:1.3;
+  font-weight:400;
+  font-style:italic;
+
+  color:rgba(255,255,255,.94);
+}
+
+
+/* =========================================
+   HERO REVIEW SLIDES
+   ========================================= */
+
+.hero-review-kicker{
+  margin-bottom:15px;
+
+  color:var(--gold);
+
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:3.5px;
+  text-transform:uppercase;
+}
+
+.hero-review-stars{
+  margin-bottom:17px;
+
+  color:#f1c76a;
+
+  font-size:.92rem;
+  line-height:1;
+  letter-spacing:5px;
+}
+
+.hero-review-quote{
+  max-width:870px;
+
+  margin:0 auto 20px;
+
+  font-family:'Baskervville',serif;
+  font-size:2.65rem;
+  line-height:1.24;
+  font-weight:400;
+  font-style:italic;
+
+  color:white;
+
+  text-align:center;
+
+  text-shadow:
+    0 3px 24px rgba(0,0,0,.38);
+}
+
+.hero-review-name{
+  margin:0;
+
+  color:rgba(255,255,255,.9);
+
+  font-size:.66rem;
+  font-weight:600;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+}
+
+
+/* =========================================
+   HERO ACTION AREA
+   ========================================= */
+
+.hero-fixed{
+  position:relative;
+  z-index:5;
+
+  width:100%;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  margin-top:12px;
+}
+
+
+/*
+   Deliberately NOT using .hero-btn here.
+
+   This prevents global button styles elsewhere
+   on the website from changing the size,
+   padding or alignment of these two buttons.
+*/
+
+.hero-actions{
+  width:100%;
+
+  display:grid;
+  grid-template-columns:repeat(2, 270px);
+
+  justify-content:center;
+
+  gap:14px;
+}
+
+.hero-action{
+  width:270px;
+  height:58px;
+
+  min-width:0;
+  min-height:0;
+  max-width:none;
+
+  margin:0;
+  padding:0 24px;
+
+  box-sizing:border-box;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:0;
+
+  font-family:inherit;
+  font-size:.68rem;
+  font-weight:600;
+  line-height:1;
+  letter-spacing:2.2px;
+  text-transform:uppercase;
+
+  text-align:center;
+  text-decoration:none;
+
+  cursor:pointer;
+
+  transition:
+    background .3s ease,
+    color .3s ease,
+    border-color .3s ease,
+    transform .3s ease;
+}
+
+
+/* PRIMARY */
+
+.hero-action-primary{
+  background:white !important;
+  color:var(--charcoal) !important;
+
+  border:1px solid white !important;
+}
+
+.hero-action-primary:hover{
+  background:rgba(255,255,255,.9) !important;
+
+  transform:translateY(-2px);
+}
+
+
+/* SECONDARY */
+
+.hero-action-secondary{
+  background:rgba(0,0,0,.16) !important;
+  color:white !important;
+
+  border:1px solid rgba(255,255,255,.72) !important;
+
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+}
+
+.hero-action-secondary:hover{
+  background:white !important;
+  color:var(--charcoal) !important;
+  border-color:white !important;
+
+  transform:translateY(-2px);
+}
+
+
+/* =========================================
+   HERO CONTROLS
+   ========================================= */
+
+.hero-controls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:10px;
+
+  margin-top:24px;
+}
+
+.hero-dot{
+  appearance:none;
+  -webkit-appearance:none;
+
+  width:7px;
+  height:7px;
+
+  padding:0;
+  margin:0;
+
+  border:0;
+  border-radius:20px;
+
+  background:rgba(255,255,255,.42);
+
+  cursor:pointer;
+
+  transition:
+    width .3s ease,
+    background .3s ease;
+}
+
+.hero-dot.active{
+  width:26px;
+
+  background:white;
+}
+
+.hero-dot:hover{
+  background:rgba(255,255,255,.85);
+}
+
+.hero-dot:focus-visible{
+  outline:2px solid white;
+  outline-offset:4px;
+}
+
+
+/* =========================================
+   INTRO / POSITIONING
+   ========================================= */
+
+.home-intro{
+  max-width:900px;
+
+  margin:auto;
+
+  text-align:center;
+}
+
+.home-intro h2{
+  margin:0 0 28px;
+
+  font-family:'Baskervville',serif;
+  font-size:3.5rem;
+  line-height:1.15;
+  font-weight:400;
+}
+
+.home-intro-lead{
+  max-width:740px;
+
+  margin:0 auto 24px;
+
+  font-family:'Baskervville',serif;
+  font-size:1.45rem;
+  line-height:1.6;
+  font-style:italic;
+
+  color:var(--charcoal);
+}
+
+.home-intro p{
+  max-width:740px;
+
+  margin:0 auto 18px;
+
+  color:#555;
+
+  font-size:1rem;
+  line-height:1.85;
+}
+
+
+/* =========================================
+   REAL WEDDINGS
+   ========================================= */
+
+.home-stories{
+  background:white;
+
+  border-top:1px solid var(--border);
+}
+
+.home-stories-header{
+  max-width:820px;
+
+  margin:0 auto 65px;
+
+  text-align:center;
+}
+
+.home-stories-header h2{
+  margin:0 0 20px;
+
+  font-family:'Baskervville',serif;
+  font-size:3.2rem;
+  line-height:1.15;
+  font-weight:400;
+}
+
+.home-stories-header p{
+  max-width:680px;
+
+  margin:auto;
+
+  color:#666;
+
+  line-height:1.8;
+  font-size:.95rem;
+}
+
+.story-grid{
+  max-width:1100px;
+
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:30px;
+}
+
+.story-card{
+  background:var(--light-grey);
+
+  border:1px solid var(--border);
+
+  overflow:hidden;
+}
+
+.story-card-link{
+  display:block;
+
+  text-decoration:none;
+
+  color:var(--charcoal);
+}
+
+.story-image{
+  position:relative;
+
+  aspect-ratio:16/10;
+
+  overflow:hidden;
+
+  background:#ddd;
+}
+
+.story-image img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  display:block;
+
+  transition:transform .6s ease;
+}
+
+.story-card:hover .story-image img{
+  transform:scale(1.035);
+}
+
+.story-overlay{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.62),
+      rgba(0,0,0,.02) 65%
+    );
+}
+
+.story-location{
+  position:absolute;
+
+  left:28px;
+  bottom:24px;
+
+  color:white;
+
+  font-size:.68rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.story-copy{
+  padding:34px 34px 30px;
+}
+
+.story-copy h3{
+  margin:0 0 7px;
+
+  font-family:'Baskervville',serif;
+  font-size:2.25rem;
+  font-weight:400;
+}
+
+.story-venue{
+  margin:0 0 22px;
+
+  color:var(--gold);
+
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.68rem;
+}
+
+.story-tone{
+  margin:0 0 15px;
+
+  font-family:'Baskervville',serif;
+  font-size:1.3rem;
+  line-height:1.45;
+  font-style:italic;
+
+  color:var(--charcoal);
+}
+
+.story-description{
+  margin:0 0 25px;
+
+  color:#666;
+
+  font-size:.91rem;
+  line-height:1.75;
+}
+
+.story-watch{
+  font-size:.68rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-weight:600;
+}
+
+.story-proof{
+  padding:0 34px 34px;
+}
+
+.story-proof-inner{
+  padding-top:28px;
+
+  border-top:1px solid var(--border);
+}
+
+.story-stars{
+  margin-bottom:15px;
+
+  color:var(--gold);
+
+  letter-spacing:3px;
+  font-size:.8rem;
+}
+
+.story-proof blockquote{
+  margin:0 0 15px;
+
+  font-family:'Baskervville',serif;
+  font-size:1.12rem;
+  font-style:italic;
+  line-height:1.55;
+
+  color:#333;
+}
+
+.story-reviewer{
+  margin:0;
+
+  color:#888;
+
+  font-size:.65rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.stories-cta{
+  margin-top:45px;
+
+  text-align:center;
+}
+
+
+/* =========================================
+   SOCIAL PROOF
+   ========================================= */
+
+.home-review-feature{
+  background:var(--light-grey);
+
+  border-top:1px solid var(--border);
+
+  text-align:center;
+}
+
+.home-review-feature-inner{
+  max-width:850px;
+
+  margin:auto;
+}
+
+.home-review-feature blockquote{
+  margin:0 auto 25px;
+
+  font-family:'Baskervville',serif;
+  font-size:2rem;
+  line-height:1.5;
+  font-style:italic;
+
+  color:var(--charcoal);
+}
+
+.home-review-name{
+  margin:0;
+
+  color:#777;
+
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+
+/* =========================================
+   FILMMAKER
+   ========================================= */
+
+.home-process{
+  background:white;
+
+  border-top:1px solid var(--border);
+}
+
+.home-process-grid{
+  max-width:1050px;
+
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+
+  gap:80px;
+
+  align-items:center;
+}
+
+.home-process-image img{
+  width:100%;
+
+  aspect-ratio:4/5;
+
+  object-fit:cover;
+
+  display:block;
+
+  box-shadow:0 20px 45px rgba(0,0,0,.08);
+}
+
+.home-process-copy h2{
+  margin:0 0 25px;
+
+  font-family:'Baskervville',serif;
+  font-size:3rem;
+  line-height:1.18;
+  font-weight:400;
+}
+
+.home-process-copy p{
+  margin:0 0 18px;
+
+  color:#555;
+
+  font-size:.96rem;
+  line-height:1.85;
+}
+
+
+/* =========================================
+   PHOTO + FILM PARTNERSHIP
+   ========================================= */
+
+.home-partner{
+  background:var(--charcoal);
+
+  color:white;
+
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.home-partner-inner{
+  max-width:1050px;
+
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+
+  gap:80px;
+
+  align-items:center;
+}
+
+.home-partner-mark{
+  min-height:420px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid rgba(255,255,255,.16);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.06),
+      rgba(255,255,255,.015)
+    );
+}
+
+.home-partner-mark-inner{
+  max-width:320px;
+
+  padding:45px;
+
+  text-align:center;
+}
+
+.home-partner-mark-small{
+  display:block;
+
+  margin-bottom:18px;
+
+  color:var(--gold);
+
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.home-partner-mark h3{
+  margin:0 0 12px;
+
+  font-family:'Baskervville',serif;
+  font-size:2.5rem;
+  line-height:1.15;
+  font-weight:400;
+
+  color:white;
+}
+
+.home-partner-mark p{
+  margin:0;
+
+  color:rgba(255,255,255,.65);
+
+  font-family:'Baskervville',serif;
+  font-size:1.1rem;
+  line-height:1.5;
+  font-style:italic;
+}
+
+.home-partner-copy .eyebrow{
+  color:var(--gold);
+}
+
+.home-partner-copy h2{
+  max-width:600px;
+
+  margin:0 0 28px;
+
+  font-family:'Baskervville',serif;
+  font-size:3rem;
+  line-height:1.15;
+  font-weight:400;
+
+  color:white;
+}
+
+.home-partner-copy p{
+  max-width:620px;
+
+  margin:0 0 18px;
+
+  color:rgba(255,255,255,.74);
+
+  font-size:.96rem;
+  line-height:1.85;
+}
+
+.home-partner-copy strong{
+  color:white;
+}
+
+.partner-benefits{
+  max-width:620px;
+
+  margin:32px 0 34px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:12px;
+}
+
+.partner-benefit{
+  padding:18px 20px;
+
+  border:1px solid rgba(255,255,255,.13);
+
+  color:rgba(255,255,255,.82);
+
+  font-size:.77rem;
+  line-height:1.5;
+  letter-spacing:.5px;
+}
+
+.partner-link{
+  min-height:54px;
+
+  padding:0 27px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid rgba(255,255,255,.55);
+
+  color:white;
+
+  text-decoration:none;
+
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  transition:
+    background .3s ease,
+    color .3s ease,
+    border-color .3s ease,
+    transform .3s ease;
+}
+
+.partner-link:hover{
+  background:white;
+
+  color:var(--charcoal);
+
+  border-color:white;
+
+  transform:translateY(-2px);
+}
+
+
+/* =========================================
+   LOCATIONS
+   ========================================= */
+
+.home-locations{
+  background:var(--light-grey);
+
+  border-top:1px solid var(--border);
+}
+
+.home-locations-header{
+  max-width:760px;
+
+  margin:0 auto 55px;
+
+  text-align:center;
+}
+
+.home-locations-header h2{
+  margin:0 0 18px;
+
+  font-family:'Baskervville',serif;
+  font-size:3rem;
+  line-height:1.2;
+  font-weight:400;
+}
+
+.home-locations-header p{
+  max-width:620px;
+
+  margin:auto;
+
+  color:#666;
+
+  line-height:1.8;
+  font-size:.92rem;
+}
+
+.home-destination-grid{
+  max-width:1100px;
+
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+
+  gap:18px;
+}
+
+
+/* =========================================
+   COLLECTIONS
+   ========================================= */
+
+.collection-intro{
+  max-width:720px;
+
+  margin:0 auto 60px;
+
+  text-align:center;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media(max-width:1000px){
+
+  .home-destination-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+
+@media(max-width:900px){
+
+  .story-grid,
+  .home-process-grid,
+  .home-partner-inner{
+    grid-template-columns:1fr;
+  }
+
+  .home-process-grid,
+  .home-partner-inner{
+    gap:40px;
+  }
+
+  .home-process-image{
+    max-width:500px;
+
+    margin:auto;
+  }
+
+  .home-partner-mark{
+    min-height:320px;
+  }
+
+  .home-intro h2,
+  .home-stories-header h2,
+  .home-process-copy h2,
+  .home-partner-copy h2,
+  .home-locations-header h2{
+    font-size:2.5rem;
+  }
+
+  .home-review-feature blockquote{
+    font-size:1.65rem;
+  }
+
+  .hero-stage{
+    height:250px;
+    flex-basis:250px;
+  }
+
+  .hero-brand h1{
+    font-size:3.35rem;
+  }
+
+  .hero-brand .hero-subtitle{
+    font-size:1.55rem;
+  }
+
+  .hero-review-quote{
+    max-width:720px;
+
+    font-size:2.15rem;
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  .home-hero-content{
+    width:95vw;
+  }
+
+  .hero-stage{
+    height:250px;
+    flex-basis:250px;
+  }
+
+  .hero-slide{
+    padding:0 15px;
+  }
+
+  .hero-brand h1{
+    font-size:2.55rem;
+    line-height:1.08;
+  }
+
+  .hero-brand .hero-subtitle{
+    margin-top:12px;
+
+    font-size:1.25rem;
+    line-height:1.35;
+  }
+
+  .hero-review-kicker{
+    margin-bottom:11px;
+
+    font-size:.6rem;
+  }
+
+  .hero-review-stars{
+    margin-bottom:13px;
+  }
+
+  .hero-review-quote{
+    max-width:95%;
+
+    margin-bottom:14px;
+
+    font-size:1.65rem;
+    line-height:1.3;
+  }
+
+  .hero-actions{
+    width:min(390px, 90vw);
+
+    grid-template-columns:1fr 1fr;
+
+    gap:8px;
+  }
+
+  .hero-action{
+    width:100%;
+    height:52px;
+
+    padding:0 9px;
+
+    font-size:.56rem;
+    letter-spacing:1.35px;
+  }
+
+  .hero-controls{
+    margin-top:18px;
+  }
+
+  .story-copy,
+  .story-proof{
+    padding-left:25px;
+    padding-right:25px;
+  }
+
+  .home-intro h2{
+    font-size:2.35rem;
+  }
+
+  .partner-benefits{
+    grid-template-columns:1fr;
+  }
+
+  .home-destination-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+@media(prefers-reduced-motion:reduce){
+
+  .hero-slide{
+    transition:none;
+
+    transform:none;
+  }
+
+  .hero-dot{
+    transition:none;
+  }
+
+}
+
+</style>
+
+
+<!-- =========================================
+     HERO
+     ========================================= -->
+
+<div
+  id="hero"
+  class="hero">
+
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="hero-video">
+
+    <source
+      src="/videos/cinematic-uk-wedding-videographer-horizon-co.mp4"
+      type="video/mp4">
+
+  </video>
+
+
+  <div class="hero-overlay"></div>
+
+
+  <div class="hero-content home-hero-content">
+
+
+    <!-- =====================================
+         ROTATING MESSAGES
+         ===================================== -->
+
+    <div
+      class="hero-stage"
+      id="hero-stage">
+
+
+      <!-- ===================================
+           01 - BRAND PROMISE
+           =================================== -->
+
+      <div
+        class="hero-slide hero-brand active"
+        data-slide="0">
+
+        <h1>
+
+          The Moments You Lived.
+
+          <span class="hero-subtitle">
+            And The Ones Happening Around You
+          </span>
+
+        </h1>
+
+      </div>
+
+
+      <!-- ===================================
+           02 - PROOF OF THE PROMISE
+           =================================== -->
+
+      <div
+        class="hero-slide"
+        data-slide="1">
+
+        <span class="hero-review-kicker">
+          The Moments You Missed
+        </span>
+
+        <div
+          class="hero-review-stars"
+          aria-label="5 star Google review">
+
+          &#9733;&#9733;&#9733;&#9733;&#9733;
+
+        </div>
+
+        <p class="hero-review-quote">
+          &ldquo;He captured some really special moments
+          that we didn't even get to see on the day.&rdquo;
+        </p>
+
+        <p class="hero-review-name">
+          Aimee &middot; Google Review
+        </p>
+
+      </div>
+
+
+      <!-- ===================================
+           03 - EXPERIENCE
+           =================================== -->
+
+      <div
+        class="hero-slide"
+        data-slide="2">
+
+        <span class="hero-review-kicker">
+          A Natural Approach
+        </span>
+
+        <div
+          class="hero-review-stars"
+          aria-label="5 star Google review">
+
+          &#9733;&#9733;&#9733;&#9733;&#9733;
+
+        </div>
+
+        <p class="hero-review-quote">
+          &ldquo;He went above and beyond and
+          blended in seamlessly to our day.&rdquo;
+        </p>
+
+        <p class="hero-review-name">
+          Aimee &middot; Google Review
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================
+         FIXED HERO ACTIONS
+         ===================================== -->
+
+    <div class="hero-fixed">
+
+      <div class="hero-actions">
+
+        <a
+          href="#real-weddings"
+          class="hero-action hero-action-primary">
+          Watch A Wedding Film
+        </a>
+
+        <a
+          href="#contact"
+          class="hero-action hero-action-secondary">
+          Check Availability
+        </a>
+
+      </div>
+
+
+      <!-- ===================================
+           HERO CONTROLS
+           =================================== -->
+
+      <div
+        class="hero-controls"
+        aria-label="Hero messages">
+
+        <button
+          type="button"
+          class="hero-dot active"
+          data-target="0"
+          aria-label="Show introduction">
+        </button>
+
+        <button
+          type="button"
+          class="hero-dot"
+          data-target="1"
+          aria-label="Show review about captured moments">
+        </button>
+
+        <button
+          type="button"
+          class="hero-dot"
+          data-target="2"
+          aria-label="Show review about the filming experience">
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================
+     APPROACH
+     ========================================= -->
+
+<section id="about">
+
+  <div class="home-intro">
+
+    <span class="eyebrow">
+      The Approach
+    </span>
+
+    <h2>
+      A film that feels like your wedding.
+    </h2>
+
+    <p class="home-intro-lead">
+      Beautifully made, but never at the expense of what actually happened.
+    </p>
+
+    <p>
+      We film quietly and let the day unfold naturally.
+      The laughter, the nerves, the reactions and the little moments
+      happening around you are what give the film its character.
+    </p>
+
+    <p>
+      In the edit, the people, speeches and atmosphere guide the
+      soundtrack, pacing and story. The result is polished and cinematic,
+      while still feeling unmistakably yours.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     REAL WEDDINGS
+     ========================================= -->
+
+<section
+  id="real-weddings"
+  class="home-stories">
+
+  <div class="home-stories-header">
+
+    <span class="eyebrow">
+      Real Wedding Films
+    </span>
+
+    <h2>
+      Every wedding has its own feeling.
+    </h2>
+
+    <p>
+      The films below couldn't feel more different - and that's the point.
+      Each was shaped by the people, emotion and energy of the day, from
+      the music and pacing to the moments that became part of the story.
+    </p>
+
+  </div>
+
+
+  <div class="story-grid">
+
+
+    <!-- =====================================
+         ANDY & LESLEY
+         ===================================== -->
+
+    <article class="story-card">
+
+      <a
+        href="/weddings/grosvenor-pulford-wedding.html"
+        class="story-card-link">
+
+        <div class="story-image">
+
+          <img
+            src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
+            alt="Andy and Lesley wedding film at Grosvenor Pulford Hotel and Spa in Cheshire"
+            loading="lazy">
+
+          <div class="story-overlay"></div>
+
+          <span class="story-location">
+            Cheshire
+          </span>
+
+        </div>
+
+
+        <div class="story-copy">
+
+          <h3>
+            Andy &amp; Lesley
+          </h3>
+
+          <p class="story-venue">
+            Grosvenor Pulford Hotel &amp; Spa
+          </p>
+
+          <p class="story-tone">
+            Emotional. Reflective. Full of history.
+          </p>
+
+          <p class="story-description">
+            A story shaped by family, memories and the feeling of finding
+            the right person at the right point in life.
+          </p>
+
+          <span class="story-watch">
+            Watch Their Story &rarr;
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <div class="story-proof">
+
+        <div class="story-proof-inner">
+
+          <blockquote>
+            &ldquo;Andy tells me that you're the love of his life and he wishes
+            he would have met you sooner.&rdquo;
+          </blockquote>
+
+          <p class="story-reviewer">
+            From Their Wedding Speeches
+          </p>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- =====================================
+         KIRSTY & CONNOR
+         ===================================== -->
+
+    <article class="story-card">
+
+      <a
+        href="/weddings/thornton-hall-wedding.html"
+        class="story-card-link">
+
+        <div class="story-image">
+
+          <img
+            src="/images/kirsty-connor-thornton-hall-wedding.jpg"
+            alt="Kirsty and Connor wedding film at Thornton Hall Hotel and Spa in Wirral"
+            loading="lazy">
+
+          <div class="story-overlay"></div>
+
+          <span class="story-location">
+            Wirral
+          </span>
+
+        </div>
+
+
+        <div class="story-copy">
+
+          <h3>
+            Kirsty &amp; Connor
+          </h3>
+
+          <p class="story-venue">
+            Thornton Hall Hotel &amp; Spa
+          </p>
+
+          <p class="story-tone">
+            Fun. Carefree. Full of energy.
+          </p>
+
+          <p class="story-description">
+            A playful, fast-moving film shaped around their humour,
+            big personalities and the warmth underneath it all.
+          </p>
+
+          <span class="story-watch">
+            Watch Their Story &rarr;
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <div class="story-proof">
+
+        <div class="story-proof-inner">
+
+          <div
+            class="story-stars"
+            aria-label="5 star Google review">
+
+            &#9733;&#9733;&#9733;&#9733;&#9733;
+
+          </div>
+
+          <blockquote>
+            &ldquo;Our wedding video were so amazing we loved it...
+            it made a huge difference for us.&rdquo;
+          </blockquote>
+
+          <p class="story-reviewer">
+            Kirsty - Google Review
+          </p>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <div class="stories-cta">
+
+    <a
+      href="/wedding-films.html"
+      class="hero-btn"
+      style="
+        background:white;
+        color:var(--charcoal);
+        border:1px solid var(--border);
+      ">
+      Explore Wedding Films
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     SOCIAL PROOF
+     ========================================= -->
+
+<section class="home-review-feature">
+
+  <div class="home-review-feature-inner">
+
+    <span class="eyebrow">
+      Kind Words
+    </span>
+
+    <div
+      class="story-stars"
+      style="margin-bottom:25px;"
+      aria-label="5 star Google review">
+
+      &#9733;&#9733;&#9733;&#9733;&#9733;
+
+    </div>
+
+    <blockquote>
+      &ldquo;Chris was the videographer for our wedding, and we could not
+      recommend him more. He was so friendly, professional and we are
+      absolutely delighted with our video.&rdquo;
+    </blockquote>
+
+    <p class="home-review-name">
+      Aimee - Google Review
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     FILMMAKER
+     ========================================= -->
+
+<section
+  id="filmmaker"
+  class="home-process">
+
+  <div class="home-process-grid">
+
+    <div class="home-process-image">
+
+      <img
+        src="/images/profile.jpg"
+        alt="Chris Ford, wedding videographer and founder of Horizon & Company"
+        loading="lazy">
+
+    </div>
+
+
+    <div class="home-process-copy">
+
+      <span class="eyebrow">
+        Behind The Lens
+      </span>
+
+      <h2>
+        Quiet on the day.<br>
+        Thoughtful in the edit.
+      </h2>
+
+      <p>
+        On the wedding day, the approach is deliberately relaxed and
+        unobtrusive. The less you think about the camera, the more honest
+        the moments become.
+      </p>
+
+      <p>
+        In the edit, the speeches, reactions and relationships begin to
+        shape the film. Some moments need space, others need pace, and
+        sometimes a few words matter more than the most beautiful shot.
+      </p>
+
+      <p>
+        A background in music production brings particular attention to
+        sound, rhythm and atmosphere, helping the finished film feel
+        immersive rather than simply a collection of highlights.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     PHOTOGRAPHY + FILM PARTNERSHIP
+     ========================================= -->
+
+<section class="home-partner">
+
+  <div class="home-partner-inner">
+
+
+    <!-- LEFT -->
+
+    <div class="home-partner-mark">
+
+      <div class="home-partner-mark-inner">
+
+        <span class="home-partner-mark-small">
+          Photography + Film
+        </span>
+
+        <h3>
+          Already in sync.
+        </h3>
+
+        <p>
+          Two storytellers. One relaxed wedding day.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT -->
+
+    <div class="home-partner-copy">
+
+      <span class="eyebrow">
+        Photography &amp; Videography
+      </span>
+
+      <h2>
+        A photo and film team that already knows how to work together.
+      </h2>
+
+      <p>
+        I regularly work alongside
+        <strong>Carol at Ruby Salmon Photography</strong>
+        at weddings across the North West.
+        Because we've already covered weddings together, we understand
+        each other's pace, positioning and priorities throughout the day.
+      </p>
+
+      <p>
+        That means your photographer and videographer aren't competing for
+        the same moment or constantly directing you in different ways.
+        We know when to coordinate, when to give each other space and how
+        to capture what we both need without making the wedding feel like
+        a production.
+      </p>
+
+      <p>
+        If you're still looking for wedding photography as well as film,
+        Ruby Salmon Photography is someone I'm genuinely happy to recommend.
+      </p>
+
+
+      <div class="partner-benefits">
+
+        <div class="partner-benefit">
+          Less competing for the same shots
+        </div>
+
+        <div class="partner-benefit">
+          A more relaxed experience for you
+        </div>
+
+        <div class="partner-benefit">
+          Natural, unobtrusive approaches
+        </div>
+
+        <div class="partner-benefit">
+          A team already used to working together
+        </div>
+
+      </div>
+
+
+      <a
+        href="https://rubysalmonphotography.com/"
+        target="_blank"
+        rel="noopener"
+        class="partner-link">
+
+        Visit Ruby Salmon Photography &rarr;
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     LOCATIONS
+     ========================================= -->
+
+<section
+  id="destinations"
+  class="home-locations">
+
+  <div class="home-locations-header">
+
+    <span class="eyebrow">
+      Wedding Videography
+    </span>
+
+    <h2>
+      Across the North West &amp; Beyond
+    </h2>
+
+    <p>
+      Based on the Wirral and filming weddings across Cheshire,
+      Liverpool, North Wales, the wider UK and Europe.
+    </p>
+
+  </div>
+
+
+  <div class="home-destination-grid">
+
+
+    <!-- WIRRAL -->
+
+    <a
+      href="/wirral.html"
+      class="destination-card">
+
+      <img
+        src="/images/thurstaston.jpg"
+        alt="Wirral wedding videographer"
+        loading="lazy">
+
+      <div class="destination-overlay">
+
+        <h3>
+          Wirral
+        </h3>
+
+        <p>
+          Coast, Countryside &amp; Character
+        </p>
+
+      </div>
+
+    </a>
+
+
+    <!-- LIVERPOOL -->
+
+    <a
+      href="/liverpool.html"
+      class="destination-card">
+
+      <img
+        src="/images/albert-dock-liverpool-wedding-videographer.jpg"
+        alt="Liverpool wedding videographer"
+        loading="lazy">
+
+      <div class="destination-overlay">
+
+        <h3>
+          Liverpool
+        </h3>
+
+        <p>
+          City Weddings &amp; Urban Charm
+        </p>
+
+      </div>
+
+    </a>
+
+
+    <!-- CHESHIRE -->
+
+    <a
+      href="/cheshire.html"
+      class="destination-card">
+
+      <img
+        src="/images/cheshire-wedding-videographer-luxury-estate.jpg"
+        alt="Cheshire wedding videographer"
+        loading="lazy">
+
+      <div class="destination-overlay">
+
+        <h3>
+          Cheshire
+        </h3>
+
+        <p>
+          Barns, Hotels &amp; Country Houses
+        </p>
+
+      </div>
+
+    </a>
+
+
+    <!-- NORTH WALES -->
+
+    <a
+      href="/north-wales.html"
+      class="destination-card">
+
+      <img
+        src="/images/north-wales-wedding-videographer-anglesey.jpg"
+        alt="North Wales wedding videographer"
+        loading="lazy">
+
+      <div class="destination-overlay">
+
+        <h3>
+          North Wales
+        </h3>
+
+        <p>
+          Wild &amp; Natural Settings
+        </p>
+
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     COLLECTIONS
+     ========================================= -->
+
+<section
+  id="collections"
+  style="
+    background:white;
+    border-top:1px solid var(--border);
+  ">
+
+  <div class="collection-intro">
+
+    <span class="eyebrow">
+      Wedding Videography Packages
+    </span>
+
+    <h2
+      style="
+        font-family:'Baskervville',serif;
+        font-size:3rem;
+        font-weight:400;
+        margin:0;
+      ">
+      Choose Your Coverage
+    </h2>
+
+    <p
+      style="
+        color:#666;
+        font-size:.92rem;
+        line-height:1.75;
+        margin:18px auto 0;
+      ">
+      The coverage changes. The creative care doesn't.
+      Choose the collection that best fits how much of the day
+      you would like preserved.
+    </p>
+
+  </div>
+
+
+  <div class="packages">
+
+
+    <!-- NARRATIVE -->
+
+    <div
+      class="card"
+      onclick="toggleActive(this)">
+
+      <h3>
+        The Narrative
+      </h3>
+
+      <p class="price">
+        &pound;695
+      </p>
+
+      <p class="expand-hint">
+        View coverage &darr;
+      </p>
+
+      <div class="card-details">
+
+        <ul>
+          <li>Up to 8 hours of wedding day coverage</li>
+          <li>4-6 minute cinematic highlights film</li>
+          <li>Drone footage where permitted</li>
+          <li>Professional audio capture</li>
+          <li>Cinematic colour grading</li>
+          <li>Private 4K online delivery</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <!-- CINEMATIC -->
+
+    <div
+      id="cinematic-default"
+      class="card active"
+      onclick="toggleActive(this)">
+
+      <h3>
+        The Cinematic
+      </h3>
+
+      <p class="price">
+        &pound;1,095
+      </p>
+
+      <p class="expand-hint">
+        Most popular &darr;
+      </p>
+
+      <div class="card-details">
+
+        <ul>
+          <li>Full day coverage from preparations to first dance</li>
+          <li>5-7 minute cinematic highlights film</li>
+          <li>Full multi-camera ceremony film</li>
+          <li>Full speeches film</li>
+          <li>Professional multi-source audio capture</li>
+          <li>Drone footage where permitted</li>
+          <li>Cinematic colour grading</li>
+          <li>Private 4K online delivery</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <!-- CEREMONY -->
+
+    <div
+      class="card"
+      onclick="toggleActive(this)">
+
+      <h3>
+        The Ceremony
+      </h3>
+
+      <p class="price">
+        &pound;450
+      </p>
+
+      <p class="expand-hint">
+        View coverage &darr;
+      </p>
+
+      <div class="card-details">
+
+        <ul>
+          <li>Ceremony coverage from arrival to exit</li>
+          <li>Multi-camera ceremony film</li>
+          <li>Professional audio capture</li>
+          <li>Cinematic colour grading</li>
+          <li>Private 4K online delivery</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- OPTIONAL EXTRAS -->
+
+  <div class="optional-extras">
+
+    <span class="eyebrow">
+      Make It Yours
+    </span>
+
+    <h3
+      style="
+        font-family:'Baskervville',serif;
+        font-size:2rem;
+        font-weight:400;
+        margin:0;
+      ">
+      Optional Extras
+    </h3>
+
+
+    <div class="extras-grid">
+
+      <div class="extra-item">
+        <strong>Full Ceremony Film</strong>
+        <span class="extra-price">&pound;250</span>
+      </div>
+
+      <div class="extra-item">
+        <strong>Full Speeches Film</strong>
+        <span class="extra-price">&pound;250</span>
+      </div>
+
+      <div class="extra-item">
+        <strong>Social Highlight Reel</strong>
+        <span class="extra-price">&pound;95</span>
+      </div>
+
+      <div class="extra-item">
+        <strong>Subtitled Films</strong>
+        <span class="extra-price">&pound;75</span>
+      </div>
+
+      <div class="extra-item">
+        <strong>Additional Coverage</strong>
+        <span class="extra-price">&pound;75/hr</span>
+      </div>
+
+    </div>
+
+
+    <p
+      style="
+        color:#888;
+        font-size:.8rem;
+        line-height:1.7;
+        max-width:650px;
+        margin:25px auto 0;
+      ">
+      Full ceremony and speeches films are already included with
+      The Cinematic collection.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     FAQ
+     ========================================= -->
+
+<section
+  id="faqs"
+  style="
+    background:var(--light-grey);
+    border-top:1px solid var(--border);
+  ">
+
+  <div style="text-align:center;margin-bottom:50px;">
+
+    <span class="eyebrow">
+      The Details
+    </span>
+
+    <h2
+      style="
+        font-family:'Baskervville',serif;
+        font-size:3rem;
+        font-weight:400;
+        margin:0;
+      ">
+      Frequently Asked Questions
+    </h2>
+
+  </div>
+
+
+  <div class="faq-container">
+
+
+    <div class="faq-item">
+
+      <button
+        class="faq-question"
+        onclick="toggleFAQ(this)">
+
+        How do we secure our date?
+
+        <span class="faq-icon">+</span>
+
+      </button>
+
+      <div class="faq-answer">
+
+        <p>
+          Dates are secured on a first-come, first-served basis.
+          Once you confirm you'd like to book, we require a 25%
+          non-refundable booking fee and a signed digital contract.
+          The remaining balance is due 30 days before your wedding.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <button
+        class="faq-question"
+        onclick="toggleFAQ(this)">
+
+        Will our film look like the weddings above?
+
+        <span class="faq-icon">+</span>
+
+      </button>
+
+      <div class="faq-answer">
+
+        <p>
+          Not necessarily, and that is intentional. Every wedding has
+          a different atmosphere. The soundtrack, pacing, dialogue and
+          edit are shaped around your own celebration rather than trying
+          to make every wedding feel the same.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <button
+        class="faq-question"
+        onclick="toggleFAQ(this)">
+
+        Will you make us pose or repeat things?
+
+        <span class="faq-icon">+</span>
+
+      </button>
+
+      <div class="faq-answer">
+
+        <p>
+          Very little. The approach is primarily documentary-led and
+          unobtrusive. There may be occasional light guidance where it
+          helps create a beautiful shot, but genuine moments are not
+          repeatedly staged for the camera.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <button
+        class="faq-question"
+        onclick="toggleFAQ(this)">
+
+        Do you work alongside photographers?
+
+        <span class="faq-icon">+</span>
+
+      </button>
+
+      <div class="faq-answer">
+
+        <p>
+          Yes. Good photography and videography should complement one
+          another rather than compete for the same moments. I regularly
+          work alongside Carol at Ruby Salmon Photography, so we already
+          understand each other's pace and positioning and know when to
+          coordinate or give each other space.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <button
+        class="faq-question"
+        onclick="toggleFAQ(this)">
+
+        Do you charge for travel?
+
+        <span class="faq-icon">+</span>
+
+      </button>
+
+      <div class="faq-answer">
+
+        <p>
+          Travel within 50 miles of our base is included. For weddings
+          further afield across the UK or Europe, additional travel and
+          accommodation costs are agreed before booking.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <button
+        class="faq-question"
+        onclick="toggleFAQ(this)">
+
+        How long does delivery take?
+
+        <span class="faq-icon">+</span>
+
+      </button>
+
+      <div class="faq-answer">
+
+        <p>
+          During peak wedding season, standard delivery is approximately
+          6-10 weeks. Your finished films are delivered digitally in 4K
+          for you to download, keep and share.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <button
+        class="faq-question"
+        onclick="toggleFAQ(this)">
+
+        Are you fully insured?
+
+        <span class="faq-icon">+</span>
+
+      </button>
+
+      <div class="faq-answer">
+
+        <p>
+          Yes. We carry Public Liability and Professional Indemnity
+          insurance and can provide evidence of cover directly to your
+          venue if required.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     CONTACT
+     ========================================= -->
+
+<section
+  id="contact"
+  style="
+    background:#f4f4f3;
+    border-top:1px solid var(--border);
+  ">
+
+  <div style="text-align:center;margin-bottom:60px;">
+
+    <span class="eyebrow">
+      Your Wedding
+    </span>
+
+    <h2
+      style="
+        font-family:'Baskervville',serif;
+        font-size:3rem;
+        font-weight:400;
+        margin:0;
+      ">
+      Check Your Date
+    </h2>
+
+    <p style="margin-top:12px;">
+      Currently booking 2026 &amp; 2027 weddings.
+    </p>
+
+    <p
+      style="
+        font-size:.9rem;
+        color:#666;
+        margin:15px auto 0;
+        line-height:1.7;
+        max-width:620px;
+      ">
+      Tell us your date, venue and a little about the two of you.
+      We'll confirm availability and recommend the collection that
+      best fits your plans.
+    </p>
+
+  </div>
+
+
+  <div class="custom-form-container">
+
+    <form id="horizon-contact-form">
+
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="firstname">
+            First Name
+          </label>
+
+          <input
+            type="text"
+            id="firstname"
+            name="firstname"
+            required>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="lastname">
+            Last Name (Optional)
+          </label>
+
+          <input
+            type="text"
+            id="lastname"
+            name="lastname">
+
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="email">
+            Email Address
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="phone">
+            Phone Number
+          </label>
+
+          <input
+            type="tel"
+            id="phone"
+            name="phone">
+
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="wedding_date">
+            Wedding Date
+          </label>
+
+          <input
+            type="date"
+            id="wedding_date"
+            name="wedding_date"
+            required>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="venue">
+            Venue(s) / Location
+          </label>
+
+          <input
+            type="text"
+            id="venue"
+            name="venue"
+            placeholder="e.g. Thornton Hall Hotel">
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="collection">
+          Collection of Interest
+        </label>
+
+        <select
+          id="collection"
+          name="collection"
+          required>
+
+          <option
+            value=""
+            disabled
+            selected>
+            Please select...
+          </option>
+
+          <option value="The Narrative">
+            The Narrative - &pound;695
+          </option>
+
+          <option value="The Cinematic">
+            The Cinematic - &pound;1,095
+          </option>
+
+          <option value="The Ceremony">
+            The Ceremony - &pound;450
+          </option>
+
+          <option value="Not Sure Yet">
+            Not Sure Yet
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="message">
+          Tell me a little about the two of you and your plans...
+        </label>
+
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          placeholder="What are you like as a couple? What kind of day are you planning? Anything you're especially excited about?"
+          required></textarea>
+
+      </div>
+
+
+      <button
+        type="submit"
+        id="submit-btn"
+        class="hero-btn"
+        style="
+          width:100%;
+          margin-top:10px;
+        ">
+        Check My Date
+      </button>
+
+
+      <div
+        id="form-success"
+        style="
+          display:none;
+          margin-top:20px;
+          color:var(--gold);
+          font-style:italic;
+          text-align:center;
+        ">
+        Thank you. Your enquiry has been received and we will be
+        in touch within 24 hours.
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     HERO ROTATION SCRIPT
+     ========================================= -->
+
+<script>
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function(){
+
+    const hero =
+      document.getElementById('hero');
+
+    const slides =
+      Array.from(
+        document.querySelectorAll('.hero-slide')
+      );
+
+    const dots =
+      Array.from(
+        document.querySelectorAll('.hero-dot')
+      );
+
+
+    if (!hero || slides.length < 2){
+      return;
+    }
+
+
+    const reduceMotion =
+      window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches;
+
+
+    let current = 0;
+    let timer = null;
+    let paused = false;
+
+
+    /*
+     * Brand first.
+     * Two short proof messages follow.
+     * Full loop: 10.8 seconds.
+     */
+
+    const timings = [
+      3800,
+      3500,
+      3500
+    ];
+
+
+    function showSlide(index){
+
+      current = index;
+
+
+      slides.forEach(
+        function(slide, i){
+
+          slide.classList.toggle(
+            'active',
+            i === current
+          );
+
+        }
+      );
+
+
+      dots.forEach(
+        function(dot, i){
+
+          dot.classList.toggle(
+            'active',
+            i === current
+          );
+
+          dot.setAttribute(
+            'aria-current',
+            i === current
+              ? 'true'
+              : 'false'
+          );
+
+        }
+      );
+
+    }
+
+
+    function stopTimer(){
+
+      if (timer){
+
+        clearTimeout(timer);
+
+        timer = null;
+
+      }
+
+    }
+
+
+    function scheduleNext(){
+
+      stopTimer();
+
+
+      if (
+        reduceMotion ||
+        paused
+      ){
+        return;
+      }
+
+
+      timer =
+        setTimeout(
+          function(){
+
+            const next =
+              (current + 1) % slides.length;
+
+            showSlide(next);
+
+            scheduleNext();
+
+          },
+          timings[current] || 3500
+        );
+
+    }
+
+
+    /* =====================================
+       MANUAL CONTROLS
+       ===================================== */
+
+    dots.forEach(
+      function(dot){
+
+        dot.addEventListener(
+          'click',
+          function(){
+
+            const target =
+              parseInt(
+                dot.getAttribute(
+                  'data-target'
+                ),
+                10
+              );
+
+
+            if (
+              Number.isNaN(target)
+            ){
+              return;
+            }
+
+
+            showSlide(target);
+
+            scheduleNext();
+
+          }
+        );
+
+      }
+    );
+
+
+    /* =====================================
+       PAUSE DURING INTERACTION
+       ===================================== */
+
+    hero.addEventListener(
+      'mouseenter',
+      function(){
+
+        paused = true;
+
+        stopTimer();
+
+      }
+    );
+
+
+    hero.addEventListener(
+      'mouseleave',
+      function(){
+
+        paused = false;
+
+        scheduleNext();
+
+      }
+    );
+
+
+    hero.addEventListener(
+      'focusin',
+      function(){
+
+        paused = true;
+
+        stopTimer();
+
+      }
+    );
+
+
+    hero.addEventListener(
+      'focusout',
+      function(){
+
+        paused = false;
+
+        scheduleNext();
+
+      }
+    );
+
+
+    /* =====================================
+       BACKGROUND TAB HANDLING
+       ===================================== */
+
+    document.addEventListener(
+      'visibilitychange',
+      function(){
+
+        if (document.hidden){
+
+          stopTimer();
+
+        } else {
+
+          scheduleNext();
+
+        }
+
+      }
+    );
+
+
+    showSlide(0);
+
+    scheduleNext();
+
+  }
+);
+
+</script>    visibility .65s ease;
 
   pointer-events:none;
 }

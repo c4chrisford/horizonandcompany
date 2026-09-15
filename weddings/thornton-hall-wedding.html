@@ -12,7 +12,7 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
 
 .thornton-hero{
   padding-top:170px;
-  padding-bottom:90px;
+  padding-bottom:85px;
   background:var(--light-grey);
   text-align:center;
 }
@@ -50,7 +50,35 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
 }
 
 
-/* STORY */
+/* =========================================
+   FEATURE IMAGE
+   ========================================= */
+
+.thornton-feature{
+  background:white;
+  padding:0;
+}
+
+.thornton-feature-image{
+  max-width:1400px;
+  margin:auto;
+  height:min(68vw,760px);
+  min-height:430px;
+  overflow:hidden;
+}
+
+.thornton-feature-image img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center 42%;
+}
+
+
+/* =========================================
+   STORY
+   ========================================= */
 
 .thornton-main{
   background:white;
@@ -64,7 +92,7 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
   grid-template-columns:.8fr 1.2fr;
   gap:80px;
   align-items:start;
-  margin-bottom:70px;
+  margin-bottom:100px;
 }
 
 .thornton-story-grid h2{
@@ -88,7 +116,61 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
 }
 
 
-/* VIDEO */
+/* =========================================
+   VENUE SHOWCASE
+   ========================================= */
+
+.thornton-venue{
+  max-width:1180px;
+  margin:0 auto 120px;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;
+  background:var(--light-grey);
+}
+
+.thornton-venue-image{
+  min-height:500px;
+  height:100%;
+  overflow:hidden;
+}
+
+.thornton-venue-image img{
+  width:100%;
+  height:100%;
+  min-height:500px;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+.thornton-venue-copy{
+  padding:65px 55px;
+}
+
+.thornton-venue-copy h2{
+  font-family:'Baskervville',serif;
+  font-size:2.6rem;
+  line-height:1.2;
+  font-weight:400;
+  margin:0 0 24px;
+}
+
+.thornton-venue-copy p{
+  color:#555;
+  font-size:.95rem;
+  line-height:1.9;
+  margin:0 0 18px;
+}
+
+.thornton-venue-copy p:last-child{
+  margin-bottom:0;
+}
+
+
+/* =========================================
+   VIDEO
+   ========================================= */
 
 .thornton-video{
   max-width:1050px;
@@ -132,7 +214,72 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
 }
 
 
-/* CREATIVE EDIT */
+/* =========================================
+   CINEMATIC IMAGE BREAK
+   ========================================= */
+
+.thornton-image-break{
+  background:white;
+  padding:0;
+}
+
+.thornton-image-break-inner{
+  max-width:1200px;
+  margin:auto;
+  position:relative;
+  height:min(60vw,680px);
+  min-height:420px;
+  overflow:hidden;
+}
+
+.thornton-image-break img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+}
+
+.thornton-image-break-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.52),
+      rgba(0,0,0,0) 55%
+    );
+}
+
+.thornton-image-break-copy{
+  position:absolute;
+  left:55px;
+  right:55px;
+  bottom:45px;
+  max-width:680px;
+  color:white;
+}
+
+.thornton-image-break-copy span{
+  display:block;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.68rem;
+  margin-bottom:12px;
+  color:#e4d0aa;
+}
+
+.thornton-image-break-copy p{
+  font-family:'Baskervville',serif;
+  font-size:2rem;
+  line-height:1.35;
+  margin:0;
+}
+
+
+/* =========================================
+   CREATIVE EDIT
+   ========================================= */
 
 .thornton-creative{
   background:var(--light-grey);
@@ -210,7 +357,9 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
 }
 
 
-/* REVIEW */
+/* =========================================
+   REVIEW
+   ========================================= */
 
 .thornton-review{
   background:white;
@@ -247,7 +396,9 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
 }
 
 
-/* CTA */
+/* =========================================
+   CTA
+   ========================================= */
 
 .thornton-cta{
   background:var(--charcoal);
@@ -285,32 +436,77 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
 }
 
 
-/* MOBILE */
+/* =========================================
+   MOBILE
+   ========================================= */
 
 @media(max-width:900px){
 
   .thornton-story-grid,
-  .thornton-moments{
+  .thornton-moments,
+  .thornton-venue{
     grid-template-columns:1fr;
   }
 
   .thornton-story-grid{
     gap:35px;
-    margin-bottom:55px;
+    margin-bottom:70px;
+  }
+
+  .thornton-venue{
+    margin-bottom:90px;
+  }
+
+  .thornton-venue-image,
+  .thornton-venue-image img{
+    min-height:380px;
   }
 
 }
 
 @media(max-width:600px){
 
+  .thornton-hero{
+    padding-top:140px;
+    padding-bottom:65px;
+  }
+
   .thornton-hero h1{
     font-size:2.8rem;
   }
 
+  .thornton-intro{
+    font-size:1.25rem;
+  }
+
+  .thornton-feature-image{
+    height:65vw;
+    min-height:320px;
+  }
+
   .thornton-story-grid h2,
   .thornton-video-heading h2,
-  .thornton-creative-heading h2{
+  .thornton-creative-heading h2,
+  .thornton-venue-copy h2{
     font-size:2.4rem;
+  }
+
+  .thornton-venue-copy{
+    padding:45px 30px;
+  }
+
+  .thornton-image-break-inner{
+    min-height:470px;
+  }
+
+  .thornton-image-break-copy{
+    left:28px;
+    right:28px;
+    bottom:30px;
+  }
+
+  .thornton-image-break-copy p{
+    font-size:1.55rem;
   }
 
   .thornton-cta h2{
@@ -361,7 +557,24 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
 
 
 <!-- =========================================
-     STORY + FILM
+     FEATURE IMAGE
+     ========================================= -->
+
+<section class="thornton-feature">
+
+  <div class="thornton-feature-image">
+
+    <img
+      src="/images/kirsty-connor-laughter.jpg"
+      alt="Kirsty and Connor laughing during their wedding at Thornton Hall Hotel and Spa in Wirral">
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     STORY
      ========================================= -->
 
 <section class="thornton-main">
@@ -381,7 +594,6 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
       </h2>
 
     </div>
-
 
     <div class="thornton-copy">
 
@@ -411,6 +623,52 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
   </div>
 
 
+  <!-- =========================================
+       VENUE
+       ========================================= -->
+
+  <div class="thornton-venue">
+
+    <div class="thornton-venue-image">
+
+      <img
+        src="/images/thornton-hall-wedding-venue-wirral.jpg"
+        alt="Thornton Hall Hotel and Spa wedding venue in Wirral">
+
+    </div>
+
+    <div class="thornton-venue-copy">
+
+      <span class="eyebrow">
+        Thornton Hall
+      </span>
+
+      <h2>
+        A Wirral wedding with room for the day to unfold.
+      </h2>
+
+      <p>
+        Set in Thornton Hough on the Wirral, Thornton Hall Hotel &amp; Spa
+        gave Kirsty and Connor's wedding a mixture of elegant interiors,
+        gardens and relaxed spaces for the celebrations to move naturally
+        from one part of the day to the next.
+      </p>
+
+      <p>
+        For the film, the venue became the backdrop rather than the subject.
+        The focus stayed on the people inside it - the reactions, humour
+        and little interactions that gave the day its personality.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       VIDEO
+       ========================================= -->
+
   <div class="thornton-video">
 
     <div class="thornton-video-heading">
@@ -431,7 +689,6 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
 
     </div>
 
-
     <div class="thornton-video-frame">
 
       <iframe
@@ -441,6 +698,38 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     DOCUMENTARY MOMENT
+     ========================================= -->
+
+<section class="thornton-image-break">
+
+  <div class="thornton-image-break-inner">
+
+    <img
+      src="/images/kirsty-connor-cheers.jpg"
+      alt="Wedding guests raising a glass during speeches at Thornton Hall in Wirral">
+
+    <div class="thornton-image-break-overlay"></div>
+
+    <div class="thornton-image-break-copy">
+
+      <span>
+        The Moments Around You
+      </span>
+
+      <p>
+        Some of the best parts of a wedding film are the moments
+        you never realised were happening.
+      </p>
 
     </div>
 
@@ -475,11 +764,7 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
 
     </div>
 
-
     <div class="thornton-moments">
-
-
-      <!-- FRIEND -->
 
       <div class="thornton-moment">
 
@@ -493,9 +778,6 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
         </blockquote>
 
       </div>
-
-
-      <!-- FAMILY -->
 
       <div class="thornton-moment">
 
@@ -511,7 +793,6 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
       </div>
 
     </div>
-
 
     <div class="thornton-reflection">
 
@@ -595,14 +876,14 @@ description: "Watch Kirsty and Connor's fun, energetic wedding film at Thornton 
       </a>
 
       <a
-        href="/wedding-films.html"
+        href="/wirral.html"
         class="hero-btn"
         style="
           background:transparent;
           color:white;
           border:1px solid rgba(255,255,255,.35);
         ">
-        More Wedding Films
+        Wirral Wedding Videography
       </a>
 
     </div>

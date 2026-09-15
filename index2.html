@@ -303,151 +303,414 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 /* =========================================
    THEIR HEADSPACE
+   SCROLL STORY
    ========================================= */
 
 .home-feeling{
   position:relative;
-  overflow:hidden;
-
   background:var(--home-cream);
+  overflow:clip;
 }
 
-.home-feeling::before{
-  content:"ONE DAY";
-  position:absolute;
-
-  left:-25px;
-  top:70px;
-
-  font-family:'Baskervville',serif;
-  font-size:clamp(7rem,15vw,14rem);
-  line-height:1;
-
-  color:rgba(0,0,0,.025);
-
-  white-space:nowrap;
-  pointer-events:none;
-}
-
+/*
+  The section is deliberately tall.
+  This creates the scroll distance while
+  the inner content remains pinned.
+*/
 .home-feeling-inner{
   position:relative;
-  z-index:1;
 
-  max-width:1180px;
-  margin:auto;
+  min-height:320vh;
+
+  max-width:none;
+  margin:0;
 }
 
-.home-feeling-heading{
-  max-width:1080px;
-  margin:0 auto 95px;
+/* LARGE BACKGROUND WORD */
+
+.home-feeling-word{
+  position:absolute;
+
+  top:5vh;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:100%;
+
+  font-family:'Baskervville',serif;
+  font-size:clamp(7rem,17vw,16rem);
+  line-height:.8;
+  font-style:italic;
 
   text-align:center;
+  white-space:nowrap;
+
+  color:rgba(35,32,29,.025);
+
+  pointer-events:none;
+  user-select:none;
+
+  z-index:0;
+
+  will-change:transform;
+}
+
+
+/* PINNED STAGE */
+
+.home-feeling-sticky{
+  position:sticky;
+
+  top:0;
+
+  width:100%;
+  min-height:100vh;
+
+  display:flex;
+  align-items:center;
+
+  overflow:hidden;
+
+  z-index:2;
+}
+
+.home-feeling-stage{
+  width:min(1180px,88vw);
+
+  margin:0 auto;
+
+  display:grid;
+  grid-template-columns:.95fr 1.05fr;
+
+  gap:95px;
+
+  align-items:center;
+}
+
+
+/* LEFT SIDE */
+
+.home-feeling-heading{
+  position:relative;
+
+  max-width:590px;
+
+  margin:0;
+
+  text-align:left;
 }
 
 .home-feeling-heading .eyebrow{
   display:block;
-  margin-bottom:27px;
+
+  margin-bottom:28px;
 }
 
 .home-feeling-heading h2{
-  max-width:1050px;
-  margin:0 auto;
+  margin:0;
 
   font-family:'Baskervville',serif;
-  font-size:clamp(3rem,5vw,5.2rem);
-  line-height:1.02;
+  font-size:clamp(3.5rem,5vw,5.7rem);
+  line-height:.96;
   font-weight:400;
-  letter-spacing:-.035em;
+  letter-spacing:-.045em;
 
   color:var(--charcoal);
 }
 
-.feeling-primary{
+.feeling-primary,
+.feeling-secondary{
   display:block;
 }
 
 .feeling-secondary{
-  display:block;
+  margin-top:20px;
 
-  max-width:900px;
-  margin:12px auto 0;
-
-  font-size:.68em;
+  font-size:.61em;
   line-height:1.12;
   font-style:italic;
 
-  color:#69645d;
+  color:#777168;
 }
 
 .home-feeling-heading p{
-  max-width:640px;
-  margin:36px auto 0;
+  max-width:520px;
+
+  margin:34px 0 0;
 
   color:#686868;
 
-  font-size:1rem;
+  font-size:.98rem;
   line-height:1.85;
 }
 
 
-/* THREE CONCERNS */
+/* PROGRESS */
+
+.feeling-progress{
+  width:100%;
+
+  margin-top:42px;
+
+  display:flex;
+  align-items:center;
+
+  gap:8px;
+}
+
+.feeling-progress-line{
+  position:relative;
+
+  flex:1;
+
+  height:1px;
+
+  background:rgba(0,0,0,.13);
+
+  overflow:hidden;
+}
+
+.feeling-progress-fill{
+  position:absolute;
+
+  inset:0 auto 0 0;
+
+  width:0%;
+
+  background:var(--gold);
+
+  transition:width .08s linear;
+}
+
+.feeling-progress-label{
+  min-width:55px;
+
+  font-size:.62rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  color:#888;
+}
+
+
+/* RIGHT SIDE / THOUGHTS */
 
 .home-concerns{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
+  position:relative;
 
-  border-top:1px solid rgba(0,0,0,.12);
-  border-bottom:1px solid rgba(0,0,0,.12);
+  height:470px;
+
+  display:block;
+
+  border:0;
 }
 
 .home-concern{
-  position:relative;
+  position:absolute;
 
-  min-height:265px;
+  inset:0;
 
-  padding:48px 38px 44px;
+  min-height:0;
 
-  border-right:1px solid rgba(0,0,0,.12);
+  padding:56px 52px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  background:rgba(255,255,255,.53);
+
+  border:1px solid rgba(0,0,0,.11);
+
+  opacity:0;
+
+  transform:
+    translateY(55px)
+    scale(.975);
+
+  transition:
+    opacity .55s ease,
+    transform .65s cubic-bezier(.2,.75,.2,1);
+
+  pointer-events:none;
+
+  box-sizing:border-box;
+
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+
+  will-change:transform,opacity;
 }
 
-.home-concern:last-child{
-  border-right:0;
+.home-concern.active{
+  opacity:1;
+
+  transform:
+    translateY(0)
+    scale(1);
+
+  pointer-events:auto;
+}
+
+.home-concern.previous{
+  opacity:0;
+
+  transform:
+    translateY(-45px)
+    scale(.98);
 }
 
 .home-concern-number{
   display:block;
 
-  margin-bottom:40px;
+  margin-bottom:46px;
 
   font-family:'Baskervville',serif;
-  font-size:3rem;
-  line-height:1;
+  font-size:4.6rem;
+  line-height:.8;
+  font-style:italic;
 
   color:var(--gold);
 }
 
 .home-concern h3{
-  max-width:290px;
+  max-width:390px;
 
-  margin:0 0 18px;
+  margin:0 0 22px;
 
   font-family:'Baskervville',serif;
-  font-size:1.9rem;
-  line-height:1.17;
+  font-size:clamp(2rem,3vw,3rem);
+  line-height:1.08;
   font-weight:400;
+  letter-spacing:-.025em;
 }
 
 .home-concern p{
-  max-width:300px;
+  max-width:410px;
 
   margin:0;
 
   color:#666;
 
-  font-size:.91rem;
-  line-height:1.8;
+  font-size:.94rem;
+  line-height:1.85;
 }
 
+.home-concern-note{
+  display:block;
+
+  margin-top:34px;
+
+  color:#928b81;
+
+  font-family:'Baskervville',serif;
+  font-size:1.05rem;
+  line-height:1.5;
+  font-style:italic;
+}
+
+
+/* =========================================
+   HEADSPACE RESPONSIVE
+   ========================================= */
+
+@media(max-width:900px){
+
+  .home-feeling-inner{
+    min-height:auto;
+  }
+
+  .home-feeling-sticky{
+    position:relative;
+
+    min-height:auto;
+
+    padding:110px 0;
+  }
+
+  .home-feeling-stage{
+    grid-template-columns:1fr;
+
+    gap:65px;
+  }
+
+  .home-feeling-heading{
+    max-width:700px;
+
+    text-align:center;
+
+    margin:auto;
+  }
+
+  .home-feeling-heading p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .feeling-progress{
+    display:none;
+  }
+
+  .home-concerns{
+    height:auto;
+
+    display:grid;
+
+    gap:16px;
+  }
+
+  .home-concern{
+    position:relative;
+    inset:auto;
+
+    opacity:1 !important;
+
+    transform:none !important;
+
+    padding:42px 34px;
+
+    pointer-events:auto;
+  }
+
+  .home-concern-number{
+    margin-bottom:28px;
+
+    font-size:3rem;
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  .home-feeling-sticky{
+    padding:85px 0;
+  }
+
+  .home-feeling-stage{
+    width:88vw;
+
+    gap:45px;
+  }
+
+  .home-feeling-heading h2{
+    font-size:3rem;
+  }
+
+  .feeling-secondary{
+    font-size:.68em;
+  }
+
+  .home-concern{
+    padding:35px 27px;
+  }
+
+  .home-feeling-word{
+    display:none;
+  }
+
+}
 
 /* =========================================
    THE PROMISE

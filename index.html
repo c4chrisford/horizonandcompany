@@ -12,6 +12,138 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 /* =========================================
+   HERO ROTATING CONTENT
+   ========================================= */
+
+.home-hero-content{
+  width:min(900px, 90vw);
+}
+
+.hero-rotation{
+  position:relative;
+  width:100%;
+  min-height:175px;
+  margin:0 auto 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero-slide{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    visibility 1s ease;
+  pointer-events:none;
+}
+
+.hero-slide.active{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+.hero-slide h1{
+  margin:0;
+}
+
+.hero-review-quote{
+  font-family:'Baskervville',serif;
+  font-size:2.55rem;
+  line-height:1.25;
+  font-weight:400;
+  font-style:italic;
+  max-width:800px;
+  margin:0 auto 22px;
+  color:white;
+  text-shadow:0 2px 20px rgba(0,0,0,.28);
+}
+
+.hero-review-stars{
+  color:var(--gold);
+  font-size:.9rem;
+  letter-spacing:4px;
+  margin-bottom:10px;
+}
+
+.hero-review-name{
+  color:rgba(255,255,255,.88);
+  font-size:.67rem;
+  text-transform:uppercase;
+  letter-spacing:2.5px;
+  margin:0;
+}
+
+.hero-positioning{
+  font-family:'Baskervville',serif;
+  font-size:3.15rem;
+  line-height:1.18;
+  font-weight:400;
+  max-width:760px;
+  margin:0 auto 16px;
+  color:white;
+  text-shadow:0 2px 20px rgba(0,0,0,.28);
+}
+
+.hero-positioning-sub{
+  font-family:'Baskervville',serif;
+  font-size:1.4rem;
+  line-height:1.5;
+  font-style:italic;
+  color:rgba(255,255,255,.9);
+  margin:0;
+}
+
+.hero-fixed{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.hero-film-label{
+  letter-spacing:4px;
+  text-transform:uppercase;
+  font-size:.85rem;
+  margin:0 0 24px;
+}
+
+.hero-progress{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:22px;
+}
+
+.hero-progress-dot{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:rgba(255,255,255,.4);
+  transition:
+    width .4s ease,
+    background .4s ease;
+}
+
+.hero-progress-dot.active{
+  width:20px;
+  border-radius:10px;
+  background:rgba(255,255,255,.9);
+}
+
+
+/* =========================================
    INTRO / POSITIONING
    ========================================= */
 
@@ -368,6 +500,15 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     font-size:1.65rem;
   }
 
+  .hero-review-quote{
+    font-size:2.1rem;
+    max-width:680px;
+  }
+
+  .hero-positioning{
+    font-size:2.7rem;
+  }
+
 }
 
 @media(max-width:600px){
@@ -380,6 +521,44 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   .home-intro h2{
     font-size:2.35rem;
+  }
+
+  .hero-rotation{
+    min-height:205px;
+  }
+
+  .hero-review-quote{
+    font-size:1.7rem;
+    line-height:1.35;
+    padding:0 12px;
+  }
+
+  .hero-positioning{
+    font-size:2.15rem;
+    line-height:1.2;
+    padding:0 10px;
+  }
+
+  .hero-positioning-sub{
+    font-size:1.15rem;
+  }
+
+  .hero-film-label{
+    font-size:.7rem;
+    letter-spacing:3px;
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  .hero-slide{
+    transition:none;
+    transform:none;
+  }
+
+  .hero-progress-dot{
+    transition:none;
   }
 
 }
@@ -403,31 +582,121 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   <div class="hero-overlay"></div>
 
-  <div class="hero-content">
 
-    <h1>
-      The Moments You Lived.<br>
+  <div class="hero-content home-hero-content">
 
-      <span class="hero-subtitle">
-        And The Ones Happening Around You
-      </span>
 
-    </h1>
+    <!-- ROTATING MESSAGES -->
 
-    <p
-      style="
-        letter-spacing:4px;
-        text-transform:uppercase;
-        font-size:.85rem;
-      ">
-      Cinematic Wedding Films
-    </p>
+    <div
+      class="hero-rotation"
+      id="hero-rotation"
+      aria-live="off">
 
-    <a
-      href="#real-weddings"
-      class="hero-btn">
-      Watch Real Weddings
-    </a>
+
+      <!-- 1 - BRAND -->
+
+      <div class="hero-slide active">
+
+        <h1>
+          The Moments You Lived.<br>
+
+          <span class="hero-subtitle">
+            And The Ones Happening Around You
+          </span>
+
+        </h1>
+
+      </div>
+
+
+      <!-- 2 - AIMEE REVIEW -->
+
+      <div class="hero-slide">
+
+        <div class="hero-review-stars">
+          &#9733;&#9733;&#9733;&#9733;&#9733;
+        </div>
+
+        <p class="hero-review-quote">
+          &ldquo;He blended in seamlessly to our day - this meant he captured
+          some really special moments that we didn't even get to see.&rdquo;
+        </p>
+
+        <p class="hero-review-name">
+          Aimee - Google Review
+        </p>
+
+      </div>
+
+
+      <!-- 3 - POSITIONING -->
+
+      <div class="hero-slide">
+
+        <p class="hero-positioning">
+          Quiet on the day.<br>
+          Thoughtful in the edit.
+        </p>
+
+        <p class="hero-positioning-sub">
+          Your wedding, without turning it into a film set.
+        </p>
+
+      </div>
+
+
+      <!-- 4 - KIRSTY REVIEW -->
+
+      <div class="hero-slide">
+
+        <div class="hero-review-stars">
+          &#9733;&#9733;&#9733;&#9733;&#9733;
+        </div>
+
+        <p class="hero-review-quote">
+          &ldquo;Our wedding video were so amazing we loved it...
+          it made a huge difference for us.&rdquo;
+        </p>
+
+        <p class="hero-review-name">
+          Kirsty - Google Review
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- FIXED HERO CONTENT -->
+
+    <div class="hero-fixed">
+
+      <p class="hero-film-label">
+        Cinematic Wedding Films
+      </p>
+
+      <a
+        href="#real-weddings"
+        class="hero-btn">
+        Watch The Films
+      </a>
+
+
+      <!-- SUBTLE PROGRESS -->
+
+      <div
+        class="hero-progress"
+        aria-hidden="true">
+
+        <span class="hero-progress-dot active"></span>
+        <span class="hero-progress-dot"></span>
+        <span class="hero-progress-dot"></span>
+        <span class="hero-progress-dot"></span>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -490,7 +759,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </h2>
 
     <p>
-      The films below couldn’t feel more different - and that’s the point. Each was shaped by the people, emotion and energy of the day, from the music and pacing to the moments that became part of the story.
+      The films below couldn’t feel more different - and that’s the point.
+      Each was shaped by the people, emotion and energy of the day, from
+      the music and pacing to the moments that became part of the story.
     </p>
 
   </div>
@@ -1512,3 +1783,86 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 </section>
+
+
+<!-- =========================================
+     HERO ROTATION SCRIPT
+     ========================================= -->
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function(){
+
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-progress-dot');
+
+  if (!slides.length) return;
+
+  const reduceMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  if (reduceMotion) return;
+
+  let currentSlide = 0;
+
+  /*
+   * First brand message receives slightly longer.
+   * Reviews / positioning then cycle at six seconds.
+   */
+
+  const timings = [
+    7000,
+    6000,
+    6000,
+    6000
+  ];
+
+  function showSlide(index){
+
+    slides.forEach(function(slide, i){
+
+      slide.classList.toggle(
+        'active',
+        i === index
+      );
+
+    });
+
+    dots.forEach(function(dot, i){
+
+      dot.classList.toggle(
+        'active',
+        i === index
+      );
+
+    });
+
+  }
+
+
+  function scheduleNext(){
+
+    const delay = timings[currentSlide] || 6000;
+
+    setTimeout(function(){
+
+      currentSlide =
+        (currentSlide + 1) % slides.length;
+
+      showSlide(currentSlide);
+
+      scheduleNext();
+
+    }, delay);
+
+  }
+
+
+  showSlide(currentSlide);
+
+  scheduleNext();
+
+});
+
+</script>

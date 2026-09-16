@@ -5,88 +5,155 @@
    Homepage-only interactions:
    - Rotating hero testimonials
    - Subtle hero video movement
+   - Promise intro split / fade transition
    - Promise story: free-scrolling copy + sticky crossfading images
    - Standard reveal animations
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceMotion =
+    window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
   const DESKTOP_BREAKPOINT = 900;
 
-  function clamp(value, min = 0, max = 1) {
-    return Math.min(Math.max(value, min), max);
-  }
-
-  function isDesktop() {
-    return window.innerWidth > DESKTOP_BREAKPOINT;
-  }
 
   /* =====================================================
-     HERO TESTIMONIALS
+     HELPERS
      ===================================================== */
 
-  const hero = document.querySelector('.home-hero');
-  const heroVideo = document.querySelector('.home-hero-video');
+  function clamp(
+    value,
+    min = 0,
+    max = 1
+  ) {
 
-  const heroReviews = Array.from(
-    document.querySelectorAll('.home-hero-review')
-  );
+    return Math.min(
+      Math.max(
+        value,
+        min
+      ),
+      max
+    );
 
-  const heroReviewProgress = document.querySelector(
-    '.home-hero-proof-progress span'
-  );
+  }
 
-  const HERO_REVIEW_DURATION = 6500;
+
+  function isDesktop() {
+
+    return (
+      window.innerWidth >
+      DESKTOP_BREAKPOINT
+    );
+
+  }
+
+
+  /* =====================================================
+     HERO
+     ===================================================== */
+
+  const hero =
+    document.querySelector(
+      '.home-hero'
+    );
+
+  const heroVideo =
+    document.querySelector(
+      '.home-hero-video'
+    );
+
+  const heroReviews =
+    Array.from(
+      document.querySelectorAll(
+        '.home-hero-review'
+      )
+    );
+
+  const heroReviewProgress =
+    document.querySelector(
+      '.home-hero-proof-progress span'
+    );
+
+  const HERO_REVIEW_DURATION =
+    6500;
 
   let heroReviewIndex = 0;
+
   let heroReviewTimer = null;
+
   let heroProgressAnimation = null;
 
 
-  function setHeroReview(index) {
+  /* -----------------------------------------------------
+     HERO TESTIMONIALS
+     ----------------------------------------------------- */
 
-    if (!heroReviews.length) {
+  function setHeroReview(
+    index
+  ) {
+
+    if (
+      !heroReviews.length
+    ) {
+
       return;
+
     }
 
     heroReviewIndex =
-      (index + heroReviews.length) %
+      (
+        index +
+        heroReviews.length
+      ) %
       heroReviews.length;
 
-    heroReviews.forEach(function (review, i) {
+    heroReviews.forEach(
+      function (
+        review,
+        i
+      ) {
 
-      const active =
-        i === heroReviewIndex;
+        const active =
+          i ===
+          heroReviewIndex;
 
-      review.classList.toggle(
-        'is-active',
-        active
-      );
+        review.classList.toggle(
+          'is-active',
+          active
+        );
 
-      review.setAttribute(
-        'aria-hidden',
-        active
-          ? 'false'
-          : 'true'
-      );
+        review.setAttribute(
+          'aria-hidden',
+          active
+            ? 'false'
+            : 'true'
+        );
 
-    });
+      }
+    );
 
   }
 
 
   function stopHeroProgress() {
 
-    if (heroProgressAnimation) {
+    if (
+      heroProgressAnimation
+    ) {
 
       heroProgressAnimation.cancel();
 
-      heroProgressAnimation = null;
+      heroProgressAnimation =
+        null;
 
     }
 
-    if (heroReviewProgress) {
+    if (
+      heroReviewProgress
+    ) {
 
       heroReviewProgress.style.width =
         '0%';
@@ -110,42 +177,55 @@ document.addEventListener('DOMContentLoaded', function () {
 
     stopHeroProgress();
 
+    heroReviewProgress.style.width =
+      '0%';
+
     if (
-      typeof heroReviewProgress.animate ===
+      typeof heroReviewProgress.animate !==
       'function'
     ) {
 
-      heroProgressAnimation =
-        heroReviewProgress.animate(
-          [
-            {
-              width: '0%'
-            },
-            {
-              width: '100%'
-            }
-          ],
-          {
-            duration: HERO_REVIEW_DURATION,
-            easing: 'linear',
-            fill: 'forwards'
-          }
-        );
+      return;
 
     }
+
+    heroProgressAnimation =
+      heroReviewProgress.animate(
+        [
+          {
+            width:'0%'
+          },
+          {
+            width:'100%'
+          }
+        ],
+        {
+          duration:
+            HERO_REVIEW_DURATION,
+
+          easing:
+            'linear',
+
+          fill:
+            'forwards'
+        }
+      );
 
   }
 
 
   function stopHeroReviews() {
 
-    if (heroReviewTimer) {
+    if (
+      heroReviewTimer
+    ) {
 
       window.clearTimeout(
         heroReviewTimer
       );
 
-      heroReviewTimer = null;
+      heroReviewTimer =
+        null;
 
     }
 
@@ -187,7 +267,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-  if (heroReviews.length) {
+  if (
+    heroReviews.length
+  ) {
 
     setHeroReview(0);
 
@@ -200,7 +282,9 @@ document.addEventListener('DOMContentLoaded', function () {
     'visibilitychange',
     function () {
 
-      if (document.hidden) {
+      if (
+        document.hidden
+      ) {
 
         stopHeroReviews();
 
@@ -214,9 +298,9 @@ document.addEventListener('DOMContentLoaded', function () {
   );
 
 
-  /* =====================================================
+  /* -----------------------------------------------------
      SUBTLE HERO VIDEO MOVEMENT
-     ===================================================== */
+     ----------------------------------------------------- */
 
   function updateHeroVideo() {
 
@@ -246,7 +330,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (
       rect.bottom <= 0 ||
-      rect.top >= window.innerHeight
+      rect.top >=
+      window.innerHeight
     ) {
 
       return;
@@ -269,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function () {
       1.015 +
       (
         progress *
-        0.01
+        .01
       );
 
     heroVideo.style.transform =
@@ -281,23 +366,106 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* =====================================================
-     PROMISE STORY
-
-     LEFT:
-     Text scrolls naturally through the page.
-
-     RIGHT:
-     Image stage remains sticky.
-
-     The image only changes once the next text chapter
-     becomes the dominant section around the middle
-     of the viewport.
+     PROMISE INTRO
      ===================================================== */
+
+  const promiseIntro =
+    document.querySelector(
+      '.promise-intro'
+    );
 
   const promiseStory =
     document.querySelector(
       '.promise-story'
     );
+
+
+  function updatePromiseIntro() {
+
+    if (
+      !promiseIntro
+    ) {
+
+      return;
+
+    }
+
+    if (
+      !isDesktop() ||
+      reduceMotion
+    ) {
+
+      promiseIntro.classList.remove(
+        'is-transitioning'
+      );
+
+      promiseIntro.classList.remove(
+        'is-exiting'
+      );
+
+      return;
+
+    }
+
+    const rect =
+      promiseIntro.getBoundingClientRect();
+
+    const viewportHeight =
+      window.innerHeight;
+
+    /*
+       Start the split while the lower part
+       of the intro approaches the middle
+       of the screen.
+
+       The intro feels like it is opening
+       up to reveal the chapter sequence.
+    */
+
+    const startPoint =
+      viewportHeight *
+      .42;
+
+    const endPoint =
+      viewportHeight *
+      .08;
+
+    const transitionProgress =
+      clamp(
+        (
+          startPoint -
+          rect.bottom
+        ) /
+        (
+          startPoint -
+          endPoint
+        )
+      );
+
+    /*
+       First small movement.
+    */
+
+    promiseIntro.classList.toggle(
+      'is-transitioning',
+      transitionProgress > .08
+    );
+
+    /*
+       Full split / fade.
+    */
+
+    promiseIntro.classList.toggle(
+      'is-exiting',
+      transitionProgress > .48
+    );
+
+  }
+
+
+  /* =====================================================
+     PROMISE STORY
+     ===================================================== */
 
   const promiseCopyBlocks =
     Array.from(
@@ -321,7 +489,9 @@ document.addEventListener('DOMContentLoaded', function () {
   let promiseActiveIndex = -1;
 
 
-  function setPromiseActive(index) {
+  function setPromiseActive(
+    index
+  ) {
 
     if (
       !promiseCopyBlocks.length ||
@@ -360,12 +530,29 @@ document.addEventListener('DOMContentLoaded', function () {
       index;
 
 
+    /*
+       Copy stays fully visible.
+
+       is-active only marks which chapter
+       currently owns the right-hand image.
+    */
+
     promiseCopyBlocks.forEach(
-      function (block, i) {
+      function (
+        block,
+        i
+      ) {
 
         block.classList.toggle(
           'is-active',
           i === index
+        );
+
+        block.setAttribute(
+          'aria-current',
+          i === index
+            ? 'true'
+            : 'false'
         );
 
       }
@@ -373,7 +560,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     promiseImages.forEach(
-      function (image, i) {
+      function (
+        image,
+        i
+      ) {
 
         const active =
           i === index;
@@ -396,6 +586,180 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
+  function getPromiseActiveIndex() {
+
+    if (
+      !promiseCopyBlocks.length
+    ) {
+
+      return 0;
+
+    }
+
+    /*
+       We use a focus line at around 46% of
+       viewport height.
+
+       More importantly, we compare each block's
+       top/bottom relationship to that line rather
+       than just its geometric centre.
+
+       This makes transitions happen when the next
+       section genuinely becomes prominent.
+    */
+
+    const focusY =
+      window.innerHeight *
+      .46;
+
+    let bestIndex = 0;
+    let bestScore = Infinity;
+
+
+    promiseCopyBlocks.forEach(
+      function (
+        block,
+        index
+      ) {
+
+        const rect =
+          block.getBoundingClientRect();
+
+
+        /*
+           If the focus line sits inside the block,
+           that section should win immediately.
+
+           We still calculate a tiny score based on
+           distance from the block's upper-middle
+           so transitions do not feel late.
+        */
+
+        if (
+          rect.top <= focusY &&
+          rect.bottom >= focusY
+        ) {
+
+          const targetPoint =
+            rect.top +
+            (
+              rect.height *
+              .42
+            );
+
+          const score =
+            Math.abs(
+              targetPoint -
+              focusY
+            );
+
+          if (
+            score <
+            bestScore
+          ) {
+
+            bestScore =
+              score;
+
+            bestIndex =
+              index;
+
+          }
+
+          return;
+
+        }
+
+
+        /*
+           Otherwise choose the nearest block edge.
+        */
+
+        let distance;
+
+        if (
+          rect.top >
+          focusY
+        ) {
+
+          distance =
+            rect.top -
+            focusY;
+
+        } else {
+
+          distance =
+            focusY -
+            rect.bottom;
+
+        }
+
+        if (
+          distance <
+          bestScore
+        ) {
+
+          bestScore =
+            distance;
+
+          bestIndex =
+            index;
+
+        }
+
+      }
+    );
+
+    return bestIndex;
+
+  }
+
+
+  function updatePromiseProgress() {
+
+    if (
+      !promiseStory ||
+      !promiseProgress
+    ) {
+
+      return;
+
+    }
+
+    const rect =
+      promiseStory.getBoundingClientRect();
+
+    const scrollable =
+      promiseStory.offsetHeight -
+      window.innerHeight;
+
+    if (
+      scrollable <= 0
+    ) {
+
+      promiseProgress.style.width =
+        '0%';
+
+      return;
+
+    }
+
+    const progress =
+      clamp(
+        -rect.top /
+        scrollable
+      );
+
+    promiseProgress.style.width =
+      (
+        progress *
+        100
+      ) +
+      '%';
+
+  }
+
+
   function updatePromiseStory() {
 
     if (
@@ -409,17 +773,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    /*
-       MOBILE / REDUCED MOTION
-
-       Text sections simply remain visible.
-
-       Sticky image behaviour is desktop only.
-    */
+    /* ---------------------------------------------------
+       MOBILE
+       --------------------------------------------------- */
 
     if (
-      !isDesktop() ||
-      reduceMotion
+      !isDesktop()
     ) {
 
       promiseCopyBlocks.forEach(
@@ -429,19 +788,55 @@ document.addEventListener('DOMContentLoaded', function () {
             'is-active'
           );
 
-        }
-      );
-
-      promiseImages.forEach(
-        function (image, i) {
-
-          image.classList.toggle(
-            'is-active',
-            i === 0
+          block.setAttribute(
+            'aria-current',
+            'false'
           );
 
         }
       );
+
+      promiseImages.forEach(
+        function (
+          image,
+          index
+        ) {
+
+          const active =
+            index === 0;
+
+          image.classList.toggle(
+            'is-active',
+            active
+          );
+
+          image.setAttribute(
+            'aria-hidden',
+            active
+              ? 'false'
+              : 'true'
+          );
+
+        }
+      );
+
+      promiseActiveIndex =
+        0;
+
+      return;
+
+    }
+
+
+    /* ---------------------------------------------------
+       REDUCED MOTION
+       --------------------------------------------------- */
+
+    if (
+      reduceMotion
+    ) {
+
+      setPromiseActive(0);
 
       return;
 
@@ -449,101 +844,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     /*
-       Focus point for deciding which text section
-       currently owns the sticky image.
-
-       Slightly above true centre works better
-       because users naturally read into the
-       upper-middle part of the screen.
+       If the whole story is still below
+       the viewport, leave image 01 active.
     */
 
-    const focusY =
-      window.innerHeight *
-      0.48;
+    const storyRect =
+      promiseStory.getBoundingClientRect();
 
-    let bestIndex = 0;
-    let bestDistance = Infinity;
+    if (
+      storyRect.top >=
+      window.innerHeight
+    ) {
 
+      setPromiseActive(0);
 
-    promiseCopyBlocks.forEach(
-      function (block, index) {
+      updatePromiseProgress();
 
-        const rect =
-          block.getBoundingClientRect();
-
-        const centre =
-          rect.top +
-          (
-            rect.height *
-            0.5
-          );
-
-        const distance =
-          Math.abs(
-            centre -
-            focusY
-          );
-
-        if (
-          distance <
-          bestDistance
-        ) {
-
-          bestDistance =
-            distance;
-
-          bestIndex =
-            index;
-
-        }
-
-      }
-    );
-
-
-    setPromiseActive(
-      bestIndex
-    );
-
-
-    /*
-       STORY PROGRESS LINE
-    */
-
-    if (promiseProgress) {
-
-      const rect =
-        promiseStory.getBoundingClientRect();
-
-      const scrollable =
-        promiseStory.offsetHeight -
-        window.innerHeight;
-
-      const progress =
-        scrollable > 0
-          ? clamp(
-              -rect.top /
-              scrollable
-            )
-          : 0;
-
-      promiseProgress.style.width =
-        (
-          progress *
-          100
-        ) +
-        '%';
+      return;
 
     }
 
+
+    const activeIndex =
+      getPromiseActiveIndex();
+
+    setPromiseActive(
+      activeIndex
+    );
+
+    updatePromiseProgress();
+
   }
-
-
-  /*
-     Start with chapter 01.
-  */
-
-  setPromiseActive(0);
 
 
   /* =====================================================
@@ -558,7 +889,9 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
 
-  if (reduceMotion) {
+  if (
+    reduceMotion
+  ) {
 
     revealItems.forEach(
       function (item) {
@@ -604,7 +937,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         },
         {
-          threshold: 0.12,
+          threshold:.12,
 
           rootMargin:
             '0px 0px -5% 0px'
@@ -638,10 +971,84 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* =====================================================
-     SCROLL / RESIZE ENGINE
+     RESPONSIVE RESET
+     ===================================================== */
 
-     One requestAnimationFrame loop handles the
-     homepage scroll effects efficiently.
+  function resetResponsiveState() {
+
+    if (
+      isDesktop()
+    ) {
+
+      return;
+
+    }
+
+    if (
+      heroVideo
+    ) {
+
+      heroVideo.style.transform =
+        '';
+
+    }
+
+
+    if (
+      promiseIntro
+    ) {
+
+      promiseIntro.classList.remove(
+        'is-transitioning'
+      );
+
+      promiseIntro.classList.remove(
+        'is-exiting'
+      );
+
+    }
+
+
+    promiseCopyBlocks.forEach(
+      function (block) {
+
+        block.classList.add(
+          'is-active'
+        );
+
+      }
+    );
+
+
+    promiseImages.forEach(
+      function (
+        image,
+        index
+      ) {
+
+        image.classList.toggle(
+          'is-active',
+          index === 0
+        );
+
+      }
+    );
+
+
+    if (
+      promiseProgress
+    ) {
+
+      promiseProgress.style.width =
+        '';
+
+    }
+
+  }
+
+
+  /* =====================================================
+     SCROLL ENGINE
      ===================================================== */
 
   let ticking = false;
@@ -651,6 +1058,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     updateHeroVideo();
 
+    updatePromiseIntro();
+
     updatePromiseStory();
 
   }
@@ -658,20 +1067,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function requestScrollUpdate() {
 
-    if (ticking) {
+    if (
+      ticking
+    ) {
 
       return;
 
     }
 
-    ticking = true;
+    ticking =
+      true;
 
     window.requestAnimationFrame(
       function () {
 
         updateScrollEffects();
 
-        ticking = false;
+        ticking =
+          false;
 
       }
     );
@@ -683,20 +1096,76 @@ document.addEventListener('DOMContentLoaded', function () {
     'scroll',
     requestScrollUpdate,
     {
-      passive: true
+      passive:true
     }
   );
 
 
+  /* =====================================================
+     RESIZE
+     ===================================================== */
+
+  let resizeTimer =
+    null;
+
+
   window.addEventListener(
     'resize',
-    requestScrollUpdate
+    function () {
+
+      if (
+        resizeTimer
+      ) {
+
+        window.clearTimeout(
+          resizeTimer
+        );
+
+      }
+
+      resizeTimer =
+        window.setTimeout(
+          function () {
+
+            resetResponsiveState();
+
+            requestScrollUpdate();
+
+            resizeTimer =
+              null;
+
+          },
+          100
+        );
+
+    }
+  );
+
+
+  /* =====================================================
+     IMAGE LOAD SAFETY
+
+     Re-run positioning when late-loading images alter
+     document height.
+     ===================================================== */
+
+  window.addEventListener(
+    'load',
+    function () {
+
+      requestScrollUpdate();
+
+    }
   );
 
 
   /* =====================================================
      INITIALISE
      ===================================================== */
+
+  setPromiseActive(0);
+
+  resetResponsiveState();
 
   updateScrollEffects();
 

@@ -4,10 +4,13 @@
 
    Homepage-only interactions:
    - Rotating hero testimonials
-   - Subtle hero video movement
+   - Cinematic hero video movement
+   - Hero content fade as page leaves viewport
    - Standard reveal animations
+   - Sticky story chapter tracking
+   - Subtle image movement inside sticky story cards
    - Smooth internal anchor scrolling
-   - Small accessibility / resize safeguards
+   - Image / resize / Safari safeguards
 
    IMPORTANT:
    - Package cards
@@ -26,13 +29,18 @@ document.addEventListener('DOMContentLoaded', function () {
      GLOBAL
      ===================================================== */
 
-  const reduceMotion =
+  const motionQuery =
     window.matchMedia(
       '(prefers-reduced-motion: reduce)'
-    ).matches;
+    );
 
 
-  const DESKTOP_BREAKPOINT = 900;
+  const reduceMotion =
+    motionQuery.matches;
+
+
+  const DESKTOP_BREAKPOINT =
+    900;
 
 
   function clamp(
@@ -62,9 +70,31 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
+  function getNavHeight() {
+
+    const styles =
+      window.getComputedStyle(
+        document.documentElement
+      );
+
+
+    const value =
+      styles.getPropertyValue(
+        '--nav-height'
+      );
+
+
+    return (
+      parseFloat(value) ||
+      0
+    );
+
+  }
+
+
 
   /* =====================================================
-     HERO
+     HERO ELEMENTS
      ===================================================== */
 
   const hero =
@@ -76,6 +106,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const heroVideo =
     document.querySelector(
       '.home-hero-video'
+    );
+
+
+  const heroMain =
+    document.querySelector(
+      '.home-hero-main'
+    );
+
+
+  const heroProof =
+    document.querySelector(
+      '.home-hero-proof'
     );
 
 
@@ -97,11 +139,16 @@ document.addEventListener('DOMContentLoaded', function () {
     6500;
 
 
-  let heroReviewIndex = 0;
+  let heroReviewIndex =
+    0;
 
-  let heroReviewTimer = null;
 
-  let heroProgressAnimation = null;
+  let heroReviewTimer =
+    null;
+
+
+  let heroProgressAnimation =
+    null;
 
 
 
@@ -169,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       heroProgressAnimation.cancel();
 
+
       heroProgressAnimation =
         null;
 
@@ -222,10 +270,12 @@ document.addEventListener('DOMContentLoaded', function () {
       heroReviewProgress.animate(
         [
           {
-            width:'0%'
+            width:
+              '0%'
           },
           {
-            width:'100%'
+            width:
+              '100%'
           }
         ],
         {
@@ -320,8 +370,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /*
-     Pause testimonial rotation while
-     the browser tab is not visible.
+     Do not let the reviews continue rotating
+     while the browser tab is hidden.
   */
 
   document.addEventListener(
@@ -341,39 +391,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
       }
 
+
     }
   );
 
 
 
   /* =====================================================
-     SUBTLE HERO VIDEO MOVEMENT
+     HERO SCROLL EFFECT
+
+     IMPORTANT:
+
+     CSS positions the video using inset:0.
+
+     JS therefore writes SCALE ONLY.
+
+     Do not add translate(-50%, -50%) here or change
+     the video back to left:50%; top:50%.
+
+     That was one of the causes of the previous hero issue.
      ===================================================== */
 
-  function updateHeroVideo() {
+  function updateHero() {
 
     if (
-      !hero ||
-      !heroVideo
+      !hero
     ) {
-
-      return;
-
-    }
-
-
-    /*
-       Keep mobile simpler and avoid unnecessary
-       GPU work on smaller devices.
-    */
-
-    if (
-      !isDesktop() ||
-      reduceMotion
-    ) {
-
-      heroVideo.style.transform =
-        '';
 
       return;
 
@@ -384,53 +427,180 @@ document.addEventListener('DOMContentLoaded', function () {
       hero.getBoundingClientRect();
 
 
+    const heroHeight =
+      Math.max(
+        rect.height,
+        1
+      );
+
+
     /*
-       Hero completely outside viewport.
+       How far through the hero the visitor has scrolled.
+
+       0 = top of page
+       1 = hero has completely passed
+    */
+
+    const scrollProgress =
+      clamp(
+        -rect.top /
+        heroHeight
+      );
+
+
+    /*
+       -----------------------------------------------------
+       VIDEO SCALE
+       -----------------------------------------------------
+
+       Starts at roughly 1.015.
+
+       Slowly moves towards 1.045 while leaving the hero.
+
+       It feels more like a very gentle camera push
+       than obvious parallax.
     */
 
     if (
-      rect.bottom <= 0 ||
-      rect.top >=
-      window.innerHeight
+      heroVideo
     ) {
 
-      return;
+
+      if (
+        !isDesktop() ||
+        reduceMotion
+      ) {
+
+        heroVideo.style.transform =
+          '';
+
+      } else {
+
+
+        const scale =
+          1.015 +
+          (
+            scrollProgress *
+            0.03
+          );
+
+
+        heroVideo.style.transform =
+          'scale(' +
+          scale.toFixed(4) +
+          ')';
+
+      }
+
 
     }
 
 
-    const progress =
-      clamp(
-        (
-          window.innerHeight -
-          rect.top
-        ) /
-        (
-          window.innerHeight +
-          rect.height
-        )
-      );
+
+    /*
+       -----------------------------------------------------
+       HERO COPY
+       -----------------------------------------------------
+
+       As the next section begins to cover the hero,
+       the central proposition gently recedes.
+
+       The movement is intentionally restrained.
+    */
+
+    if (
+      heroMain
+    ) {
+
+
+      if (
+        reduceMotion ||
+        !isDesktop()
+      ) {
+
+        heroMain.style.opacity =
+          '';
+
+        heroMain.style.transform =
+          '';
+
+      } else {
+
+
+        const fade =
+          1 -
+          clamp(
+            scrollProgress *
+            1.32
+          );
+
+
+        const translateY =
+          scrollProgress *
+          -22;
+
+
+        heroMain.style.opacity =
+          Math.max(
+            0,
+            fade
+          ).toFixed(3);
+
+
+        heroMain.style.transform =
+          'translate3d(0,' +
+          translateY.toFixed(2) +
+          'px,0)';
+
+      }
+
+
+    }
+
 
 
     /*
-       Restrained scale movement only.
+       Social proof leaves slightly earlier than
+       the main hero headline.
 
-       Approx range:
-       1.015 -> 1.025
+       This helps the transition into the next section
+       feel less cluttered.
     */
 
-    const scale =
-      1.015 +
-      (
-        progress *
-        0.01
-      );
+    if (
+      heroProof
+    ) {
 
 
-    heroVideo.style.transform =
-      'scale(' +
-      scale +
-      ')';
+      if (
+        reduceMotion ||
+        !isDesktop()
+      ) {
+
+        heroProof.style.opacity =
+          '';
+
+      } else {
+
+
+        const proofFade =
+          1 -
+          clamp(
+            scrollProgress *
+            1.7
+          );
+
+
+        heroProof.style.opacity =
+          Math.max(
+            0,
+            proofFade
+          ).toFixed(3);
+
+      }
+
+
+    }
 
   }
 
@@ -448,14 +618,17 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
 
-  let revealObserver = null;
+  let revealObserver =
+    null;
+
 
 
   function initialiseReveals() {
 
+
     /*
        Reduced motion:
-       expose everything immediately.
+       show everything immediately.
     */
 
     if (
@@ -479,13 +652,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
+
     /*
-       Browser without IntersectionObserver:
-       expose everything rather than risk hidden content.
+       Old browser fallback.
     */
 
     if (
-      !('IntersectionObserver' in window)
+      !(
+        'IntersectionObserver'
+        in window
+      )
     ) {
 
 
@@ -503,6 +679,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
 
     }
+
 
 
     revealObserver =
@@ -552,20 +729,16 @@ document.addEventListener('DOMContentLoaded', function () {
             0.1,
 
           rootMargin:
-            '0px 0px -4% 0px'
+            '0px 0px -5% 0px'
 
         }
       );
 
 
+
     revealItems.forEach(
       function (item) {
 
-
-        /*
-           If the element has somehow already been
-           revealed, don't observe it again.
-        */
 
         if (
           item.classList.contains(
@@ -589,12 +762,355 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
+
   initialiseReveals();
 
 
 
   /* =====================================================
-     INTERNAL ANCHOR SCROLLING
+     CINEMATIC STORY CHAPTERS
+
+     CSS performs the actual sticky stacking.
+
+     JS adds:
+     - current chapter tracking
+     - subtle image movement
+     - CSS progress variables for future styling
+
+     Importantly, the card itself is NOT transformed.
+     Transforming a sticky element can cause erratic
+     browser behaviour.
+     ===================================================== */
+
+  const promiseSection =
+    document.querySelector(
+      '.home-promise'
+    );
+
+
+  const promiseCards =
+    Array.from(
+      document.querySelectorAll(
+        '.promise-card'
+      )
+    );
+
+
+  let currentPromiseIndex =
+    -1;
+
+
+
+  function setCurrentPromiseCard(
+    index
+  ) {
+
+    if (
+      index ===
+      currentPromiseIndex
+    ) {
+
+      return;
+
+    }
+
+
+    currentPromiseIndex =
+      index;
+
+
+    promiseCards.forEach(
+      function (
+        card,
+        cardIndex
+      ) {
+
+
+        const current =
+          cardIndex ===
+          index;
+
+
+        card.classList.toggle(
+          'is-current',
+          current
+        );
+
+
+        card.setAttribute(
+          'data-chapter-state',
+          current
+            ? 'current'
+            : cardIndex < index
+              ? 'past'
+              : 'future'
+        );
+
+
+      }
+    );
+
+  }
+
+
+
+  function resetPromiseEffects() {
+
+    promiseCards.forEach(
+      function (card) {
+
+
+        card.style.removeProperty(
+          '--chapter-progress'
+        );
+
+
+        card.style.removeProperty(
+          '--chapter-visible'
+        );
+
+
+        const image =
+          card.querySelector(
+            '.promise-card-image img'
+          );
+
+
+        if (
+          image
+        ) {
+
+          image.style.transform =
+            '';
+
+        }
+
+
+      }
+    );
+
+
+    currentPromiseIndex =
+      -1;
+
+  }
+
+
+
+  function updatePromiseStory() {
+
+    if (
+      !promiseSection ||
+      !promiseCards.length
+    ) {
+
+      return;
+
+    }
+
+
+
+    /*
+       CSS removes sticky stacking below 900px,
+       so the extra scroll maths is unnecessary there.
+    */
+
+    if (
+      !isDesktop() ||
+      reduceMotion
+    ) {
+
+      resetPromiseEffects();
+
+      return;
+
+    }
+
+
+
+    const navHeight =
+      getNavHeight();
+
+
+    const stickyOffset =
+      navHeight +
+      34;
+
+
+
+    let nearestIndex =
+      0;
+
+
+    let nearestDistance =
+      Infinity;
+
+
+
+    promiseCards.forEach(
+      function (
+        card,
+        index
+      ) {
+
+
+        const rect =
+          card.getBoundingClientRect();
+
+
+        /*
+           Distance between this chapter and the
+           sticky presentation position.
+        */
+
+        const distance =
+          Math.abs(
+            rect.top -
+            stickyOffset
+          );
+
+
+        if (
+          distance <
+          nearestDistance
+        ) {
+
+          nearestDistance =
+            distance;
+
+
+          nearestIndex =
+            index;
+
+        }
+
+
+
+        /*
+           Progress through the individual chapter.
+
+           This does not drive the sticky behaviour itself.
+           It just gives us controlled visual movement
+           within the image.
+        */
+
+        const travel =
+          Math.max(
+            window.innerHeight,
+            rect.height
+          );
+
+
+        const progress =
+          clamp(
+            (
+              stickyOffset -
+              rect.top
+            ) /
+            travel
+          );
+
+
+        card.style.setProperty(
+          '--chapter-progress',
+          progress.toFixed(4)
+        );
+
+
+
+        /*
+           Visible amount gives us another hook in case
+           we later want to add chapter indicators in CSS.
+        */
+
+        const visibleTop =
+          Math.max(
+            rect.top,
+            0
+          );
+
+
+        const visibleBottom =
+          Math.min(
+            rect.bottom,
+            window.innerHeight
+          );
+
+
+        const visiblePixels =
+          Math.max(
+            0,
+            visibleBottom -
+            visibleTop
+          );
+
+
+        const visibleRatio =
+          clamp(
+            visiblePixels /
+            Math.min(
+              rect.height,
+              window.innerHeight
+            )
+          );
+
+
+        card.style.setProperty(
+          '--chapter-visible',
+          visibleRatio.toFixed(4)
+        );
+
+
+
+        /*
+           Very small Ken Burns-style movement.
+
+           Importantly, we transform only the IMAGE,
+           never the sticky card.
+        */
+
+        const image =
+          card.querySelector(
+            '.promise-card-image img'
+          );
+
+
+        if (
+          image
+        ) {
+
+
+          const scale =
+            1 +
+            (
+              progress *
+              0.022
+            );
+
+
+          image.style.transform =
+            'scale(' +
+            scale.toFixed(4) +
+            ')';
+
+        }
+
+
+      }
+    );
+
+
+
+    setCurrentPromiseCard(
+      nearestIndex
+    );
+
+  }
+
+
+
+  /* =====================================================
+     SMOOTH INTERNAL ANCHOR SCROLLING
      ===================================================== */
 
   const internalLinks =
@@ -603,29 +1119,6 @@ document.addEventListener('DOMContentLoaded', function () {
         'a[href^="#"]'
       )
     );
-
-
-  function getNavHeight() {
-
-    const rootStyles =
-      window.getComputedStyle(
-        document.documentElement
-      );
-
-
-    const navHeightValue =
-      rootStyles.getPropertyValue(
-        '--nav-height'
-      );
-
-
-    return (
-      parseFloat(
-        navHeightValue
-      ) || 0
-    );
-
-  }
 
 
   internalLinks.forEach(
@@ -653,7 +1146,8 @@ document.addEventListener('DOMContentLoaded', function () {
           }
 
 
-          let target = null;
+          let target =
+            null;
 
 
           try {
@@ -678,11 +1172,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
           }
 
-
-          /*
-             Respect reduced-motion preference.
-             Browser performs normal anchor behaviour.
-          */
 
           if (
             reduceMotion
@@ -710,6 +1199,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           window.scrollTo(
             {
+
               top:
                 Math.max(
                   0,
@@ -718,13 +1208,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
               behavior:
                 'smooth'
+
             }
           );
 
 
+
           /*
-             Keep the address bar / history useful
-             without causing a second browser jump.
+             Update URL without causing a second jump.
           */
 
           if (
@@ -788,7 +1279,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         },
         {
-          once:true
+          once:
+            true
         }
       );
 
@@ -801,7 +1293,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         },
         {
-          once:true
+          once:
+            true
         }
       );
 
@@ -814,19 +1307,23 @@ document.addEventListener('DOMContentLoaded', function () {
   /* =====================================================
      SCROLL ENGINE
 
-     Only the hero requires continuous
-     scroll-driven calculation now.
+     One requestAnimationFrame loop handles:
+     - hero
+     - sticky story chapters
 
-     Promise cards, wedding features, locations,
-     process and partner sections use CSS + reveals.
+     This avoids multiple scroll listeners fighting each
+     other or forcing excessive layout calculations.
      ===================================================== */
 
-  let ticking = false;
+  let ticking =
+    false;
 
 
   function updateScrollEffects() {
 
-    updateHeroVideo();
+    updateHero();
+
+    updatePromiseStory();
 
   }
 
@@ -869,7 +1366,8 @@ document.addEventListener('DOMContentLoaded', function () {
     'scroll',
     requestScrollUpdate,
     {
-      passive:true
+      passive:
+        true
     }
   );
 
@@ -905,24 +1403,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             /*
-               Clear any inline desktop transform when
-               switching into the mobile breakpoint.
-
-               CSS can then fully control the video again.
+               Remove inline desktop effects after
+               crossing down into the mobile layout.
             */
 
             if (
-              heroVideo &&
-              (
-                !isDesktop() ||
-                reduceMotion
-              )
+              !isDesktop() ||
+              reduceMotion
             ) {
 
-              heroVideo.style.transform =
-                '';
+
+              if (
+                heroVideo
+              ) {
+
+                heroVideo.style.transform =
+                  '';
+
+              }
+
+
+              if (
+                heroMain
+              ) {
+
+                heroMain.style.transform =
+                  '';
+
+                heroMain.style.opacity =
+                  '';
+
+              }
+
+
+              if (
+                heroProof
+              ) {
+
+                heroProof.style.opacity =
+                  '';
+
+              }
+
+
+              resetPromiseEffects();
 
             }
+
 
 
             requestScrollUpdate();
@@ -933,7 +1460,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
           },
-          100
+          120
         );
 
 
@@ -944,9 +1471,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* =====================================================
      ORIENTATION CHANGE
-
-     Particularly useful on iPhone / iPad where
-     viewport dimensions can lag during rotation.
      ===================================================== */
 
   window.addEventListener(
@@ -960,7 +1484,7 @@ document.addEventListener('DOMContentLoaded', function () {
           requestScrollUpdate();
 
         },
-        150
+        180
       );
 
 
@@ -970,17 +1494,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* =====================================================
-     BF CACHE SAFETY
-
-     Safari can restore a page from back-forward cache.
-     Recalculate hero state when that happens.
+     SAFARI BACK/FORWARD CACHE
      ===================================================== */
 
   window.addEventListener(
     'pageshow',
     function () {
 
+
       requestScrollUpdate();
+
+
+      if (
+        !document.hidden
+      ) {
+
+        scheduleHeroReview();
+
+      }
+
 
     }
   );
@@ -988,7 +1520,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* =====================================================
-     PAGE LOAD SAFETY
+     FULL PAGE LOAD
      ===================================================== */
 
   window.addEventListener(

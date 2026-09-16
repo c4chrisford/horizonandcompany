@@ -3542,3 +3542,1179 @@
   }
 
 }
+
+/* =========================================================
+   FINAL SCROLL SECTION FIX
+   KEEP THIS AT THE VERY END OF home.css
+   ========================================================= */
+
+
+/* =========================================================
+   1. YOUR WEDDING DAY
+   FIXED COPY LEFT / IMAGE REEL RIGHT
+   ========================================================= */
+
+.home-feeling{
+  position:relative !important;
+
+  width:100vw !important;
+  max-width:none !important;
+
+  left:50% !important;
+  margin-left:-50vw !important;
+
+  height:430vh !important;
+
+  background:#f4f2ed !important;
+
+  overflow:visible !important;
+}
+
+
+.home-feeling-sticky{
+  position:sticky !important;
+
+  top:0 !important;
+
+  width:100% !important;
+  height:100vh !important;
+
+  min-height:100vh !important;
+
+  display:flex !important;
+  align-items:center !important;
+
+  overflow:hidden !important;
+
+  background:#f4f2ed !important;
+}
+
+
+.home-feeling-inner{
+  position:relative !important;
+
+  width:min(1240px,88vw) !important;
+  height:min(720px,78vh) !important;
+
+  margin:0 auto !important;
+
+  display:grid !important;
+
+  grid-template-columns:
+    minmax(0,.88fr)
+    minmax(0,1.12fr) !important;
+
+  gap:90px !important;
+
+  align-items:center !important;
+}
+
+
+/* pale background word */
+
+.home-feeling-word{
+  position:absolute !important;
+
+  left:50% !important;
+  top:52% !important;
+
+  transform:translate(-50%,-50%) !important;
+
+  font-family:'Baskervville',serif !important;
+
+  font-size:clamp(9rem,18vw,18rem) !important;
+
+  line-height:.8 !important;
+
+  white-space:nowrap !important;
+
+  color:rgba(36,35,33,.022) !important;
+
+  pointer-events:none !important;
+
+  z-index:0 !important;
+}
+
+
+/* ---------------------------------------------------------
+   LEFT COPY
+   --------------------------------------------------------- */
+
+.home-feeling-copy{
+  position:relative !important;
+
+  z-index:4 !important;
+
+  width:100% !important;
+  max-width:520px !important;
+
+  min-width:0 !important;
+}
+
+
+.home-feeling-copy .eyebrow{
+  display:block !important;
+
+  margin:0 0 24px !important;
+}
+
+
+.home-feeling-copy h2{
+  margin:0 !important;
+
+  max-width:520px !important;
+
+  font-family:'Baskervville',serif !important;
+
+  font-size:clamp(3.5rem,4.8vw,5.15rem) !important;
+
+  line-height:.94 !important;
+
+  font-weight:400 !important;
+
+  letter-spacing:-.045em !important;
+
+  color:#242321 !important;
+
+  overflow:visible !important;
+}
+
+
+.home-feeling-copy h2 > span{
+  display:block !important;
+}
+
+
+.home-feeling-copy h2 em{
+  display:block !important;
+
+  margin-top:17px !important;
+
+  max-width:490px !important;
+
+  font-size:.53em !important;
+
+  line-height:1.1 !important;
+
+  font-weight:400 !important;
+  font-style:italic !important;
+
+  letter-spacing:-.025em !important;
+
+  color:#746e67 !important;
+}
+
+
+.home-feeling-lead{
+  max-width:470px !important;
+
+  margin:29px 0 0 !important;
+
+  color:#68635d !important;
+
+  font-size:.94rem !important;
+
+  line-height:1.8 !important;
+}
+
+
+/* changing mini-caption */
+
+.feeling-chapter{
+  position:relative !important;
+
+  min-height:92px !important;
+
+  margin-top:34px !important;
+
+  padding-top:20px !important;
+
+  border-top:
+    1px solid rgba(36,35,33,.13) !important;
+
+  overflow:hidden !important;
+}
+
+
+.feeling-chapter-label{
+  display:block !important;
+
+  margin-bottom:8px !important;
+
+  color:#9f8152 !important;
+
+  font-size:.56rem !important;
+
+  font-weight:600 !important;
+
+  letter-spacing:2.7px !important;
+
+  text-transform:uppercase !important;
+}
+
+
+.feeling-chapter-copy{
+  max-width:430px !important;
+
+  margin:0 !important;
+
+  font-family:'Baskervville',serif !important;
+
+  font-size:1.18rem !important;
+
+  line-height:1.45 !important;
+
+  font-style:italic !important;
+
+  color:#68625b !important;
+}
+
+
+/* ---------------------------------------------------------
+   RIGHT IMAGE WINDOW
+   THIS IS THE IMPORTANT FIX
+   --------------------------------------------------------- */
+
+.home-feeling-visual{
+  position:relative !important;
+
+  z-index:3 !important;
+
+  width:100% !important;
+  max-width:650px !important;
+
+  height:min(70vh,660px) !important;
+
+  justify-self:end !important;
+
+  overflow:hidden !important;
+
+  background:#ddd9d2 !important;
+}
+
+
+/* every frame sits in exactly the same window */
+
+.feeling-shot{
+  position:absolute !important;
+
+  inset:0 !important;
+
+  width:100% !important;
+  height:100% !important;
+
+  max-width:none !important;
+
+  margin:0 !important;
+
+  padding:0 !important;
+
+  overflow:hidden !important;
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transform:
+    translate3d(0,70px,0)
+    scale(1.02);
+
+  will-change:
+    opacity,
+    transform;
+}
+
+
+/* stop global image rules blowing these up */
+
+.home-feeling-visual .feeling-shot img{
+  position:absolute !important;
+
+  inset:0 !important;
+
+  width:100% !important;
+  height:100% !important;
+
+  max-width:none !important;
+  max-height:none !important;
+
+  margin:0 !important;
+
+  display:block !important;
+
+  object-fit:cover !important;
+
+  object-position:center center !important;
+}
+
+
+/* internal cinematic shade */
+
+.feeling-shot-overlay{
+  position:absolute !important;
+
+  inset:0 !important;
+
+  z-index:1 !important;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.42) 0%,
+      rgba(0,0,0,.06) 48%,
+      rgba(0,0,0,0) 70%
+    ) !important;
+
+  pointer-events:none !important;
+}
+
+
+/* fine inset border */
+
+.feeling-shot::after{
+  content:"" !important;
+
+  position:absolute !important;
+
+  inset:18px !important;
+
+  z-index:2 !important;
+
+  border:
+    1px solid rgba(255,255,255,.30) !important;
+
+  pointer-events:none !important;
+}
+
+
+/* caption */
+
+.feeling-shot figcaption{
+  position:absolute !important;
+
+  left:28px !important;
+  right:28px !important;
+  bottom:27px !important;
+
+  z-index:3 !important;
+
+  display:grid !important;
+
+  grid-template-columns:1fr auto !important;
+
+  grid-template-rows:auto auto !important;
+
+  column-gap:20px !important;
+
+  align-items:end !important;
+
+  color:white !important;
+}
+
+
+.feeling-shot figcaption span{
+  grid-column:1 !important;
+
+  display:block !important;
+
+  margin-bottom:7px !important;
+
+  color:#ead0a5 !important;
+
+  font-size:.55rem !important;
+
+  font-weight:600 !important;
+
+  letter-spacing:2.7px !important;
+
+  text-transform:uppercase !important;
+}
+
+
+.feeling-shot figcaption p{
+  grid-column:1 !important;
+
+  max-width:390px !important;
+
+  margin:0 !important;
+
+  font-family:'Baskervville',serif !important;
+
+  font-size:clamp(1.2rem,1.8vw,1.7rem) !important;
+
+  line-height:1.25 !important;
+
+  font-style:italic !important;
+
+  color:white !important;
+
+  text-shadow:
+    0 2px 16px rgba(0,0,0,.45) !important;
+}
+
+
+.feeling-shot figcaption strong{
+  grid-column:2 !important;
+  grid-row:1 / span 2 !important;
+
+  align-self:end !important;
+
+  font-family:'Baskervville',serif !important;
+
+  font-size:2rem !important;
+
+  font-weight:400 !important;
+
+  color:rgba(255,255,255,.9) !important;
+}
+
+
+/* progress */
+
+.feeling-progress{
+  position:relative !important;
+
+  width:100% !important;
+  height:1px !important;
+
+  margin-top:25px !important;
+
+  background:
+    rgba(36,35,33,.12) !important;
+}
+
+
+.feeling-progress span{
+  display:block !important;
+
+  width:0%;
+  height:1px !important;
+
+  background:#9f8152 !important;
+}
+
+
+
+/* =========================================================
+   2. WHAT THE FILM GIVES YOU
+   EDITORIAL TWO-COLUMN SCROLL SCENES
+   ========================================================= */
+
+.home-promise{
+  position:relative !important;
+
+  width:100vw !important;
+  max-width:none !important;
+
+  left:50% !important;
+  margin-left:-50vw !important;
+
+  height:400vh !important;
+
+  background:#fff !important;
+
+  overflow:visible !important;
+}
+
+
+.home-promise-sticky{
+  position:sticky !important;
+
+  top:0 !important;
+
+  width:100% !important;
+  height:100vh !important;
+
+  min-height:100vh !important;
+
+  overflow:hidden !important;
+
+  background:#fff !important;
+}
+
+
+.home-promise-inner{
+  position:relative !important;
+
+  width:min(1240px,88vw) !important;
+  height:100% !important;
+
+  margin:0 auto !important;
+}
+
+
+/* background word */
+
+.home-promise-word{
+  position:absolute !important;
+
+  left:50% !important;
+  top:52% !important;
+
+  transform:translate(-50%,-50%) !important;
+
+  font-family:'Baskervville',serif !important;
+
+  font-size:clamp(8rem,17vw,17rem) !important;
+
+  line-height:.8 !important;
+
+  font-style:italic !important;
+
+  white-space:nowrap !important;
+
+  color:rgba(0,0,0,.02) !important;
+
+  pointer-events:none !important;
+
+  z-index:0 !important;
+}
+
+
+/* ---------------------------------------------------------
+   INDIVIDUAL SCENE
+   --------------------------------------------------------- */
+
+.promise-scene{
+  position:absolute !important;
+
+  inset:0 !important;
+
+  z-index:2 !important;
+
+  width:100% !important;
+  height:100% !important;
+
+  display:grid !important;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    minmax(0,1fr) !important;
+
+  gap:82px !important;
+
+  align-items:center !important;
+
+  opacity:0;
+
+  visibility:hidden;
+
+  overflow:visible !important;
+
+  will-change:
+    transform,
+    opacity,
+    filter;
+}
+
+
+.promise-scene.reverse .promise-image{
+  order:2 !important;
+}
+
+
+.promise-scene.reverse .promise-copy{
+  order:1 !important;
+}
+
+
+/* ---------------------------------------------------------
+   IMAGE
+   MOST IMPORTANT PROMISE FIX
+   --------------------------------------------------------- */
+
+.promise-image{
+  position:relative !important;
+
+  width:100% !important;
+  max-width:610px !important;
+
+  height:min(68vh,640px) !important;
+
+  margin:0 !important;
+
+  overflow:hidden !important;
+
+  background:#ddd !important;
+
+  justify-self:center !important;
+}
+
+
+.promise-image img{
+  position:absolute !important;
+
+  inset:0 !important;
+
+  width:100% !important;
+  height:100% !important;
+
+  max-width:none !important;
+  max-height:none !important;
+
+  display:block !important;
+
+  object-fit:cover !important;
+
+  object-position:center center !important;
+
+  margin:0 !important;
+
+  transform:scale(1.04);
+}
+
+
+.promise-image-overlay{
+  position:absolute !important;
+
+  inset:0 !important;
+
+  z-index:1 !important;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.36),
+      rgba(0,0,0,.02) 50%
+    ) !important;
+
+  pointer-events:none !important;
+}
+
+
+.promise-image::after{
+  content:"" !important;
+
+  position:absolute !important;
+
+  inset:19px !important;
+
+  z-index:2 !important;
+
+  border:
+    1px solid rgba(255,255,255,.29) !important;
+
+  pointer-events:none !important;
+}
+
+
+.promise-image-caption{
+  position:absolute !important;
+
+  left:28px !important;
+  bottom:27px !important;
+
+  z-index:3 !important;
+
+  color:white !important;
+}
+
+
+.promise-image-caption span{
+  display:block !important;
+
+  margin-bottom:8px !important;
+
+  color:#ead0a5 !important;
+
+  font-size:.55rem !important;
+
+  font-weight:600 !important;
+
+  letter-spacing:2.7px !important;
+
+  text-transform:uppercase !important;
+}
+
+
+.promise-image-caption p{
+  max-width:390px !important;
+
+  margin:0 !important;
+
+  font-family:'Baskervville',serif !important;
+
+  font-size:1.35rem !important;
+
+  line-height:1.38 !important;
+
+  font-style:italic !important;
+
+  color:white !important;
+
+  text-shadow:
+    0 2px 15px rgba(0,0,0,.45) !important;
+}
+
+
+/* ---------------------------------------------------------
+   PROMISE COPY
+   --------------------------------------------------------- */
+
+.promise-copy{
+  position:relative !important;
+
+  width:100% !important;
+  max-width:555px !important;
+
+  min-width:0 !important;
+
+  overflow:visible !important;
+}
+
+
+.promise-copy .eyebrow{
+  display:block !important;
+
+  margin-bottom:21px !important;
+}
+
+
+.promise-copy h2{
+  max-width:555px !important;
+
+  margin:0 0 27px !important;
+
+  font-family:'Baskervville',serif !important;
+
+  font-size:clamp(3rem,4.2vw,4.45rem) !important;
+
+  line-height:.98 !important;
+
+  font-weight:400 !important;
+
+  letter-spacing:-.04em !important;
+
+  color:#242321 !important;
+
+  overflow:visible !important;
+}
+
+
+.promise-copy h2 em{
+  display:block !important;
+
+  max-width:540px !important;
+
+  margin-top:13px !important;
+
+  font-size:.56em !important;
+
+  line-height:1.15 !important;
+
+  font-weight:400 !important;
+  font-style:italic !important;
+
+  color:#9f8152 !important;
+}
+
+
+.promise-lead{
+  max-width:515px !important;
+
+  margin:0 !important;
+
+  font-family:'Baskervville',serif !important;
+
+  font-size:1.28rem !important;
+
+  line-height:1.55 !important;
+
+  font-style:italic !important;
+
+  color:#35322f !important;
+}
+
+
+.promise-number{
+  display:block !important;
+
+  margin-bottom:10px !important;
+
+  font-family:'Baskervville',serif !important;
+
+  font-size:4.6rem !important;
+
+  line-height:.8 !important;
+
+  color:#9f8152 !important;
+}
+
+
+.promise-kicker{
+  display:block !important;
+
+  margin-bottom:20px !important;
+
+  color:#888178 !important;
+
+  font-size:.55rem !important;
+
+  font-weight:600 !important;
+
+  letter-spacing:2.8px !important;
+
+  text-transform:uppercase !important;
+}
+
+
+.promise-copy h3{
+  max-width:555px !important;
+
+  margin:0 0 20px !important;
+
+  font-family:'Baskervville',serif !important;
+
+  font-size:clamp(2.35rem,3.25vw,3.35rem) !important;
+
+  line-height:1.02 !important;
+
+  font-weight:400 !important;
+
+  letter-spacing:-.03em !important;
+
+  color:#242321 !important;
+
+  overflow:visible !important;
+}
+
+
+.promise-copy > p:not(.promise-lead){
+  max-width:500px !important;
+
+  margin:0 !important;
+
+  color:#66615c !important;
+
+  font-size:.94rem !important;
+
+  line-height:1.78 !important;
+}
+
+
+.promise-note{
+  display:block !important;
+
+  max-width:465px !important;
+
+  margin-top:23px !important;
+
+  padding-top:17px !important;
+
+  border-top:
+    1px solid rgba(36,35,33,.12) !important;
+
+  font-family:'Baskervville',serif !important;
+
+  font-size:1rem !important;
+
+  line-height:1.5 !important;
+
+  font-style:italic !important;
+
+  color:#777169 !important;
+}
+
+
+/* progress */
+
+.promise-progress{
+  position:absolute !important;
+
+  left:0 !important;
+  right:0 !important;
+  bottom:25px !important;
+
+  z-index:8 !important;
+
+  height:1px !important;
+
+  background:
+    rgba(36,35,33,.11) !important;
+}
+
+
+.promise-progress span{
+  display:block !important;
+
+  width:0%;
+  height:1px !important;
+
+  background:#9f8152 !important;
+}
+
+
+
+/* =========================================================
+   SHORTER LAPTOP SCREENS
+   ========================================================= */
+
+@media(max-height:800px) and (min-width:901px){
+
+  .home-feeling-inner{
+    height:72vh !important;
+
+    width:min(1160px,88vw) !important;
+
+    gap:70px !important;
+  }
+
+
+  .home-feeling-copy h2{
+    font-size:clamp(3.05rem,4.3vw,4.4rem) !important;
+  }
+
+
+  .home-feeling-visual{
+    height:66vh !important;
+
+    max-width:590px !important;
+  }
+
+
+  .home-feeling-lead{
+    margin-top:22px !important;
+  }
+
+
+  .feeling-chapter{
+    margin-top:25px !important;
+  }
+
+
+  .home-promise-inner{
+    width:min(1160px,88vw) !important;
+  }
+
+
+  .promise-scene{
+    gap:65px !important;
+  }
+
+
+  .promise-image{
+    height:63vh !important;
+
+    max-width:560px !important;
+  }
+
+
+  .promise-copy h2{
+    font-size:clamp(2.75rem,3.8vw,3.8rem) !important;
+  }
+
+
+  .promise-copy h3{
+    font-size:clamp(2.1rem,2.8vw,2.85rem) !important;
+  }
+
+
+  .promise-number{
+    font-size:4rem !important;
+  }
+
+
+  .promise-note{
+    margin-top:16px !important;
+  }
+
+}
+
+
+
+/* =========================================================
+   TABLET / MOBILE
+   TURN PINNED STORIES INTO NORMAL STACKED CONTENT
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .home-feeling,
+  .home-promise{
+    height:auto !important;
+
+    left:50% !important;
+    margin-left:-50vw !important;
+  }
+
+
+  .home-feeling-sticky,
+  .home-promise-sticky{
+    position:relative !important;
+
+    top:auto !important;
+
+    width:100% !important;
+
+    height:auto !important;
+    min-height:0 !important;
+
+    overflow:visible !important;
+
+    padding:90px 0 !important;
+  }
+
+
+  .home-feeling-word,
+  .home-promise-word,
+  .feeling-progress,
+  .promise-progress{
+    display:none !important;
+  }
+
+
+  /* wedding day */
+
+  .home-feeling-inner{
+    width:min(700px,88vw) !important;
+
+    height:auto !important;
+
+    display:block !important;
+  }
+
+
+  .home-feeling-copy{
+    max-width:650px !important;
+
+    margin-bottom:50px !important;
+  }
+
+
+  .home-feeling-visual{
+    width:100% !important;
+
+    max-width:none !important;
+
+    height:auto !important;
+
+    overflow:visible !important;
+
+    background:transparent !important;
+  }
+
+
+  .feeling-shot{
+    position:relative !important;
+
+    inset:auto !important;
+
+    width:100% !important;
+    height:auto !important;
+
+    aspect-ratio:4/5 !important;
+
+    margin:0 0 28px !important;
+
+    opacity:1 !important;
+    visibility:visible !important;
+
+    transform:none !important;
+  }
+
+
+  /* promise */
+
+  .home-promise-inner{
+    width:min(700px,88vw) !important;
+
+    height:auto !important;
+  }
+
+
+  .promise-scene{
+    position:relative !important;
+
+    inset:auto !important;
+
+    width:100% !important;
+    height:auto !important;
+
+    display:grid !important;
+
+    grid-template-columns:1fr !important;
+
+    gap:36px !important;
+
+    padding:50px 0 !important;
+
+    opacity:1 !important;
+    visibility:visible !important;
+
+    transform:none !important;
+
+    filter:none !important;
+
+    border-bottom:
+      1px solid rgba(36,35,33,.11) !important;
+  }
+
+
+  .promise-scene.reverse .promise-image,
+  .promise-scene.reverse .promise-copy{
+    order:initial !important;
+  }
+
+
+  .promise-image{
+    width:100% !important;
+
+    max-width:none !important;
+
+    height:auto !important;
+
+    aspect-ratio:4/5 !important;
+  }
+
+
+  .promise-copy{
+    max-width:650px !important;
+  }
+
+}
+
+
+
+/* =========================================================
+   MOBILE TYPE
+   ========================================================= */
+
+@media(max-width:600px){
+
+  .home-feeling-sticky,
+  .home-promise-sticky{
+    padding:75px 0 !important;
+  }
+
+
+  .home-feeling-copy h2{
+    font-size:3.1rem !important;
+  }
+
+
+  .home-feeling-copy h2 em{
+    font-size:.59em !important;
+  }
+
+
+  .home-feeling-lead{
+    font-size:.9rem !important;
+  }
+
+
+  .promise-copy h2{
+    font-size:2.75rem !important;
+  }
+
+
+  .promise-copy h3{
+    font-size:2.4rem !important;
+  }
+
+
+  .promise-image-caption{
+    left:22px !important;
+    bottom:22px !important;
+  }
+
+}

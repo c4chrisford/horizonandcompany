@@ -4,2968 +4,7 @@ title: "Wedding Videographer Cheshire, Liverpool & North Wales | Horizon & Compa
 description: "Natural, cinematic wedding films shaped around each couple. Wedding videography across Cheshire, Liverpool, Wirral, North Wales and the UK by Horizon & Company."
 ---
 
-<style>
-
-/* =========================================================
-   HORIZON & COMPANY
-   SCROLL-DRIVEN HOMEPAGE
-   ========================================================= */
-
-:root{
-  --home-cream:#f4f2ed;
-  --home-stone:#e9e5de;
-  --home-paper:#faf9f6;
-  --home-white:#ffffff;
-  --home-ink:#242321;
-  --home-muted:#6e6a64;
-  --home-line:rgba(36,35,33,.14);
-  --home-gold:#9f8152;
-  --home-dark:#1d1d1c;
-
-  --gold:#9f8152;
-  --charcoal:#242321;
-  --border:rgba(36,35,33,.14);
-}
-
-
-/* =========================================================
-   FULL BLEED
-   ========================================================= */
-
-.home-hero-scroll,
-.home-day,
-.home-promise,
-.home-stories,
-.home-review-feature,
-.home-process,
-.home-partner,
-.home-locations,
-.home-collections,
-.home-faq,
-.home-contact{
-  position:relative;
-
-  width:100vw !important;
-  max-width:none !important;
-
-  left:50% !important;
-
-  margin-left:-50vw !important;
-  margin-right:0 !important;
-
-  box-sizing:border-box;
-}
-
-.home-hero-scroll *,
-.home-day *,
-.home-promise *{
-  box-sizing:border-box;
-}
-
-
-/* =========================================================
-   COMMON
-   ========================================================= */
-
-.eyebrow{
-  color:var(--gold);
-
-  font-size:.64rem;
-  font-weight:600;
-
-  letter-spacing:3.4px;
-  text-transform:uppercase;
-}
-
-.home-stories,
-.home-review-feature,
-.home-process,
-.home-partner,
-.home-locations,
-.home-collections,
-.home-faq,
-.home-contact{
-  padding:120px 5vw;
-}
-
-
-/* =========================================================
-   REVEALS
-   ========================================================= */
-
-[data-reveal]{
-  opacity:0;
-
-  transform:translateY(34px);
-
-  transition:
-    opacity .9s cubic-bezier(.2,.7,.2,1),
-    transform .9s cubic-bezier(.2,.7,.2,1);
-}
-
-[data-reveal="left"]{
-  transform:translateX(-38px);
-}
-
-[data-reveal="right"]{
-  transform:translateX(38px);
-}
-
-[data-reveal].is-visible{
-  opacity:1;
-
-  transform:none;
-}
-
-
-/* =========================================================
-   HERO
-   INTRO -> REVIEW -> REVIEW -> CLEAN VIDEO
-   ========================================================= */
-
-.home-hero-scroll{
-  height:315vh;
-
-  background:#111;
-
-  border:0 !important;
-  outline:0 !important;
-}
-
-.home-hero-sticky{
-  position:sticky !important;
-
-  top:0;
-
-  width:100vw !important;
-  max-width:none !important;
-
-  height:100vh !important;
-  min-height:100vh !important;
-
-  margin:0 !important;
-  padding:0 !important;
-
-  overflow:hidden !important;
-
-  background:#111;
-
-  border:0 !important;
-  outline:0 !important;
-
-  box-shadow:none !important;
-}
-
-
-/* absolutely force the video to the viewport */
-
-.hero-media{
-  position:absolute;
-
-  left:50%;
-  top:0;
-
-  width:100vw;
-  height:100vh;
-
-  transform:translateX(-50%);
-
-  overflow:hidden;
-
-  background:#111;
-
-  z-index:0;
-}
-
-.home-hero-sticky .hero-video{
-  position:absolute !important;
-
-  left:50% !important;
-  top:50% !important;
-
-  display:block !important;
-
-  width:100vw !important;
-  height:100vh !important;
-
-  min-width:100vw !important;
-  min-height:100vh !important;
-
-  max-width:none !important;
-  max-height:none !important;
-
-  margin:0 !important;
-  padding:0 !important;
-
-  transform:
-    translate(-50%,-50%)
-    scale(1.045) !important;
-
-  object-fit:cover !important;
-  object-position:center center !important;
-
-  border:0 !important;
-  outline:0 !important;
-}
-
-
-/* overlay */
-
-.home-hero-sticky .hero-overlay{
-  position:absolute;
-
-  inset:0;
-
-  z-index:1;
-
-  width:100%;
-  height:100%;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.16) 0%,
-      rgba(0,0,0,.26) 55%,
-      rgba(0,0,0,.38) 100%
-    );
-
-  pointer-events:none;
-
-  will-change:opacity;
-}
-
-
-/* content */
-
-.home-hero-content{
-  position:absolute !important;
-
-  left:50% !important;
-  top:0 !important;
-
-  z-index:2;
-
-  width:min(1120px,92vw) !important;
-  max-width:none !important;
-
-  height:100vh !important;
-
-  margin:0 !important;
-  padding:0 !important;
-
-  transform:translateX(-50%);
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-  justify-content:center;
-}
-
-
-/* stage */
-
-.hero-stage{
-  position:relative;
-
-  width:100%;
-
-  height:290px;
-  flex:0 0 290px;
-}
-
-.hero-slide{
-  position:absolute;
-
-  inset:0;
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-  justify-content:center;
-
-  padding:0 24px;
-
-  opacity:0;
-  visibility:hidden;
-
-  transform:
-    translate3d(0,100px,0)
-    scale(.97);
-
-  filter:blur(3px);
-
-  pointer-events:none;
-
-  will-change:
-    opacity,
-    transform,
-    filter;
-}
-
-
-/* brand */
-
-.hero-brand h1{
-  max-width:1020px;
-
-  margin:0;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(3.5rem,5vw,5.15rem);
-
-  line-height:1;
-
-  font-weight:400;
-
-  letter-spacing:-.035em;
-
-  color:white;
-
-  text-align:center;
-
-  text-shadow:
-    0 3px 24px
-    rgba(0,0,0,.4);
-}
-
-.hero-brand .hero-subtitle{
-  display:block;
-
-  margin-top:18px;
-
-  font-size:.47em;
-
-  line-height:1.3;
-
-  font-style:italic;
-
-  letter-spacing:-.018em;
-
-  color:
-    rgba(255,255,255,.95);
-}
-
-
-/* reviews */
-
-.hero-review-kicker{
-  display:block;
-
-  margin-bottom:15px;
-
-  color:#d0ae73;
-
-  font-size:.67rem;
-  font-weight:600;
-
-  letter-spacing:3.4px;
-
-  text-transform:uppercase;
-}
-
-.hero-review-stars{
-  margin-bottom:19px;
-
-  color:#f1c76a;
-
-  font-size:.92rem;
-
-  letter-spacing:5px;
-}
-
-.hero-review-quote{
-  max-width:900px;
-
-  margin:0 auto 20px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(1.9rem,3vw,2.9rem);
-
-  line-height:1.23;
-
-  font-style:italic;
-  font-weight:400;
-
-  color:white;
-
-  text-align:center;
-
-  text-shadow:
-    0 3px 24px
-    rgba(0,0,0,.42);
-}
-
-.hero-review-name{
-  margin:0;
-
-  color:
-    rgba(255,255,255,.88);
-
-  font-size:.64rem;
-  font-weight:600;
-
-  letter-spacing:2.5px;
-
-  text-transform:uppercase;
-}
-
-
-/* buttons */
-
-.hero-fixed{
-  position:relative;
-
-  z-index:6;
-
-  width:100%;
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  margin-top:4px;
-}
-
-.hero-actions{
-  width:100%;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,270px);
-
-  justify-content:center;
-
-  gap:14px;
-}
-
-.hero-action{
-  width:270px;
-  height:58px;
-
-  padding:0 24px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  font-size:.67rem;
-  font-weight:600;
-
-  line-height:1;
-
-  letter-spacing:2.2px;
-
-  text-align:center;
-  text-decoration:none;
-  text-transform:uppercase;
-
-  transition:
-    transform .3s ease,
-    background .3s ease,
-    color .3s ease;
-}
-
-.hero-action-primary{
-  background:white !important;
-
-  color:var(--charcoal) !important;
-
-  border:1px solid white !important;
-}
-
-.hero-action-secondary{
-  background:
-    rgba(0,0,0,.16) !important;
-
-  color:white !important;
-
-  border:
-    1px solid
-    rgba(255,255,255,.7) !important;
-
-  backdrop-filter:blur(4px);
-  -webkit-backdrop-filter:blur(4px);
-}
-
-.hero-action:hover{
-  transform:translateY(-2px);
-}
-
-
-/* dots */
-
-.hero-controls{
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  gap:10px;
-
-  margin-top:24px;
-}
-
-.hero-dot{
-  appearance:none;
-  -webkit-appearance:none;
-
-  width:7px;
-  height:7px;
-
-  padding:0;
-
-  border:0;
-  border-radius:20px;
-
-  background:
-    rgba(255,255,255,.40);
-}
-
-.hero-dot.active{
-  width:26px;
-
-  background:white;
-}
-
-
-/* cue */
-
-.hero-scroll-cue{
-  position:absolute;
-
-  z-index:5;
-
-  left:50%;
-  bottom:23px;
-
-  transform:translateX(-50%);
-
-  display:flex;
-
-  align-items:center;
-
-  gap:11px;
-
-  color:
-    rgba(255,255,255,.72);
-
-  font-size:.54rem;
-  font-weight:600;
-
-  letter-spacing:2.8px;
-
-  text-transform:uppercase;
-}
-
-.hero-scroll-cue::after{
-  content:"";
-
-  width:44px;
-  height:1px;
-
-  background:
-    rgba(255,255,255,.55);
-}
-
-
-/* =========================================================
-   YOUR WEDDING DAY
-
-   LEFT SIDE REMAINS.
-   RIGHT SIDE MOVES THROUGH 4 IMAGES.
-   ========================================================= */
-
-.home-day{
-  height:470vh;
-
-  background:var(--home-cream);
-}
-
-.home-day-sticky{
-  position:sticky;
-
-  top:0;
-
-  width:100%;
-  height:100vh;
-
-  overflow:hidden;
-
-  background:var(--home-cream);
-}
-
-.home-day-inner{
-  position:relative;
-
-  width:min(1260px,89vw);
-  height:100%;
-
-  margin:auto;
-
-  display:grid;
-
-  grid-template-columns:
-    .87fr 1.13fr;
-
-  gap:100px;
-
-  align-items:center;
-}
-
-
-/* background */
-
-.home-day-word{
-  position:absolute;
-
-  left:50%;
-  top:53%;
-
-  transform:translate(-50%,-50%);
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(10rem,20vw,21rem);
-
-  line-height:.8;
-
-  white-space:nowrap;
-
-  color:
-    rgba(25,24,22,.022);
-
-  pointer-events:none;
-}
-
-
-/* fixed left */
-
-.home-day-copy{
-  position:relative;
-
-  z-index:4;
-
-  max-width:570px;
-}
-
-.home-day-copy .eyebrow{
-  display:block;
-
-  margin-bottom:27px;
-}
-
-.home-day-copy h2{
-  margin:0;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(3.8rem,5.3vw,5.65rem);
-
-  line-height:.93;
-
-  font-weight:400;
-
-  letter-spacing:-.052em;
-
-  color:var(--charcoal);
-}
-
-.home-day-copy h2 span{
-  display:block;
-}
-
-.home-day-copy h2 em{
-  display:block;
-
-  margin-top:20px;
-
-  font-size:.52em;
-
-  line-height:1.07;
-
-  font-weight:400;
-  font-style:italic;
-
-  letter-spacing:-.034em;
-
-  color:#766f67;
-}
-
-.home-day-copy > p{
-  max-width:500px;
-
-  margin:33px 0 0;
-
-  color:#67625d;
-
-  font-size:.96rem;
-
-  line-height:1.82;
-}
-
-
-/* changing caption beneath intro */
-
-.day-copy-caption{
-  position:relative;
-
-  min-height:96px;
-
-  margin-top:38px;
-
-  padding-top:22px;
-
-  border-top:
-    1px solid
-    rgba(36,35,33,.13);
-}
-
-.day-copy-caption-item{
-  position:absolute;
-
-  left:0;
-  top:22px;
-
-  width:100%;
-
-  opacity:0;
-
-  transform:
-    translateY(15px);
-
-  pointer-events:none;
-}
-
-.day-copy-caption-item span{
-  display:block;
-
-  margin-bottom:7px;
-
-  color:var(--gold);
-
-  font-size:.57rem;
-  font-weight:600;
-
-  letter-spacing:2.8px;
-
-  text-transform:uppercase;
-}
-
-.day-copy-caption-item p{
-  max-width:430px;
-
-  margin:0;
-
-  font-family:'Baskervville',serif;
-
-  font-size:1.23rem;
-
-  line-height:1.45;
-
-  font-style:italic;
-
-  color:#5f5b55;
-}
-
-
-/* right image reel */
-
-.home-day-visual{
-  position:relative;
-
-  z-index:3;
-
-  width:100%;
-
-  height:min(74vh,710px);
-
-  overflow:hidden;
-
-  background:#dad7d1;
-}
-
-.day-image{
-  position:absolute;
-
-  inset:0;
-
-  opacity:0;
-
-  transform:
-    translate3d(0,80px,0)
-    scale(1.055);
-
-  will-change:
-    opacity,
-    transform;
-}
-
-.day-image img{
-  width:100%;
-  height:100%;
-
-  display:block;
-
-  object-fit:cover;
-
-  object-position:center;
-
-  transform:scale(1.045);
-}
-
-.day-image:nth-child(4) img{
-  object-position:center 38%;
-}
-
-.day-image-shade{
-  position:absolute;
-
-  inset:0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,.28),
-      transparent 45%
-    );
-}
-
-.day-image-border{
-  position:absolute;
-
-  inset:20px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.27);
-
-  pointer-events:none;
-}
-
-.day-image-meta{
-  position:absolute;
-
-  left:30px;
-  right:30px;
-  bottom:29px;
-
-  display:flex;
-
-  align-items:flex-end;
-  justify-content:space-between;
-
-  color:white;
-}
-
-.day-image-meta-copy span{
-  display:block;
-
-  margin-bottom:8px;
-
-  color:#ead0a5;
-
-  font-size:.56rem;
-  font-weight:600;
-
-  letter-spacing:2.8px;
-
-  text-transform:uppercase;
-}
-
-.day-image-meta-copy p{
-  max-width:370px;
-
-  margin:0;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(1.35rem,2vw,1.85rem);
-
-  line-height:1.25;
-
-  font-style:italic;
-
-  text-shadow:
-    0 2px 15px
-    rgba(0,0,0,.4);
-}
-
-.day-image-count{
-  font-family:'Baskervville',serif;
-
-  font-size:2rem;
-
-  color:
-    rgba(255,255,255,.9);
-}
-
-
-/* progress */
-
-.home-day-progress{
-  position:absolute;
-
-  left:0;
-  right:0;
-  bottom:27px;
-
-  height:1px;
-
-  background:
-    rgba(36,35,33,.11);
-}
-
-.home-day-progress span{
-  display:block;
-
-  width:0%;
-  height:1px;
-
-  background:var(--gold);
-}
-
-
-/* =========================================================
-   WHAT THE FILM GIVES YOU
-
-   NEW PURPOSE:
-   NOT ANOTHER "BE PRESENT / SEE MORE" SECTION.
-   THIS IS ABOUT WHAT FILM PRESERVES.
-   ========================================================= */
-
-.home-promise{
-  height:415vh;
-
-  background:white;
-}
-
-.home-promise-sticky{
-  position:sticky;
-
-  top:0;
-
-  width:100%;
-  height:100vh;
-
-  overflow:hidden;
-
-  background:white;
-}
-
-.home-promise-inner{
-  position:relative;
-
-  width:min(1260px,89vw);
-  height:100%;
-
-  margin:auto;
-}
-
-.home-promise-word{
-  position:absolute;
-
-  left:50%;
-  top:52%;
-
-  transform:translate(-50%,-50%);
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(9rem,18vw,19rem);
-
-  line-height:.8;
-
-  font-style:italic;
-
-  white-space:nowrap;
-
-  color:
-    rgba(0,0,0,.021);
-
-  pointer-events:none;
-}
-
-
-/* each promise scene */
-
-.promise-scene{
-  position:absolute;
-
-  inset:0;
-
-  display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap:95px;
-
-  align-items:center;
-
-  opacity:0;
-
-  visibility:hidden;
-
-  will-change:
-    opacity,
-    transform,
-    filter;
-}
-
-.promise-scene.reverse
-.promise-image{
-  order:2;
-}
-
-.promise-scene.reverse
-.promise-copy{
-  order:1;
-}
-
-
-/* image */
-
-.promise-image{
-  position:relative;
-
-  height:min(69vh,670px);
-
-  overflow:hidden;
-
-  background:#ddd;
-}
-
-.promise-image img{
-  width:100%;
-  height:100%;
-
-  display:block;
-
-  object-fit:cover;
-
-  transform:scale(1.055);
-}
-
-.promise-image-overlay{
-  position:absolute;
-
-  inset:0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,.24),
-      transparent 46%
-    );
-}
-
-.promise-image::after{
-  content:"";
-
-  position:absolute;
-
-  inset:21px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.28);
-
-  pointer-events:none;
-}
-
-.promise-image-caption{
-  position:absolute;
-
-  left:30px;
-  bottom:29px;
-
-  z-index:3;
-
-  color:white;
-}
-
-.promise-image-caption span{
-  display:block;
-
-  margin-bottom:8px;
-
-  color:#ead0a5;
-
-  font-size:.56rem;
-  font-weight:600;
-
-  letter-spacing:2.8px;
-
-  text-transform:uppercase;
-}
-
-.promise-image-caption p{
-  margin:0;
-
-  font-family:'Baskervville',serif;
-
-  font-size:1.35rem;
-
-  line-height:1.38;
-
-  font-style:italic;
-
-  text-shadow:
-    0 2px 15px
-    rgba(0,0,0,.4);
-}
-
-
-/* copy */
-
-.promise-copy{
-  position:relative;
-
-  max-width:570px;
-}
-
-.promise-copy .eyebrow{
-  display:block;
-
-  margin-bottom:22px;
-}
-
-.promise-copy h2{
-  margin:0 0 29px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(3.15rem,4.55vw,4.75rem);
-
-  line-height:.98;
-
-  font-weight:400;
-
-  letter-spacing:-.04em;
-
-  color:var(--charcoal);
-}
-
-.promise-copy h2 em{
-  display:block;
-
-  margin-top:13px;
-
-  font-size:.57em;
-
-  line-height:1.12;
-
-  font-weight:400;
-  font-style:italic;
-
-  color:var(--gold);
-}
-
-.promise-lead{
-  max-width:530px;
-
-  margin:0;
-
-  font-family:'Baskervville',serif;
-
-  font-size:1.38rem;
-
-  line-height:1.52;
-
-  font-style:italic;
-
-  color:var(--charcoal);
-}
-
-.promise-number{
-  display:block;
-
-  margin-bottom:10px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(4.5rem,6vw,6.2rem);
-
-  line-height:.8;
-
-  color:var(--gold);
-}
-
-.promise-kicker{
-  display:block;
-
-  margin-bottom:23px;
-
-  color:#888178;
-
-  font-size:.56rem;
-  font-weight:600;
-
-  letter-spacing:3px;
-
-  text-transform:uppercase;
-}
-
-.promise-copy h3{
-  max-width:560px;
-
-  margin:0 0 21px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(2.5rem,3.5vw,3.65rem);
-
-  line-height:1;
-
-  font-weight:400;
-
-  letter-spacing:-.034em;
-}
-
-.promise-copy > p:not(.promise-lead){
-  max-width:500px;
-
-  margin:0;
-
-  color:#666;
-
-  font-size:.96rem;
-
-  line-height:1.82;
-}
-
-.promise-note{
-  display:block;
-
-  max-width:465px;
-
-  margin-top:27px;
-
-  padding-top:18px;
-
-  border-top:
-    1px solid
-    rgba(36,35,33,.12);
-
-  font-family:'Baskervville',serif;
-
-  font-size:1.06rem;
-
-  line-height:1.5;
-
-  font-style:italic;
-
-  color:#777169;
-}
-
-.promise-progress{
-  position:absolute;
-
-  left:0;
-  right:0;
-  bottom:27px;
-
-  height:1px;
-
-  background:
-    rgba(36,35,33,.11);
-}
-
-.promise-progress span{
-  display:block;
-
-  width:0%;
-  height:1px;
-
-  background:var(--gold);
-}
-
-
-/* =========================================================
-   REAL WEDDINGS
-   ========================================================= */
-
-.home-stories{
-  overflow:hidden;
-
-  background:#f1eee8;
-
-  border-top:
-    1px solid var(--border);
-}
-
-.home-stories::before{
-  content:"REAL STORIES";
-
-  position:absolute;
-
-  top:75px;
-  left:50%;
-
-  transform:translateX(-50%);
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(6rem,12vw,11rem);
-
-  line-height:1;
-
-  white-space:nowrap;
-
-  color:
-    rgba(0,0,0,.022);
-
-  pointer-events:none;
-}
-
-.home-stories-header{
-  position:relative;
-
-  z-index:1;
-
-  max-width:850px;
-
-  margin:0 auto 100px;
-
-  text-align:center;
-}
-
-.home-stories-header .eyebrow{
-  display:block;
-
-  margin-bottom:20px;
-}
-
-.home-stories-header h2{
-  margin:0 0 26px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(3rem,4.5vw,4.4rem);
-
-  line-height:1.02;
-
-  font-weight:400;
-
-  letter-spacing:-.03em;
-}
-
-.story-heading-accent{
-  display:block;
-
-  margin-top:10px;
-
-  font-size:.7em;
-
-  font-style:italic;
-
-  color:#66615a;
-}
-
-.home-stories-header p{
-  max-width:680px;
-
-  margin:auto;
-
-  color:#666;
-
-  font-size:.95rem;
-
-  line-height:1.8;
-}
-
-.editorial-story{
-  position:relative;
-
-  z-index:1;
-
-  max-width:1180px;
-
-  margin:0 auto 135px;
-
-  display:grid;
-
-  grid-template-columns:
-    1.12fr .88fr;
-
-  gap:75px;
-
-  align-items:center;
-}
-
-.editorial-story.reverse{
-  grid-template-columns:
-    .88fr 1.12fr;
-}
-
-.editorial-story.reverse
-.editorial-story-image{
-  order:2;
-}
-
-.editorial-story.reverse
-.editorial-story-copy{
-  order:1;
-}
-
-.editorial-story-image{
-  position:relative;
-}
-
-.editorial-story-image::after{
-  content:"";
-
-  position:absolute;
-
-  width:91%;
-  height:91%;
-
-  right:-18px;
-  bottom:-18px;
-
-  border-right:
-    1px solid rgba(0,0,0,.14);
-
-  border-bottom:
-    1px solid rgba(0,0,0,.14);
-
-  z-index:-1;
-}
-
-.editorial-story.reverse
-.editorial-story-image::after{
-  right:auto;
-  left:-18px;
-
-  border-right:0;
-
-  border-left:
-    1px solid rgba(0,0,0,.14);
-}
-
-.editorial-story-image a{
-  display:block;
-
-  overflow:hidden;
-}
-
-.editorial-story-image img{
-  width:100%;
-
-  aspect-ratio:4/3;
-
-  display:block;
-
-  object-fit:cover;
-
-  transition:
-    transform .8s cubic-bezier(.2,.7,.2,1);
-}
-
-.editorial-story-image:hover img{
-  transform:scale(1.035);
-}
-
-.editorial-story-badge{
-  position:absolute;
-
-  left:28px;
-  bottom:28px;
-
-  padding:11px 15px;
-
-  background:
-    rgba(20,20,20,.74);
-
-  color:white;
-
-  backdrop-filter:blur(4px);
-  -webkit-backdrop-filter:blur(4px);
-
-  font-size:.62rem;
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-}
-
-.editorial-story-copy{
-  position:relative;
-
-  max-width:480px;
-}
-
-.editorial-story-number{
-  position:absolute;
-
-  top:-90px;
-  right:-8px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:7.5rem;
-
-  line-height:1;
-
-  color:
-    rgba(0,0,0,.045);
-
-  pointer-events:none;
-}
-
-.editorial-story-copy .eyebrow{
-  display:block;
-
-  margin-bottom:18px;
-}
-
-.editorial-story-copy h3{
-  margin:0 0 10px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:3.55rem;
-
-  line-height:.98;
-
-  font-weight:400;
-
-  letter-spacing:-.025em;
-}
-
-.editorial-story-venue{
-  margin:0 0 28px;
-
-  color:var(--gold);
-
-  font-size:.68rem;
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-}
-
-.editorial-story-tone{
-  margin:0 0 20px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:1.62rem;
-
-  line-height:1.4;
-
-  font-style:italic;
-}
-
-.editorial-story-description{
-  margin:0 0 28px;
-
-  color:#626262;
-
-  font-size:.94rem;
-
-  line-height:1.8;
-}
-
-.editorial-story-quote{
-  margin:31px 0;
-
-  padding:25px 0;
-
-  border-top:
-    1px solid rgba(0,0,0,.15);
-
-  border-bottom:
-    1px solid rgba(0,0,0,.15);
-}
-
-.editorial-story-quote blockquote{
-  margin:0 0 12px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:1.25rem;
-
-  line-height:1.55;
-
-  font-style:italic;
-}
-
-.editorial-story-quote p{
-  margin:0;
-
-  color:#888;
-
-  font-size:.62rem;
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-}
-
-.editorial-link{
-  display:inline-block;
-
-  color:var(--charcoal);
-
-  text-decoration:none;
-
-  font-size:.68rem;
-  font-weight:600;
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-
-  border-bottom:
-    1px solid var(--charcoal);
-
-  padding-bottom:5px;
-}
-
-
-/* =========================================================
-   REVIEW FEATURE
-   ========================================================= */
-
-.home-review-feature{
-  overflow:hidden;
-
-  background:var(--charcoal);
-
-  color:white;
-
-  text-align:center;
-}
-
-.home-review-feature::before{
-  content:"“";
-
-  position:absolute;
-
-  left:3%;
-  top:-95px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:24rem;
-
-  line-height:1;
-
-  color:
-    rgba(255,255,255,.025);
-
-  pointer-events:none;
-}
-
-.home-review-feature-inner{
-  position:relative;
-
-  z-index:1;
-
-  max-width:980px;
-
-  margin:auto;
-}
-
-.home-review-feature .eyebrow{
-  color:var(--gold);
-}
-
-.home-review-stars{
-  margin:22px 0 30px;
-
-  color:#f1c76a;
-
-  font-size:1rem;
-
-  letter-spacing:6px;
-}
-
-.home-review-feature blockquote{
-  max-width:940px;
-
-  margin:0 auto 32px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(2rem,3.7vw,3.4rem);
-
-  line-height:1.25;
-
-  font-weight:400;
-
-  font-style:italic;
-
-  color:white;
-}
-
-.home-review-name{
-  margin:0;
-
-  color:
-    rgba(255,255,255,.65);
-
-  font-size:.68rem;
-
-  letter-spacing:2.5px;
-
-  text-transform:uppercase;
-}
-
-
-/* =========================================================
-   FILMMAKER
-   ========================================================= */
-
-.home-process{
-  overflow:hidden;
-
-  background:white;
-}
-
-.home-process::after{
-  content:"CRAFT";
-
-  position:absolute;
-
-  right:-15px;
-  top:55px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(8rem,15vw,15rem);
-
-  font-style:italic;
-
-  color:
-    rgba(0,0,0,.022);
-
-  pointer-events:none;
-}
-
-.home-process-grid{
-  position:relative;
-
-  z-index:1;
-
-  max-width:1160px;
-
-  margin:auto;
-
-  display:grid;
-
-  grid-template-columns:
-    .82fr 1.18fr;
-
-  gap:95px;
-
-  align-items:center;
-}
-
-.home-process-image{
-  position:relative;
-}
-
-.home-process-image::before{
-  content:"BEHIND\A THE\A LENS";
-
-  white-space:pre;
-
-  position:absolute;
-
-  left:-54px;
-  bottom:35px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:3.55rem;
-
-  line-height:.84;
-
-  font-style:italic;
-
-  color:
-    rgba(255,255,255,.77);
-
-  z-index:2;
-
-  pointer-events:none;
-}
-
-.home-process-image img{
-  width:100%;
-
-  aspect-ratio:4/5;
-
-  display:block;
-
-  object-fit:cover;
-}
-
-.home-process-copy .eyebrow{
-  display:block;
-
-  margin-bottom:19px;
-}
-
-.home-process-copy h2{
-  max-width:680px;
-
-  margin:0 0 30px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(3rem,4vw,4rem);
-
-  line-height:1.03;
-
-  font-weight:400;
-
-  letter-spacing:-.03em;
-}
-
-.process-heading-accent{
-  display:block;
-
-  margin-top:10px;
-
-  font-size:.66em;
-
-  line-height:1.15;
-
-  font-style:italic;
-
-  color:#716b63;
-}
-
-.home-process-lead{
-  max-width:600px;
-
-  margin:0 0 27px !important;
-
-  font-family:'Baskervville',serif;
-
-  font-size:1.45rem !important;
-
-  line-height:1.52 !important;
-
-  font-style:italic;
-
-  color:var(--charcoal) !important;
-}
-
-.home-process-copy p{
-  max-width:620px;
-
-  margin:0 0 18px;
-
-  color:#595959;
-
-  font-size:.96rem;
-
-  line-height:1.85;
-}
-
-.process-signature{
-  max-width:570px;
-
-  margin-top:34px;
-
-  padding-top:25px;
-
-  border-top:
-    1px solid var(--border);
-}
-
-.process-signature strong{
-  display:block;
-
-  margin-bottom:8px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:1.35rem;
-
-  font-weight:400;
-
-  font-style:italic;
-
-  color:var(--charcoal);
-}
-
-.process-signature span{
-  color:#777;
-
-  font-size:.82rem;
-
-  line-height:1.65;
-}
-
-
-/* =========================================================
-   PARTNERSHIP
-   ========================================================= */
-
-.home-partner{
-  overflow:hidden;
-
-  background:#eae6df;
-}
-
-.home-partner::before{
-  content:"TOGETHER";
-
-  position:absolute;
-
-  left:-25px;
-  bottom:-35px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(8rem,14vw,14rem);
-
-  font-style:italic;
-
-  color:
-    rgba(0,0,0,.023);
-
-  pointer-events:none;
-}
-
-.home-partner-inner{
-  position:relative;
-
-  z-index:1;
-
-  max-width:1160px;
-
-  margin:auto;
-
-  display:grid;
-
-  grid-template-columns:
-    .8fr 1.2fr;
-
-  gap:90px;
-
-  align-items:center;
-}
-
-.home-partner-mark{
-  position:relative;
-
-  min-height:460px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-}
-
-.home-partner-mark::before,
-.home-partner-mark::after{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  right:0;
-
-  height:1px;
-
-  background:#ccc5bb;
-}
-
-.home-partner-mark::before{
-  top:0;
-}
-
-.home-partner-mark::after{
-  bottom:0;
-}
-
-.home-partner-mark-symbol{
-  position:absolute;
-
-  right:0;
-  top:20px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:7rem;
-
-  font-style:italic;
-
-  color:
-    rgba(0,0,0,.06);
-}
-
-.home-partner-mark-inner{
-  max-width:360px;
-
-  text-align:center;
-}
-
-.home-partner-mark-small{
-  display:block;
-
-  margin-bottom:20px;
-
-  color:var(--gold);
-
-  font-size:.68rem;
-  font-weight:600;
-
-  letter-spacing:3px;
-
-  text-transform:uppercase;
-}
-
-.home-partner-mark h3{
-  margin:0 0 14px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:3.2rem;
-
-  line-height:1.05;
-
-  font-weight:400;
-
-  letter-spacing:-.025em;
-}
-
-.home-partner-mark p{
-  margin:0;
-
-  color:#777;
-
-  font-family:'Baskervville',serif;
-
-  font-size:1.25rem;
-
-  line-height:1.5;
-
-  font-style:italic;
-}
-
-.home-partner-copy .eyebrow{
-  display:block;
-
-  margin-bottom:20px;
-}
-
-.home-partner-copy h2{
-  max-width:670px;
-
-  margin:0 0 30px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(3rem,4vw,3.8rem);
-
-  line-height:1.05;
-
-  font-weight:400;
-
-  letter-spacing:-.03em;
-}
-
-.partner-heading-accent{
-  display:block;
-
-  margin-top:10px;
-
-  font-size:.67em;
-
-  line-height:1.2;
-
-  font-style:italic;
-
-  color:#726c64;
-}
-
-.home-partner-copy p{
-  max-width:650px;
-
-  margin:0 0 18px;
-
-  color:#5f5f5f;
-
-  font-size:.96rem;
-
-  line-height:1.85;
-}
-
-.partner-benefits{
-  max-width:650px;
-
-  margin:34px 0 32px;
-
-  display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap:17px 35px;
-}
-
-.partner-benefit{
-  position:relative;
-
-  padding-left:23px;
-
-  color:#555;
-
-  font-size:.84rem;
-
-  line-height:1.5;
-}
-
-.partner-benefit::before{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  top:.7em;
-
-  width:9px;
-  height:1px;
-
-  background:var(--gold);
-}
-
-.partner-link{
-  display:inline-block;
-
-  color:var(--charcoal);
-
-  text-decoration:none;
-
-  font-size:.68rem;
-  font-weight:600;
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-
-  border-bottom:
-    1px solid var(--charcoal);
-
-  padding-bottom:5px;
-}
-
-
-/* =========================================================
-   LOCATIONS
-   ========================================================= */
-
-.home-locations{
-  overflow:hidden;
-
-  background:white;
-}
-
-.home-locations::before{
-  content:"GO SOMEWHERE";
-
-  position:absolute;
-
-  left:50%;
-  top:40px;
-
-  transform:translateX(-50%);
-
-  white-space:nowrap;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(6rem,11vw,11rem);
-
-  font-style:italic;
-
-  color:
-    rgba(0,0,0,.02);
-
-  pointer-events:none;
-}
-
-.home-locations-header{
-  position:relative;
-
-  z-index:1;
-
-  max-width:850px;
-
-  margin:0 auto 75px;
-
-  text-align:center;
-}
-
-.home-locations-header .eyebrow{
-  display:block;
-
-  margin-bottom:20px;
-}
-
-.home-locations-header h2{
-  margin:0 0 22px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(3rem,4.3vw,4.1rem);
-
-  line-height:1.04;
-
-  font-weight:400;
-
-  letter-spacing:-.025em;
-}
-
-.location-heading-accent{
-  display:block;
-
-  margin-top:8px;
-
-  font-size:.67em;
-
-  font-style:italic;
-
-  color:#716b63;
-}
-
-.home-locations-header p{
-  max-width:650px;
-
-  margin:auto;
-
-  color:#666;
-
-  font-size:.92rem;
-
-  line-height:1.8;
-}
-
-.home-destination-grid{
-  position:relative;
-
-  z-index:1;
-
-  max-width:1180px;
-
-  margin:auto;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  gap:12px;
-}
-
-.home-destination-grid
-.destination-card:nth-child(2),
-.home-destination-grid
-.destination-card:nth-child(4){
-  transform:translateY(28px);
-}
-
-
-/* =========================================================
-   COLLECTIONS
-   ========================================================= */
-
-.home-collections{
-  overflow:hidden;
-
-  background:var(--home-cream);
-
-  border-top:
-    1px solid var(--border);
-}
-
-.home-collections::before{
-  content:"YOUR STORY";
-
-  position:absolute;
-
-  left:50%;
-  top:40px;
-
-  transform:translateX(-50%);
-
-  white-space:nowrap;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(6rem,12vw,12rem);
-
-  color:
-    rgba(0,0,0,.022);
-
-  pointer-events:none;
-}
-
-.collection-intro{
-  position:relative;
-
-  z-index:1;
-
-  max-width:820px;
-
-  margin:0 auto 75px;
-
-  text-align:center;
-}
-
-.collection-intro .eyebrow{
-  display:block;
-
-  margin-bottom:21px;
-}
-
-.collection-intro h2{
-  margin:0;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(3rem,4.2vw,4rem);
-
-  line-height:1.04;
-
-  font-weight:400;
-
-  letter-spacing:-.025em;
-}
-
-.collection-heading-accent{
-  display:block;
-
-  margin-top:8px;
-
-  font-size:.68em;
-
-  font-style:italic;
-
-  color:#706a62;
-}
-
-.collection-intro p{
-  max-width:680px;
-
-  margin:25px auto 0;
-
-  color:#666;
-
-  font-size:.92rem;
-
-  line-height:1.75;
-}
-
-
-/* =========================================================
-   FAQ
-   ========================================================= */
-
-.home-faq{
-  overflow:hidden;
-
-  background:white;
-
-  border-top:
-    1px solid var(--border);
-}
-
-.home-faq::before{
-  content:"ASK";
-
-  position:absolute;
-
-  right:2%;
-  top:10px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(9rem,18vw,17rem);
-
-  font-style:italic;
-
-  color:
-    rgba(0,0,0,.02);
-
-  pointer-events:none;
-}
-
-.home-faq-header{
-  position:relative;
-
-  z-index:1;
-
-  max-width:800px;
-
-  margin:0 auto 55px;
-
-  text-align:center;
-}
-
-.home-faq-header .eyebrow{
-  display:block;
-
-  margin-bottom:20px;
-}
-
-.home-faq-header h2{
-  margin:0;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(2.8rem,4vw,3.7rem);
-
-  line-height:1.08;
-
-  font-weight:400;
-
-  letter-spacing:-.02em;
-}
-
-.faq-heading-accent{
-  display:block;
-
-  margin-top:8px;
-
-  font-size:.65em;
-
-  font-style:italic;
-
-  color:#716b63;
-}
-
-
-/* =========================================================
-   CONTACT
-   ========================================================= */
-
-.home-contact{
-  overflow:hidden;
-
-  background:#efede8;
-
-  border-top:
-    1px solid var(--border);
-}
-
-.home-contact::before{
-  content:"HELLO";
-
-  position:absolute;
-
-  right:-20px;
-  top:5px;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(10rem,19vw,18rem);
-
-  font-style:italic;
-
-  color:
-    rgba(0,0,0,.022);
-
-  pointer-events:none;
-}
-
-.home-contact-header{
-  position:relative;
-
-  z-index:1;
-
-  max-width:800px;
-
-  margin:0 auto 62px;
-
-  text-align:center;
-}
-
-.home-contact-header .eyebrow{
-  display:block;
-
-  margin-bottom:20px;
-}
-
-.home-contact-header h2{
-  margin:0;
-
-  font-family:'Baskervville',serif;
-
-  font-size:
-    clamp(3rem,4.2vw,4rem);
-
-  line-height:1.05;
-
-  font-weight:400;
-
-  letter-spacing:-.025em;
-}
-
-.contact-heading-accent{
-  display:block;
-
-  margin-top:8px;
-
-  font-size:.63em;
-
-  line-height:1.2;
-
-  font-style:italic;
-
-  color:#706a62;
-}
-
-.home-contact-header p{
-  max-width:650px;
-
-  margin:22px auto 0;
-
-  color:#666;
-
-  line-height:1.8;
-}
-
-
-/* =========================================================
-   SHORT SCREEN PROTECTION
-   prevents copy clipping
-   ========================================================= */
-
-@media(max-height:800px) and (min-width:901px){
-
-  .home-day-inner,
-  .home-promise-inner{
-    width:min(1180px,88vw);
-  }
-
-  .home-day-copy h2{
-    font-size:
-      clamp(3.2rem,4.6vw,4.7rem);
-  }
-
-  .home-day-visual{
-    height:70vh;
-  }
-
-  .promise-image{
-    height:65vh;
-  }
-
-  .promise-copy h2{
-    font-size:
-      clamp(2.8rem,4vw,4rem);
-  }
-
-  .promise-copy h3{
-    font-size:
-      clamp(2.15rem,3vw,3rem);
-  }
-
-  .promise-number{
-    font-size:4.3rem;
-  }
-
-  .promise-note{
-    margin-top:18px;
-  }
-
-}
-
-
-/* =========================================================
-   TABLET / MOBILE
-   ========================================================= */
-
-@media(max-width:1050px){
-
-  .home-day-inner{
-    gap:55px;
-  }
-
-  .home-process-grid,
-  .home-partner-inner{
-    gap:55px;
-  }
-
-  .home-destination-grid{
-    grid-template-columns:
-      1fr 1fr;
-  }
-
-  .home-destination-grid
-  .destination-card:nth-child(2),
-  .home-destination-grid
-  .destination-card:nth-child(4){
-    transform:none;
-  }
-
-}
-
-
-@media(max-width:900px){
-
-  /* hero */
-
-  .home-hero-scroll{
-    height:auto;
-  }
-
-  .home-hero-sticky{
-    position:relative !important;
-
-    height:100vh !important;
-  }
-
-  .hero-slide{
-    opacity:0 !important;
-    visibility:hidden !important;
-  }
-
-  .hero-slide:first-child{
-    opacity:1 !important;
-    visibility:visible !important;
-
-    transform:none !important;
-
-    filter:none !important;
-  }
-
-  .hero-scroll-cue{
-    display:none;
-  }
-
-
-  /* day */
-
-  .home-day{
-    height:auto;
-  }
-
-  .home-day-sticky{
-    position:relative;
-
-    height:auto;
-
-    padding:90px 0;
-  }
-
-  .home-day-inner{
-    width:min(720px,88vw);
-
-    height:auto;
-
-    display:block;
-  }
-
-  .home-day-word,
-  .home-day-progress{
-    display:none;
-  }
-
-  .home-day-copy{
-    max-width:680px;
-
-    margin-bottom:55px;
-  }
-
-  .day-copy-caption{
-    display:none;
-  }
-
-  .home-day-visual{
-    height:auto;
-
-    overflow:visible;
-
-    background:transparent;
-  }
-
-  .day-image{
-    position:relative;
-
-    inset:auto;
-
-    height:auto;
-
-    aspect-ratio:4/5;
-
-    margin-bottom:28px;
-
-    opacity:1 !important;
-
-    transform:none !important;
-  }
-
-
-  /* promise */
-
-  .home-promise{
-    height:auto;
-  }
-
-  .home-promise-sticky{
-    position:relative;
-
-    height:auto;
-
-    padding:90px 0;
-  }
-
-  .home-promise-inner{
-    width:min(720px,88vw);
-
-    height:auto;
-  }
-
-  .home-promise-word,
-  .promise-progress{
-    display:none;
-  }
-
-  .promise-scene{
-    position:relative;
-
-    inset:auto;
-
-    grid-template-columns:1fr;
-
-    gap:38px;
-
-    opacity:1 !important;
-    visibility:visible !important;
-
-    transform:none !important;
-    filter:none !important;
-
-    padding:52px 0;
-
-    border-bottom:
-      1px solid
-      rgba(36,35,33,.12);
-  }
-
-  .promise-scene.reverse
-  .promise-image,
-  .promise-scene.reverse
-  .promise-copy{
-    order:initial;
-  }
-
-  .promise-image{
-    height:auto;
-
-    aspect-ratio:4/5;
-  }
-
-
-  /* normal sections */
-
-  .editorial-story,
-  .editorial-story.reverse,
-  .home-process-grid,
-  .home-partner-inner{
-    grid-template-columns:1fr;
-  }
-
-  .editorial-story.reverse
-  .editorial-story-image,
-  .editorial-story.reverse
-  .editorial-story-copy{
-    order:initial;
-  }
-
-  .home-process-image{
-    max-width:650px;
-
-    margin-left:auto;
-    margin-right:auto;
-  }
-
-  .home-process-copy,
-  .editorial-story-copy,
-  .home-partner-copy{
-    max-width:700px;
-
-    margin-left:auto;
-    margin-right:auto;
-  }
-
-}
-
-
-@media(max-width:600px){
-
-  .home-hero-content{
-    width:94vw !important;
-  }
-
-  .hero-stage{
-    height:245px;
-
-    flex-basis:245px;
-  }
-
-  .hero-brand h1{
-    font-size:2.55rem;
-  }
-
-  .hero-review-quote{
-    font-size:1.62rem;
-  }
-
-  .hero-actions{
-    grid-template-columns:
-      1fr 1fr;
-
-    width:min(390px,90vw);
-
-    gap:8px;
-  }
-
-  .hero-action{
-    width:100%;
-    height:52px;
-
-    padding:0 8px;
-
-    font-size:.55rem;
-
-    letter-spacing:1.2px;
-  }
-
-
-  .home-day-copy h2{
-    font-size:3.1rem;
-  }
-
-  .home-day-copy h2 em{
-    font-size:.61em;
-  }
-
-
-  .promise-copy h2{
-    font-size:2.8rem;
-  }
-
-  .promise-copy h3{
-    font-size:2.45rem;
-  }
-
-
-  .home-stories,
-  .home-review-feature,
-  .home-process,
-  .home-partner,
-  .home-locations,
-  .home-collections,
-  .home-faq,
-  .home-contact{
-    padding:85px 6vw;
-  }
-
-  .home-stories-header h2,
-  .home-process-copy h2,
-  .home-partner-copy h2,
-  .home-locations-header h2,
-  .collection-intro h2,
-  .home-faq-header h2,
-  .home-contact-header h2{
-    font-size:2.65rem;
-  }
-
-  .editorial-story{
-    margin-bottom:85px;
-
-    gap:38px;
-  }
-
-  .editorial-story-image::after{
-    display:none;
-  }
-
-  .editorial-story-number{
-    top:-55px;
-
-    font-size:5rem;
-  }
-
-  .editorial-story-copy h3{
-    font-size:2.8rem;
-  }
-
-  .home-review-feature blockquote{
-    font-size:1.85rem;
-  }
-
-  .home-process-image::before{
-    display:none;
-  }
-
-  .partner-benefits{
-    grid-template-columns:1fr;
-  }
-
-  .home-destination-grid{
-    grid-template-columns:1fr;
-  }
-
-}
-
-
-@media(prefers-reduced-motion:reduce){
-
-  [data-reveal]{
-    opacity:1 !important;
-
-    transform:none !important;
-
-    transition:none !important;
-  }
-
-}
-
-</style>
+<link rel="stylesheet" href="/css/home.css">
 
 
 <!-- ======================================================
@@ -2978,7 +17,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   <div class="hero home-hero-sticky">
 
-
     <div class="hero-media">
 
       <video
@@ -2986,6 +24,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         muted
         loop
         playsinline
+        preload="metadata"
         class="hero-video">
 
         <source
@@ -3000,26 +39,26 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     <div class="hero-overlay"></div>
 
 
-    <div class="hero-content home-hero-content">
+    <div class="home-hero-content">
 
 
       <div class="hero-stage">
 
 
+        <!-- INTRO -->
+
         <div
-          class="hero-slide"
-          data-hero-scene="0">
+          class="hero-slide active"
+          data-slide="0">
 
           <div class="hero-brand">
 
             <h1>
-
               The Moments You Lived.
 
               <span class="hero-subtitle">
                 And The Ones Happening Around You
               </span>
-
             </h1>
 
           </div>
@@ -3027,9 +66,11 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </div>
 
 
+        <!-- REVIEW 01 -->
+
         <div
           class="hero-slide"
-          data-hero-scene="1">
+          data-slide="1">
 
           <span class="hero-review-kicker">
             The Moments You Missed
@@ -3053,9 +94,11 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </div>
 
 
+        <!-- REVIEW 02 -->
+
         <div
           class="hero-slide"
-          data-hero-scene="2">
+          data-slide="2">
 
           <span class="hero-review-kicker">
             Thoughtful From Start To Finish
@@ -3101,27 +144,29 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </div>
 
 
-        <div class="hero-controls">
+        <div
+          class="hero-controls"
+          aria-label="Hero messages">
 
           <button
+            type="button"
             class="hero-dot active"
-            type="button"
-            data-hero-target="0"
-            aria-label="Introduction">
+            data-target="0"
+            aria-label="Show introduction">
           </button>
 
           <button
-            class="hero-dot"
             type="button"
-            data-hero-target="1"
-            aria-label="Aimee review">
+            class="hero-dot"
+            data-target="1"
+            aria-label="Show Aimee review">
           </button>
 
           <button
-            class="hero-dot"
             type="button"
-            data-hero-target="2"
-            aria-label="Kirsty review">
+            class="hero-dot"
+            data-target="2"
+            aria-label="Show Kirsty review">
           </button>
 
         </div>
@@ -3135,39 +180,43 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     <div
       class="hero-scroll-cue"
       aria-hidden="true">
-      Scroll to continue
-    </div>
 
+      Scroll to continue
+
+    </div>
 
   </div>
 
 </section>
 
 
+
 <!-- ======================================================
-     ONE DAY — FOUR MOMENTS
+     YOUR WEDDING DAY
+     LEFT COPY REMAINS
+     FOUR IMAGES MOVE THROUGH ON THE RIGHT
      ====================================================== -->
 
 <section
   id="headspace"
-  class="home-day">
+  class="home-feeling">
 
-  <div class="home-day-sticky">
+  <div class="home-feeling-sticky">
 
 
     <div
-      class="home-day-word"
+      class="home-feeling-word"
       aria-hidden="true">
       ONE DAY
     </div>
 
 
-    <div class="home-day-inner">
+    <div class="home-feeling-inner">
 
 
-      <!-- LEFT REMAINS FIXED -->
+      <!-- FIXED COPY -->
 
-      <div class="home-day-copy">
+      <div class="home-feeling-copy">
 
         <span class="eyebrow">
           Your Wedding Day
@@ -3176,269 +225,192 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         <h2>
 
-          <span>
-            You spend months planning it.
-          </span>
+          You spend months
+          <span>planning it.</span>
 
           <em>
-            Then somehow, it becomes a memory in a day.
+            Then somehow, it becomes
+            a memory in a day.
           </em>
 
         </h2>
 
 
-        <p>
-          You'll remember how it felt. But no one gets to stand everywhere,
-          hear every conversation and notice every reaction while they're
-          living the day themselves.
+        <p class="home-feeling-lead">
+          You live the day from one point of view.
+          Around you, hundreds of other moments are unfolding.
         </p>
 
 
-        <div class="day-copy-caption">
+        <div class="feeling-chapter">
+
+          <span class="feeling-chapter-label">
+            The Anticipation
+          </span>
+
+          <p class="feeling-chapter-copy">
+            The day starts quietly, before everyone is in the same room.
+          </p>
+
+        </div>
 
 
-          <div
-            class="day-copy-caption-item"
-            data-day-caption="0">
+        <div class="feeling-progress">
+
+          <span
+            id="feeling-progress-bar"
+            aria-hidden="true">
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- IMAGE REEL -->
+
+      <div class="home-feeling-visual">
+
+
+        <!-- 01 -->
+
+        <figure
+          class="feeling-shot"
+          data-label="The Anticipation"
+          data-copy="The day starts quietly, before everyone is in the same room."
+          data-word="ANTICIPATION">
+
+          <img
+            src="/images/kirsty-connor-thornton-hall-wedding.jpg"
+            alt="Bride and groom sharing a quiet moment on their wedding day"
+            loading="eager">
+
+          <div class="feeling-shot-overlay"></div>
+
+          <figcaption>
 
             <span>
-              The Anticipation
+              Before It Begins
             </span>
 
             <p>
-              The day starts quietly, long before everyone is in the same room.
+              The nerves, the anticipation,
+              the last quiet moments.
             </p>
 
-          </div>
+            <strong>
+              01
+            </strong>
+
+          </figcaption>
+
+        </figure>
 
 
-          <div
-            class="day-copy-caption-item"
-            data-day-caption="1">
+        <!-- 02 -->
+
+        <figure
+          class="feeling-shot"
+          data-label="The Ceremony"
+          data-copy="The part you've imagined for months suddenly becomes real."
+          data-word="CEREMONY">
+
+          <img
+            src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
+            alt="Emotional wedding ceremony at Grosvenor Pulford Hotel and Spa"
+            loading="lazy">
+
+          <div class="feeling-shot-overlay"></div>
+
+          <figcaption>
 
             <span>
               The Ceremony
             </span>
 
             <p>
-              Then suddenly the thing you've spent months planning is actually happening.
+              The part you've imagined
+              finally becomes real.
             </p>
 
-          </div>
-
-
-          <div
-            class="day-copy-caption-item"
-            data-day-caption="2">
-
-            <span>
-              The People
-            </span>
-
-            <p>
-              Around you, hundreds of tiny reactions are happening at the same time.
-            </p>
-
-          </div>
-
-
-          <div
-            class="day-copy-caption-item"
-            data-day-caption="3">
-
-            <span>
-              The Celebration
-            </span>
-
-            <p>
-              By the evening, the nerves have gone and the day has become completely yours.
-            </p>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-
-      <!-- RIGHT MOVES THROUGH FOUR MOMENTS -->
-
-      <div class="home-day-visual">
-
-
-        <!-- 01 -->
-
-        <div
-          class="day-image"
-          data-day-image="0">
-
-          <img
-            src="/images/kirsty-connor-thornton-hall-wedding.jpg"
-            alt="Bride and groom together during their wedding day"
-            loading="lazy">
-
-          <div class="day-image-shade"></div>
-
-          <div class="day-image-border"></div>
-
-
-          <div class="day-image-meta">
-
-            <div class="day-image-meta-copy">
-
-              <span>
-                Before It Begins
-              </span>
-
-              <p>
-                The nerves, the anticipation,
-                the last quiet moments.
-              </p>
-
-            </div>
-
-
-            <div class="day-image-count">
-              01
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- 02 -->
-
-        <div
-          class="day-image"
-          data-day-image="1">
-
-          <img
-            src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
-            alt="Wedding ceremony and emotional moments at Grosvenor Pulford"
-            loading="lazy">
-
-          <div class="day-image-shade"></div>
-
-          <div class="day-image-border"></div>
-
-
-          <div class="day-image-meta">
-
-            <div class="day-image-meta-copy">
-
-              <span>
-                The Ceremony
-              </span>
-
-              <p>
-                The part you've imagined
-                finally becomes real.
-              </p>
-
-            </div>
-
-
-            <div class="day-image-count">
+            <strong>
               02
-            </div>
+            </strong>
 
-          </div>
+          </figcaption>
 
-        </div>
+        </figure>
 
 
         <!-- 03 -->
 
-        <div
-          class="day-image"
-          data-day-image="2">
+        <figure
+          class="feeling-shot"
+          data-label="Everything Around You"
+          data-copy="Reactions, laughter and tiny stories are happening at the same time as yours."
+          data-word="AROUND YOU">
 
           <img
             src="/images/Kirsty-connor-laughter.png"
             alt="Kirsty and Connor laughing naturally during their wedding"
             loading="lazy">
 
-          <div class="day-image-shade"></div>
+          <div class="feeling-shot-overlay"></div>
 
-          <div class="day-image-border"></div>
+          <figcaption>
 
+            <span>
+              Everything Around You
+            </span>
 
-          <div class="day-image-meta">
+            <p>
+              The laughter, reactions
+              and moments you never planned.
+            </p>
 
-            <div class="day-image-meta-copy">
-
-              <span>
-                Everything Around You
-              </span>
-
-              <p>
-                The laughter, reactions
-                and moments you never planned.
-              </p>
-
-            </div>
-
-
-            <div class="day-image-count">
+            <strong>
               03
-            </div>
+            </strong>
 
-          </div>
+          </figcaption>
 
-        </div>
+        </figure>
 
 
         <!-- 04 -->
 
-        <div
-          class="day-image"
-          data-day-image="3">
+        <figure
+          class="feeling-shot"
+          data-label="Then It's A Memory"
+          data-copy="By the evening, months of planning have become one extraordinary day."
+          data-word="MEMORY">
 
           <img
             src="/images/kirsty-connor-thornton-hall-wedding.jpg"
-            alt="Cinematic wedding moment captured naturally"
+            alt="Natural cinematic moment from a wedding film"
             loading="lazy">
 
-          <div class="day-image-shade"></div>
+          <div class="feeling-shot-overlay"></div>
 
-          <div class="day-image-border"></div>
+          <figcaption>
 
+            <span>
+              Then It's A Memory
+            </span>
 
-          <div class="day-image-meta">
+            <p>
+              Months of planning.
+              One extraordinary day.
+            </p>
 
-            <div class="day-image-meta-copy">
-
-              <span>
-                Then It's A Memory
-              </span>
-
-              <p>
-                Months of planning.
-                One extraordinary day.
-              </p>
-
-            </div>
-
-
-            <div class="day-image-count">
+            <strong>
               04
-            </div>
+            </strong>
 
-          </div>
+          </figcaption>
 
-        </div>
+        </figure>
 
-
-      </div>
-
-
-      <div
-        class="home-day-progress"
-        aria-hidden="true">
-
-        <span id="day-progress-bar"></span>
 
       </div>
 
@@ -3448,6 +420,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 </section>
+
 
 
 <!-- ======================================================
@@ -3471,11 +444,11 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     <div class="home-promise-inner">
 
 
-      <!-- INTRO -->
+      <!-- ==================================================
+           INTRO
+           ================================================== -->
 
-      <div
-        class="promise-scene"
-        data-promise-scene="0">
+      <article class="promise-scene">
 
 
         <div class="promise-image">
@@ -3486,6 +459,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
             loading="lazy">
 
           <div class="promise-image-overlay"></div>
+
 
           <div class="promise-image-caption">
 
@@ -3515,7 +489,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
             Relive what you remember.
 
             <em>
-              Recover everything time starts to soften.
+              Recover everything
+              time starts to soften.
             </em>
 
           </h2>
@@ -3529,24 +504,26 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </div>
 
 
-      </div>
+      </article>
 
 
-      <!-- VOICES -->
 
-      <div
-        class="promise-scene reverse"
-        data-promise-scene="1">
+      <!-- ==================================================
+           01 — VOICES
+           ================================================== -->
+
+      <article class="promise-scene reverse">
 
 
         <div class="promise-image">
 
           <img
             src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
-            alt="Wedding speeches preserved on film"
+            alt="Wedding speeches preserved through cinematic wedding film"
             loading="lazy">
 
           <div class="promise-image-overlay"></div>
+
 
           <div class="promise-image-caption">
 
@@ -3582,36 +559,39 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
           <p>
             Your vows. A parent's speech. A terrible best-man joke.
-            The laugh immediately afterwards. Those voices become more
-            valuable with time, not less.
+            The laugh immediately afterwards. Those voices become
+            more valuable with time, not less.
           </p>
 
 
           <span class="promise-note">
-            A film doesn't just show you who was there. It lets you hear them again.
+            A film doesn't just show you who was there.
+            It lets you hear them again.
           </span>
 
         </div>
 
 
-      </div>
+      </article>
 
 
-      <!-- ATMOSPHERE -->
 
-      <div
-        class="promise-scene"
-        data-promise-scene="2">
+      <!-- ==================================================
+           02 — ATMOSPHERE
+           ================================================== -->
+
+      <article class="promise-scene">
 
 
         <div class="promise-image">
 
           <img
             src="/images/kirsty-connor-thornton-hall-wedding.jpg"
-            alt="Wedding atmosphere preserved cinematically"
+            alt="Wedding atmosphere captured naturally on film"
             loading="lazy">
 
           <div class="promise-image-overlay"></div>
+
 
           <div class="promise-image-caption">
 
@@ -3653,30 +633,33 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
           <span class="promise-note">
-            The tiny changes in atmosphere are often what make a wedding feel real again.
+            The tiny changes in atmosphere are often what make
+            a wedding feel real again.
           </span>
 
         </div>
 
 
-      </div>
+      </article>
 
 
-      <!-- PEOPLE -->
 
-      <div
-        class="promise-scene reverse"
-        data-promise-scene="3">
+      <!-- ==================================================
+           03 — PEOPLE
+           ================================================== -->
+
+      <article class="promise-scene reverse">
 
 
         <div class="promise-image">
 
           <img
             src="/images/Kirsty-connor-laughter.png"
-            alt="Wedding guests and couple sharing natural moments"
+            alt="Wedding couple and guests captured naturally"
             loading="lazy">
 
           <div class="promise-image-overlay"></div>
+
 
           <div class="promise-image-caption">
 
@@ -3711,27 +694,29 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
           <p>
-            Not simply standing for a photograph, but talking, moving,
-            laughing, crying and interacting with each other. The parts
-            that reveal personality rather than just appearance.
+            Not simply standing for a photograph, but talking,
+            moving, laughing, crying and interacting with each other.
+            The parts that reveal personality rather than appearance.
           </p>
 
 
           <span class="promise-note">
-            Years later, ordinary little moments can become the extraordinary ones.
+            Years later, ordinary little moments can become
+            the extraordinary ones.
           </span>
 
         </div>
 
 
-      </div>
+      </article>
 
 
-      <div
-        class="promise-progress"
-        aria-hidden="true">
+      <div class="promise-progress">
 
-        <span id="promise-progress-bar"></span>
+        <span
+          id="promise-progress-bar"
+          aria-hidden="true">
+        </span>
 
       </div>
 
@@ -3741,6 +726,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 </section>
+
 
 
 <!-- ======================================================
@@ -3780,6 +766,11 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 
+
+  <!-- ====================================================
+       ANDY & LESLEY
+       ==================================================== -->
+
   <article class="editorial-story">
 
 
@@ -3817,17 +808,21 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         Real Wedding
       </span>
 
+
       <h3>
         Andy &amp; Lesley
       </h3>
+
 
       <p class="editorial-story-venue">
         Grosvenor Pulford Hotel &amp; Spa
       </p>
 
+
       <p class="editorial-story-tone">
         Emotional. Reflective. Full of history.
       </p>
+
 
       <p class="editorial-story-description">
         Their film became a story about family, memory and finding
@@ -3861,6 +856,11 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   </article>
 
+
+
+  <!-- ====================================================
+       KIRSTY & CONNOR
+       ==================================================== -->
 
   <article class="editorial-story reverse">
 
@@ -3899,17 +899,21 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         Real Wedding
       </span>
 
+
       <h3>
         Kirsty &amp; Connor
       </h3>
+
 
       <p class="editorial-story-venue">
         Thornton Hall Hotel &amp; Spa
       </p>
 
+
       <p class="editorial-story-tone">
         Fun. Carefree. Full of energy.
       </p>
+
 
       <p class="editorial-story-description">
         This one needed movement, humour and pace. The personalities
@@ -3946,8 +950,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 </section>
 
 
+
 <!-- ======================================================
-     REVIEW
+     REVIEW FEATURE
      ====================================================== -->
 
 <section class="home-review-feature">
@@ -3960,16 +965,19 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       What You'll Get Back
     </span>
 
+
     <div
       class="home-review-stars"
       aria-label="5 star Google review">
       &#9733;&#9733;&#9733;&#9733;&#9733;
     </div>
 
+
     <blockquote>
       &ldquo;He captured some really special moments
       that we didn't even get to see on the day.&rdquo;
     </blockquote>
+
 
     <p class="home-review-name">
       Aimee &middot; Google Review
@@ -3980,8 +988,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 </section>
 
 
+
 <!-- ======================================================
-     FILMMAKER
+     BEHIND THE LENS
      ====================================================== -->
 
 <section
@@ -4024,7 +1033,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
       <p class="home-process-lead">
-        You shouldn't spend your wedding thinking about the person filming it.
+        You shouldn't spend your wedding thinking about
+        the person filming it.
       </p>
 
 
@@ -4036,17 +1046,17 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
       <p>
-        The detailed work happens later. Speeches, reactions, natural
-        audio, music and imagery are brought together to find the rhythm
-        and emotional shape of the film.
+        The detailed work happens later. Speeches, reactions,
+        natural audio, music and imagery are brought together
+        to find the rhythm and emotional shape of the film.
       </p>
 
 
       <p>
         My creative background stretches beyond wedding filmmaking.
-        Years spent working with music, moving image and different kinds
-        of productions have shaped the way I think about story, timing,
-        sound and the person ultimately watching.
+        Years spent working with music, moving image and different
+        kinds of productions have shaped the way I think about story,
+        timing, sound and the person ultimately watching.
       </p>
 
 
@@ -4075,6 +1085,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 </section>
+
 
 
 <!-- ======================================================
@@ -4147,16 +1158,18 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
       <p>
-        That matters more than it might sound. Instead of your photographer
-        and videographer competing for the same moment, we know when to give
-        each other space, when to coordinate and how to keep things moving
-        without making your wedding feel like a production.
+        That matters more than it might sound. Instead of your
+        photographer and videographer competing for the same moment,
+        we know when to give each other space, when to coordinate
+        and how to keep things moving without making your wedding
+        feel like a production.
       </p>
 
 
       <p>
         If you're still looking for photography as well as film,
-        Ruby Salmon Photography is someone I'm genuinely happy to recommend.
+        Ruby Salmon Photography is someone I'm genuinely happy
+        to recommend.
       </p>
 
 
@@ -4195,6 +1208,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 </section>
+
 
 
 <!-- ======================================================
@@ -4341,6 +1355,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 </section>
 
 
+
 <!-- ======================================================
      COLLECTIONS
      ====================================================== -->
@@ -4381,6 +1396,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   <div class="packages">
 
 
+    <!-- NARRATIVE -->
+
     <div
       class="card"
       onclick="toggleActive(this)"
@@ -4398,6 +1415,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         View coverage &darr;
       </p>
 
+
       <div class="card-details">
 
         <ul>
@@ -4413,6 +1431,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
     </div>
 
+
+
+    <!-- CINEMATIC -->
 
     <div
       id="cinematic-default"
@@ -4432,6 +1453,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         Most popular &darr;
       </p>
 
+
       <div class="card-details">
 
         <ul>
@@ -4450,6 +1472,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </div>
 
 
+
+    <!-- CEREMONY -->
+
     <div
       class="card"
       onclick="toggleActive(this)"
@@ -4466,6 +1491,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       <p class="expand-hint">
         View coverage &darr;
       </p>
+
 
       <div class="card-details">
 
@@ -4485,6 +1511,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 
+
+  <!-- OPTIONAL EXTRAS -->
+
   <div
     class="optional-extras"
     data-reveal>
@@ -4494,13 +1523,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </span>
 
 
-    <h3
-      style="
-        font-family:'Baskervville',serif;
-        font-size:2rem;
-        font-weight:400;
-        margin:0;
-      ">
+    <h3 class="optional-extras-title">
       Optional Extras
     </h3>
 
@@ -4508,48 +1531,81 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     <div class="extras-grid">
 
       <div class="extra-item">
-        <strong>Full Ceremony Film</strong>
-        <span class="extra-price">&pound;250</span>
+
+        <strong>
+          Full Ceremony Film
+        </strong>
+
+        <span class="extra-price">
+          &pound;250
+        </span>
+
       </div>
 
-      <div class="extra-item">
-        <strong>Full Speeches Film</strong>
-        <span class="extra-price">&pound;250</span>
-      </div>
 
       <div class="extra-item">
-        <strong>Social Highlight Reel</strong>
-        <span class="extra-price">&pound;95</span>
+
+        <strong>
+          Full Speeches Film
+        </strong>
+
+        <span class="extra-price">
+          &pound;250
+        </span>
+
       </div>
 
-      <div class="extra-item">
-        <strong>Subtitled Films</strong>
-        <span class="extra-price">&pound;75</span>
-      </div>
 
       <div class="extra-item">
-        <strong>Additional Coverage</strong>
-        <span class="extra-price">&pound;75/hr</span>
+
+        <strong>
+          Social Highlight Reel
+        </strong>
+
+        <span class="extra-price">
+          &pound;95
+        </span>
+
+      </div>
+
+
+      <div class="extra-item">
+
+        <strong>
+          Subtitled Films
+        </strong>
+
+        <span class="extra-price">
+          &pound;75
+        </span>
+
+      </div>
+
+
+      <div class="extra-item">
+
+        <strong>
+          Additional Coverage
+        </strong>
+
+        <span class="extra-price">
+          &pound;75/hr
+        </span>
+
       </div>
 
     </div>
 
 
-    <p
-      style="
-        color:#888;
-        font-size:.8rem;
-        line-height:1.7;
-        max-width:650px;
-        margin:25px auto 0;
-      ">
-      Full ceremony and speeches films are already included with
-      The Cinematic collection.
+    <p class="optional-extras-note">
+      Full ceremony and speeches films are already included
+      with The Cinematic collection.
     </p>
 
   </div>
 
 </section>
+
 
 
 <!-- ======================================================
@@ -4588,14 +1644,18 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     <div class="faq-item">
 
       <button
+        type="button"
         class="faq-question"
         onclick="toggleFAQ(this)">
 
         We hate being on camera. Is that a problem?
 
-        <span class="faq-icon">+</span>
+        <span class="faq-icon">
+          +
+        </span>
 
       </button>
+
 
       <div class="faq-answer">
 
@@ -4611,17 +1671,22 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </div>
 
 
+
     <div class="faq-item">
 
       <button
+        type="button"
         class="faq-question"
         onclick="toggleFAQ(this)">
 
         Will our film look like the weddings above?
 
-        <span class="faq-icon">+</span>
+        <span class="faq-icon">
+          +
+        </span>
 
       </button>
+
 
       <div class="faq-answer">
 
@@ -4637,17 +1702,22 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </div>
 
 
+
     <div class="faq-item">
 
       <button
+        type="button"
         class="faq-question"
         onclick="toggleFAQ(this)">
 
         How do we secure our date?
 
-        <span class="faq-icon">+</span>
+        <span class="faq-icon">
+          +
+        </span>
 
       </button>
+
 
       <div class="faq-answer">
 
@@ -4663,17 +1733,22 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </div>
 
 
+
     <div class="faq-item">
 
       <button
+        type="button"
         class="faq-question"
         onclick="toggleFAQ(this)">
 
         Do you work alongside photographers?
 
-        <span class="faq-icon">+</span>
+        <span class="faq-icon">
+          +
+        </span>
 
       </button>
+
 
       <div class="faq-answer">
 
@@ -4690,24 +1765,29 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </div>
 
 
+
     <div class="faq-item">
 
       <button
+        type="button"
         class="faq-question"
         onclick="toggleFAQ(this)">
 
         Do you charge for travel?
 
-        <span class="faq-icon">+</span>
+        <span class="faq-icon">
+          +
+        </span>
 
       </button>
+
 
       <div class="faq-answer">
 
         <p>
           Travel within 50 miles of our base is included. For weddings
-          further afield across the UK or Europe, additional travel and
-          accommodation costs are agreed before booking.
+          further afield across the UK or Europe, additional travel
+          and accommodation costs are agreed before booking.
         </p>
 
       </div>
@@ -4715,17 +1795,22 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </div>
 
 
+
     <div class="faq-item">
 
       <button
+        type="button"
         class="faq-question"
         onclick="toggleFAQ(this)">
 
         How long does delivery take?
 
-        <span class="faq-icon">+</span>
+        <span class="faq-icon">
+          +
+        </span>
 
       </button>
+
 
       <div class="faq-answer">
 
@@ -4740,24 +1825,29 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </div>
 
 
+
     <div class="faq-item">
 
       <button
+        type="button"
         class="faq-question"
         onclick="toggleFAQ(this)">
 
         Are you fully insured?
 
-        <span class="faq-icon">+</span>
+        <span class="faq-icon">
+          +
+        </span>
 
       </button>
+
 
       <div class="faq-answer">
 
         <p>
           Yes. We carry Public Liability and Professional Indemnity
-          insurance and can provide evidence of cover directly to your
-          venue if required.
+          insurance and can provide evidence of cover directly to
+          your venue if required.
         </p>
 
       </div>
@@ -4768,6 +1858,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 </section>
+
 
 
 <!-- ======================================================
@@ -4815,6 +1906,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
       <div class="form-row">
 
+
         <div class="form-group">
 
           <label for="firstname">
@@ -4825,6 +1917,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
             type="text"
             id="firstname"
             name="firstname"
+            autocomplete="given-name"
             required>
 
         </div>
@@ -4839,14 +1932,18 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
           <input
             type="text"
             id="lastname"
-            name="lastname">
+            name="lastname"
+            autocomplete="family-name">
 
         </div>
+
 
       </div>
 
 
+
       <div class="form-row">
+
 
         <div class="form-group">
 
@@ -4858,6 +1955,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
             type="email"
             id="email"
             name="email"
+            autocomplete="email"
             required>
 
         </div>
@@ -4872,14 +1970,18 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
           <input
             type="tel"
             id="phone"
-            name="phone">
+            name="phone"
+            autocomplete="tel">
 
         </div>
+
 
       </div>
 
 
+
       <div class="form-row">
+
 
         <div class="form-group">
 
@@ -4910,7 +2012,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         </div>
 
+
       </div>
+
 
 
       <div class="form-group">
@@ -4952,6 +2056,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </div>
 
 
+
       <div class="form-group">
 
         <label for="message">
@@ -4968,29 +2073,23 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </div>
 
 
+
       <button
         type="submit"
         id="submit-btn"
-        class="hero-btn"
-        style="
-          width:100%;
-          margin-top:10px;
-        ">
+        class="hero-btn contact-submit">
         Check My Date
       </button>
 
 
+
       <div
         id="form-success"
-        style="
-          display:none;
-          margin-top:20px;
-          color:var(--gold);
-          font-style:italic;
-          text-align:center;
-        ">
+        class="form-success">
+
         Thank you. Your enquiry has been received and we will be
         in touch within 24 hours.
+
       </div>
 
 
@@ -5001,1088 +2100,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 </section>
 
 
-<!-- ======================================================
-     JAVASCRIPT
-     ====================================================== -->
-
-<script>
-
-document.addEventListener(
-  'DOMContentLoaded',
-  function(){
-
-
-    const reduceMotion =
-      window.matchMedia(
-        '(prefers-reduced-motion: reduce)'
-      ).matches;
-
-
-    function clamp(
-      value,
-      min,
-      max
-    ){
-
-      return Math.min(
-        Math.max(
-          value,
-          min
-        ),
-        max
-      );
-
-    }
-
-
-    function getProgress(
-      section
-    ){
-
-      if(!section){
-        return 0;
-      }
-
-
-      const rect =
-        section.getBoundingClientRect();
-
-
-      const available =
-        section.offsetHeight -
-        window.innerHeight;
-
-
-      if(available <= 0){
-        return 0;
-      }
-
-
-      return clamp(
-        -rect.top /
-        available,
-        0,
-        1
-      );
-
-    }
-
-
-
-    /* =====================================================
-       HERO
-       ===================================================== */
-
-    const heroSection =
-      document.querySelector(
-        '.home-hero-scroll'
-      );
-
-
-    const heroScenes =
-      Array.from(
-        document.querySelectorAll(
-          '[data-hero-scene]'
-        )
-      );
-
-
-    const heroDots =
-      Array.from(
-        document.querySelectorAll(
-          '[data-hero-target]'
-        )
-      );
-
-
-    const heroFixed =
-      document.querySelector(
-        '.hero-fixed'
-      );
-
-
-    const heroOverlay =
-      document.querySelector(
-        '.hero-overlay'
-      );
-
-
-    const heroVideo =
-      document.querySelector(
-        '.hero-video'
-      );
-
-
-    const heroCue =
-      document.querySelector(
-        '.hero-scroll-cue'
-      );
-
-
-    function updateHero(){
-
-      if(
-        !heroSection ||
-        window.innerWidth <= 900
-      ){
-        return;
-      }
-
-
-      const progress =
-        getProgress(
-          heroSection
-        );
-
-
-      /*
-         Reviews consume first 68% of scroll.
-
-         The last third is deliberately
-         clean film before releasing the section.
-      */
-
-      const sceneProgress =
-        clamp(
-          progress / .68,
-          0,
-          1
-        );
-
-
-      const position =
-        sceneProgress *
-        (
-          heroScenes.length -
-          1
-        );
-
-
-      const activeIndex =
-        clamp(
-          Math.round(
-            position
-          ),
-          0,
-          heroScenes.length - 1
-        );
-
-
-      heroScenes.forEach(
-        function(
-          scene,
-          index
-        ){
-
-          const relative =
-            index -
-            position;
-
-
-          const distance =
-            Math.abs(
-              relative
-            );
-
-
-          let opacity =
-            1 -
-            distance *
-            1.8;
-
-
-          opacity =
-            clamp(
-              opacity,
-              0,
-              1
-            );
-
-
-          const exit =
-            clamp(
-              (
-                progress -
-                .67
-              ) /
-              .11,
-              0,
-              1
-            );
-
-
-          opacity *=
-            1 -
-            exit;
-
-
-          scene.style.opacity =
-            opacity;
-
-
-          scene.style.visibility =
-            opacity > .02
-              ? 'visible'
-              : 'hidden';
-
-
-          scene.style.transform =
-            'translate3d(0,' +
-            (
-              relative *
-              105 -
-              exit *
-              180
-            ) +
-            'px,0) scale(' +
-            (
-              1 -
-              Math.min(
-                distance,
-                1
-              ) *
-              .025
-            ) +
-            ')';
-
-
-          scene.style.filter =
-            'blur(' +
-            (
-              Math.min(
-                distance,
-                1
-              ) *
-              2.6
-            ) +
-            'px)';
-
-        }
-      );
-
-
-      heroDots.forEach(
-        function(
-          dot,
-          index
-        ){
-
-          dot.classList.toggle(
-            'active',
-            index === activeIndex
-          );
-
-        }
-      );
-
-
-      if(heroFixed){
-
-        const exit =
-          clamp(
-            (
-              progress -
-              .68
-            ) /
-            .1,
-            0,
-            1
-          );
-
-
-        heroFixed.style.opacity =
-          1 -
-          exit;
-
-
-        heroFixed.style.transform =
-          'translateY(' +
-          (
-            exit *
-            -90
-          ) +
-          'px)';
-
-      }
-
-
-      if(heroCue){
-
-        heroCue.style.opacity =
-          clamp(
-            1 -
-            progress *
-            7,
-            0,
-            1
-          );
-
-      }
-
-
-      if(heroOverlay){
-
-        const clean =
-          clamp(
-            (
-              progress -
-              .7
-            ) /
-            .18,
-            0,
-            1
-          );
-
-
-        heroOverlay.style.opacity =
-          1 -
-          clean *
-          .62;
-
-      }
-
-
-      if(
-        heroVideo &&
-        !reduceMotion
-      ){
-
-        const zoom =
-          1.045 -
-          progress *
-          .025;
-
-
-        heroVideo.style.transform =
-          'translate(-50%,-50%) scale(' +
-          zoom +
-          ')';
-
-      }
-
-    }
-
-
-    heroDots.forEach(
-      function(dot){
-
-        dot.addEventListener(
-          'click',
-          function(){
-
-            if(!heroSection){
-              return;
-            }
-
-
-            const index =
-              parseInt(
-                dot.getAttribute(
-                  'data-hero-target'
-                ),
-                10
-              );
-
-
-            const sectionTop =
-              window.scrollY +
-              heroSection
-                .getBoundingClientRect()
-                .top;
-
-
-            const available =
-              heroSection.offsetHeight -
-              window.innerHeight;
-
-
-            const sceneFraction =
-              index /
-              Math.max(
-                heroScenes.length - 1,
-                1
-              );
-
-
-            const targetProgress =
-              sceneFraction *
-              .68;
-
-
-            window.scrollTo({
-
-              top:
-                sectionTop +
-                available *
-                targetProgress,
-
-              behavior:'smooth'
-
-            });
-
-          }
-        );
-
-      }
-    );
-
-
-
-    /* =====================================================
-       DAY IMAGE REEL
-       ===================================================== */
-
-    const daySection =
-      document.querySelector(
-        '.home-day'
-      );
-
-
-    const dayImages =
-      Array.from(
-        document.querySelectorAll(
-          '[data-day-image]'
-        )
-      );
-
-
-    const dayCaptions =
-      Array.from(
-        document.querySelectorAll(
-          '[data-day-caption]'
-        )
-      );
-
-
-    const dayProgressBar =
-      document.getElementById(
-        'day-progress-bar'
-      );
-
-
-    function updateDay(){
-
-      if(
-        !daySection ||
-        window.innerWidth <= 900
-      ){
-        return;
-      }
-
-
-      const progress =
-        getProgress(
-          daySection
-        );
-
-
-      const position =
-        progress *
-        (
-          dayImages.length -
-          1
-        );
-
-
-      dayImages.forEach(
-        function(
-          image,
-          index
-        ){
-
-          const relative =
-            index -
-            position;
-
-
-          const distance =
-            Math.abs(
-              relative
-            );
-
-
-          let opacity =
-            1 -
-            distance *
-            1.55;
-
-
-          opacity =
-            clamp(
-              opacity,
-              0,
-              1
-            );
-
-
-          image.style.opacity =
-            opacity;
-
-
-          image.style.visibility =
-            opacity > .01
-              ? 'visible'
-              : 'hidden';
-
-
-          image.style.transform =
-            'translate3d(0,' +
-            (
-              relative *
-              105
-            ) +
-            'px,0) scale(' +
-            (
-              1.055 -
-              Math.min(
-                distance,
-                1
-              ) *
-              .025
-            ) +
-            ')';
-
-        }
-      );
-
-
-      dayCaptions.forEach(
-        function(
-          caption,
-          index
-        ){
-
-          const relative =
-            index -
-            position;
-
-
-          const distance =
-            Math.abs(
-              relative
-            );
-
-
-          const opacity =
-            clamp(
-              1 -
-              distance *
-              2.2,
-              0,
-              1
-            );
-
-
-          caption.style.opacity =
-            opacity;
-
-
-          caption.style.transform =
-            'translateY(' +
-            (
-              relative *
-              18
-            ) +
-            'px)';
-
-        }
-      );
-
-
-      if(dayProgressBar){
-
-        dayProgressBar.style.width =
-          (
-            progress *
-            100
-          ) +
-          '%';
-
-      }
-
-    }
-
-
-
-    /* =====================================================
-       PROMISE
-       ===================================================== */
-
-    const promiseSection =
-      document.querySelector(
-        '.home-promise'
-      );
-
-
-    const promiseScenes =
-      Array.from(
-        document.querySelectorAll(
-          '[data-promise-scene]'
-        )
-      );
-
-
-    const promiseProgressBar =
-      document.getElementById(
-        'promise-progress-bar'
-      );
-
-
-    function updatePromise(){
-
-      if(
-        !promiseSection ||
-        window.innerWidth <= 900
-      ){
-        return;
-      }
-
-
-      const progress =
-        getProgress(
-          promiseSection
-        );
-
-
-      const position =
-        progress *
-        (
-          promiseScenes.length -
-          1
-        );
-
-
-      promiseScenes.forEach(
-        function(
-          scene,
-          index
-        ){
-
-          const relative =
-            index -
-            position;
-
-
-          const distance =
-            Math.abs(
-              relative
-            );
-
-
-          let opacity =
-            1 -
-            distance *
-            1.75;
-
-
-          opacity =
-            clamp(
-              opacity,
-              0,
-              1
-            );
-
-
-          /*
-             deliberately prevent neighbouring
-             panels both remaining readable
-          */
-
-          if(
-            distance >
-            .62
-          ){
-            opacity = 0;
-          }
-
-
-          scene.style.opacity =
-            opacity;
-
-
-          scene.style.visibility =
-            opacity > .01
-              ? 'visible'
-              : 'hidden';
-
-
-          scene.style.transform =
-            'translate3d(0,' +
-            (
-              relative *
-              125
-            ) +
-            'px,0) scale(' +
-            (
-              1 -
-              Math.min(
-                distance,
-                1
-              ) *
-              .025
-            ) +
-            ')';
-
-
-          scene.style.filter =
-            'blur(' +
-            (
-              Math.min(
-                distance,
-                1
-              ) *
-              2.4
-            ) +
-            'px)';
-
-
-          const image =
-            scene.querySelector(
-              '.promise-image img'
-            );
-
-
-          if(
-            image &&
-            !reduceMotion
-          ){
-
-            image.style.transform =
-              'scale(1.065) translateY(' +
-              (
-                relative *
-                -18
-              ) +
-              'px)';
-
-          }
-
-        }
-      );
-
-
-      if(promiseProgressBar){
-
-        promiseProgressBar.style.width =
-          (
-            progress *
-            100
-          ) +
-          '%';
-
-      }
-
-    }
-
-
-
-    /* =====================================================
-       REVEALS
-       ===================================================== */
-
-    const revealItems =
-      Array.from(
-        document.querySelectorAll(
-          '[data-reveal]'
-        )
-      );
-
-
-    if(reduceMotion){
-
-      revealItems.forEach(
-        function(item){
-
-          item.classList.add(
-            'is-visible'
-          );
-
-        }
-      );
-
-    } else {
-
-      const revealObserver =
-        new IntersectionObserver(
-          function(entries){
-
-            entries.forEach(
-              function(entry){
-
-                if(
-                  entry.isIntersecting
-                ){
-
-                  entry.target
-                    .classList
-                    .add(
-                      'is-visible'
-                    );
-
-
-                  revealObserver
-                    .unobserve(
-                      entry.target
-                    );
-
-                }
-
-              }
-            );
-
-          },
-          {
-            threshold:.14,
-
-            rootMargin:
-              '0px 0px -6% 0px'
-          }
-        );
-
-
-      revealItems.forEach(
-        function(item){
-
-          revealObserver.observe(
-            item
-          );
-
-        }
-      );
-
-    }
-
-
-
-    /* =====================================================
-       PACKAGE CARDS
-       ===================================================== */
-
-    window.toggleActive =
-      function(card){
-
-        document
-          .querySelectorAll(
-            '.packages .card'
-          )
-          .forEach(
-            function(item){
-
-              if(item !== card){
-
-                item.classList.remove(
-                  'active'
-                );
-
-              }
-
-            }
-          );
-
-
-        card.classList.toggle(
-          'active'
-        );
-
-      };
-
-
-
-    /* =====================================================
-       FAQ
-       ===================================================== */
-
-    window.toggleFAQ =
-      function(button){
-
-        const item =
-          button.closest(
-            '.faq-item'
-          );
-
-
-        if(!item){
-          return;
-        }
-
-
-        const answer =
-          item.querySelector(
-            '.faq-answer'
-          );
-
-
-        const icon =
-          button.querySelector(
-            '.faq-icon'
-          );
-
-
-        const open =
-          item.classList.contains(
-            'active'
-          );
-
-
-        document
-          .querySelectorAll(
-            '.faq-item.active'
-          )
-          .forEach(
-            function(other){
-
-              if(other === item){
-                return;
-              }
-
-
-              other.classList.remove(
-                'active'
-              );
-
-
-              const otherAnswer =
-                other.querySelector(
-                  '.faq-answer'
-                );
-
-
-              const otherIcon =
-                other.querySelector(
-                  '.faq-icon'
-                );
-
-
-              if(otherAnswer){
-
-                otherAnswer.style.maxHeight =
-                  null;
-
-              }
-
-
-              if(otherIcon){
-
-                otherIcon.textContent =
-                  '+';
-
-              }
-
-            }
-          );
-
-
-        if(open){
-
-          item.classList.remove(
-            'active'
-          );
-
-
-          if(answer){
-
-            answer.style.maxHeight =
-              null;
-
-          }
-
-
-          if(icon){
-
-            icon.textContent =
-              '+';
-
-          }
-
-        } else {
-
-          item.classList.add(
-            'active'
-          );
-
-
-          if(answer){
-
-            answer.style.maxHeight =
-              answer.scrollHeight +
-              'px';
-
-          }
-
-
-          if(icon){
-
-            icon.textContent =
-              '−';
-
-          }
-
-        }
-
-      };
-
-
-
-    /* =====================================================
-       SCROLL
-       ===================================================== */
-
-    let ticking = false;
-
-
-    function update(){
-
-      updateHero();
-
-      updateDay();
-
-      updatePromise();
-
-    }
-
-
-    function onScroll(){
-
-      if(ticking){
-        return;
-      }
-
-
-      ticking = true;
-
-
-      requestAnimationFrame(
-        function(){
-
-          update();
-
-          ticking = false;
-
-        }
-      );
-
-    }
-
-
-    window.addEventListener(
-      'scroll',
-      onScroll,
-      {
-        passive:true
-      }
-    );
-
-
-    window.addEventListener(
-      'resize',
-      update
-    );
-
-
-    update();
-
-
-  }
-);
-
+<script
+  src="/js/home.js"
+  defer>
 </script>

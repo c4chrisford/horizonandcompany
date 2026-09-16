@@ -1,628 +1,3141 @@
----
-layout: default
-title: "Wedding Videographer Cheshire, Liverpool & North Wales | Horizon & Company"
-description: "Natural, cinematic wedding films shaped around each couple. Wedding videography across Cheshire, Liverpool, Wirral, North Wales and the UK by Horizon & Company."
----
+/* =========================================================
+   HORIZON & COMPANY
+   HOMEPAGE STYLES
 
-<link rel="stylesheet" href="/css/home.css">
+   Built specifically for the current index2.html + home.js.
 
-<!-- ======================================================
-     HORIZON & COMPANY
-     HOMEPAGE
-     ====================================================== -->
+   Design direction:
+   - Editorial / cinematic
+   - Restrained luxury
+   - Natural warm neutrals
+   - Large imagery
+   - Minimal decorative noise
+   - Strong mobile behaviour
+   ========================================================= */
 
-<!-- ======================================================
-     HERO
-     ====================================================== -->
 
-<section id="hero" class="home-hero" aria-labelledby="home-hero-title">
-  <div class="home-hero-media" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="metadata" class="home-hero-video">
-      <source src="/videos/cinematic-uk-wedding-videographer-horizon-co.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="home-hero-overlay" aria-hidden="true"></div>
-  <div class="home-hero-inner">
-    <div class="home-hero-main">
-      <span class="home-hero-eyebrow">Natural · Cinematic · Personal</span>
-      <h1 id="home-hero-title">Your wedding,<em>as it actually felt.</em></h1>
-      <p class="home-hero-lead">
-        The voices, reactions, laughter and moments happening
-        around you — shaped into a film that feels unmistakably yours.
-      </p>
-      <div class="home-hero-actions">
-        <a href="#real-weddings" class="home-hero-button home-hero-button-primary">Watch Real Wedding Films</a>
-        <a href="#contact" class="home-hero-button home-hero-button-secondary">Check My Date</a>
-      </div>
-    </div>
-    
-    <div class="home-hero-proof" aria-live="polite">
-      <div class="home-hero-proof-rule"></div>
-      <div class="home-hero-proof-label">From The Couples</div>
-      <div class="home-hero-proof-stage">
-        <blockquote class="home-hero-review is-active" data-hero-review="0" aria-hidden="false">
-          <div class="home-hero-review-stars" aria-label="5 star Google review">★★★★★</div>
-          <p>“He captured some really special moments that we didn't even get to see on the day.”</p>
-          <cite class="home-hero-review-source">Aimee · Google Review</cite>
-        </blockquote>
-        <blockquote class="home-hero-review" data-hero-review="1" aria-hidden="true">
-          <div class="home-hero-review-stars" aria-label="5 star Google review">★★★★★</div>
-          <p>“Our wedding video were so amazing we loved it 😁 he was so thoughtful too.”</p>
-          <cite class="home-hero-review-source">Kirsty · Google Review</cite>
-        </blockquote>
-      </div>
-      <div class="home-hero-proof-progress" aria-hidden="true"><span></span></div>
-    </div>
-  </div>
-</section>
+/* =========================================================
+   TOKENS
+   ========================================================= */
 
-<!-- ======================================================
-     REAL WEDDINGS
-     ====================================================== -->
+:root {
+  --home-cream: #f3f0ea;
+  --home-paper: #faf8f4;
+  --home-stone: #e9e4dc;
+  --home-white: #ffffff;
 
-<section id="real-weddings" class="home-stories home-stories-primary" aria-labelledby="real-weddings-title">
-  <div class="home-stories-header" data-reveal>
-    <span class="eyebrow">Real Wedding Films</span>
-    <h2 id="real-weddings-title">No template.<span class="story-heading-accent">Just the story already happening.</span></h2>
-    <p>
-      Different people create different films. The voices, humour, relationships and atmosphere
-      of your wedding shape the story rather than fitting into a formula.
-    </p>
-  </div>
+  --home-ink: #252321;
+  --home-soft-ink: #403c38;
+  --home-muted: #6e6861;
+  --home-light-muted: #8e877f;
 
-  <article class="editorial-story editorial-story-feature">
-    <div class="editorial-story-image" data-reveal="left">
-      <a href="/weddings/grosvenor-pulford-wedding.html" aria-label="Watch Andy and Lesley's Grosvenor Pulford wedding film">
-        <img src="/images/andy-lesley-grosvenor-pulford-wedding.jpg" alt="Andy and Lesley at their Grosvenor Pulford Hotel wedding in Cheshire" loading="eager">
-        <span class="editorial-story-badge">Grosvenor Pulford · Cheshire</span>
-        <span class="editorial-story-play" aria-hidden="true">Watch Film</span>
-      </a>
-    </div>
-    <div class="editorial-story-copy" data-reveal="right">
-      <span class="editorial-story-number" aria-hidden="true">01</span>
-      <span class="eyebrow">Real Wedding</span>
-      <h3>Andy &amp; Lesley</h3>
-      <p class="editorial-story-venue">Grosvenor Pulford Hotel &amp; Spa</p>
-      <p class="editorial-story-tone">Emotional. Reflective. Full of history.</p>
-      <p class="editorial-story-description">
-        Family, second chances and two people very certain they'd found the right person. Their speeches gave
-        this film its heart; everything else grew around them.
-      </p>
-      <div class="editorial-story-quote">
-        <blockquote>&ldquo;Andy tells me that you're the love of his life and he wishes he would have met you sooner.&rdquo;</blockquote>
-        <p>From Their Wedding Speeches</p>
-      </div>
-      <a href="/weddings/grosvenor-pulford-wedding.html" class="editorial-link">Watch Andy &amp; Lesley's Film &rarr;</a>
-    </div>
-  </article>
+  --home-gold: #9f8152;
+  --home-gold-light: #d4b685;
 
-  <article class="editorial-story editorial-story-feature reverse">
-    <div class="editorial-story-image" data-reveal="right">
-      <a href="/weddings/thornton-hall-wedding.html" aria-label="Watch Kirsty and Connor's Thornton Hall wedding film">
-        <img src="/images/wedding-first-dance-thornton-hall-wirral.png" alt="Kirsty and Connor dancing together during their Thornton Hall wedding on the Wirral" loading="lazy">
-        <span class="editorial-story-badge">Thornton Hall · Wirral</span>
-        <span class="editorial-story-play" aria-hidden="true">Watch Film</span>
-      </a>
-    </div>
-    <div class="editorial-story-copy" data-reveal="left">
-      <span class="editorial-story-number" aria-hidden="true">02</span>
-      <span class="eyebrow">Real Wedding</span>
-      <h3>Kirsty &amp; Connor</h3>
-      <p class="editorial-story-venue">Thornton Hall Hotel &amp; Spa</p>
-      <p class="editorial-story-tone">Fun. Carefree. Full of energy.</p>
-      <p class="editorial-story-description">
-        Bigger laughs, more movement and a wedding that never took itself too seriously.
-        Their film follows that energy rather than trying to turn the day into something it wasn't.
-      </p>
-      <div class="editorial-story-quote">
-        <blockquote>&ldquo;Our wedding video were so amazing we loved it &#128513; he was so thoughtful too.&rdquo;</blockquote>
-        <p>Kirsty &middot; Google Review</p>
-      </div>
-      <a href="/weddings/thornton-hall-wedding.html" class="editorial-link">Watch Kirsty &amp; Connor's Film &rarr;</a>
-    </div>
-  </article>
-</section>
+  --home-dark: #1d1c1a;
 
-<!-- ======================================================
-     SOCIAL PROOF
-     ====================================================== -->
+  --home-line: rgba(37, 35, 33, 0.12);
 
-<section class="home-review-feature" aria-label="Wedding videography review">
-  <div class="home-review-feature-inner" data-reveal>
-    <span class="eyebrow">From The Couples</span>
-    <div class="home-review-stars" aria-label="5 star Google review">★★★★★</div>
-    <blockquote>&ldquo;He captured some really special moments that we didn't even get to see on the day.&rdquo;</blockquote>
-    <p class="home-review-name">Aimee &middot; Google Review</p>
-  </div>
-</section>
+  --home-shadow:
+    0 24px 70px rgba(35, 30, 24, 0.08);
 
-<!-- ======================================================
-     WHAT FILM KEEPS (STATIC CARD FLOW)
-     ====================================================== -->
+  --home-max: 1180px;
 
-<section id="promise" class="home-promise" aria-labelledby="promise-title">
-  
-  <div class="promise-heading" data-reveal>
-    <span class="eyebrow">More Than The Highlights</span>
-    <h2 id="promise-title">You lived one version of the day.<span>Your film lets you discover the rest.</span></h2>
-    <p>
-      You can't be everywhere at once. While you're getting ready, saying your vows,
-      talking to guests or simply taking it all in, hundreds of little moments are happening around you.
-    </p>
-  </div>
+  --promise-sticky-top:
+    calc(var(--nav-height, 72px) + 22px);
+}
 
-  <div class="promise-mosaic">
 
-    <article class="promise-card promise-card-01" data-reveal>
-      <div class="promise-card-image">
-        <img src="/images/wedding-bride-prep-smile-grosvenor-cheshire.png" alt="Bride smiling naturally during wedding morning preparations at Grosvenor Pulford in Cheshire" loading="lazy">
-      </div>
-      <div class="promise-card-copy">
-        <span class="promise-number">01</span>
-        <span class="promise-kicker">Before It Begins</span>
-        <h3>The part where everything is still ahead of you.</h3>
-        <p>Hair half finished. Friends wandering in and out. Nervous jokes, quiet pauses and that strange moment when everybody suddenly realises it's nearly time.</p>
-      </div>
-    </article>
 
-    <article class="promise-card promise-card-02" data-reveal>
-      <div class="promise-card-image">
-        <img src="/images/wedding-top-table-speech-grosvenor-cheshire.png" alt="Wedding speech being delivered at the top table during a Grosvenor Pulford wedding in Cheshire" loading="lazy">
-      </div>
-      <div class="promise-card-copy">
-        <span class="promise-number">02</span>
-        <span class="promise-kicker">Their Voices</span>
-        <h3>Not only what they said. How they said it.</h3>
-        <p>Your vows. A parent's speech. Somebody pausing because the words suddenly mean more than they expected. The laughter immediately afterwards.</p>
-      </div>
-    </article>
+/* =========================================================
+   GLOBAL HOMEPAGE RESET
+   ========================================================= */
 
-    <article class="promise-card promise-card-03" data-reveal>
-      <div class="promise-card-image">
-        <img src="/images/candid-wedding-guest-moment-grosvenor-cheshire.png" alt="Natural candid moment between wedding guests during a Cheshire wedding" loading="lazy">
-      </div>
-      <div class="promise-card-copy">
-        <span class="promise-number">03</span>
-        <span class="promise-kicker">The Moments You Missed</span>
-        <h3>Some of your favourite memories happened somewhere else.</h3>
-        <p>Your parents together. A friend reacting to your vows. Somebody hugging across the room. Conversations and expressions you were never there to see.</p>
-      </div>
-    </article>
+html {
+  overflow-x: hidden;
+}
 
-    <article class="promise-card promise-card-04" data-reveal>
-      <div class="promise-card-image">
-        <img src="/images/wedding-guests-laughing-reception-thornton-hall-wirral.png" alt="Wedding guests laughing together during a reception at Thornton Hall on the Wirral" loading="lazy">
-      </div>
-      <div class="promise-card-copy">
-        <span class="promise-number">04</span>
-        <span class="promise-kicker">The Atmosphere Around You</span>
-        <h3>The room had a personality of its own.</h3>
-        <p>Glasses clinking. People catching up. Somebody laughing at the other end of the room. The background moments that quietly become part of how the day felt.</p>
-      </div>
-    </article>
+body {
+  overflow-x: hidden;
+}
 
-    <article class="promise-card promise-card-05" data-reveal>
-      <div class="promise-card-image">
-        <img src="/images/wedding-first-dance-thornton-hall-wirral.png" alt="Bride and groom laughing together during their first dance at Thornton Hall on the Wirral" loading="lazy">
-      </div>
-      <div class="promise-card-copy">
-        <span class="promise-number">05</span>
-        <span class="promise-kicker">When Everyone Lets Go</span>
-        <h3>The formalities finish. The personalities come out.</h3>
-        <p>The drinks. The questionable dancing. People singing far too loudly. The friend who swore they weren't going to get up suddenly taking over the dance floor.</p>
-      </div>
-    </article>
+.home-hero,
+.home-stories,
+.home-review-feature,
+.home-promise,
+.home-process,
+.home-collections,
+.home-partner,
+.home-locations,
+.home-faq,
+.home-final-cta,
+.home-contact {
+  position: relative;
+  box-sizing: border-box;
 
-  </div>
-</section>
+  width: 100vw;
+  max-width: none;
 
-<!-- ======================================================
-     THE EXPERIENCE
-     ====================================================== -->
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
 
-<section id="filmmaker" class="home-process" aria-labelledby="filmmaker-title">
-  <div class="home-process-grid">
-    <div class="home-process-image" data-reveal="left">
-      <img src="/images/profile.jpg" alt="Chris Ford, wedding videographer and founder of Horizon & Company" loading="lazy">
-    </div>
-    <div class="home-process-copy" data-reveal="right">
-      <span class="eyebrow">Behind The Lens</span>
-      <h2 id="filmmaker-title">Your wedding first.<span class="process-heading-accent">The film comes from it.</span></h2>
-      <p class="home-process-lead">You shouldn't spend your wedding feeling as though you've been placed onto a film set.</p>
-      <p>
-        I work quietly, stay out of the way where possible and let real interactions happen.
-        If a little direction would genuinely help, I'll give it — but I'm not interested in repeatedly
-        recreating moments for the camera.
-      </p>
-      <p>
-        The intensive work comes afterwards. Vows, speeches, reactions, natural sound,
-        music and imagery are shaped around the rhythm and personality of your particular wedding.
-      </p>
+.home-hero *,
+.home-stories *,
+.home-review-feature *,
+.home-promise *,
+.home-process *,
+.home-collections *,
+.home-partner *,
+.home-locations *,
+.home-faq *,
+.home-final-cta *,
+.home-contact * {
+  box-sizing: border-box;
+}
 
-      <div class="process-pillars">
-        <div class="process-pillar">
-          <span>01</span>
-          <strong>Relaxed on the day</strong>
-          <p>Enough guidance to help. Enough space for you to forget I'm there.</p>
-        </div>
-        <div class="process-pillar">
-          <span>02</span>
-          <strong>Real audio</strong>
-          <p>Vows, speeches and natural sound become part of the storytelling.</p>
-        </div>
-        <div class="process-pillar">
-          <span>03</span>
-          <strong>Edited around you</strong>
-          <p>Pace, music and structure follow your wedding rather than forcing every couple into one template.</p>
-        </div>
-      </div>
-      
-      <div class="process-signature">
-        <strong>Natural enough to feel like your wedding.</strong>
-        <span>Considered enough to feel like a film.</span>
-      </div>
-    </div>
-  </div>
-</section>
+.home-stories,
+.home-review-feature,
+.home-promise,
+.home-process,
+.home-collections,
+.home-partner,
+.home-locations,
+.home-faq,
+.home-final-cta,
+.home-contact {
+  padding:
+    clamp(88px, 8vw, 135px)
+    5vw;
+}
 
-<!-- ======================================================
-     COLLECTIONS
-     ====================================================== -->
 
-<section id="collections" class="home-collections" aria-labelledby="collections-title">
-  <div class="collection-intro" data-reveal>
-    <span class="eyebrow">Wedding Film Collections</span>
-    <h2 id="collections-title">Choose how much of the day<span class="collection-heading-accent">you'd like to bring home.</span></h2>
-    <p>
-      Every collection gets the same approach to filming, sound, colour and storytelling.
-      The difference is simply how much of your wedding you'd like covered and preserved in full.
-    </p>
-  </div>
 
-  <div class="packages">
-    <div class="card" onclick="toggleActive(this)" data-reveal>
-      <span class="package-eyebrow">Highlights</span>
-      <h3>The Narrative</h3>
-      <p class="price">&pound;695</p>
-      <p class="expand-hint">View coverage &darr;</p>
-      <div class="card-details">
-        <ul>
-          <li>Up to 8 hours of wedding day coverage</li>
-          <li>4-6 minute cinematic highlights film</li>
-          <li>Professional audio capture</li>
-          <li>Drone footage where permitted</li>
-          <li>Cinematic colour grading</li>
-          <li>Private 4K online delivery</li>
-        </ul>
-      </div>
-    </div>
+/* =========================================================
+   SHARED TYPOGRAPHY
+   ========================================================= */
 
-    <div id="cinematic-default" class="card active" onclick="toggleActive(this)" data-reveal>
-      <span class="package-eyebrow">Full Story</span>
-      <h3>The Cinematic</h3>
-      <p class="price">&pound;1,095</p>
-      <p class="expand-hint">Most popular &darr;</p>
-      <div class="card-details">
-        <ul>
-          <li>Full day coverage from preparations to first dance</li>
-          <li>5-7 minute cinematic highlights film</li>
-          <li>Full multi-camera ceremony film</li>
-          <li>Full speeches film</li>
-          <li>Professional multi-source audio capture</li>
-          <li>Drone footage where permitted</li>
-          <li>Cinematic colour grading</li>
-          <li>Private 4K online delivery</li>
-        </ul>
-      </div>
-    </div>
+.eyebrow {
+  display: block;
 
-    <div class="card" onclick="toggleActive(this)" data-reveal>
-      <span class="package-eyebrow">The Essentials</span>
-      <h3>The Ceremony</h3>
-      <p class="price">&pound;450</p>
-      <p class="expand-hint">View coverage &darr;</p>
-      <div class="card-details">
-        <ul>
-          <li>Ceremony coverage from arrival to exit</li>
-          <li>Multi-camera ceremony film</li>
-          <li>Professional audio capture</li>
-          <li>Cinematic colour grading</li>
-          <li>Private 4K online delivery</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  margin: 0;
 
-  <div class="optional-extras" data-reveal>
-    <span class="eyebrow">Optional Extras</span>
-    <div class="extras-grid">
-      <div class="extra-item"><strong>Full Ceremony Film</strong><span class="extra-price">&pound;250</span></div>
-      <div class="extra-item"><strong>Full Speeches Film</strong><span class="extra-price">&pound;250</span></div>
-      <div class="extra-item"><strong>Social Highlight Reel</strong><span class="extra-price">&pound;95</span></div>
-      <div class="extra-item"><strong>Subtitled Films</strong><span class="extra-price">&pound;75</span></div>
-      <div class="extra-item"><strong>Additional Coverage</strong><span class="extra-price">&pound;75/hr</span></div>
-    </div>
-    <p class="optional-extras-note">Full ceremony and speeches films are already included with The Cinematic collection.</p>
-  </div>
-</section>
+  color: var(--home-gold);
 
-<!-- ======================================================
-     PHOTOGRAPHY + FILM
-     ====================================================== -->
+  font-size: 0.62rem;
+  line-height: 1.2;
 
-<section class="home-partner" aria-labelledby="partner-title">
-  <div class="home-partner-inner">
-    <div class="home-partner-gallery" data-reveal="left">
-      <figure class="partner-photo partner-photo-main">
-        <img src="/images/ruby-worton-hall-bride.jpg" alt="Bride photographed by Ruby Salmon Photography at Worton Hall" loading="lazy">
-      </figure>
-      <figure class="partner-photo partner-photo-top">
-        <img src="/images/ruby-stanford-farm-couple.jpg" alt="Wedding couple photographed outdoors by Ruby Salmon Photography" loading="lazy">
-      </figure>
-      <figure class="partner-photo partner-photo-bottom">
-        <img src="/images/ruby-stockport-town-hall-couple.jpg" alt="Wedding couple photographed by Ruby Salmon Photography at Stockport Town Hall" loading="lazy">
-      </figure>
-      <div class="partner-gallery-label">
-        <span>Photography by</span>
-        <strong>Ruby Salmon</strong>
-      </div>
-    </div>
-    <div class="home-partner-copy" data-reveal="right">
-      <span class="eyebrow">Photography + Film</span>
-      <h2 id="partner-title">Two people behind the cameras.<span class="partner-heading-accent">One calmer experience in front of them.</span></h2>
-      <p class="home-partner-lead">Your photographer and videographer should complement each other rather than compete for your attention.</p>
-      <p>
-        I regularly work alongside <strong>Carol at Ruby Salmon Photography</strong>.
-        Because we've already covered weddings together, we understand each other's positioning, pace
-        and priorities throughout the day.
-      </p>
-      <p>
-        That means less duplication, fewer interruptions and more opportunity for both of us to capture genuine moments naturally.
-      </p>
+  font-weight: 600;
 
-      <div class="partner-benefits">
-        <div class="partner-benefit">Less competing for the same angle</div>
-        <div class="partner-benefit">Fewer unnecessary interruptions</div>
-        <div class="partner-benefit">Natural approaches to both photo and film</div>
-        <div class="partner-benefit">A team already comfortable working together</div>
-      </div>
+  letter-spacing: 3.2px;
+  text-transform: uppercase;
+}
 
-      <div class="partner-credit partner-credit-text-only">
-        <div>
-          <span>Recommended Photographer</span>
-          <strong>Ruby Salmon Photography</strong>
-        </div>
-      </div>
-      <a href="https://rubysalmonphotography.com/" target="_blank" rel="noopener" class="partner-link">Explore Ruby Salmon Photography &rarr;</a>
-    </div>
-  </div>
-</section>
 
-<!-- ======================================================
-     LOCATIONS
-     ====================================================== -->
 
-<section id="destinations" class="home-locations" aria-labelledby="locations-title">
-  <div class="home-locations-header" data-reveal>
-    <span class="eyebrow">Wedding Videography</span>
-    <h2 id="locations-title">Based on the Wirral.<span class="location-heading-accent">Happy to follow a good story.</span></h2>
-    <p>Filming weddings across Cheshire, Liverpool, North Wales, the wider UK and Europe.</p>
-  </div>
-  <div class="home-destination-grid">
-    <a href="/wirral.html" class="destination-card" data-reveal>
-      <img src="/images/thurstaston.jpg" alt="Wedding videography on the Wirral" loading="lazy">
-      <div class="destination-overlay">
-        <h3>Wirral</h3>
-        <p>Coast, Countryside &amp; Character</p>
-      </div>
-    </a>
-    <a href="/liverpool.html" class="destination-card" data-reveal>
-      <img src="/images/albert-dock-liverpool-wedding-videographer.jpg" alt="Liverpool wedding videographer" loading="lazy">
-      <div class="destination-overlay">
-        <h3>Liverpool</h3>
-        <p>City Weddings &amp; Urban Character</p>
-      </div>
-    </a>
-    <a href="/cheshire.html" class="destination-card" data-reveal>
-      <img src="/images/cheshire-wedding-videographer-luxury-estate.jpg" alt="Cheshire wedding videographer" loading="lazy">
-      <div class="destination-overlay">
-        <h3>Cheshire</h3>
-        <p>Barns, Hotels &amp; Country Houses</p>
-      </div>
-    </a>
-    <a href="/north-wales.html" class="destination-card" data-reveal>
-      <img src="/images/north-wales-wedding-videographer-anglesey.jpg" alt="North Wales wedding videographer" loading="lazy">
-      <div class="destination-overlay">
-        <h3>North Wales</h3>
-        <p>Wild &amp; Natural Settings</p>
-      </div>
-    </a>
-  </div>
-</section>
+/* =========================================================
+   REVEALS
+   ========================================================= */
 
-<!-- ======================================================
-     LEAD MAGNET (NEW)
-     ====================================================== -->
+[data-reveal] {
+  opacity: 0;
 
-<section class="home-lead-magnet" aria-labelledby="lead-magnet-title">
-  <div class="home-lead-magnet-inner" data-reveal>
-    <span class="eyebrow">Free Guide</span>
-    <h2 id="lead-magnet-title">Not quite ready to book?</h2>
-    <p>If you're still early in the planning process, drop your email below and I'll send you my free guide: <em>5 Things Most Couples Regret Not Filming on Their Wedding Day</em>.</p>
-    <form id="lead-magnet-form" class="lead-magnet-form">
-      <input type="email" placeholder="Your Email Address" aria-label="Your Email Address" required>
-      <button type="submit" class="home-hero-button home-hero-button-primary">Get The Guide</button>
-    </form>
-  </div>
-</section>
+  transform: translateY(30px);
 
-<!-- ======================================================
-     FAQ
-     ====================================================== -->
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
 
-<section id="faqs" class="home-faq" aria-labelledby="faq-title">
-  <div class="home-faq-header" data-reveal>
-    <span class="eyebrow">Before You Book</span>
-    <h2 id="faq-title">A few things worth<span class="faq-heading-accent">knowing beforehand.</span></h2>
-  </div>
+[data-reveal="left"] {
+  transform: translateX(-34px);
+}
 
-  <div class="faq-container">
-    <div class="faq-item">
-      <button type="button" class="faq-question" onclick="toggleFAQ(this)">
-        We hate being on camera. Is that a problem?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Not at all. Most of the day is filmed naturally as it happens. I want you thinking about the wedding, not wondering what the camera is doing.</p>
-      </div>
-    </div>
+[data-reveal="right"] {
+  transform: translateX(34px);
+}
 
-    <div class="faq-item">
-      <button type="button" class="faq-question" onclick="toggleFAQ(this)">
-        Will our film look like the weddings above?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>It will share the same cinematic approach, but not necessarily the same pacing or personality. Music, dialogue and editing are shaped around the atmosphere of your wedding.</p>
-      </div>
-    </div>
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
 
-    <div class="faq-item">
-      <button type="button" class="faq-question" onclick="toggleFAQ(this)">
-        How do we secure our date?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>A 25% non-refundable booking fee and signed digital contract secure your date. The remaining balance is due 30 days before the wedding.</p>
-      </div>
-    </div>
 
-    <div class="faq-item">
-      <button type="button" class="faq-question" onclick="toggleFAQ(this)">
-        Do you work alongside other photographers?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Yes. I'm happy working alongside your chosen photographer and will always try to make sure both photo and film can capture the important moments without competing.</p>
-      </div>
-    </div>
 
-    <div class="faq-item">
-      <button type="button" class="faq-question" onclick="toggleFAQ(this)">
-        Do you charge for travel?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Travel within 50 miles of my base is included. Any additional travel or accommodation for weddings further afield is agreed before booking.</p>
-      </div>
-    </div>
+/* =========================================================
+   HERO
+   ========================================================= */
 
-    <div class="faq-item">
-      <button type="button" class="faq-question" onclick="toggleFAQ(this)">
-        How long does delivery take?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Standard delivery during peak wedding season is approximately 6-10 weeks. Finished films are delivered digitally in 4K.</p>
-      </div>
-    </div>
+.home-hero {
+  position: relative;
 
-    <div class="faq-item">
-      <button type="button" class="faq-question" onclick="toggleFAQ(this)">
-        Are you fully insured?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Yes. Public Liability and Professional Indemnity insurance are in place and evidence can be supplied directly to your venue when required.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  width: 100vw;
 
-<!-- ======================================================
-     FINAL CTA
-     ====================================================== -->
+  height: calc(100svh - var(--nav-height, 0px));
+  min-height: 680px;
 
-<section class="home-final-cta" aria-labelledby="final-cta-title">
-  <div class="home-final-cta-inner" data-reveal>
-    <span class="eyebrow">Your Wedding</span>
-    <h2 id="final-cta-title">If the films feel like you,<em>tell me what you're planning.</em></h2>
-    <p>Date and venue are a good start. A little about the two of you is even better.</p>
-    <a href="#contact" class="home-final-cta-button">Check My Date</a>
-  </div>
-</section>
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 
-<!-- ======================================================
-     CONTACT
-     ====================================================== -->
+  overflow: hidden;
 
-<section id="contact" class="home-contact" aria-labelledby="contact-title">
-  <div class="home-contact-header" data-reveal>
-    <span class="eyebrow">Get In Touch</span>
-    <h2 id="contact-title">Tell me about the day.<span class="contact-heading-accent">And about the people having it.</span></h2>
-    <p>Send over whatever you've planned so far. If you're still working things out, that's completely fine.</p>
-  </div>
+  background: #111;
+  isolation: isolate;
+}
 
-  <div class="custom-form-container" data-reveal>
-    <form id="horizon-contact-form">
-      
-      <div class="form-row">
-        <div class="form-group">
-          <label for="firstname">First Name</label>
-          <input type="text" id="firstname" name="firstname" autocomplete="given-name" required>
-        </div>
-        <div class="form-group">
-          <label for="lastname">Last Name (Optional)</label>
-          <input type="text" id="lastname" name="lastname" autocomplete="family-name">
-        </div>
-      </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" autocomplete="email" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" autocomplete="tel">
-        </div>
-      </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="wedding_date">Wedding Date</label>
-          <input type="date" id="wedding_date" name="wedding_date" required>
-        </div>
-        <div class="form-group">
-          <label for="venue">Venue(s) / Location</label>
-          <input type="text" id="venue" name="venue" placeholder="e.g. Thornton Hall Hotel">
-        </div>
-      </div>
+/* =========================================================
+   HERO MEDIA
+   ========================================================= */
 
-      <div class="form-group">
-        <label for="collection">Collection of Interest</label>
-        <select id="collection" name="collection">
-          <option value="" disabled selected>Please select...</option>
-          <option value="The Narrative">The Narrative - &pound;695</option>
-          <option value="The Cinematic">The Cinematic - &pound;1,095</option>
-          <option value="The Ceremony">The Ceremony - &pound;450</option>
-          <option value="Not Sure Yet">Not Sure Yet</option>
-        </select>
-      </div>
+.home-hero-media {
+  position: absolute;
 
-      <div class="form-group">
-        <label for="message">Tell me a little about the two of you and your plans...</label>
-        <textarea id="message" name="message" rows="5" placeholder="What are you like as a couple? What kind of day are you planning? Anything you're especially excited about?" required></textarea>
-      </div>
+  inset: 0;
 
-      <button type="submit" id="submit-btn" class="hero-btn contact-submit">Let's Chat About Your Day</button>
+  z-index: 0;
 
-      <div id="form-success" class="form-success">
-        Thank you. Your enquiry has been received and I will be in touch within 24 hours.
-      </div>
-      
-    </form>
-  </div>
-</section>
+  width: 100%;
+  height: 100%;
 
-<script src="/js/home.js" defer></script>
+  overflow: hidden;
+
+  background: #111;
+}
+
+.home-hero-video {
+  position: absolute !important;
+
+  inset: 0 !important;
+
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  min-width: 100% !important;
+  min-height: 100% !important;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  object-fit: cover !important;
+  object-position: center center;
+
+  transform: scale(1.01);
+  transform-origin: center center;
+
+  will-change: transform;
+}
+
+
+
+/* =========================================================
+   HERO OVERLAY
+   ========================================================= */
+
+.home-hero-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.16) 30%,
+      rgba(0, 0, 0, 0.36) 68%,
+      rgba(0, 0, 0, 0.63) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+
+/* =========================================================
+   HERO INNER
+   ========================================================= */
+
+.home-hero-inner {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1180px, 90vw);
+  height: 100%;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.home-hero-main {
+  width: 100%;
+  max-width: 1040px;
+
+  margin-top: -34px;
+}
+
+.home-hero-eyebrow {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: #ddc08e;
+
+  font-size: 0.6rem;
+  font-weight: 600;
+
+  letter-spacing: 3.7px;
+  text-transform: uppercase;
+}
+
+.home-hero-main h1 {
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(3.6rem, 6vw, 6.2rem);
+  line-height: 0.94;
+
+  font-weight: 400;
+
+  letter-spacing: -0.05em;
+
+  color: #fff;
+
+  text-shadow:
+    0 4px 26px rgba(0, 0, 0, 0.34);
+}
+
+.home-hero-main h1 em {
+  display: block;
+
+  margin-top: 16px;
+
+  font-size: 0.56em;
+  line-height: 1.05;
+
+  font-weight: 400;
+  font-style: italic;
+
+  letter-spacing: -0.025em;
+
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.home-hero-lead {
+  max-width: 660px;
+
+  margin: 27px auto 0;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  font-size: 0.96rem;
+  line-height: 1.74;
+
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.28);
+}
+
+
+
+/* =========================================================
+   HERO BUTTONS
+   ========================================================= */
+
+.home-hero-actions {
+  margin-top: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+}
+
+.home-hero-button {
+  min-width: 250px;
+  height: 56px;
+
+  padding: 0 23px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid transparent;
+
+  text-decoration: none;
+
+  font-size: 0.62rem;
+  font-weight: 600;
+
+  letter-spacing: 2.1px;
+  text-transform: uppercase;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.home-hero-button:hover {
+  transform: translateY(-2px);
+}
+
+.home-hero-button-primary {
+  background: #fff;
+
+  border-color: #fff;
+
+  color: var(--home-ink);
+}
+
+.home-hero-button-secondary {
+  background: rgba(20, 20, 20, 0.15);
+
+  border-color: rgba(255, 255, 255, 0.68);
+
+  color: #fff;
+
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.home-hero-button-secondary:hover {
+  background: #fff;
+
+  border-color: #fff;
+
+  color: var(--home-ink);
+}
+
+
+
+/* =========================================================
+   HERO REVIEWS
+   ========================================================= */
+
+.home-hero-proof {
+  position: absolute;
+
+  left: 50%;
+  bottom: 26px;
+
+  z-index: 4;
+
+  width: min(720px, 84vw);
+
+  transform: translateX(-50%);
+
+  text-align: center;
+
+  pointer-events: none;
+}
+
+.home-hero-proof-rule {
+  width: 100%;
+  height: 1px;
+
+  margin-bottom: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.28),
+      transparent
+    );
+}
+
+.home-hero-proof-label {
+  margin-bottom: 6px;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 0.48rem;
+  font-weight: 600;
+
+  letter-spacing: 2.9px;
+  text-transform: uppercase;
+}
+
+.home-hero-proof-stage {
+  position: relative;
+
+  width: 100%;
+  min-height: 80px;
+}
+
+.home-hero-review {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 0 !important;
+
+  background: transparent !important;
+
+  opacity: 0;
+
+  transform: translateY(7px);
+
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+
+  pointer-events: none;
+}
+
+.home-hero-review.is-active {
+  opacity: 1;
+  transform: none;
+}
+
+.home-hero-review-stars {
+  margin-bottom: 6px;
+
+  color: #efc36f;
+
+  font-size: 0.68rem;
+
+  letter-spacing: 3px;
+}
+
+.home-hero-review p {
+  max-width: 680px;
+
+  margin: 0 auto !important;
+
+  font-family: "Baskervville", serif;
+
+  font-size: 1rem;
+  line-height: 1.42;
+
+  font-style: italic;
+
+  color: rgba(255, 255, 255, 0.96);
+
+  text-shadow:
+    0 2px 13px rgba(0, 0, 0, 0.4);
+}
+
+.home-hero-review-source {
+  display: block;
+
+  margin-top: 7px;
+
+  color: rgba(255, 255, 255, 0.61);
+
+  font-size: 0.47rem;
+
+  font-style: normal;
+
+  letter-spacing: 2.1px;
+  text-transform: uppercase;
+}
+
+.home-hero-proof-progress {
+  width: 48px;
+  height: 1px;
+
+  margin: 9px auto 0;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.home-hero-proof-progress span {
+  display: block;
+
+  width: 0;
+  height: 100%;
+
+  background: #fff;
+}
+
+
+
+/* =========================================================
+   REAL WEDDINGS
+   ========================================================= */
+
+.home-stories {
+  overflow: hidden;
+
+  background: #f1eee8;
+
+  border-top: 1px solid var(--home-line);
+}
+
+.home-stories-header {
+  max-width: 830px;
+
+  margin: 0 auto 88px;
+
+  text-align: center;
+}
+
+.home-stories-header .eyebrow {
+  margin-bottom: 19px;
+}
+
+.home-stories-header h2 {
+  margin: 0;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(3rem, 4.5vw, 4.45rem);
+  line-height: 1;
+
+  font-weight: 400;
+
+  letter-spacing: -0.035em;
+
+  color: var(--home-ink);
+}
+
+.story-heading-accent {
+  display: block;
+
+  margin-top: 10px;
+
+  font-size: 0.68em;
+  line-height: 1.13;
+
+  font-style: italic;
+
+  color: #6e6860;
+}
+
+.home-stories-header p {
+  max-width: 670px;
+
+  margin: 25px auto 0;
+
+  color: var(--home-muted);
+
+  font-size: 0.94rem;
+  line-height: 1.82;
+}
+
+
+
+/* =========================================================
+   REAL WEDDING FEATURE
+   ========================================================= */
+
+.editorial-story {
+  width: min(var(--home-max), 100%);
+
+  margin: 0 auto 130px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.12fr)
+    minmax(0, 0.88fr);
+
+  gap: 74px;
+
+  align-items: center;
+}
+
+.editorial-story:last-child {
+  margin-bottom: 0;
+}
+
+.editorial-story.reverse {
+  grid-template-columns:
+    minmax(0, 0.88fr)
+    minmax(0, 1.12fr);
+}
+
+.editorial-story.reverse .editorial-story-image {
+  order: 2;
+}
+
+.editorial-story.reverse .editorial-story-copy {
+  order: 1;
+}
+
+
+
+/* =========================================================
+   STORY IMAGE
+   ========================================================= */
+
+.editorial-story-image {
+  position: relative;
+
+  min-width: 0;
+}
+
+.editorial-story-image::after {
+  content: "";
+
+  position: absolute;
+
+  right: -17px;
+  bottom: -17px;
+
+  z-index: -1;
+
+  width: 90%;
+  height: 90%;
+
+  border-right: 1px solid var(--home-line);
+  border-bottom: 1px solid var(--home-line);
+}
+
+.editorial-story.reverse .editorial-story-image::after {
+  left: -17px;
+  right: auto;
+
+  border-right: 0;
+  border-left: 1px solid var(--home-line);
+}
+
+.editorial-story-image a {
+  position: relative;
+
+  display: block;
+
+  overflow: hidden;
+
+  background: #dcd7cf;
+}
+
+.editorial-story-image img {
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 10;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.4s ease;
+}
+
+.editorial-story-image a:hover img {
+  transform: scale(1.03);
+
+  filter: brightness(0.92);
+}
+
+.editorial-story-badge {
+  position: absolute;
+
+  left: 24px;
+  bottom: 24px;
+
+  z-index: 3;
+
+  padding: 10px 13px;
+
+  background: rgba(23, 22, 20, 0.76);
+
+  color: #fff;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  font-size: 0.56rem;
+  font-weight: 500;
+
+  letter-spacing: 1.9px;
+  text-transform: uppercase;
+}
+
+.editorial-story-play {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 4;
+
+  width: 92px;
+  height: 92px;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.92);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+
+  background: rgba(20, 20, 20, 0.2);
+
+  color: #fff;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  font-size: 0.54rem;
+  font-weight: 600;
+
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.35s ease,
+    background 0.3s ease;
+}
+
+.editorial-story-image a:hover .editorial-story-play {
+  opacity: 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+}
+
+
+
+/* =========================================================
+   STORY COPY
+   ========================================================= */
+
+.editorial-story-copy {
+  position: relative;
+
+  max-width: 485px;
+
+  min-width: 0;
+}
+
+.editorial-story-number {
+  position: absolute;
+
+  top: -82px;
+  right: -4px;
+
+  font-family: "Baskervville", serif;
+
+  font-size: 7rem;
+  line-height: 1;
+
+  color: rgba(0, 0, 0, 0.045);
+
+  pointer-events: none;
+}
+
+.editorial-story-copy .eyebrow {
+  margin-bottom: 17px;
+}
+
+.editorial-story-copy h3 {
+  margin: 0 0 10px;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(3rem, 4vw, 3.8rem);
+  line-height: 0.97;
+
+  font-weight: 400;
+
+  letter-spacing: -0.035em;
+
+  color: var(--home-ink);
+}
+
+.editorial-story-venue {
+  margin: 0 0 21px;
+
+  color: var(--home-gold);
+
+  font-size: 0.62rem;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.editorial-story-tone {
+  margin: 0 0 18px;
+
+  font-family: "Baskervville", serif;
+
+  font-size: 1.5rem;
+  line-height: 1.36;
+
+  font-style: italic;
+
+  color: var(--home-soft-ink);
+}
+
+.editorial-story-description {
+  margin: 0 0 27px;
+
+  color: var(--home-muted);
+
+  font-size: 0.94rem;
+  line-height: 1.82;
+}
+
+.editorial-story-quote {
+  margin: 29px 0;
+
+  padding: 23px 0;
+
+  border-top: 1px solid var(--home-line);
+  border-bottom: 1px solid var(--home-line);
+}
+
+.editorial-story-quote blockquote {
+  margin: 0 0 11px;
+
+  font-family: "Baskervville", serif;
+
+  font-size: 1.2rem;
+  line-height: 1.52;
+
+  font-style: italic;
+
+  color: #312e2b;
+}
+
+.editorial-story-quote p {
+  margin: 0;
+
+  color: var(--home-light-muted);
+
+  font-size: 0.56rem;
+
+  letter-spacing: 1.9px;
+  text-transform: uppercase;
+}
+
+.editorial-link {
+  display: inline-block;
+
+  padding-bottom: 5px;
+
+  border-bottom: 1px solid var(--home-ink);
+
+  color: var(--home-ink);
+
+  text-decoration: none;
+
+  font-size: 0.64rem;
+  font-weight: 600;
+
+  letter-spacing: 1.9px;
+  text-transform: uppercase;
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.editorial-link:hover {
+  color: var(--home-gold);
+
+  border-color: var(--home-gold);
+}
+
+
+
+/* =========================================================
+   REVIEW FEATURE
+   ========================================================= */
+
+.home-review-feature {
+  overflow: hidden;
+
+  background: var(--home-dark);
+
+  color: #fff;
+
+  text-align: center;
+}
+
+.home-review-feature-inner {
+  max-width: 940px;
+
+  margin: auto;
+}
+
+.home-review-feature .eyebrow {
+  color: #c9a977;
+}
+
+.home-review-stars {
+  margin: 21px 0 28px;
+
+  color: #f0c568;
+
+  font-size: 0.96rem;
+
+  letter-spacing: 6px;
+}
+
+.home-review-feature blockquote {
+  max-width: 900px;
+
+  margin: 0 auto 28px;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(2rem, 3.6vw, 3.35rem);
+  line-height: 1.24;
+
+  font-weight: 400;
+  font-style: italic;
+
+  color: #fff;
+}
+
+.home-review-name {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.59);
+
+  font-size: 0.62rem;
+
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+}
+
+
+
+/* =========================================================
+   PROMISE / WHY FILM MATTERS
+   ========================================================= */
+
+.home-promise {
+  overflow: visible;
+
+  padding-bottom:
+    clamp(110px, 11vw, 170px);
+
+  background: #f6f3ee;
+}
+
+.promise-heading {
+  max-width: 870px;
+
+  margin: 0 auto 78px;
+
+  text-align: center;
+}
+
+.promise-heading .eyebrow {
+  margin-bottom: 19px;
+}
+
+.promise-heading h2 {
+  margin: 0;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(3rem, 4.5vw, 4.45rem);
+  line-height: 1.01;
+
+  font-weight: 400;
+
+  letter-spacing: -0.035em;
+
+  color: var(--home-ink);
+}
+
+.promise-heading h2 em {
+  display: block;
+
+  max-width: 780px;
+
+  margin: 10px auto 0;
+
+  font-size: 0.67em;
+  line-height: 1.13;
+
+  font-weight: 400;
+  font-style: italic;
+
+  color: #716a62;
+}
+
+.promise-heading p {
+  max-width: 670px;
+
+  margin: 25px auto 0;
+
+  color: var(--home-muted);
+
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+
+
+/* =========================================================
+   PROMISE CARD STACK
+   ========================================================= */
+
+.promise-mosaic {
+  position: relative;
+
+  width: min(var(--home-max), 100%);
+
+  margin: 0 auto;
+}
+
+.promise-card {
+  position: sticky;
+
+  top: var(--promise-sticky-top);
+
+  width: 100%;
+
+  min-height:
+    min(
+      700px,
+      calc(100svh - var(--nav-height, 72px) - 44px)
+    );
+
+  margin-bottom: 12vh;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.32fr)
+    minmax(340px, 0.68fr);
+
+  overflow: hidden;
+
+  background: var(--home-paper);
+
+  border: 1px solid rgba(37, 35, 33, 0.09);
+
+  box-shadow:
+    0 24px 76px rgba(28, 24, 20, 0.08);
+}
+
+.promise-card:last-child {
+  margin-bottom: 0;
+}
+
+.promise-card-reverse {
+  grid-template-columns:
+    minmax(340px, 0.68fr)
+    minmax(0, 1.32fr);
+}
+
+.promise-card-reverse .promise-card-image {
+  order: 2;
+}
+
+.promise-card-reverse .promise-card-copy {
+  order: 1;
+}
+
+
+
+/* =========================================================
+   PROMISE IMAGE
+   ========================================================= */
+
+.promise-card-image {
+  position: relative;
+
+  min-width: 0;
+  min-height: 100%;
+
+  overflow: hidden;
+
+  background: #d8d2ca;
+}
+
+.promise-card-image::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 15px;
+
+  z-index: 2;
+
+  border: 1px solid rgba(255, 255, 255, 0.27);
+
+  pointer-events: none;
+}
+
+.promise-card-image img {
+  position: absolute;
+
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transform-origin: center center;
+
+  transition:
+    transform 0.15s linear;
+}
+
+
+
+/* =========================================================
+   PROMISE COPY
+   ========================================================= */
+
+.promise-card-copy {
+  position: relative;
+
+  min-width: 0;
+
+  padding:
+    clamp(42px, 4.6vw, 70px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fbfaf7 0%,
+      #f5f1ea 100%
+    );
+}
+
+.promise-card-number {
+  display: block;
+
+  margin-bottom: 17px;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(3.4rem, 4.3vw, 4.25rem);
+  line-height: 0.8;
+
+  color: var(--home-gold);
+}
+
+.promise-card-copy .eyebrow {
+  margin-bottom: 20px;
+
+  color: #837b71;
+}
+
+.promise-card-copy h3 {
+  max-width: 470px;
+
+  margin: 0 0 21px;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(2.3rem, 3.1vw, 3.3rem);
+  line-height: 1.02;
+
+  font-weight: 400;
+
+  letter-spacing: -0.035em;
+
+  color: var(--home-ink);
+}
+
+.promise-card-copy p {
+  max-width: 445px;
+
+  margin: 0;
+
+  color: #625d57;
+
+  font-size: 0.93rem;
+  line-height: 1.8;
+}
+
+
+
+/* =========================================================
+   EXPERIENCE
+   ========================================================= */
+
+.home-process {
+  overflow: hidden;
+
+  background: var(--home-paper);
+
+  border-top: 1px solid var(--home-line);
+}
+
+.home-process-grid {
+  width: min(1160px, 100%);
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.82fr)
+    minmax(0, 1.18fr);
+
+  gap: 84px;
+
+  align-items: center;
+}
+
+.home-process-image {
+  overflow: hidden;
+
+  background: #ddd;
+}
+
+.home-process-image img {
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+}
+
+.home-process-copy {
+  max-width: 650px;
+}
+
+.home-process-copy .eyebrow {
+  margin-bottom: 18px;
+}
+
+.home-process-copy h2 {
+  max-width: 660px;
+
+  margin: 0 0 27px;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(3rem, 4.1vw, 4rem);
+  line-height: 1.01;
+
+  font-weight: 400;
+
+  letter-spacing: -0.035em;
+
+  color: var(--home-ink);
+}
+
+.home-process-copy h2 em {
+  display: block;
+
+  margin-top: 10px;
+
+  font-size: 0.67em;
+  line-height: 1.14;
+
+  font-weight: 400;
+  font-style: italic;
+
+  color: #716a62;
+}
+
+.home-process-copy p {
+  max-width: 620px;
+
+  margin: 0 0 18px;
+
+  color: #5f5a55;
+
+  font-size: 0.94rem;
+  line-height: 1.82;
+}
+
+.home-process-copy .editorial-link {
+  margin-top: 10px;
+}
+
+
+
+/* =========================================================
+   COLLECTIONS
+   ========================================================= */
+
+.home-collections {
+  overflow: hidden;
+
+  background: var(--home-cream);
+
+  border-top: 1px solid var(--home-line);
+}
+
+.home-collections-header {
+  max-width: 820px;
+
+  margin: 0 auto 66px;
+
+  text-align: center;
+}
+
+.home-collections-header .eyebrow {
+  margin-bottom: 19px;
+}
+
+.home-collections-header h2 {
+  margin: 0;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(3rem, 4.3vw, 4.15rem);
+  line-height: 1.01;
+
+  font-weight: 400;
+
+  letter-spacing: -0.03em;
+
+  color: var(--home-ink);
+}
+
+.collections-heading-accent {
+  display: block;
+
+  margin-top: 9px;
+
+  font-size: 0.68em;
+  line-height: 1.13;
+
+  font-style: italic;
+
+  color: #706a62;
+}
+
+.home-collections-header p {
+  max-width: 650px;
+
+  margin: 24px auto 0;
+
+  color: var(--home-muted);
+
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+
+
+/* =========================================================
+   PACKAGE GRID
+   ========================================================= */
+
+.package-grid {
+  width: min(1120px, 100%);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+
+  align-items: stretch;
+}
+
+.package-card {
+  position: relative;
+
+  padding:
+    42px
+    34px
+    38px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(255, 255, 255, 0.66);
+
+  border: 1px solid rgba(37, 35, 33, 0.1);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(37, 35, 33, 0.16);
+
+  box-shadow:
+    0 18px 45px rgba(35, 30, 24, 0.07);
+}
+
+.package-card-featured {
+  background: #fff;
+
+  border-color: rgba(159, 129, 82, 0.4);
+
+  box-shadow:
+    0 22px 60px rgba(35, 30, 24, 0.07);
+}
+
+.package-popular {
+  position: absolute;
+
+  top: 16px;
+  right: 18px;
+
+  color: var(--home-gold);
+
+  font-size: 0.5rem;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.package-eyebrow {
+  display: block;
+
+  margin-bottom: 13px;
+
+  color: var(--home-gold);
+
+  font-size: 0.52rem;
+  font-weight: 600;
+
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+
+.package-card h3 {
+  margin: 0;
+
+  font-family: "Baskervville", serif;
+
+  font-size: 2.3rem;
+  line-height: 1;
+
+  font-weight: 400;
+
+  color: var(--home-ink);
+}
+
+.package-price {
+  margin-top: 20px;
+
+  font-family: "Baskervville", serif;
+
+  font-size: 2.8rem;
+  line-height: 1;
+
+  color: var(--home-ink);
+}
+
+.package-intro {
+  margin: 21px 0 0;
+
+  color: var(--home-muted);
+
+  font-size: 0.87rem;
+  line-height: 1.7;
+}
+
+.package-card ul {
+  margin: 27px 0 30px;
+  padding: 25px 0 0;
+
+  border-top: 1px solid var(--home-line);
+
+  list-style: none;
+}
+
+.package-card li {
+  position: relative;
+
+  margin-bottom: 13px;
+  padding-left: 20px;
+
+  color: #57524c;
+
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.package-card li::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0.68em;
+
+  width: 8px;
+  height: 1px;
+
+  background: var(--home-gold);
+}
+
+.package-button {
+  width: 100%;
+  height: 52px;
+
+  margin-top: auto;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--home-ink);
+
+  color: var(--home-ink);
+
+  text-decoration: none;
+
+  font-size: 0.59rem;
+  font-weight: 600;
+
+  letter-spacing: 1.9px;
+  text-transform: uppercase;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.package-button:hover {
+  transform: translateY(-1px);
+
+  background: var(--home-ink);
+
+  color: #fff;
+}
+
+
+
+/* =========================================================
+   PHOTOGRAPHY + FILM
+   ========================================================= */
+
+.home-partner {
+  overflow: hidden;
+
+  background: #eae6df;
+}
+
+.home-partner-grid {
+  width: min(var(--home-max), 100%);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.92fr)
+    minmax(0, 1.08fr);
+
+  gap: 85px;
+
+  align-items: center;
+}
+
+.home-partner-copy {
+  max-width: 600px;
+}
+
+.home-partner-copy .eyebrow {
+  margin-bottom: 19px;
+}
+
+.home-partner-copy h2 {
+  margin: 0 0 26px;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(3rem, 4vw, 3.9rem);
+  line-height: 1.01;
+
+  font-weight: 400;
+
+  letter-spacing: -0.035em;
+
+  color: var(--home-ink);
+}
+
+.home-partner-copy h2 em {
+  display: block;
+
+  margin-top: 9px;
+
+  font-size: 0.67em;
+  line-height: 1.14;
+
+  font-weight: 400;
+  font-style: italic;
+
+  color: #716b63;
+}
+
+.home-partner-copy p {
+  max-width: 580px;
+
+  margin: 0 0 18px;
+
+  color: #5d5853;
+
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+
+
+/* =========================================================
+   PARTNER IMAGES
+   ========================================================= */
+
+.home-partner-images {
+  position: relative;
+
+  min-height: 620px;
+}
+
+.home-partner-image {
+  position: absolute;
+
+  overflow: hidden;
+
+  background: #d7d1ca;
+
+  box-shadow:
+    0 18px 48px rgba(35, 30, 24, 0.09);
+}
+
+.home-partner-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.home-partner-image:hover img {
+  transform: scale(1.025);
+}
+
+.home-partner-image-large {
+  left: 0;
+  top: 0;
+
+  width: 67%;
+  height: 85%;
+}
+
+.home-partner-image-small {
+  right: 0;
+  bottom: 0;
+
+  width: 48%;
+  height: 49%;
+}
+
+
+
+/* =========================================================
+   LOCATIONS
+   ========================================================= */
+
+.home-locations {
+  overflow: hidden;
+
+  background: #fff;
+}
+
+.home-locations-header {
+  max-width: 820px;
+
+  margin: 0 auto 66px;
+
+  text-align: center;
+}
+
+.home-locations-header .eyebrow {
+  margin-bottom: 19px;
+}
+
+.home-locations-header h2 {
+  margin: 0;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(3rem, 4.2vw, 4.05rem);
+  line-height: 1.02;
+
+  font-weight: 400;
+
+  letter-spacing: -0.03em;
+
+  color: var(--home-ink);
+}
+
+.locations-heading-accent {
+  display: block;
+
+  margin-top: 9px;
+
+  font-size: 0.67em;
+  line-height: 1.14;
+
+  font-style: italic;
+
+  color: #716a62;
+}
+
+.home-locations-header p {
+  max-width: 620px;
+
+  margin: 23px auto 0;
+
+  color: var(--home-muted);
+
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+.destination-grid {
+  width: min(var(--home-max), 100%);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.destination-card {
+  position: relative;
+
+  min-height: 430px;
+
+  overflow: hidden;
+
+  background: #d8d3cc;
+
+  text-decoration: none;
+}
+
+.destination-card img {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.75s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.4s ease;
+}
+
+.destination-card::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.03) 35%,
+      rgba(0, 0, 0, 0.64) 100%
+    );
+}
+
+.destination-card:hover img {
+  transform: scale(1.04);
+
+  filter: brightness(0.91);
+}
+
+.destination-overlay {
+  position: absolute;
+
+  left: 24px;
+  right: 24px;
+  bottom: 23px;
+
+  z-index: 2;
+
+  color: #fff;
+}
+
+.destination-overlay h3 {
+  margin: 0 0 6px;
+
+  font-family: "Baskervville", serif;
+
+  font-size: 1.9rem;
+  line-height: 1;
+
+  font-weight: 400;
+}
+
+.destination-overlay p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  font-size: 0.54rem;
+  font-weight: 600;
+
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+
+.home-faq {
+  overflow: hidden;
+
+  background: var(--home-paper);
+
+  border-top: 1px solid var(--home-line);
+}
+
+.home-faq-header {
+  max-width: 790px;
+
+  margin: 0 auto 52px;
+
+  text-align: center;
+}
+
+.home-faq-header .eyebrow {
+  margin-bottom: 19px;
+}
+
+.home-faq-header h2 {
+  margin: 0;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(2.8rem, 4vw, 3.7rem);
+  line-height: 1.05;
+
+  font-weight: 400;
+
+  letter-spacing: -0.025em;
+
+  color: var(--home-ink);
+}
+
+.faq-heading-accent {
+  display: block;
+
+  margin-top: 8px;
+
+  font-size: 0.66em;
+  line-height: 1.14;
+
+  font-style: italic;
+
+  color: #716a62;
+}
+
+.faq-container {
+  max-width: 800px;
+
+  margin: 0 auto;
+
+  border-top: 1px solid var(--home-line);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--home-line);
+}
+
+.faq-question {
+  width: 100%;
+
+  padding: 24px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--home-ink);
+
+  font-family: "Baskervville", serif;
+
+  font-size: 1.15rem;
+  line-height: 1.35;
+
+  font-weight: 400;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.faq-icon {
+  flex: 0 0 auto;
+
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--home-gold);
+
+  font-family: Arial, sans-serif;
+
+  font-size: 1.3rem;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.faq-answer {
+  display: none;
+
+  padding: 0 0 24px;
+}
+
+.faq-answer p {
+  max-width: 680px;
+
+  margin: 0;
+
+  color: var(--home-muted);
+
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
+.home-final-cta {
+  overflow: hidden;
+
+  background: var(--home-dark);
+
+  color: #fff;
+
+  text-align: center;
+}
+
+.home-final-cta-inner {
+  max-width: 860px;
+
+  margin: auto;
+}
+
+.home-final-cta .eyebrow {
+  margin-bottom: 19px;
+
+  color: #cfaf7b;
+}
+
+.home-final-cta h2 {
+  margin: 0;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(3rem, 4.8vw, 4.6rem);
+  line-height: 1.02;
+
+  font-weight: 400;
+
+  letter-spacing: -0.035em;
+
+  color: #fff;
+}
+
+.home-final-cta h2 em {
+  display: block;
+
+  margin-top: 10px;
+
+  font-size: 0.69em;
+  line-height: 1.1;
+
+  font-weight: 400;
+  font-style: italic;
+
+  color: #d5b882;
+}
+
+.home-final-cta p {
+  max-width: 580px;
+
+  margin: 25px auto 0;
+
+  color: rgba(255, 255, 255, 0.68);
+
+  font-size: 0.93rem;
+  line-height: 1.74;
+}
+
+.home-final-cta-button {
+  min-width: 215px;
+  height: 54px;
+
+  margin-top: 31px;
+  padding: 0 24px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.74);
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 0.61rem;
+  font-weight: 600;
+
+  letter-spacing: 2.1px;
+  text-transform: uppercase;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.home-final-cta-button:hover {
+  transform: translateY(-2px);
+
+  background: #fff;
+
+  color: var(--home-ink);
+}
+
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.home-contact {
+  overflow: hidden;
+
+  background: #efede8;
+
+  border-top: 1px solid var(--home-line);
+}
+
+.home-contact-header {
+  max-width: 800px;
+
+  margin: 0 auto 55px;
+
+  text-align: center;
+}
+
+.home-contact-header .eyebrow {
+  margin-bottom: 19px;
+}
+
+.home-contact-header h2 {
+  margin: 0;
+
+  font-family: "Baskervville", serif;
+
+  font-size: clamp(3rem, 4.2vw, 4rem);
+  line-height: 1.03;
+
+  font-weight: 400;
+
+  letter-spacing: -0.03em;
+
+  color: var(--home-ink);
+}
+
+.contact-heading-accent {
+  display: block;
+
+  margin-top: 9px;
+
+  font-size: 0.65em;
+  line-height: 1.15;
+
+  font-style: italic;
+
+  color: #706a62;
+}
+
+.home-contact-header p {
+  max-width: 620px;
+
+  margin: 22px auto 0;
+
+  color: var(--home-muted);
+
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+.custom-form-container {
+  max-width: 680px;
+
+  margin: 0 auto;
+}
+
+
+
+/* =========================================================
+   CONTACT FORM
+   ========================================================= */
+
+#horizon-contact-form {
+  width: 100%;
+}
+
+.form-row {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #4d4944;
+
+  font-size: 0.58rem;
+  font-weight: 600;
+
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  border: 1px solid rgba(37, 35, 33, 0.16);
+
+  border-radius: 0;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  color: var(--home-ink);
+
+  font: inherit;
+
+  font-size: 0.9rem;
+
+  outline: none;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.form-group input,
+.form-group select {
+  height: 54px;
+
+  padding: 0 15px;
+}
+
+.form-group textarea {
+  min-height: 145px;
+
+  padding: 15px;
+
+  resize: vertical;
+
+  line-height: 1.6;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--home-gold);
+
+  background: #fff;
+
+  box-shadow:
+    0 0 0 2px rgba(159, 129, 82, 0.08);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaa39a;
+}
+
+.contact-submit {
+  width: 100%;
+  height: 56px;
+
+  margin-top: 6px;
+
+  border: 1px solid var(--home-ink);
+
+  background: var(--home-ink);
+
+  color: #fff;
+
+  font-size: 0.62rem;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.contact-submit:hover {
+  transform: translateY(-1px);
+
+  background: transparent;
+
+  color: var(--home-ink);
+}
+
+.form-success {
+  display: none;
+
+  margin-top: 20px;
+
+  color: var(--home-gold);
+
+  font-family: "Baskervville", serif;
+
+  font-size: 1.05rem;
+  font-style: italic;
+
+  text-align: center;
+}
+
+
+
+/* =========================================================
+   SHORTER DESKTOP HEIGHTS
+   ========================================================= */
+
+@media (max-height: 820px) and (min-width: 901px) {
+
+  .home-hero {
+    min-height: 620px;
+  }
+
+  .home-hero-main {
+    margin-top: -20px;
+  }
+
+  .home-hero-main h1 {
+    font-size: clamp(3.2rem, 5vw, 4.9rem);
+  }
+
+  .home-hero-lead {
+    margin-top: 20px;
+
+    font-size: 0.9rem;
+  }
+
+  .home-hero-actions {
+    margin-top: 24px;
+  }
+
+  .home-hero-button {
+    height: 52px;
+  }
+
+  .home-hero-proof {
+    bottom: 15px;
+  }
+
+  .home-hero-proof-rule,
+  .home-hero-proof-label {
+    display: none;
+  }
+
+  .home-hero-proof-stage {
+    min-height: 66px;
+  }
+
+  .promise-card {
+    min-height:
+      calc(
+        100svh -
+        var(--nav-height, 72px) -
+        40px
+      );
+  }
+
+}
+
+
+
+/* =========================================================
+   TABLET / SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .editorial-story {
+    gap: 50px;
+  }
+
+  .editorial-story-copy h3 {
+    font-size: 3rem;
+  }
+
+  .promise-card {
+    grid-template-columns:
+      minmax(0, 1.12fr)
+      minmax(300px, 0.88fr);
+  }
+
+  .promise-card-reverse {
+    grid-template-columns:
+      minmax(300px, 0.88fr)
+      minmax(0, 1.12fr);
+  }
+
+  .home-process-grid,
+  .home-partner-grid {
+    gap: 50px;
+  }
+
+  .package-grid {
+    gap: 14px;
+  }
+
+  .package-card {
+    padding:
+      38px
+      26px
+      34px;
+  }
+
+  .destination-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+
+/* =========================================================
+   MOBILE / TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .home-stories,
+  .home-review-feature,
+  .home-promise,
+  .home-process,
+  .home-collections,
+  .home-partner,
+  .home-locations,
+  .home-faq,
+  .home-final-cta,
+  .home-contact {
+    padding:
+      90px
+      6vw;
+  }
+
+
+  /* HERO */
+
+  .home-hero {
+    height: 100svh;
+    min-height: 680px;
+  }
+
+  .home-hero-inner {
+    width: 90vw;
+  }
+
+  .home-hero-main {
+    margin-top: -26px;
+  }
+
+  .home-hero-main h1 {
+    font-size: clamp(3rem, 8vw, 4.8rem);
+  }
+
+  .home-hero-video {
+    transform: none;
+  }
+
+
+  /* REAL WEDDINGS */
+
+  .editorial-story,
+  .editorial-story.reverse {
+    grid-template-columns: 1fr;
+
+    gap: 44px;
+
+    margin-bottom: 96px;
+  }
+
+  .editorial-story.reverse .editorial-story-image,
+  .editorial-story.reverse .editorial-story-copy {
+    order: initial;
+  }
+
+  .editorial-story-copy {
+    max-width: 680px;
+
+    margin: auto;
+  }
+
+  .editorial-story-play {
+    opacity: 1;
+
+    width: 74px;
+    height: 74px;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+
+    background: rgba(20, 20, 20, 0.3);
+  }
+
+
+  /* PROMISE */
+
+  .home-promise {
+    overflow: hidden;
+  }
+
+  .promise-heading {
+    margin-bottom: 52px;
+  }
+
+  .promise-mosaic {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+  }
+
+  .promise-card,
+  .promise-card-reverse {
+    position: relative;
+
+    top: auto;
+
+    min-height: 0;
+
+    margin: 0;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .promise-card-image,
+  .promise-card-reverse .promise-card-image {
+    order: 1;
+
+    min-height: 0;
+
+    aspect-ratio: 16 / 10;
+  }
+
+  .promise-card-copy,
+  .promise-card-reverse .promise-card-copy {
+    order: 2;
+  }
+
+
+  /* EXPERIENCE */
+
+  .home-process-grid {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+  .home-process-image {
+    width: min(100%, 610px);
+
+    margin: auto;
+  }
+
+  .home-process-copy {
+    max-width: 690px;
+
+    margin: auto;
+  }
+
+
+  /* COLLECTIONS */
+
+  .package-grid {
+    grid-template-columns: 1fr;
+
+    max-width: 680px;
+  }
+
+  .package-card {
+    padding:
+      38px
+      32px;
+  }
+
+
+  /* PARTNER */
+
+  .home-partner-grid {
+    grid-template-columns: 1fr;
+
+    gap: 58px;
+  }
+
+  .home-partner-copy {
+    max-width: 680px;
+
+    margin: auto;
+  }
+
+  .home-partner-images {
+    width: min(100%, 620px);
+    min-height: 620px;
+
+    margin: auto;
+  }
+
+}
+
+
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .home-stories,
+  .home-review-feature,
+  .home-promise,
+  .home-process,
+  .home-collections,
+  .home-partner,
+  .home-locations,
+  .home-faq,
+  .home-final-cta,
+  .home-contact {
+    padding:
+      76px
+      6vw;
+  }
+
+
+  /* HERO */
+
+  .home-hero-inner {
+    width: 92vw;
+  }
+
+  .home-hero-main {
+    margin-top: -48px;
+  }
+
+  .home-hero-eyebrow {
+    margin-bottom: 13px;
+
+    font-size: 0.52rem;
+
+    letter-spacing: 2.5px;
+  }
+
+  .home-hero-main h1 {
+    font-size: 2.72rem;
+  }
+
+  .home-hero-main h1 em {
+    margin-top: 10px;
+
+    font-size: 0.57em;
+  }
+
+  .home-hero-lead {
+    max-width: 345px;
+
+    margin-top: 18px;
+
+    font-size: 0.84rem;
+    line-height: 1.62;
+  }
+
+  .home-hero-actions {
+    width: 100%;
+
+    margin-top: 24px;
+
+    display: grid;
+
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 8px;
+  }
+
+  .home-hero-button {
+    min-width: 0;
+
+    width: 100%;
+    height: 49px;
+
+    padding: 0 8px;
+
+    font-size: 0.48rem;
+
+    letter-spacing: 1.05px;
+  }
+
+  .home-hero-proof {
+    bottom: 15px;
+
+    width: 90vw;
+  }
+
+  .home-hero-proof-rule,
+  .home-hero-proof-label {
+    display: none;
+  }
+
+  .home-hero-proof-stage {
+    min-height: 72px;
+  }
+
+  .home-hero-review p {
+    max-width: 335px;
+
+    font-size: 0.87rem;
+  }
+
+  .home-hero-review-source {
+    font-size: 0.42rem;
+  }
+
+
+  /* HEADINGS */
+
+  .home-stories-header h2,
+  .promise-heading h2,
+  .home-process-copy h2,
+  .home-collections-header h2,
+  .home-partner-copy h2,
+  .home-locations-header h2,
+  .home-faq-header h2,
+  .home-contact-header h2 {
+    font-size: 2.55rem;
+  }
+
+
+  /* REAL WEDDINGS */
+
+  .home-stories-header {
+    margin-bottom: 50px;
+  }
+
+  .editorial-story {
+    margin-bottom: 78px;
+
+    gap: 34px;
+  }
+
+  .editorial-story-image::after {
+    display: none;
+  }
+
+  .editorial-story-image img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .editorial-story-number {
+    top: -47px;
+
+    font-size: 4.7rem;
+  }
+
+  .editorial-story-copy h3 {
+    font-size: 2.7rem;
+  }
+
+  .editorial-story-tone {
+    font-size: 1.3rem;
+  }
+
+  .editorial-story-description {
+    font-size: 0.89rem;
+    line-height: 1.73;
+  }
+
+  .editorial-story-quote blockquote {
+    font-size: 1.08rem;
+  }
+
+
+  /* REVIEW */
+
+  .home-review-feature blockquote {
+    font-size: 1.85rem;
+    line-height: 1.28;
+  }
+
+
+  /* PROMISE */
+
+  .promise-heading {
+    margin-bottom: 42px;
+  }
+
+  .promise-heading p {
+    font-size: 0.89rem;
+  }
+
+  .promise-mosaic {
+    gap: 16px;
+  }
+
+  .promise-card-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .promise-card-copy {
+    padding:
+      30px
+      25px
+      36px;
+  }
+
+  .promise-card-number {
+    margin-bottom: 13px;
+
+    font-size: 3.1rem;
+  }
+
+  .promise-card-copy h3 {
+    font-size: 2.25rem;
+  }
+
+  .promise-card-copy p {
+    font-size: 0.89rem;
+    line-height: 1.7;
+  }
+
+
+  /* EXPERIENCE */
+
+  .home-process-grid {
+    gap: 42px;
+  }
+
+  .home-process-copy p {
+    font-size: 0.89rem;
+    line-height: 1.74;
+  }
+
+
+  /* PACKAGES */
+
+  .home-collections-header {
+    margin-bottom: 46px;
+  }
+
+  .package-card {
+    padding:
+      34px
+      25px;
+  }
+
+  .package-card h3 {
+    font-size: 2.15rem;
+  }
+
+  .package-price {
+    font-size: 2.5rem;
+  }
+
+
+  /* PARTNER */
+
+  .home-partner-grid {
+    gap: 45px;
+  }
+
+  .home-partner-copy p {
+    font-size: 0.89rem;
+    line-height: 1.74;
+  }
+
+  .home-partner-images {
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-columns:
+      1.08fr
+      0.92fr;
+
+    grid-template-rows:
+      175px
+      205px;
+
+    gap: 8px;
+  }
+
+  .home-partner-image {
+    position: relative;
+
+    inset: auto;
+
+    width: auto;
+    height: auto;
+
+    box-shadow: none;
+  }
+
+  .home-partner-image-large {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .home-partner-image-small {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+
+  /* LOCATIONS */
+
+  .destination-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .destination-card {
+    min-height: 360px;
+  }
+
+
+  /* FAQ */
+
+  .faq-question {
+    padding: 21px 0;
+
+    font-size: 1.05rem;
+  }
+
+  .faq-answer {
+    padding-bottom: 21px;
+  }
+
+
+  /* FINAL CTA */
+
+  .home-final-cta h2 {
+    font-size: 2.72rem;
+  }
+
+  .home-final-cta p {
+    font-size: 0.89rem;
+  }
+
+
+  /* CONTACT */
+
+  .home-contact-header {
+    margin-bottom: 44px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+}
+
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+  .home-hero-main h1 {
+    font-size: 2.48rem;
+  }
+
+  .home-hero-button {
+    height: 47px;
+
+    font-size: 0.45rem;
+  }
+
+  .home-stories-header h2,
+  .promise-heading h2,
+  .home-process-copy h2,
+  .home-collections-header h2,
+  .home-partner-copy h2,
+  .home-locations-header h2,
+  .home-faq-header h2,
+  .home-contact-header h2 {
+    font-size: 2.3rem;
+  }
+
+  .editorial-story-copy h3 {
+    font-size: 2.45rem;
+  }
+
+  .promise-card-copy h3 {
+    font-size: 2.05rem;
+  }
+
+  .home-final-cta h2 {
+    font-size: 2.45rem;
+  }
+
+}
+
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  [data-reveal] {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+
+  .home-hero-video,
+  .home-hero-review,
+  .editorial-story-image img,
+  .editorial-story-play,
+  .promise-card-image img,
+  .home-partner-image img,
+  .destination-card img,
+  .package-card,
+  .home-hero-button,
+  .home-final-cta-button,
+  .package-button {
+    transition: none !important;
+  }
+
+  .home-hero-video {
+    transform: none !important;
+  }
+
+  .package-card:hover,
+  .home-hero-button:hover,
+  .home-final-cta-button:hover,
+  .package-button:hover {
+    transform: none;
+  }
+
+}

@@ -4,636 +4,1578 @@
 
    Load with:
    <script src="/js/home.js" defer></script>
+
+   Built for the current homepage structure:
+   - Static cinematic hero
+   - Rotating hero testimonials
+   - Scroll-driven wedding-day image story
+   - Scroll-driven "what film preserves" story
+   - Standard reveal animations
+   - Packages
+   - FAQ
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', function () {
+
+
+  /* =======================================================
+     GLOBAL HELPERS
+     ======================================================= */
 
   const reduceMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)'
   ).matches;
 
-  const clamp = (value, min = 0, max = 1) =>
-    Math.min(Math.max(value, min), max);
 
-  const sectionProgress = (section) => {
-    if (!section) return 0;
+  const clamp = function (
+    value,
+    min = 0,
+    max = 1
+  ) {
 
-    const rect = section.getBoundingClientRect();
-    const available = section.offsetHeight - window.innerHeight;
+    return Math.min(
+      Math.max(
+        value,
+        min
+      ),
+      max
+    );
 
-    if (available <= 0) return 0;
-
-    return clamp((-rect.top) / available);
   };
+
+
+  const sectionProgress = function (section) {
+
+    if (!section) {
+      return 0;
+    }
+
+    const rect =
+      section.getBoundingClientRect();
+
+    const available =
+      section.offsetHeight -
+      window.innerHeight;
+
+    if (available <= 0) {
+      return 0;
+    }
+
+    return clamp(
+      (-rect.top) / available
+    );
+
+  };
+
 
 
   /* =======================================================
      HERO
-     Scroll sequence:
-     1. Main heading + buttons
-     2. Aimee review
-     3. Kirsty review
-     4. Clean video
-     5. Release into next section
+     STATIC FILM + ROTATING SOCIAL PROOF
+
+     The hero itself no longer scrolls through scenes.
+
+     Instead:
+     - Main headline remains stable.
+     - Buttons remain stable.
+     - Video continues playing.
+     - Two small Google reviews alternate beneath.
      ======================================================= */
 
-  const heroSection = document.querySelector('.home-hero-scroll');
-  const heroContent = document.querySelector('.home-hero-content');
-  const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
-  const heroDots = Array.from(document.querySelectorAll('.hero-dot'));
-  const heroVideo = document.querySelector('.home-hero-sticky .hero-video');
-  const heroOverlay = document.querySelector('.home-hero-sticky .hero-overlay');
-  const heroCue = document.querySelector('.hero-scroll-cue');
+  const hero =
+    document.querySelector(
+      '.home-hero'
+    );
 
-  let heroManualSlide = null;
 
-  function showHeroSlide(index) {
-    if (!heroSlides.length) return;
+  const heroVideo =
+    document.querySelector(
+      '.home-hero-video'
+    );
 
-    const safeIndex = clamp(index, 0, heroSlides.length - 1);
 
-    heroSlides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === safeIndex);
-    });
+  const heroReviews =
+    Array.from(
+      document.querySelectorAll(
+        '.home-hero-review'
+      )
+    );
 
-    heroDots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === safeIndex);
-      dot.setAttribute('aria-current', i === safeIndex ? 'true' : 'false');
-    });
-  }
 
-  heroDots.forEach((dot) => {
-    dot.addEventListener('click', function () {
-      const target = parseInt(dot.getAttribute('data-target'), 10);
+  const heroReviewProgress =
+    document.querySelector(
+      '.home-hero-proof-progress span'
+    );
 
-      if (Number.isNaN(target)) return;
 
-      heroManualSlide = target;
-      showHeroSlide(target);
-    });
-  });
+  let heroReviewIndex = 0;
 
-  function updateHero() {
-    if (!heroSection || window.innerWidth <= 900 || reduceMotion) return;
+  let heroReviewTimer = null;
 
-    const progress = sectionProgress(heroSection);
+  let heroProgressAnimation = null;
 
-    /*
-      Scroll chapters:
-      0.00 - 0.18   Main hero
-      0.18 - 0.42   Review 1
-      0.42 - 0.66   Review 2
-      0.66 - 0.82   Clean video
-      0.82 - 1.00   Content exits
-    */
 
-    let slideIndex = 0;
+  const HERO_REVIEW_DURATION = 6500;
 
-    if (heroManualSlide !== null && progress < 0.08) {
-      slideIndex = heroManualSlide;
-    } else {
-      heroManualSlide = null;
 
-      if (progress >= 0.42) {
-        slideIndex = 2;
-      } else if (progress >= 0.18) {
-        slideIndex = 1;
+
+  function setHeroReview(index) {
+
+    if (!heroReviews.length) {
+      return;
+    }
+
+
+    heroReviewIndex =
+      (
+        index +
+        heroReviews.length
+      ) %
+      heroReviews.length;
+
+
+    heroReviews.forEach(
+      function (
+        review,
+        reviewIndex
+      ) {
+
+        const active =
+          reviewIndex ===
+          heroReviewIndex;
+
+
+        review.classList.toggle(
+          'is-active',
+          active
+        );
+
+
+        review.setAttribute(
+          'aria-hidden',
+          active
+            ? 'false'
+            : 'true'
+        );
+
       }
-    }
+    );
 
-    showHeroSlide(slideIndex);
-
-    let exitProgress = clamp((progress - 0.66) / 0.18);
-
-    if (heroContent) {
-      const y = -180 * exitProgress;
-      const opacity = 1 - exitProgress;
-      const blur = exitProgress * 2;
-
-      heroContent.style.transform = `translate3d(0, ${y}px, 0)`;
-      heroContent.style.opacity = opacity;
-      heroContent.style.filter = `blur(${blur}px)`;
-    }
-
-    if (heroOverlay) {
-      const lighten = clamp((progress - 0.62) / 0.25);
-      heroOverlay.style.opacity = 1 - (lighten * 0.55);
-    }
-
-    if (heroVideo) {
-      const zoom = 1 + ((1 - progress) * 0.012);
-
-      heroVideo.style.setProperty(
-        'transform',
-        `scale(${zoom})`,
-        'important'
-      );
-    }
-
-    if (heroCue) {
-      heroCue.style.opacity = 1 - clamp(progress / 0.08);
-    }
   }
+
+
+
+  function resetHeroProgress() {
+
+    if (!heroReviewProgress) {
+      return;
+    }
+
+
+    if (heroProgressAnimation) {
+
+      heroProgressAnimation.cancel();
+
+      heroProgressAnimation = null;
+
+    }
+
+
+    heroReviewProgress.style.width =
+      '0%';
+
+
+    if (
+      reduceMotion ||
+      document.hidden
+    ) {
+      return;
+    }
+
+
+    heroProgressAnimation =
+      heroReviewProgress.animate(
+        [
+          {
+            width: '0%'
+          },
+          {
+            width: '100%'
+          }
+        ],
+        {
+          duration:
+            HERO_REVIEW_DURATION,
+
+          easing:
+            'linear',
+
+          fill:
+            'forwards'
+        }
+      );
+
+  }
+
+
+
+  function stopHeroReviews() {
+
+    if (heroReviewTimer) {
+
+      clearTimeout(
+        heroReviewTimer
+      );
+
+      heroReviewTimer = null;
+
+    }
+
+
+    if (heroProgressAnimation) {
+
+      heroProgressAnimation.cancel();
+
+      heroProgressAnimation = null;
+
+    }
+
+  }
+
+
+
+  function scheduleHeroReview() {
+
+    stopHeroReviews();
+
+
+    if (
+      reduceMotion ||
+      heroReviews.length < 2 ||
+      document.hidden
+    ) {
+
+      return;
+
+    }
+
+
+    resetHeroProgress();
+
+
+    heroReviewTimer =
+      window.setTimeout(
+        function () {
+
+          setHeroReview(
+            heroReviewIndex + 1
+          );
+
+
+          scheduleHeroReview();
+
+        },
+        HERO_REVIEW_DURATION
+      );
+
+  }
+
+
+
+  if (heroReviews.length) {
+
+    setHeroReview(0);
+
+    scheduleHeroReview();
+
+  }
+
+
+
+  /*
+     Pause review switching while the page
+     is not visible.
+
+     No point animating unseen content and
+     this stops reviews jumping ahead when
+     someone returns to the tab.
+  */
+
+  document.addEventListener(
+    'visibilitychange',
+    function () {
+
+      if (document.hidden) {
+
+        stopHeroReviews();
+
+      } else {
+
+        scheduleHeroReview();
+
+      }
+
+    }
+  );
+
+
+
+  /*
+     Slight video movement.
+
+     This is deliberately tiny.
+
+     It prevents the hero feeling completely
+     static without recreating the previous
+     scroll-controlled hero.
+  */
+
+  function updateHeroVideo() {
+
+    if (
+      !hero ||
+      !heroVideo ||
+      reduceMotion ||
+      window.innerWidth <= 900
+    ) {
+
+      return;
+
+    }
+
+
+    const rect =
+      hero.getBoundingClientRect();
+
+
+    if (
+      rect.bottom <= 0 ||
+      rect.top >= window.innerHeight
+    ) {
+
+      return;
+
+    }
+
+
+    const visibleProgress =
+      clamp(
+        -rect.top /
+        Math.max(
+          hero.offsetHeight,
+          1
+        )
+      );
+
+
+    const scale =
+      1.015 +
+      (
+        visibleProgress *
+        .01
+      );
+
+
+    heroVideo.style.transform =
+      'scale(' +
+      scale +
+      ')';
+
+  }
+
 
 
   /* =======================================================
      WEDDING DAY
-     Left copy stays fixed.
-     Four photographs cross-fade on the right.
+     FIXED LEFT-HAND MESSAGE +
+     FOUR IMAGE MOMENTS
+
+     Each photograph occupies a proper part
+     of the scroll rather than several images
+     remaining visible at once.
      ======================================================= */
 
-  const feelingSection = document.querySelector('.home-feeling');
-
-  const feelingShots = Array.from(
-    document.querySelectorAll('.feeling-shot')
-  );
-
-  const feelingWord = document.querySelector('.home-feeling-word');
-
-  const feelingProgress = document.querySelector(
-    '#feeling-progress-bar'
-  );
-
-  const feelingChapterLabel = document.querySelector(
-    '.feeling-chapter-label'
-  );
-
-  const feelingChapterCopy = document.querySelector(
-    '.feeling-chapter-copy'
-  );
-
-  function updateFeeling() {
-    if (!feelingSection || window.innerWidth <= 900 || reduceMotion) {
-      return;
-    }
-
-    const progress = sectionProgress(feelingSection);
-
-    if (feelingProgress) {
-      feelingProgress.style.width = `${progress * 100}%`;
-    }
-
-    if (!feelingShots.length) return;
-
-    /*
-      Spread the four images across almost the full
-      pinned sequence.
-
-      Neighbouring photographs overlap slightly,
-      producing a cinematic cross-fade.
-    */
-
-    const galleryProgress = clamp(
-      (progress - 0.04) / 0.90
+  const feelingSection =
+    document.querySelector(
+      '.home-feeling'
     );
 
-    const position =
-      galleryProgress * (feelingShots.length - 1);
 
-    feelingShots.forEach((shot, index) => {
+  const feelingShots =
+    Array.from(
+      document.querySelectorAll(
+        '.feeling-shot'
+      )
+    );
 
-      const distance = Math.abs(index - position);
 
-      const opacity = clamp(
-        1 - distance
+  const feelingWord =
+    document.querySelector(
+      '.home-feeling-word'
+    );
+
+
+  const feelingProgress =
+    document.querySelector(
+      '#feeling-progress-bar'
+    );
+
+
+  const feelingChapterLabel =
+    document.querySelector(
+      '.feeling-chapter-label'
+    );
+
+
+  const feelingChapterCopy =
+    document.querySelector(
+      '.feeling-chapter-copy'
+    );
+
+
+  let feelingActiveIndex = -1;
+
+
+
+  function setFeelingChapter(
+    index
+  ) {
+
+    if (
+      index < 0 ||
+      index >= feelingShots.length
+    ) {
+
+      return;
+
+    }
+
+
+    if (
+      index ===
+      feelingActiveIndex
+    ) {
+
+      return;
+
+    }
+
+
+    feelingActiveIndex =
+      index;
+
+
+    const shot =
+      feelingShots[index];
+
+
+    const label =
+      shot.getAttribute(
+        'data-label'
       );
 
-      const scale =
-        1.045 -
-        (clamp(1 - distance) * 0.025);
 
-      shot.style.opacity = opacity;
-      shot.style.transform = `scale(${scale})`;
-    });
+    const copy =
+      shot.getAttribute(
+        'data-copy'
+      );
 
-    const activeIndex = clamp(
-      Math.round(position),
-      0,
-      feelingShots.length - 1
+
+    const word =
+      shot.getAttribute(
+        'data-word'
+      );
+
+
+    /*
+       Make text transition rather than
+       instantly swapping.
+    */
+
+    if (
+      feelingChapterLabel ||
+      feelingChapterCopy
+    ) {
+
+      if (feelingChapterLabel) {
+
+        feelingChapterLabel.style.opacity =
+          '0';
+
+        feelingChapterLabel.style.transform =
+          'translateY(5px)';
+
+      }
+
+
+      if (feelingChapterCopy) {
+
+        feelingChapterCopy.style.opacity =
+          '0';
+
+        feelingChapterCopy.style.transform =
+          'translateY(7px)';
+
+      }
+
+
+      window.setTimeout(
+        function () {
+
+          if (
+            feelingChapterLabel &&
+            label
+          ) {
+
+            feelingChapterLabel.textContent =
+              label;
+
+
+            feelingChapterLabel.style.opacity =
+              '1';
+
+
+            feelingChapterLabel.style.transform =
+              'translateY(0)';
+
+          }
+
+
+          if (
+            feelingChapterCopy &&
+            copy
+          ) {
+
+            feelingChapterCopy.textContent =
+              copy;
+
+
+            feelingChapterCopy.style.opacity =
+              '1';
+
+
+            feelingChapterCopy.style.transform =
+              'translateY(0)';
+
+          }
+
+        },
+        reduceMotion
+          ? 0
+          : 150
+      );
+
+    }
+
+
+    if (
+      feelingWord &&
+      word
+    ) {
+
+      feelingWord.textContent =
+        word;
+
+    }
+
+  }
+
+
+
+  function updateFeeling() {
+
+    if (
+      !feelingSection ||
+      !feelingShots.length ||
+      window.innerWidth <= 900 ||
+      reduceMotion
+    ) {
+
+      return;
+
+    }
+
+
+    const progress =
+      sectionProgress(
+        feelingSection
+      );
+
+
+    if (feelingProgress) {
+
+      feelingProgress.style.width =
+        (
+          progress *
+          100
+        ) +
+        '%';
+
+    }
+
+
+    /*
+       Leave a little breathing room at
+       beginning and end of the pinned section.
+    */
+
+    const galleryProgress =
+      clamp(
+        (
+          progress -
+          .035
+        ) /
+        .93
+      );
+
+
+    const position =
+      galleryProgress *
+      (
+        feelingShots.length -
+        1
+      );
+
+
+    /*
+       Crossfade envelope.
+
+       The previous image fades out while
+       the incoming photograph gently rises.
+    */
+
+    feelingShots.forEach(
+      function (
+        shot,
+        index
+      ) {
+
+        const relative =
+          index -
+          position;
+
+
+        const distance =
+          Math.abs(
+            relative
+          );
+
+
+        let opacity =
+          1 -
+          (
+            distance *
+            1.45
+          );
+
+
+        opacity =
+          clamp(
+            opacity
+          );
+
+
+        /*
+           Prevent distant neighbouring images
+           creating the washed-out double image
+           problem we had earlier.
+        */
+
+        if (
+          distance >
+          .72
+        ) {
+
+          opacity = 0;
+
+        }
+
+
+        const y =
+          relative *
+          32;
+
+
+        const scale =
+          1.025 +
+          (
+            clamp(
+              1 -
+              distance
+            ) *
+            .012
+          );
+
+
+        shot.style.opacity =
+          opacity;
+
+
+        shot.style.transform =
+          'translate3d(0,' +
+          y +
+          'px,0) scale(' +
+          scale +
+          ')';
+
+
+        shot.classList.toggle(
+          'is-active',
+          distance < .5
+        );
+
+      }
     );
 
-    const activeShot = feelingShots[activeIndex];
 
-    if (activeShot) {
+    const activeIndex =
+      clamp(
+        Math.round(
+          position
+        ),
+        0,
+        feelingShots.length - 1
+      );
 
-      const label =
-        activeShot.getAttribute('data-label');
 
-      const copy =
-        activeShot.getAttribute('data-copy');
+    setFeelingChapter(
+      activeIndex
+    );
 
-      const word =
-        activeShot.getAttribute('data-word');
 
-      if (feelingChapterLabel && label) {
-        feelingChapterLabel.textContent = label;
-      }
+    /*
+       Background word moves almost
+       imperceptibly.
 
-      if (feelingChapterCopy && copy) {
-        feelingChapterCopy.textContent = copy;
-      }
-
-      if (feelingWord && word) {
-        feelingWord.textContent = word;
-      }
-    }
+       Enough depth to feel intentional,
+       not enough to distract.
+    */
 
     if (feelingWord) {
 
       const x =
-        (galleryProgress - 0.5) * 35;
+        (
+          galleryProgress -
+          .5
+        ) *
+        24;
+
 
       const y =
-        (galleryProgress - 0.5) * -55;
+        (
+          galleryProgress -
+          .5
+        ) *
+        -35;
+
 
       feelingWord.style.transform =
-        `translate3d(
-          calc(-50% + ${x}px),
-          calc(-50% + ${y}px),
-          0
-        )`;
+        'translate3d(' +
+        'calc(-50% + ' +
+        x +
+        'px),' +
+        'calc(-50% + ' +
+        y +
+        'px),' +
+        '0)';
+
     }
+
   }
 
 
+
   /* =======================================================
-     RELIVE / PROMISE
+     WHAT FILM GIVES YOU
 
-     Alternating sequence:
+     INTRO
+     ->
+     VOICES
+     ->
+     ATMOSPHERE
+     ->
+     PEOPLE
 
-     IMAGE | TEXT
-     TEXT  | IMAGE
-     IMAGE | TEXT
-     TEXT  | IMAGE
+     Alternates image/text position via CSS.
      ======================================================= */
 
   const promiseSection =
-    document.querySelector('.home-promise');
+    document.querySelector(
+      '.home-promise'
+    );
 
-  const promiseScenes = Array.from(
-    document.querySelectorAll('.promise-scene')
-  );
+
+  const promiseScenes =
+    Array.from(
+      document.querySelectorAll(
+        '.promise-scene'
+      )
+    );
+
 
   const promiseProgress =
-    document.querySelector('#promise-progress-bar');
+    document.querySelector(
+      '#promise-progress-bar'
+    );
+
 
   const promiseWord =
-    document.querySelector('.home-promise-word');
+    document.querySelector(
+      '.home-promise-word'
+    );
+
 
 
   function updatePromise() {
 
     if (
       !promiseSection ||
+      !promiseScenes.length ||
       window.innerWidth <= 900 ||
       reduceMotion
     ) {
+
       return;
+
     }
+
 
     const progress =
-      sectionProgress(promiseSection);
+      sectionProgress(
+        promiseSection
+      );
+
 
     if (promiseProgress) {
+
       promiseProgress.style.width =
-        `${progress * 100}%`;
+        (
+          progress *
+          100
+        ) +
+        '%';
+
     }
 
-    if (!promiseScenes.length) return;
+
+    /*
+       Give first and final scenes
+       slightly longer dwell time.
+    */
+
+    const storyProgress =
+      clamp(
+        (
+          progress -
+          .025
+        ) /
+        .95
+      );
+
 
     const position =
-      progress * (promiseScenes.length - 1);
-
-    promiseScenes.forEach((scene, index) => {
-
-      const relative =
-        index - position;
-
-      const distance =
-        Math.abs(relative);
-
-      /*
-        Wide fade window means scenes transition
-        rather than suddenly appearing.
-
-        Vertical movement is deliberately small.
-        We don't want the section feeling like
-        a PowerPoint presentation.
-      */
-
-      const opacity =
-        clamp(1 - (distance * 1.35));
-
-      const y =
-        relative * 55;
-
-      const scale =
-        1 -
-        (Math.min(distance, 1) * 0.018);
-
-      scene.style.opacity = opacity;
-
-      scene.style.transform =
-        `translate3d(0, ${y}px, 0)
-         scale(${scale})`;
-
-      scene.classList.toggle(
-        'is-active',
-        distance < 0.5
+      storyProgress *
+      (
+        promiseScenes.length -
+        1
       );
-    });
+
+
+    promiseScenes.forEach(
+      function (
+        scene,
+        index
+      ) {
+
+        const relative =
+          index -
+          position;
+
+
+        const distance =
+          Math.abs(
+            relative
+          );
+
+
+        /*
+           Fairly narrow transition prevents
+           two full text panels remaining
+           readable at once.
+        */
+
+        let opacity =
+          1 -
+          (
+            distance *
+            1.55
+          );
+
+
+        opacity =
+          clamp(
+            opacity
+          );
+
+
+        if (
+          distance >
+          .7
+        ) {
+
+          opacity = 0;
+
+        }
+
+
+        const y =
+          relative *
+          42;
+
+
+        const scale =
+          1 -
+          (
+            Math.min(
+              distance,
+              1
+            ) *
+            .012
+          );
+
+
+        scene.style.opacity =
+          opacity;
+
+
+        scene.style.transform =
+          'translate3d(0,' +
+          y +
+          'px,0) scale(' +
+          scale +
+          ')';
+
+
+        scene.classList.toggle(
+          'is-active',
+          distance < .48
+        );
+
+
+        /*
+           Very gentle independent image motion
+           gives the frame some depth.
+        */
+
+        const image =
+          scene.querySelector(
+            '.promise-image img'
+          );
+
+
+        if (
+          image &&
+          !reduceMotion
+        ) {
+
+          const imageY =
+            relative *
+            -12;
+
+
+          image.style.transform =
+            'scale(1.045) translate3d(0,' +
+            imageY +
+            'px,0)';
+
+        }
+
+      }
+    );
+
 
     if (promiseWord) {
 
       const x =
-        (progress - 0.5) * -90;
+        (
+          storyProgress -
+          .5
+        ) *
+        -60;
+
 
       const y =
-        (progress - 0.5) * 30;
+        (
+          storyProgress -
+          .5
+        ) *
+        20;
+
 
       promiseWord.style.transform =
-        `translate3d(
-          calc(-50% + ${x}px),
-          calc(-50% + ${y}px),
-          0
-        )`;
+        'translate3d(' +
+        'calc(-50% + ' +
+        x +
+        'px),' +
+        'calc(-50% + ' +
+        y +
+        'px),' +
+        '0)';
+
     }
+
   }
+
 
 
   /* =======================================================
-     STANDARD SCROLL REVEALS
+     STANDARD REVEALS
      ======================================================= */
 
-  const revealItems = Array.from(
-    document.querySelectorAll('[data-reveal]')
-  );
+  const revealItems =
+    Array.from(
+      document.querySelectorAll(
+        '[data-reveal]'
+      )
+    );
+
 
   if (reduceMotion) {
 
-    revealItems.forEach((item) => {
-      item.classList.add('is-visible');
-    });
+    revealItems.forEach(
+      function (item) {
 
-  } else if ('IntersectionObserver' in window) {
+        item.classList.add(
+          'is-visible'
+        );
+
+      }
+    );
+
+
+  } else if (
+    'IntersectionObserver' in window
+  ) {
+
 
     const revealObserver =
       new IntersectionObserver(
-
         function (entries) {
 
-          entries.forEach((entry) => {
+          entries.forEach(
+            function (entry) {
 
-            if (!entry.isIntersecting) {
-              return;
-            }
+              if (
+                !entry.isIntersecting
+              ) {
 
-            entry.target.classList.add(
-              'is-visible'
-            );
+                return;
 
-            revealObserver.unobserve(
+              }
+
+
               entry.target
-            );
-          });
+                .classList
+                .add(
+                  'is-visible'
+                );
+
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+          );
+
         },
-
         {
-          threshold: 0.14,
-          rootMargin: '0px 0px -6% 0px'
-        }
+          threshold: .14,
 
+          rootMargin:
+            '0px 0px -6% 0px'
+        }
       );
 
-    revealItems.forEach((item) => {
-      revealObserver.observe(item);
-    });
+
+    revealItems.forEach(
+      function (item) {
+
+        revealObserver.observe(
+          item
+        );
+
+      }
+    );
+
 
   } else {
 
-    revealItems.forEach((item) => {
-      item.classList.add('is-visible');
-    });
+
+    revealItems.forEach(
+      function (item) {
+
+        item.classList.add(
+          'is-visible'
+        );
+
+      }
+    );
 
   }
+
 
 
   /* =======================================================
      PACKAGE CARDS
      ======================================================= */
 
-  window.toggleActive = function (card) {
+  window.toggleActive =
+    function (card) {
 
-    if (!card) return;
+      if (!card) {
+        return;
+      }
 
-    document
-      .querySelectorAll('.packages .card')
-      .forEach((item) => {
 
-        if (item !== card) {
-          item.classList.remove('active');
-        }
+      document
+        .querySelectorAll(
+          '.packages .card'
+        )
+        .forEach(
+          function (item) {
 
-      });
+            if (
+              item !== card
+            ) {
 
-    card.classList.toggle('active');
-  };
+              item.classList.remove(
+                'active'
+              );
+
+            }
+
+          }
+        );
+
+
+      card.classList.toggle(
+        'active'
+      );
+
+    };
+
 
 
   /* =======================================================
      FAQ
      ======================================================= */
 
-  window.toggleFAQ = function (button) {
+  window.toggleFAQ =
+    function (button) {
 
-    if (!button) return;
-
-    const item =
-      button.closest('.faq-item');
-
-    if (!item) return;
-
-    const answer =
-      item.querySelector('.faq-answer');
-
-    const icon =
-      button.querySelector('.faq-icon');
-
-    const currentlyOpen =
-      item.classList.contains('active');
+      if (!button) {
+        return;
+      }
 
 
-    /*
-      Close any other FAQ first
-    */
+      const item =
+        button.closest(
+          '.faq-item'
+        );
 
-    document
-      .querySelectorAll('.faq-item.active')
-      .forEach((openItem) => {
 
-        if (openItem === item) {
-          return;
+      if (!item) {
+        return;
+      }
+
+
+      const answer =
+        item.querySelector(
+          '.faq-answer'
+        );
+
+
+      const icon =
+        button.querySelector(
+          '.faq-icon'
+        );
+
+
+      const currentlyOpen =
+        item.classList.contains(
+          'active'
+        );
+
+
+
+      /*
+         Close other FAQs.
+      */
+
+      document
+        .querySelectorAll(
+          '.faq-item.active'
+        )
+        .forEach(
+          function (openItem) {
+
+            if (
+              openItem === item
+            ) {
+
+              return;
+
+            }
+
+
+            openItem.classList.remove(
+              'active'
+            );
+
+
+            const openAnswer =
+              openItem.querySelector(
+                '.faq-answer'
+              );
+
+
+            const openIcon =
+              openItem.querySelector(
+                '.faq-icon'
+              );
+
+
+            if (openAnswer) {
+
+              openAnswer.style.maxHeight =
+                null;
+
+            }
+
+
+            if (openIcon) {
+
+              openIcon.textContent =
+                '+';
+
+            }
+
+          }
+        );
+
+
+
+      /*
+         Toggle selected FAQ.
+      */
+
+      if (currentlyOpen) {
+
+        item.classList.remove(
+          'active'
+        );
+
+
+        if (answer) {
+
+          answer.style.maxHeight =
+            null;
+
         }
 
-        openItem.classList.remove('active');
 
-        const openAnswer =
-          openItem.querySelector('.faq-answer');
+        if (icon) {
 
-        const openIcon =
-          openItem.querySelector('.faq-icon');
+          icon.textContent =
+            '+';
 
-        if (openAnswer) {
-          openAnswer.style.maxHeight = null;
         }
 
-        if (openIcon) {
-          openIcon.textContent = '+';
-        }
 
-      });
+        return;
+
+      }
 
 
-    /*
-      Toggle selected FAQ
-    */
+      item.classList.add(
+        'active'
+      );
 
-    if (currentlyOpen) {
-
-      item.classList.remove('active');
 
       if (answer) {
-        answer.style.maxHeight = null;
+
+        answer.style.maxHeight =
+          answer.scrollHeight +
+          'px';
+
       }
+
 
       if (icon) {
-        icon.textContent = '+';
+
+        icon.textContent =
+          '−';
+
       }
 
-      return;
-    }
+    };
 
-
-    item.classList.add('active');
-
-    if (answer) {
-      answer.style.maxHeight =
-        `${answer.scrollHeight}px`;
-    }
-
-    if (icon) {
-      icon.textContent = '−';
-    }
-  };
 
 
   /* =======================================================
      SCROLL ENGINE
 
-     All scroll animations run through one
-     requestAnimationFrame rather than multiple
-     separate scroll listeners.
+     One rAF loop handles every scroll animation.
      ======================================================= */
 
   let ticking = false;
 
+
+
   function updateScrollEffects() {
 
-    updateHero();
+    updateHeroVideo();
+
     updateFeeling();
+
     updatePromise();
 
   }
 
+
+
   function requestScrollUpdate() {
 
-    if (ticking) return;
+    if (ticking) {
+      return;
+    }
+
 
     ticking = true;
 
-    window.requestAnimationFrame(function () {
 
-      updateScrollEffects();
+    window.requestAnimationFrame(
+      function () {
 
-      ticking = false;
+        updateScrollEffects();
 
-    });
+        ticking = false;
+
+      }
+    );
+
   }
+
 
 
   window.addEventListener(
     'scroll',
     requestScrollUpdate,
-    { passive: true }
+    {
+      passive: true
+    }
   );
+
+
 
   window.addEventListener(
     'resize',
-    requestScrollUpdate
+    function () {
+
+      resetResponsiveStyles();
+
+      requestScrollUpdate();
+
+    }
   );
 
-
-  /*
-    Run immediately so the page is correct
-    even if it loads partway down.
-  */
-
-  updateScrollEffects();
 
 
   /* =======================================================
-     MOBILE RESET
+     RESPONSIVE RESET
 
-     If someone resizes from desktop to mobile,
-     remove inline animation styles rather than
-     leaving desktop positioning behind.
+     Important when browser crosses 900px breakpoint.
+
+     Desktop JS writes inline transforms.
+     Mobile CSS expects normal document flow.
+
+     Remove those inline values when changing mode.
      ======================================================= */
 
-  function resetForMobile() {
+  function resetResponsiveStyles() {
 
-    if (window.innerWidth > 900) {
+    if (
+      window.innerWidth >
+      900
+    ) {
+
       return;
-    }
-
-    if (heroContent) {
-
-      heroContent.style.transform = '';
-      heroContent.style.opacity = '';
-      heroContent.style.filter = '';
 
     }
 
-    if (heroOverlay) {
-      heroOverlay.style.opacity = '';
-    }
 
     if (heroVideo) {
-      heroVideo.style.removeProperty(
-        'transform'
-      );
+
+      heroVideo.style.transform =
+        '';
+
     }
 
-    feelingShots.forEach((shot) => {
 
-      shot.style.opacity = '';
-      shot.style.transform = '';
+    feelingShots.forEach(
+      function (shot) {
 
-    });
+        shot.style.opacity =
+          '';
 
-    promiseScenes.forEach((scene) => {
+        shot.style.transform =
+          '';
 
-      scene.style.opacity = '';
-      scene.style.transform = '';
+        shot.classList.remove(
+          'is-active'
+        );
 
-    });
+      }
+    );
+
+
+    if (feelingWord) {
+
+      feelingWord.style.transform =
+        '';
+
+    }
+
+
+    if (feelingProgress) {
+
+      feelingProgress.style.width =
+        '';
+
+    }
+
+
+    promiseScenes.forEach(
+      function (scene) {
+
+        scene.style.opacity =
+          '';
+
+        scene.style.transform =
+          '';
+
+        scene.classList.remove(
+          'is-active'
+        );
+
+
+        const image =
+          scene.querySelector(
+            '.promise-image img'
+          );
+
+
+        if (image) {
+
+          image.style.transform =
+            '';
+
+        }
+
+      }
+    );
+
+
+    if (promiseWord) {
+
+      promiseWord.style.transform =
+        '';
+
+    }
+
+
+    if (promiseProgress) {
+
+      promiseProgress.style.width =
+        '';
+
+    }
 
   }
 
-  window.addEventListener(
-    'resize',
-    resetForMobile
-  );
 
-  resetForMobile();
+
+  /* =======================================================
+     INITIAL STATE
+     ======================================================= */
+
+  /*
+     Desktop sections start on frame one immediately
+     rather than waiting for the first scroll event.
+  */
+
+  if (
+    feelingShots.length &&
+    window.innerWidth > 900
+  ) {
+
+    feelingShots.forEach(
+      function (
+        shot,
+        index
+      ) {
+
+        shot.style.opacity =
+          index === 0
+            ? '1'
+            : '0';
+
+
+        shot.classList.toggle(
+          'is-active',
+          index === 0
+        );
+
+      }
+    );
+
+
+    setFeelingChapter(0);
+
+  }
+
+
+  if (
+    promiseScenes.length &&
+    window.innerWidth > 900
+  ) {
+
+    promiseScenes.forEach(
+      function (
+        scene,
+        index
+      ) {
+
+        scene.style.opacity =
+          index === 0
+            ? '1'
+            : '0';
+
+
+        scene.classList.toggle(
+          'is-active',
+          index === 0
+        );
+
+      }
+    );
+
+  }
+
+
+  resetResponsiveStyles();
+
+  updateScrollEffects();
 
 });

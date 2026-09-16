@@ -4,44 +4,25 @@
 
    Homepage-only interactions:
    - Rotating hero testimonials
-   - Cinematic hero video movement
-   - Hero content fade as page leaves viewport
+   - Subtle hero video movement
+   - Promise intro split / fade transition
+   - Promise story: free-scrolling copy + sticky crossfading images
    - Standard reveal animations
-   - Sticky story chapter tracking
-   - Subtle image movement inside sticky story cards
-   - Smooth internal anchor scrolling
-   - Image / resize / Safari safeguards
-
-   IMPORTANT:
-   - Package cards
-   - FAQ interactions
-   - Contact form
-   - Shared navigation
-
-   remain handled by /js/site.js.
    ========================================================= */
-
 
 document.addEventListener('DOMContentLoaded', function () {
 
-
-  /* =====================================================
-     GLOBAL
-     ===================================================== */
-
-  const motionQuery =
+  const reduceMotion =
     window.matchMedia(
       '(prefers-reduced-motion: reduce)'
-    );
+    ).matches;
+
+  const DESKTOP_BREAKPOINT = 900;
 
 
-  const reduceMotion =
-    motionQuery.matches;
-
-
-  const DESKTOP_BREAKPOINT =
-    900;
-
+  /* =====================================================
+     HELPERS
+     ===================================================== */
 
   function clamp(
     value,
@@ -70,31 +51,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-  function getNavHeight() {
-
-    const styles =
-      window.getComputedStyle(
-        document.documentElement
-      );
-
-
-    const value =
-      styles.getPropertyValue(
-        '--nav-height'
-      );
-
-
-    return (
-      parseFloat(value) ||
-      0
-    );
-
-  }
-
-
-
   /* =====================================================
-     HERO ELEMENTS
+     HERO
      ===================================================== */
 
   const hero =
@@ -102,24 +60,10 @@ document.addEventListener('DOMContentLoaded', function () {
       '.home-hero'
     );
 
-
   const heroVideo =
     document.querySelector(
       '.home-hero-video'
     );
-
-
-  const heroMain =
-    document.querySelector(
-      '.home-hero-main'
-    );
-
-
-  const heroProof =
-    document.querySelector(
-      '.home-hero-proof'
-    );
-
 
   const heroReviews =
     Array.from(
@@ -128,33 +72,24 @@ document.addEventListener('DOMContentLoaded', function () {
       )
     );
 
-
   const heroReviewProgress =
     document.querySelector(
       '.home-hero-proof-progress span'
     );
 
-
   const HERO_REVIEW_DURATION =
     6500;
 
+  let heroReviewIndex = 0;
 
-  let heroReviewIndex =
-    0;
+  let heroReviewTimer = null;
 
-
-  let heroReviewTimer =
-    null;
+  let heroProgressAnimation = null;
 
 
-  let heroProgressAnimation =
-    null;
-
-
-
-  /* =====================================================
+  /* -----------------------------------------------------
      HERO TESTIMONIALS
-     ===================================================== */
+     ----------------------------------------------------- */
 
   function setHeroReview(
     index
@@ -168,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-
     heroReviewIndex =
       (
         index +
@@ -176,23 +110,20 @@ document.addEventListener('DOMContentLoaded', function () {
       ) %
       heroReviews.length;
 
-
     heroReviews.forEach(
       function (
         review,
-        reviewIndex
+        i
       ) {
 
         const active =
-          reviewIndex ===
+          i ===
           heroReviewIndex;
-
 
         review.classList.toggle(
           'is-active',
           active
         );
-
 
         review.setAttribute(
           'aria-hidden',
@@ -207,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-
   function stopHeroProgress() {
 
     if (
@@ -216,12 +146,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       heroProgressAnimation.cancel();
 
-
       heroProgressAnimation =
         null;
 
     }
-
 
     if (
       heroReviewProgress
@@ -233,7 +161,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
   }
-
 
 
   function startHeroProgress() {
@@ -248,13 +175,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-
     stopHeroProgress();
-
 
     heroReviewProgress.style.width =
       '0%';
-
 
     if (
       typeof heroReviewProgress.animate !==
@@ -265,17 +189,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-
     heroProgressAnimation =
       heroReviewProgress.animate(
         [
           {
-            width:
-              '0%'
+            width:'0%'
           },
           {
-            width:
-              '100%'
+            width:'100%'
           }
         ],
         {
@@ -293,7 +214,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-
   function stopHeroReviews() {
 
     if (
@@ -304,23 +224,19 @@ document.addEventListener('DOMContentLoaded', function () {
         heroReviewTimer
       );
 
-
       heroReviewTimer =
         null;
 
     }
-
 
     stopHeroProgress();
 
   }
 
 
-
   function scheduleHeroReview() {
 
     stopHeroReviews();
-
 
     if (
       reduceMotion ||
@@ -332,29 +248,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-
     startHeroProgress();
-
 
     heroReviewTimer =
       window.setTimeout(
         function () {
 
-
           setHeroReview(
             heroReviewIndex + 1
           );
 
-
           scheduleHeroReview();
-
 
         },
         HERO_REVIEW_DURATION
       );
 
   }
-
 
 
   if (
@@ -368,16 +278,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-
-  /*
-     Do not let the reviews continue rotating
-     while the browser tab is hidden.
-  */
-
   document.addEventListener(
     'visibilitychange',
     function () {
-
 
       if (
         document.hidden
@@ -391,31 +294,478 @@ document.addEventListener('DOMContentLoaded', function () {
 
       }
 
-
     }
   );
 
 
+  /* -----------------------------------------------------
+     SUBTLE HERO VIDEO MOVEMENT
+     ----------------------------------------------------- */
 
-  /* =====================================================
-     HERO SCROLL EFFECT
-
-     IMPORTANT:
-
-     CSS positions the video using inset:0.
-
-     JS therefore writes SCALE ONLY.
-
-     Do not add translate(-50%, -50%) here or change
-     the video back to left:50%; top:50%.
-
-     That was one of the causes of the previous hero issue.
-     ===================================================== */
-
-  function updateHero() {
+  function updateHeroVideo() {
 
     if (
-      !hero
+      !hero ||
+      !heroVideo
+    ) {
+
+      return;
+
+    }
+
+    if (
+      !isDesktop() ||
+      reduceMotion
+    ) {
+
+      heroVideo.style.transform =
+        '';
+
+      return;
+
+    }
+
+    const rect =
+      hero.getBoundingClientRect();
+
+    if (
+      rect.bottom <= 0 ||
+      rect.top >=
+      window.innerHeight
+    ) {
+
+      return;
+
+    }
+
+    const progress =
+      clamp(
+        (
+          window.innerHeight -
+          rect.top
+        ) /
+        (
+          window.innerHeight +
+          rect.height
+        )
+      );
+
+    const scale =
+      1.015 +
+      (
+        progress *
+        .01
+      );
+
+    heroVideo.style.transform =
+      'scale(' +
+      scale +
+      ')';
+
+  }
+
+
+  /* =====================================================
+     PROMISE INTRO
+     ===================================================== */
+
+  const promiseIntro =
+    document.querySelector(
+      '.promise-intro'
+    );
+
+  const promiseStory =
+    document.querySelector(
+      '.promise-story'
+    );
+
+
+  function updatePromiseIntro() {
+
+    if (
+      !promiseIntro
+    ) {
+
+      return;
+
+    }
+
+    if (
+      !isDesktop() ||
+      reduceMotion
+    ) {
+
+      promiseIntro.classList.remove(
+        'is-transitioning'
+      );
+
+      promiseIntro.classList.remove(
+        'is-exiting'
+      );
+
+      return;
+
+    }
+
+    const rect =
+      promiseIntro.getBoundingClientRect();
+
+    const viewportHeight =
+      window.innerHeight;
+
+    /*
+       Start the split while the lower part
+       of the intro approaches the middle
+       of the screen.
+
+       The intro feels like it is opening
+       up to reveal the chapter sequence.
+    */
+
+    const startPoint =
+      viewportHeight *
+      .42;
+
+    const endPoint =
+      viewportHeight *
+      .08;
+
+    const transitionProgress =
+      clamp(
+        (
+          startPoint -
+          rect.bottom
+        ) /
+        (
+          startPoint -
+          endPoint
+        )
+      );
+
+    /*
+       First small movement.
+    */
+
+    promiseIntro.classList.toggle(
+      'is-transitioning',
+      transitionProgress > .08
+    );
+
+    /*
+       Full split / fade.
+    */
+
+    promiseIntro.classList.toggle(
+      'is-exiting',
+      transitionProgress > .48
+    );
+
+  }
+
+
+  /* =====================================================
+     PROMISE STORY
+     ===================================================== */
+
+  const promiseCopyBlocks =
+    Array.from(
+      document.querySelectorAll(
+        '.promise-copy-block'
+      )
+    );
+
+  const promiseImages =
+    Array.from(
+      document.querySelectorAll(
+        '.promise-sticky-image'
+      )
+    );
+
+  const promiseProgress =
+    document.getElementById(
+      'promise-progress-bar'
+    );
+
+  let promiseActiveIndex = -1;
+
+
+  function setPromiseActive(
+    index
+  ) {
+
+    if (
+      !promiseCopyBlocks.length ||
+      !promiseImages.length
+    ) {
+
+      return;
+
+    }
+
+    const maxIndex =
+      Math.min(
+        promiseCopyBlocks.length,
+        promiseImages.length
+      ) - 1;
+
+    index =
+      Math.max(
+        0,
+        Math.min(
+          index,
+          maxIndex
+        )
+      );
+
+    if (
+      index ===
+      promiseActiveIndex
+    ) {
+
+      return;
+
+    }
+
+    promiseActiveIndex =
+      index;
+
+
+    /*
+       Copy stays fully visible.
+
+       is-active only marks which chapter
+       currently owns the right-hand image.
+    */
+
+    promiseCopyBlocks.forEach(
+      function (
+        block,
+        i
+      ) {
+
+        block.classList.toggle(
+          'is-active',
+          i === index
+        );
+
+        block.setAttribute(
+          'aria-current',
+          i === index
+            ? 'true'
+            : 'false'
+        );
+
+      }
+    );
+
+
+    promiseImages.forEach(
+      function (
+        image,
+        i
+      ) {
+
+        const active =
+          i === index;
+
+        image.classList.toggle(
+          'is-active',
+          active
+        );
+
+        image.setAttribute(
+          'aria-hidden',
+          active
+            ? 'false'
+            : 'true'
+        );
+
+      }
+    );
+
+  }
+
+
+  function getPromiseActiveIndex() {
+
+    if (
+      !promiseCopyBlocks.length
+    ) {
+
+      return 0;
+
+    }
+
+    /*
+       We use a focus line at around 46% of
+       viewport height.
+
+       More importantly, we compare each block's
+       top/bottom relationship to that line rather
+       than just its geometric centre.
+
+       This makes transitions happen when the next
+       section genuinely becomes prominent.
+    */
+
+    const focusY =
+      window.innerHeight *
+      .46;
+
+    let bestIndex = 0;
+    let bestScore = Infinity;
+
+
+    promiseCopyBlocks.forEach(
+      function (
+        block,
+        index
+      ) {
+
+        const rect =
+          block.getBoundingClientRect();
+
+
+        /*
+           If the focus line sits inside the block,
+           that section should win immediately.
+
+           We still calculate a tiny score based on
+           distance from the block's upper-middle
+           so transitions do not feel late.
+        */
+
+        if (
+          rect.top <= focusY &&
+          rect.bottom >= focusY
+        ) {
+
+          const targetPoint =
+            rect.top +
+            (
+              rect.height *
+              .42
+            );
+
+          const score =
+            Math.abs(
+              targetPoint -
+              focusY
+            );
+
+          if (
+            score <
+            bestScore
+          ) {
+
+            bestScore =
+              score;
+
+            bestIndex =
+              index;
+
+          }
+
+          return;
+
+        }
+
+
+        /*
+           Otherwise choose the nearest block edge.
+        */
+
+        let distance;
+
+        if (
+          rect.top >
+          focusY
+        ) {
+
+          distance =
+            rect.top -
+            focusY;
+
+        } else {
+
+          distance =
+            focusY -
+            rect.bottom;
+
+        }
+
+        if (
+          distance <
+          bestScore
+        ) {
+
+          bestScore =
+            distance;
+
+          bestIndex =
+            index;
+
+        }
+
+      }
+    );
+
+    return bestIndex;
+
+  }
+
+
+  function updatePromiseProgress() {
+
+    if (
+      !promiseStory ||
+      !promiseProgress
+    ) {
+
+      return;
+
+    }
+
+    const rect =
+      promiseStory.getBoundingClientRect();
+
+    const scrollable =
+      promiseStory.offsetHeight -
+      window.innerHeight;
+
+    if (
+      scrollable <= 0
+    ) {
+
+      promiseProgress.style.width =
+        '0%';
+
+      return;
+
+    }
+
+    const progress =
+      clamp(
+        -rect.top /
+        scrollable
+      );
+
+    promiseProgress.style.width =
+      (
+        progress *
+        100
+      ) +
+      '%';
+
+  }
+
+
+  function updatePromiseStory() {
+
+    if (
+      !promiseStory ||
+      !promiseCopyBlocks.length ||
+      !promiseImages.length
     ) {
 
       return;
@@ -423,187 +773,108 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    const rect =
-      hero.getBoundingClientRect();
+    /* ---------------------------------------------------
+       MOBILE
+       --------------------------------------------------- */
 
+    if (
+      !isDesktop()
+    ) {
 
-    const heroHeight =
-      Math.max(
-        rect.height,
-        1
+      promiseCopyBlocks.forEach(
+        function (block) {
+
+          block.classList.add(
+            'is-active'
+          );
+
+          block.setAttribute(
+            'aria-current',
+            'false'
+          );
+
+        }
       );
 
+      promiseImages.forEach(
+        function (
+          image,
+          index
+        ) {
 
-    /*
-       How far through the hero the visitor has scrolled.
+          const active =
+            index === 0;
 
-       0 = top of page
-       1 = hero has completely passed
-    */
+          image.classList.toggle(
+            'is-active',
+            active
+          );
 
-    const scrollProgress =
-      clamp(
-        -rect.top /
-        heroHeight
+          image.setAttribute(
+            'aria-hidden',
+            active
+              ? 'false'
+              : 'true'
+          );
+
+        }
       );
 
+      promiseActiveIndex =
+        0;
 
-    /*
-       -----------------------------------------------------
-       VIDEO SCALE
-       -----------------------------------------------------
-
-       Starts at roughly 1.015.
-
-       Slowly moves towards 1.045 while leaving the hero.
-
-       It feels more like a very gentle camera push
-       than obvious parallax.
-    */
-
-    if (
-      heroVideo
-    ) {
-
-
-      if (
-        !isDesktop() ||
-        reduceMotion
-      ) {
-
-        heroVideo.style.transform =
-          '';
-
-      } else {
-
-
-        const scale =
-          1.015 +
-          (
-            scrollProgress *
-            0.03
-          );
-
-
-        heroVideo.style.transform =
-          'scale(' +
-          scale.toFixed(4) +
-          ')';
-
-      }
-
+      return;
 
     }
 
 
-
-    /*
-       -----------------------------------------------------
-       HERO COPY
-       -----------------------------------------------------
-
-       As the next section begins to cover the hero,
-       the central proposition gently recedes.
-
-       The movement is intentionally restrained.
-    */
+    /* ---------------------------------------------------
+       REDUCED MOTION
+       --------------------------------------------------- */
 
     if (
-      heroMain
+      reduceMotion
     ) {
 
+      setPromiseActive(0);
 
-      if (
-        reduceMotion ||
-        !isDesktop()
-      ) {
-
-        heroMain.style.opacity =
-          '';
-
-        heroMain.style.transform =
-          '';
-
-      } else {
-
-
-        const fade =
-          1 -
-          clamp(
-            scrollProgress *
-            1.32
-          );
-
-
-        const translateY =
-          scrollProgress *
-          -22;
-
-
-        heroMain.style.opacity =
-          Math.max(
-            0,
-            fade
-          ).toFixed(3);
-
-
-        heroMain.style.transform =
-          'translate3d(0,' +
-          translateY.toFixed(2) +
-          'px,0)';
-
-      }
-
+      return;
 
     }
 
 
-
     /*
-       Social proof leaves slightly earlier than
-       the main hero headline.
-
-       This helps the transition into the next section
-       feel less cluttered.
+       If the whole story is still below
+       the viewport, leave image 01 active.
     */
 
+    const storyRect =
+      promiseStory.getBoundingClientRect();
+
     if (
-      heroProof
+      storyRect.top >=
+      window.innerHeight
     ) {
 
+      setPromiseActive(0);
 
-      if (
-        reduceMotion ||
-        !isDesktop()
-      ) {
+      updatePromiseProgress();
 
-        heroProof.style.opacity =
-          '';
-
-      } else {
-
-
-        const proofFade =
-          1 -
-          clamp(
-            scrollProgress *
-            1.7
-          );
-
-
-        heroProof.style.opacity =
-          Math.max(
-            0,
-            proofFade
-          ).toFixed(3);
-
-      }
-
+      return;
 
     }
+
+
+    const activeIndex =
+      getPromiseActiveIndex();
+
+    setPromiseActive(
+      activeIndex
+    );
+
+    updatePromiseProgress();
 
   }
-
 
 
   /* =====================================================
@@ -618,78 +889,30 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
 
-  let revealObserver =
-    null;
+  if (
+    reduceMotion
+  ) {
 
+    revealItems.forEach(
+      function (item) {
 
+        item.classList.add(
+          'is-visible'
+        );
 
-  function initialiseReveals() {
+      }
+    );
 
+  } else if (
+    'IntersectionObserver' in window
+  ) {
 
-    /*
-       Reduced motion:
-       show everything immediately.
-    */
-
-    if (
-      reduceMotion
-    ) {
-
-
-      revealItems.forEach(
-        function (item) {
-
-          item.classList.add(
-            'is-visible'
-          );
-
-        }
-      );
-
-
-      return;
-
-    }
-
-
-
-    /*
-       Old browser fallback.
-    */
-
-    if (
-      !(
-        'IntersectionObserver'
-        in window
-      )
-    ) {
-
-
-      revealItems.forEach(
-        function (item) {
-
-          item.classList.add(
-            'is-visible'
-          );
-
-        }
-      );
-
-
-      return;
-
-    }
-
-
-
-    revealObserver =
+    const revealObserver =
       new IntersectionObserver(
         function (entries) {
 
-
           entries.forEach(
             function (entry) {
-
 
               if (
                 !entry.isIntersecting
@@ -699,634 +922,147 @@ document.addEventListener('DOMContentLoaded', function () {
 
               }
 
-
               entry.target
                 .classList
                 .add(
                   'is-visible'
                 );
 
-
-              if (
-                revealObserver
-              ) {
-
-                revealObserver.unobserve(
-                  entry.target
-                );
-
-              }
-
+              revealObserver.unobserve(
+                entry.target
+              );
 
             }
           );
 
-
         },
         {
-
-          threshold:
-            0.1,
+          threshold:.12,
 
           rootMargin:
             '0px 0px -5% 0px'
-
         }
       );
-
 
 
     revealItems.forEach(
       function (item) {
 
-
-        if (
-          item.classList.contains(
-            'is-visible'
-          )
-        ) {
-
-          return;
-
-        }
-
-
         revealObserver.observe(
           item
         );
 
+      }
+    );
+
+  } else {
+
+    revealItems.forEach(
+      function (item) {
+
+        item.classList.add(
+          'is-visible'
+        );
 
       }
     );
 
   }
-
-
-
-  initialiseReveals();
-
 
 
   /* =====================================================
-     CINEMATIC STORY CHAPTERS
-
-     CSS performs the actual sticky stacking.
-
-     JS adds:
-     - current chapter tracking
-     - subtle image movement
-     - CSS progress variables for future styling
-
-     Importantly, the card itself is NOT transformed.
-     Transforming a sticky element can cause erratic
-     browser behaviour.
+     RESPONSIVE RESET
      ===================================================== */
 
-  const promiseSection =
-    document.querySelector(
-      '.home-promise'
-    );
-
-
-  const promiseCards =
-    Array.from(
-      document.querySelectorAll(
-        '.promise-card'
-      )
-    );
-
-
-  let currentPromiseIndex =
-    -1;
-
-
-
-  function setCurrentPromiseCard(
-    index
-  ) {
+  function resetResponsiveState() {
 
     if (
-      index ===
-      currentPromiseIndex
+      isDesktop()
     ) {
 
       return;
 
     }
 
+    if (
+      heroVideo
+    ) {
 
-    currentPromiseIndex =
-      index;
+      heroVideo.style.transform =
+        '';
 
-
-    promiseCards.forEach(
-      function (
-        card,
-        cardIndex
-      ) {
+    }
 
 
-        const current =
-          cardIndex ===
-          index;
+    if (
+      promiseIntro
+    ) {
+
+      promiseIntro.classList.remove(
+        'is-transitioning'
+      );
+
+      promiseIntro.classList.remove(
+        'is-exiting'
+      );
+
+    }
 
 
-        card.classList.toggle(
-          'is-current',
-          current
+    promiseCopyBlocks.forEach(
+      function (block) {
+
+        block.classList.add(
+          'is-active'
         );
-
-
-        card.setAttribute(
-          'data-chapter-state',
-          current
-            ? 'current'
-            : cardIndex < index
-              ? 'past'
-              : 'future'
-        );
-
-
-      }
-    );
-
-  }
-
-
-
-  function resetPromiseEffects() {
-
-    promiseCards.forEach(
-      function (card) {
-
-
-        card.style.removeProperty(
-          '--chapter-progress'
-        );
-
-
-        card.style.removeProperty(
-          '--chapter-visible'
-        );
-
-
-        const image =
-          card.querySelector(
-            '.promise-card-image img'
-          );
-
-
-        if (
-          image
-        ) {
-
-          image.style.transform =
-            '';
-
-        }
-
 
       }
     );
 
 
-    currentPromiseIndex =
-      -1;
-
-  }
-
-
-
-  function updatePromiseStory() {
-
-    if (
-      !promiseSection ||
-      !promiseCards.length
-    ) {
-
-      return;
-
-    }
-
-
-
-    /*
-       CSS removes sticky stacking below 900px,
-       so the extra scroll maths is unnecessary there.
-    */
-
-    if (
-      !isDesktop() ||
-      reduceMotion
-    ) {
-
-      resetPromiseEffects();
-
-      return;
-
-    }
-
-
-
-    const navHeight =
-      getNavHeight();
-
-
-    const stickyOffset =
-      navHeight +
-      34;
-
-
-
-    let nearestIndex =
-      0;
-
-
-    let nearestDistance =
-      Infinity;
-
-
-
-    promiseCards.forEach(
+    promiseImages.forEach(
       function (
-        card,
+        image,
         index
       ) {
 
-
-        const rect =
-          card.getBoundingClientRect();
-
-
-        /*
-           Distance between this chapter and the
-           sticky presentation position.
-        */
-
-        const distance =
-          Math.abs(
-            rect.top -
-            stickyOffset
-          );
-
-
-        if (
-          distance <
-          nearestDistance
-        ) {
-
-          nearestDistance =
-            distance;
-
-
-          nearestIndex =
-            index;
-
-        }
-
-
-
-        /*
-           Progress through the individual chapter.
-
-           This does not drive the sticky behaviour itself.
-           It just gives us controlled visual movement
-           within the image.
-        */
-
-        const travel =
-          Math.max(
-            window.innerHeight,
-            rect.height
-          );
-
-
-        const progress =
-          clamp(
-            (
-              stickyOffset -
-              rect.top
-            ) /
-            travel
-          );
-
-
-        card.style.setProperty(
-          '--chapter-progress',
-          progress.toFixed(4)
+        image.classList.toggle(
+          'is-active',
+          index === 0
         );
-
-
-
-        /*
-           Visible amount gives us another hook in case
-           we later want to add chapter indicators in CSS.
-        */
-
-        const visibleTop =
-          Math.max(
-            rect.top,
-            0
-          );
-
-
-        const visibleBottom =
-          Math.min(
-            rect.bottom,
-            window.innerHeight
-          );
-
-
-        const visiblePixels =
-          Math.max(
-            0,
-            visibleBottom -
-            visibleTop
-          );
-
-
-        const visibleRatio =
-          clamp(
-            visiblePixels /
-            Math.min(
-              rect.height,
-              window.innerHeight
-            )
-          );
-
-
-        card.style.setProperty(
-          '--chapter-visible',
-          visibleRatio.toFixed(4)
-        );
-
-
-
-        /*
-           Very small Ken Burns-style movement.
-
-           Importantly, we transform only the IMAGE,
-           never the sticky card.
-        */
-
-        const image =
-          card.querySelector(
-            '.promise-card-image img'
-          );
-
-
-        if (
-          image
-        ) {
-
-
-          const scale =
-            1 +
-            (
-              progress *
-              0.022
-            );
-
-
-          image.style.transform =
-            'scale(' +
-            scale.toFixed(4) +
-            ')';
-
-        }
-
 
       }
     );
 
 
+    if (
+      promiseProgress
+    ) {
 
-    setCurrentPromiseCard(
-      nearestIndex
-    );
+      promiseProgress.style.width =
+        '';
+
+    }
 
   }
-
-
-
-  /* =====================================================
-     SMOOTH INTERNAL ANCHOR SCROLLING
-     ===================================================== */
-
-  const internalLinks =
-    Array.from(
-      document.querySelectorAll(
-        'a[href^="#"]'
-      )
-    );
-
-
-  internalLinks.forEach(
-    function (link) {
-
-
-      link.addEventListener(
-        'click',
-        function (event) {
-
-
-          const href =
-            link.getAttribute(
-              'href'
-            );
-
-
-          if (
-            !href ||
-            href === '#'
-          ) {
-
-            return;
-
-          }
-
-
-          let target =
-            null;
-
-
-          try {
-
-            target =
-              document.querySelector(
-                href
-              );
-
-          } catch (error) {
-
-            return;
-
-          }
-
-
-          if (
-            !target
-          ) {
-
-            return;
-
-          }
-
-
-          if (
-            reduceMotion
-          ) {
-
-            return;
-
-          }
-
-
-          event.preventDefault();
-
-
-          const navHeight =
-            getNavHeight();
-
-
-          const targetTop =
-            target
-              .getBoundingClientRect()
-              .top +
-            window.scrollY -
-            navHeight;
-
-
-          window.scrollTo(
-            {
-
-              top:
-                Math.max(
-                  0,
-                  targetTop
-                ),
-
-              behavior:
-                'smooth'
-
-            }
-          );
-
-
-
-          /*
-             Update URL without causing a second jump.
-          */
-
-          if (
-            window.history &&
-            typeof window.history.pushState ===
-            'function'
-          ) {
-
-            window.history.pushState(
-              null,
-              '',
-              href
-            );
-
-          }
-
-
-        }
-      );
-
-
-    }
-  );
-
-
-
-  /* =====================================================
-     IMAGE LOAD SAFETY
-     ===================================================== */
-
-  const homepageImages =
-    Array.from(
-      document.querySelectorAll(
-        '.home-stories img,' +
-        '.home-promise img,' +
-        '.home-process img,' +
-        '.home-partner img,' +
-        '.home-locations img'
-      )
-    );
-
-
-  homepageImages.forEach(
-    function (image) {
-
-
-      if (
-        image.complete
-      ) {
-
-        return;
-
-      }
-
-
-      image.addEventListener(
-        'load',
-        function () {
-
-          requestScrollUpdate();
-
-        },
-        {
-          once:
-            true
-        }
-      );
-
-
-      image.addEventListener(
-        'error',
-        function () {
-
-          requestScrollUpdate();
-
-        },
-        {
-          once:
-            true
-        }
-      );
-
-
-    }
-  );
-
 
 
   /* =====================================================
      SCROLL ENGINE
-
-     One requestAnimationFrame loop handles:
-     - hero
-     - sticky story chapters
-
-     This avoids multiple scroll listeners fighting each
-     other or forcing excessive layout calculations.
      ===================================================== */
 
-  let ticking =
-    false;
+  let ticking = false;
 
 
   function updateScrollEffects() {
 
-    updateHero();
+    updateHeroVideo();
+
+    updatePromiseIntro();
 
     updatePromiseStory();
 
   }
-
 
 
   function requestScrollUpdate() {
@@ -1339,21 +1075,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-
     ticking =
       true;
-
 
     window.requestAnimationFrame(
       function () {
 
-
         updateScrollEffects();
-
 
         ticking =
           false;
-
 
       }
     );
@@ -1361,16 +1092,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-
   window.addEventListener(
     'scroll',
     requestScrollUpdate,
     {
-      passive:
-        true
+      passive:true
     }
   );
-
 
 
   /* =====================================================
@@ -1385,7 +1113,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'resize',
     function () {
 
-
       if (
         resizeTimer
       ) {
@@ -1396,131 +1123,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
       }
 
-
       resizeTimer =
         window.setTimeout(
           function () {
 
-
-            /*
-               Remove inline desktop effects after
-               crossing down into the mobile layout.
-            */
-
-            if (
-              !isDesktop() ||
-              reduceMotion
-            ) {
-
-
-              if (
-                heroVideo
-              ) {
-
-                heroVideo.style.transform =
-                  '';
-
-              }
-
-
-              if (
-                heroMain
-              ) {
-
-                heroMain.style.transform =
-                  '';
-
-                heroMain.style.opacity =
-                  '';
-
-              }
-
-
-              if (
-                heroProof
-              ) {
-
-                heroProof.style.opacity =
-                  '';
-
-              }
-
-
-              resetPromiseEffects();
-
-            }
-
-
+            resetResponsiveState();
 
             requestScrollUpdate();
-
 
             resizeTimer =
               null;
 
-
           },
-          120
+          100
         );
 
-
     }
   );
 
 
-
   /* =====================================================
-     ORIENTATION CHANGE
-     ===================================================== */
+     IMAGE LOAD SAFETY
 
-  window.addEventListener(
-    'orientationchange',
-    function () {
-
-
-      window.setTimeout(
-        function () {
-
-          requestScrollUpdate();
-
-        },
-        180
-      );
-
-
-    }
-  );
-
-
-
-  /* =====================================================
-     SAFARI BACK/FORWARD CACHE
-     ===================================================== */
-
-  window.addEventListener(
-    'pageshow',
-    function () {
-
-
-      requestScrollUpdate();
-
-
-      if (
-        !document.hidden
-      ) {
-
-        scheduleHeroReview();
-
-      }
-
-
-    }
-  );
-
-
-
-  /* =====================================================
-     FULL PAGE LOAD
+     Re-run positioning when late-loading images alter
+     document height.
      ===================================================== */
 
   window.addEventListener(
@@ -1533,12 +1159,14 @@ document.addEventListener('DOMContentLoaded', function () {
   );
 
 
-
   /* =====================================================
      INITIALISE
      ===================================================== */
 
-  updateScrollEffects();
+  setPromiseActive(0);
 
+  resetResponsiveState();
+
+  updateScrollEffects();
 
 });

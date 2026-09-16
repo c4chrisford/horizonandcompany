@@ -637,7 +637,9 @@
 
   min-height:calc(100svh - var(--nav-height, 0px));
 
-  padding:110px 5vw;
+  padding:
+    clamp(72px,8vh,105px)
+    5vw;
 
   display:flex;
   align-items:center;
@@ -704,8 +706,8 @@
   width:100%;
   max-width:590px;
 
-  height:min(68vh,640px);
-  min-height:470px;
+  height:min(63vh,600px);
+  min-height:430px;
 
   justify-self:start;
 
@@ -767,7 +769,12 @@
 
   z-index:3;
 
+  width:100%;
   max-width:570px;
+
+  align-self:center;
+
+  transform:translateY(-5px);
 
   transition:
     opacity .85s cubic-bezier(.2,.7,.2,1),
@@ -780,14 +787,14 @@
 
 
 .promise-intro-copy .eyebrow{
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
 
 
 .promise-intro-copy h2{
   max-width:570px;
 
-  margin:0 0 30px;
+  margin:0 0 22px;
 
   font-family:'Baskervville',serif;
 
@@ -820,14 +827,20 @@
 
 
 .promise-lead{
+  display:block;
+
+  position:relative;
+
+  z-index:4;
+
   max-width:525px;
 
   margin:0;
 
   font-family:'Baskervville',serif;
 
-  font-size:1.3rem;
-  line-height:1.55;
+  font-size:1.22rem;
+  line-height:1.52;
 
   font-style:italic;
 
@@ -837,15 +850,6 @@
 
 /* =========================================================
    INTRO EXIT ANIMATION
-
-   JS adds .is-exiting to .promise-intro.
-
-   Image peels left.
-   Copy peels right.
-   Background word recedes.
-
-   This prevents the transition into 01 feeling like
-   one normal section stacked underneath another.
    ========================================================= */
 
 .promise-intro.is-exiting .promise-intro-image{
@@ -880,8 +884,6 @@
     scale(1.08);
 }
 
-
-/* Optional softer intermediate state */
 
 .promise-intro.is-transitioning .promise-intro-image{
   transform:
@@ -968,9 +970,6 @@
 /* =========================================================
    PROMISE STORY
    01-05
-
-   COPY SCROLLS NATURALLY.
-   IMAGE STAYS CENTRED IN VIEWPORT.
    ========================================================= */
 
 .promise-story{
@@ -1045,15 +1044,15 @@
 
   min-width:0;
 
-  padding:0 0 10vh;
+  padding:0 0 8vh;
 }
 
 
 /*
-   IMPORTANT:
-   ALL copy stays at full opacity.
+   Deliberately shorter than one viewport.
 
-   Active state is used by JS for image switching only.
+   This means the chapters flow naturally rather than
+   feeling like five separate full-screen slides.
 */
 
 .promise-copy-block{
@@ -1062,12 +1061,12 @@
   width:100%;
   max-width:560px;
 
-  min-height:100svh;
+  min-height:64vh;
 
   padding:
-    22vh
+    10vh
     0
-    18vh;
+    8vh;
 
   display:flex;
   flex-direction:column;
@@ -1082,14 +1081,14 @@
 
 
 .promise-copy-block:first-child{
-  padding-top:23vh;
+  padding-top:12vh;
 }
 
 
 .promise-copy-block:last-child{
-  min-height:100svh;
+  min-height:68vh;
 
-  padding-bottom:24vh;
+  padding-bottom:12vh;
 }
 
 
@@ -1166,8 +1165,8 @@
 
   max-width:485px;
 
-  margin-top:27px;
-  padding-top:20px;
+  margin-top:25px;
+  padding-top:18px;
 
   border-top:1px solid rgba(36,35,33,.12);
 
@@ -1196,12 +1195,8 @@
 
 
 /*
-   The key fix:
-
-   We centre the sticky stage around the viewport,
-   rather than pinning it near the top.
-
-   This removes the dead empty space beneath it.
+   Image stays vertically centred in the available viewport
+   while the copy moves past it.
 */
 
 .promise-visual-sticky{
@@ -1221,8 +1216,8 @@
   width:100%;
   max-width:600px;
 
-  height:min(68vh,640px);
-  min-height:470px;
+  height:min(66vh,610px);
+  min-height:450px;
 
   margin-left:auto;
 
@@ -2934,8 +2929,8 @@
 
 
   .promise-intro{
-    padding-top:80px;
-    padding-bottom:80px;
+    padding-top:65px;
+    padding-bottom:65px;
   }
 
 
@@ -2945,14 +2940,22 @@
 
 
   .promise-intro-image{
-    height:64vh;
-    min-height:390px;
-    max-width:545px;
+    height:58vh;
+    min-height:370px;
+    max-width:525px;
   }
 
 
   .promise-intro-copy h2{
-    font-size:clamp(3rem,4vw,4rem);
+    margin-bottom:18px;
+
+    font-size:clamp(2.85rem,3.8vw,3.85rem);
+  }
+
+
+  .promise-lead{
+    font-size:1.08rem;
+    line-height:1.47;
   }
 
 
@@ -2961,11 +2964,27 @@
   }
 
 
-  .promise-copy-block{
-    min-height:100svh;
+  .promise-copy-stack{
+    padding-bottom:6vh;
+  }
 
-    padding-top:21vh;
-    padding-bottom:18vh;
+
+  .promise-copy-block{
+    min-height:68vh;
+
+    padding-top:10vh;
+    padding-bottom:9vh;
+  }
+
+
+  .promise-copy-block:first-child{
+    padding-top:11vh;
+  }
+
+
+  .promise-copy-block:last-child{
+    min-height:70vh;
+    padding-bottom:12vh;
   }
 
 
@@ -2986,10 +3005,10 @@
 
 
   .promise-visual-sticky{
-    height:66vh;
-    min-height:390px;
+    height:62vh;
+    min-height:370px;
 
-    max-width:550px;
+    max-width:540px;
   }
 
 
@@ -3035,6 +3054,11 @@
   }
 
 
+  .promise-intro-image{
+    height:min(61vh,560px);
+  }
+
+
   .promise-story-inner{
     width:min(92vw,1100px);
 
@@ -3046,6 +3070,11 @@
   }
 
 
+  .promise-copy-block{
+    min-height:66vh;
+  }
+
+
   .promise-copy-block h3{
     font-size:clamp(2.45rem,3.6vw,3.2rem);
   }
@@ -3053,6 +3082,7 @@
 
   .promise-visual-sticky{
     max-width:560px;
+    height:min(64vh,590px);
   }
 
 
@@ -3147,7 +3177,7 @@
 
     grid-template-columns:1fr;
 
-    gap:50px;
+    gap:45px;
   }
 
 
@@ -3180,6 +3210,11 @@
 
     opacity:1 !important;
     transform:none !important;
+  }
+
+
+  .promise-intro-copy h2{
+    margin-bottom:20px;
   }
 
 

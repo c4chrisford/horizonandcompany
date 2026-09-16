@@ -320,11 +320,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /*
-     Pause rotating reviews when the browser tab
-     isn't visible.
-
-     This stops the review sequence skipping ahead
-     while somebody is in another tab.
+     Pause testimonial rotation while
+     the browser tab is not visible.
   */
 
   document.addEventListener(
@@ -388,8 +385,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     /*
-       Hero is outside the viewport.
-       No reason to update its transform.
+       Hero completely outside viewport.
     */
 
     if (
@@ -417,16 +413,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     /*
-       Very restrained movement.
+       Restrained scale movement only.
 
-       Base:
-       1.015
-
-       Maximum:
-       approximately 1.025
-
-       Enough to stop the hero feeling completely static
-       without looking like an obvious parallax effect.
+       Approx range:
+       1.015 -> 1.025
     */
 
     const scale =
@@ -458,28 +448,64 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
 
-  if (
-    reduceMotion
-  ) {
+  let revealObserver = null;
 
 
-    revealItems.forEach(
-      function (item) {
+  function initialiseReveals() {
 
-        item.classList.add(
-          'is-visible'
-        );
+    /*
+       Reduced motion:
+       expose everything immediately.
+    */
 
-      }
-    );
-
-
-  } else if (
-    'IntersectionObserver' in window
-  ) {
+    if (
+      reduceMotion
+    ) {
 
 
-    const revealObserver =
+      revealItems.forEach(
+        function (item) {
+
+          item.classList.add(
+            'is-visible'
+          );
+
+        }
+      );
+
+
+      return;
+
+    }
+
+
+    /*
+       Browser without IntersectionObserver:
+       expose everything rather than risk hidden content.
+    */
+
+    if (
+      !('IntersectionObserver' in window)
+    ) {
+
+
+      revealItems.forEach(
+        function (item) {
+
+          item.classList.add(
+            'is-visible'
+          );
+
+        }
+      );
+
+
+      return;
+
+    }
+
+
+    revealObserver =
       new IntersectionObserver(
         function (entries) {
 
@@ -504,9 +530,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 );
 
 
-              revealObserver.unobserve(
-                entry.target
-              );
+              if (
+                revealObserver
+              ) {
+
+                revealObserver.unobserve(
+                  entry.target
+                );
+
+              }
 
 
             }
@@ -517,10 +549,10 @@ document.addEventListener('DOMContentLoaded', function () {
         {
 
           threshold:
-            0.12,
+            0.1,
 
           rootMargin:
-            '0px 0px -5% 0px'
+            '0px 0px -4% 0px'
 
         }
       );
@@ -529,32 +561,35 @@ document.addEventListener('DOMContentLoaded', function () {
     revealItems.forEach(
       function (item) {
 
+
+        /*
+           If the element has somehow already been
+           revealed, don't observe it again.
+        */
+
+        if (
+          item.classList.contains(
+            'is-visible'
+          )
+        ) {
+
+          return;
+
+        }
+
+
         revealObserver.observe(
           item
         );
 
-      }
-    );
-
-
-  } else {
-
-
-    /*
-       Old browser fallback.
-    */
-
-    revealItems.forEach(
-      function (item) {
-
-        item.classList.add(
-          'is-visible'
-        );
 
       }
     );
 
   }
+
+
+  initialiseReveals();
 
 
 
@@ -568,6 +603,29 @@ document.addEventListener('DOMContentLoaded', function () {
         'a[href^="#"]'
       )
     );
+
+
+  function getNavHeight() {
+
+    const rootStyles =
+      window.getComputedStyle(
+        document.documentElement
+      );
+
+
+    const navHeightValue =
+      rootStyles.getPropertyValue(
+        '--nav-height'
+      );
+
+
+    return (
+      parseFloat(
+        navHeightValue
+      ) || 0
+    );
+
+  }
 
 
   internalLinks.forEach(
@@ -595,10 +653,21 @@ document.addEventListener('DOMContentLoaded', function () {
           }
 
 
-          const target =
-            document.querySelector(
-              href
-            );
+          let target = null;
+
+
+          try {
+
+            target =
+              document.querySelector(
+                href
+              );
+
+          } catch (error) {
+
+            return;
+
+          }
 
 
           if (
@@ -611,8 +680,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
           /*
-             Let reduced-motion users retain the
-             browser's normal immediate jump.
+             Respect reduced-motion preference.
+             Browser performs normal anchor behaviour.
           */
 
           if (
@@ -627,30 +696,8 @@ document.addEventListener('DOMContentLoaded', function () {
           event.preventDefault();
 
 
-          /*
-             Account for the fixed / sticky navigation
-             if --nav-height is defined globally.
-
-             We calculate it rather than relying on
-             scroll-margin-top being present.
-          */
-
-          const rootStyles =
-            window.getComputedStyle(
-              document.documentElement
-            );
-
-
-          const navHeightValue =
-            rootStyles.getPropertyValue(
-              '--nav-height'
-            );
-
-
           const navHeight =
-            parseFloat(
-              navHeightValue
-            ) || 0;
+            getNavHeight();
 
 
           const targetTop =
@@ -664,12 +711,35 @@ document.addEventListener('DOMContentLoaded', function () {
           window.scrollTo(
             {
               top:
-                targetTop,
+                Math.max(
+                  0,
+                  targetTop
+                ),
 
               behavior:
                 'smooth'
             }
           );
+
+
+          /*
+             Keep the address bar / history useful
+             without causing a second browser jump.
+          */
+
+          if (
+            window.history &&
+            typeof window.history.pushState ===
+            'function'
+          ) {
+
+            window.history.pushState(
+              null,
+              '',
+              href
+            );
+
+          }
 
 
         }
@@ -682,11 +752,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* =====================================================
-     OPTIONAL IMAGE LOAD REVEAL SAFETY
-
-     When lazy images load after the page has already
-     rendered, request a frame so the hero transform and
-     viewport calculations remain current.
+     IMAGE LOAD SAFETY
      ===================================================== */
 
   const homepageImages =
@@ -727,6 +793,19 @@ document.addEventListener('DOMContentLoaded', function () {
       );
 
 
+      image.addEventListener(
+        'error',
+        function () {
+
+          requestScrollUpdate();
+
+        },
+        {
+          once:true
+        }
+      );
+
+
     }
   );
 
@@ -735,11 +814,11 @@ document.addEventListener('DOMContentLoaded', function () {
   /* =====================================================
      SCROLL ENGINE
 
-     Only the hero currently needs continuous
-     scroll-driven calculations.
+     Only the hero requires continuous
+     scroll-driven calculation now.
 
-     Everything else uses IntersectionObserver
-     or CSS hover / transition states.
+     Promise cards, wedding features, locations,
+     process and partner sections use CSS + reveals.
      ===================================================== */
 
   let ticking = false;
@@ -826,14 +905,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             /*
-               If we've crossed onto mobile,
-               explicitly clear any transform
-               previously written by desktop JS.
+               Clear any inline desktop transform when
+               switching into the mobile breakpoint.
+
+               CSS can then fully control the video again.
             */
 
             if (
-              !isDesktop() &&
-              heroVideo
+              heroVideo &&
+              (
+                !isDesktop() ||
+                reduceMotion
+              )
             ) {
 
               heroVideo.style.transform =
@@ -853,6 +936,51 @@ document.addEventListener('DOMContentLoaded', function () {
           100
         );
 
+
+    }
+  );
+
+
+
+  /* =====================================================
+     ORIENTATION CHANGE
+
+     Particularly useful on iPhone / iPad where
+     viewport dimensions can lag during rotation.
+     ===================================================== */
+
+  window.addEventListener(
+    'orientationchange',
+    function () {
+
+
+      window.setTimeout(
+        function () {
+
+          requestScrollUpdate();
+
+        },
+        150
+      );
+
+
+    }
+  );
+
+
+
+  /* =====================================================
+     BF CACHE SAFETY
+
+     Safari can restore a page from back-forward cache.
+     Recalculate hero state when that happens.
+     ===================================================== */
+
+  window.addEventListener(
+    'pageshow',
+    function () {
+
+      requestScrollUpdate();
 
     }
   );

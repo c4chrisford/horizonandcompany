@@ -1,66 +1,83 @@
-/* =========================================================
-   HORIZON & COMPANY
-   HOMEPAGE JAVASCRIPT
+<div class="promise-story">
 
-   Load with:
-   <script src="/js/home.js" defer></script>
+  <div class="promise-story-inner">
 
-   IMPORTANT:
-   - Shared navigation, package cards, FAQ and contact form
-     remain handled by /js/site.js.
-   - This file controls HOMEPAGE-ONLY interactions.
+    <div class="promise-copy-stack">
 
-   Homepage features:
-   - Static cinematic hero
-   - Rotating hero testimonials
-   - Subtle hero video movement
-   - Scroll-driven wedding-day image story
-   - Scroll-driven "what film preserves" story
-   - Standard reveal animations
-   ========================================================= */
+      <article
+        class="promise-copy-block"
+        data-promise-copy="0">
+        <!-- 01 copy -->
+      </article>
 
+      <article
+        class="promise-copy-block"
+        data-promise-copy="1">
+        <!-- 02 copy -->
+      </article>
 
-document.addEventListener(
-  'DOMContentLoaded',
-  function () {
+      <article
+        class="promise-copy-block"
+        data-promise-copy="2">
+        <!-- 03 copy -->
+      </article>
 
+      <article
+        class="promise-copy-block"
+        data-promise-copy="3">
+        <!-- 04 copy -->
+      </article>
 
-    /* =====================================================
-       GLOBAL
-       ===================================================== */
+      <article
+        class="promise-copy-block"
+        data-promise-copy="4">
+        <!-- 05 copy -->
+      </article>
 
-    const reduceMotion =
-      window.matchMedia(
-        '(prefers-reduced-motion: reduce)'
-      ).matches;
-
-
-    const DESKTOP_BREAKPOINT = 900;
-
-
-    function clamp(
-      value,
-      min = 0,
-      max = 1
-    ) {
-
-      return Math.min(
-        Math.max(
-          value,
-          min
-        ),
-        max
-      );
-
-    }
+    </div>
 
 
-    function isDesktop() {
+    <div class="promise-visual-column">
 
-      return (
-        window.innerWidth >
-        DESKTOP_BREAKPOINT
-      );
+      <div class="promise-visual-sticky">
+
+        <figure
+          class="promise-sticky-image is-active"
+          data-promise-image="0">
+          ...
+        </figure>
+
+        <figure
+          class="promise-sticky-image"
+          data-promise-image="1">
+          ...
+        </figure>
+
+        <figure
+          class="promise-sticky-image"
+          data-promise-image="2">
+          ...
+        </figure>
+
+        <figure
+          class="promise-sticky-image"
+          data-promise-image="3">
+          ...
+        </figure>
+
+        <figure
+          class="promise-sticky-image"
+          data-promise-image="4">
+          ...
+        </figure>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>      );
 
     }
 

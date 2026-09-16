@@ -3,7 +3,18 @@
    HOMEPAGE ONLY
 
    Load AFTER /css/styles.css
-   Written for the current redesigned homepage structure.
+
+   Key changes:
+   - Hero genuinely fills the viewport width
+   - Hero video no longer relies on translate(), so JS scaling
+     cannot accidentally break its positioning
+   - Five-part "More Than The Highlights" sequence becomes
+     a cinematic sticky card-scroll on desktop
+   - Chronological order is visually obvious: 01 -> 05
+   - Images and copy alternate to stop the section feeling repetitive
+   - Sticky behaviour removed cleanly on tablets / mobile
+   - Existing portfolio, collections, partner, locations,
+     FAQ and contact sections retained
    ========================================================= */
 
 
@@ -29,16 +40,15 @@
 
   --home-shadow:
     0 24px 65px rgba(31,28,24,.08);
+
+  --promise-sticky-top:
+    calc(var(--nav-height,72px) + 24px);
 }
 
 
 
 /* =========================================================
-   HOMEPAGE RESET / FULL BLEED
-
-   IMPORTANT:
-   Do not later apply margin:0 to these sections.
-   That was cancelling the full-width treatment.
+   HOMEPAGE FULL BLEED RESET
    ========================================================= */
 
 .home-hero,
@@ -55,13 +65,16 @@
   position:relative !important;
 
   width:100vw !important;
+  width:100dvw !important;
+
   max-width:none !important;
 
   left:50% !important;
-  right:50% !important;
 
   margin-left:-50vw !important;
-  margin-right:-50vw !important;
+  margin-left:-50dvw !important;
+
+  margin-right:0 !important;
 
   box-sizing:border-box;
 }
@@ -162,17 +175,33 @@
 
 .home-hero{
   height:calc(100svh - var(--nav-height,0px));
+
   min-height:690px;
 
   overflow:hidden;
 
   background:#111;
+  isolation:isolate;
 }
 
 
 
 /* =========================================================
    HERO MEDIA
+
+   IMPORTANT:
+   Do not centre this using:
+   top:50%;
+   left:50%;
+   translate(-50%,-50%)
+
+   home.js writes transform:scale(...)
+   during scrolling.
+
+   If translate() lives in the transform property,
+   JS overwrites it and the video stops filling the hero.
+
+   Using inset:0 means JS can safely alter scale only.
    ========================================================= */
 
 .home-hero-media{
@@ -192,32 +221,29 @@
 
 
 .home-hero-video{
-  position:absolute;
+  position:absolute !important;
 
-  top:50%;
-  left:50%;
+  inset:0 !important;
 
   display:block;
 
   width:100% !important;
   height:100% !important;
 
-  min-width:100%;
-  min-height:100%;
+  min-width:100% !important;
+  min-height:100% !important;
 
   max-width:none !important;
   max-height:none !important;
 
   margin:0 !important;
+  padding:0 !important;
 
   object-fit:cover !important;
   object-position:center center;
 
-  transform:
-    translate(-50%,-50%)
-    scale(1.015);
-
-  transform-origin:center;
+  transform:scale(1.015);
+  transform-origin:center center;
 
   will-change:transform;
 }
@@ -238,9 +264,10 @@
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.13) 0%,
-      rgba(0,0,0,.21) 36%,
-      rgba(0,0,0,.49) 100%
+      rgba(0,0,0,.12) 0%,
+      rgba(0,0,0,.18) 30%,
+      rgba(0,0,0,.33) 62%,
+      rgba(0,0,0,.58) 100%
     );
 
   pointer-events:none;
@@ -264,8 +291,8 @@
 
   display:flex;
   flex-direction:column;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
 
   text-align:center;
 }
@@ -287,6 +314,8 @@
   color:#dabd8d;
 
   font-size:.61rem;
+  line-height:1.2;
+
   font-weight:600;
 
   letter-spacing:3.8px;
@@ -378,6 +407,8 @@
   text-decoration:none;
 
   font-size:.64rem;
+  line-height:1;
+
   font-weight:600;
 
   letter-spacing:2.15px;
@@ -455,7 +486,6 @@
 .home-hero-review,
 .home-hero-review-source{
   background:transparent !important;
-
   box-shadow:none !important;
 }
 
@@ -532,14 +562,12 @@
 .home-hero-review::before,
 .home-hero-review::after{
   content:none !important;
-
   display:none !important;
 }
 
 
 .home-hero-review.is-active{
   opacity:1;
-
   transform:none;
 }
 
@@ -1162,13 +1190,16 @@
 
 
 /* =========================================================
-   WHAT FILM KEEPS
+   MORE THAN THE HIGHLIGHTS
    ========================================================= */
 
 .home-promise{
-  overflow:hidden;
+  overflow:visible;
 
-  background:#fff;
+  padding-bottom:
+    clamp(120px,12vw,190px);
+
+  background:#f5f3ef;
 }
 
 
@@ -1200,11 +1231,11 @@
 .promise-heading{
   position:relative;
 
-  z-index:2;
+  z-index:20;
 
   max-width:880px;
 
-  margin:0 auto 88px;
+  margin:0 auto clamp(70px,8vw,110px);
 
   text-align:center;
 }
@@ -1261,16 +1292,18 @@
 
 
 /* =========================================================
-   PROMISE MOSAIC
+   CINEMATIC STICKY STORY
 
-   DESKTOP FLOW:
+   Every chapter becomes a near-screen-sized card.
 
-   01  full width
-   02  | 03
-   04  full width
-   05  full width
+   As the visitor scrolls:
+   01 sticks
+   02 slides over it
+   03 slides over 02
+   04 slides over 03
+   05 becomes the final image
 
-   This makes the numbering visually unambiguous.
+   This is deliberately different from a normal card grid.
    ========================================================= */
 
 .promise-mosaic{
@@ -1282,106 +1315,136 @@
 
   margin:0 auto;
 
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,minmax(0,1fr));
-
-  gap:28px;
+  display:block;
 }
 
 
-.promise-card{
-  position:relative;
 
-  min-width:0;
-  min-height:610px;
+/* =========================================================
+   BASE STORY CARD
+   ========================================================= */
+
+.promise-card{
+  position:sticky;
+
+  top:var(--promise-sticky-top);
+
+  width:100%;
+
+  min-height:
+    min(
+      720px,
+      calc(100svh - var(--nav-height,72px) - 48px)
+    );
+
+  margin:0 0 14vh;
 
   display:grid;
 
-  grid-template-rows:
-    minmax(325px,1fr)
-    auto;
+  grid-template-columns:
+    minmax(0,1.35fr)
+    minmax(350px,.65fr);
 
   overflow:hidden;
 
   background:var(--home-paper);
 
-  border:1px solid rgba(36,35,33,.09);
+  border:1px solid rgba(36,35,33,.10);
+
+  box-shadow:
+    0 24px 80px rgba(25,22,18,.08);
+
+  transform-origin:center top;
 
   transition:
-    transform .45s cubic-bezier(.2,.7,.2,1),
-    box-shadow .45s ease,
-    border-color .45s ease;
+    box-shadow .5s ease,
+    border-color .5s ease;
 }
 
 
 .promise-card:hover{
-  transform:translateY(-4px);
+  border-color:rgba(36,35,33,.16);
 
-  border-color:rgba(36,35,33,.15);
-
-  box-shadow:var(--home-shadow);
+  box-shadow:
+    0 30px 95px rgba(25,22,18,.12);
 }
 
 
 
 /* =========================================================
-   PROMISE CARD 01
-   Full-width opener
+   STACK ORDER
    ========================================================= */
 
 .promise-card-01{
-  grid-column:1 / -1;
-
-  min-height:550px;
-
-  grid-template-columns:
-    minmax(0,1.3fr)
-    minmax(360px,.7fr);
-
-  grid-template-rows:1fr;
+  z-index:1;
 }
 
 
+.promise-card-02{
+  z-index:2;
+}
 
-/* =========================================================
-   PROMISE CARDS 02 + 03
-   Two-up middle row
-   ========================================================= */
 
-.promise-card-02,
 .promise-card-03{
-  grid-column:auto;
-
-  min-height:650px;
+  z-index:3;
 }
 
-
-
-/* =========================================================
-   PROMISE CARD 04
-   Full-width bridge
-   ========================================================= */
 
 .promise-card-04{
-  grid-column:1 / -1;
-
-  min-height:535px;
-
-  grid-template-columns:
-    minmax(350px,.72fr)
-    minmax(0,1.28fr);
-
-  grid-template-rows:1fr;
+  z-index:4;
 }
 
 
+.promise-card-05{
+  z-index:5;
+
+  margin-bottom:0;
+}
+
+
+
+/* =========================================================
+   ALTERNATING CARD LAYOUTS
+   ========================================================= */
+
+.promise-card-01,
+.promise-card-03,
+.promise-card-05{
+  grid-template-columns:
+    minmax(0,1.34fr)
+    minmax(350px,.66fr);
+}
+
+
+.promise-card-02,
+.promise-card-04{
+  grid-template-columns:
+    minmax(350px,.66fr)
+    minmax(0,1.34fr);
+}
+
+
+.promise-card-01 .promise-card-image,
+.promise-card-03 .promise-card-image,
+.promise-card-05 .promise-card-image{
+  order:1;
+}
+
+
+.promise-card-01 .promise-card-copy,
+.promise-card-03 .promise-card-copy,
+.promise-card-05 .promise-card-copy{
+  order:2;
+}
+
+
+.promise-card-02 .promise-card-copy,
 .promise-card-04 .promise-card-copy{
   order:1;
 }
 
 
+.promise-card-02 .promise-card-image,
 .promise-card-04 .promise-card-image{
   order:2;
 }
@@ -1389,47 +1452,73 @@
 
 
 /* =========================================================
-   PROMISE CARD 05
-   Full-width cinematic finish
+   SUBTLE DEPTH BETWEEN STICKY LAYERS
    ========================================================= */
 
+.promise-card-01{
+  top:
+    calc(var(--promise-sticky-top) + 0px);
+}
+
+
+.promise-card-02{
+  top:
+    calc(var(--promise-sticky-top) + 8px);
+}
+
+
+.promise-card-03{
+  top:
+    calc(var(--promise-sticky-top) + 16px);
+}
+
+
+.promise-card-04{
+  top:
+    calc(var(--promise-sticky-top) + 24px);
+}
+
+
 .promise-card-05{
-  grid-column:1 / -1;
-
-  min-height:575px;
-
-  grid-template-columns:
-    minmax(0,1.25fr)
-    minmax(360px,.75fr);
-
-  grid-template-rows:1fr;
-}
-
-
-.promise-card-05 .promise-card-image{
-  order:1;
-}
-
-
-.promise-card-05 .promise-card-copy{
-  order:2;
+  top:
+    calc(var(--promise-sticky-top) + 32px);
 }
 
 
 
 /* =========================================================
-   PROMISE IMAGE
+   STORY IMAGE
    ========================================================= */
 
 .promise-card-image{
   position:relative;
 
   min-width:0;
-  min-height:0;
+  min-height:100%;
 
   overflow:hidden;
 
   background:#d9d4cd;
+}
+
+
+.promise-card-image::before{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.015),
+      rgba(0,0,0,.085)
+    );
+
+  pointer-events:none;
 }
 
 
@@ -1438,7 +1527,7 @@
 
   position:absolute;
 
-  inset:14px;
+  inset:16px;
 
   z-index:2;
 
@@ -1449,56 +1538,89 @@
 
 
 .promise-card-image img{
+  position:absolute;
+
+  inset:0;
+
   display:block;
 
   width:100%;
   height:100%;
 
-  min-width:100%;
-  min-height:100%;
-
   object-fit:cover;
 
   transition:
-    transform 1s cubic-bezier(.2,.7,.2,1);
+    transform 1.25s cubic-bezier(.2,.7,.2,1),
+    filter .7s ease;
 }
 
 
 .promise-card:hover .promise-card-image img{
-  transform:scale(1.025);
+  transform:scale(1.018);
 }
 
 
 
 /* =========================================================
-   PROMISE IMAGE CROPS
-
-   Explicit class rules rather than nth-child:
-   safer now that there are five cards.
+   CAREFULLY CHOSEN CROPS
    ========================================================= */
 
+/*
+   01 — Bride preparation
+
+   Keep the bride as the main subject but retain
+   enough background to show the busy preparation room.
+*/
+
 .promise-card-01 .promise-card-image img{
-  object-position:center 43%;
+  object-position:center 42%;
 }
 
+
+/*
+   02 — Top-table speech
+
+   Framing needs to preserve the speaker AND couple,
+   rather than crop too tightly onto one person.
+*/
 
 .promise-card-02 .promise-card-image img{
-  object-position:center 45%;
-}
-
-
-.promise-card-03 .promise-card-image img{
   object-position:center 46%;
 }
 
 
-.promise-card-04 .promise-card-image img{
-  object-position:center 47%;
+/*
+   03 — Candid guest moment
+
+   The physical interaction is the story here.
+*/
+
+.promise-card-03 .promise-card-image img{
+  object-position:center 43%;
 }
 
 
+/*
+   04 — Guests laughing
+
+   Keep this wider because the point is atmosphere,
+   not a single portrait.
+*/
+
+.promise-card-04 .promise-card-image img{
+  object-position:center 48%;
+}
+
+
+/*
+   05 — First dance
+
+   Couple stays central while retaining enough room
+   around them to feel like the final celebration.
+*/
+
 .promise-card-05 .promise-card-image img{
-  object-position:center 44%;
+  object-position:center 46%;
 }
 
 
@@ -1513,23 +1635,45 @@
   min-width:0;
 
   padding:
-    clamp(36px,4vw,58px);
+    clamp(42px,4.7vw,72px);
 
   display:flex;
   flex-direction:column;
   justify-content:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fbfaf7 0%,
+      #f7f4ee 100%
+    );
+}
+
+
+.promise-card-copy::after{
+  content:"";
+
+  position:absolute;
+
+  top:34px;
+  right:34px;
+
+  width:56px;
+  height:1px;
+
+  background:rgba(159,129,82,.42);
 }
 
 
 .promise-number{
   display:block;
 
-  margin-bottom:13px;
+  margin-bottom:14px;
 
   font-family:'Baskervville',serif;
 
-  font-size:3.9rem;
-  line-height:.8;
+  font-size:clamp(3.5rem,4.5vw,4.4rem);
+  line-height:.78;
 
   font-weight:400;
 
@@ -1540,12 +1684,12 @@
 .promise-kicker{
   display:block;
 
-  margin-bottom:19px;
+  margin-bottom:21px;
 
   color:#817a71;
 
   font-size:.54rem;
-  line-height:1.3;
+  line-height:1.35;
 
   font-weight:600;
 
@@ -1557,39 +1701,81 @@
 .promise-card h3{
   max-width:490px;
 
-  margin:0 0 19px;
+  margin:0 0 22px;
 
   font-family:'Baskervville',serif;
 
-  font-size:clamp(2.2rem,3vw,3.15rem);
-  line-height:1.02;
+  font-size:clamp(2.35rem,3.2vw,3.45rem);
+  line-height:1.01;
 
   font-weight:400;
 
-  letter-spacing:-.03em;
+  letter-spacing:-.035em;
 
   color:var(--home-ink);
 }
 
 
 .promise-card p{
-  max-width:470px;
+  max-width:450px;
 
   margin:0;
 
   color:#625e59;
 
   font-size:.94rem;
-  line-height:1.8;
+  line-height:1.82;
 }
 
 
 
-/* Two-up cards slightly restrained so they balance */
+/* =========================================================
+   STORY CARD DECORATIVE CHAPTER MARKERS
+   ========================================================= */
 
-.promise-card-02 h3,
-.promise-card-03 h3{
-  font-size:clamp(2.15rem,2.7vw,2.8rem);
+.promise-card::after{
+  position:absolute;
+
+  right:26px;
+  bottom:19px;
+
+  z-index:5;
+
+  font-family:'Baskervville',serif;
+
+  font-size:.58rem;
+
+  color:rgba(36,35,33,.35);
+
+  letter-spacing:2.4px;
+  text-transform:uppercase;
+
+  pointer-events:none;
+}
+
+
+.promise-card-01::after{
+  content:"01 / 05";
+}
+
+
+.promise-card-02::after{
+  content:"02 / 05";
+}
+
+
+.promise-card-03::after{
+  content:"03 / 05";
+}
+
+
+.promise-card-04::after{
+  content:"04 / 05";
+}
+
+
+.promise-card-05::after{
+  content:"05 / 05";
 }
 
 
@@ -3047,6 +3233,23 @@
     min-height:68px;
   }
 
+
+  .promise-card{
+    min-height:
+      calc(100svh - var(--nav-height,72px) - 42px);
+  }
+
+
+  .promise-card-copy{
+    padding:
+      clamp(34px,4vw,56px);
+  }
+
+
+  .promise-card h3{
+    font-size:clamp(2.15rem,2.8vw,2.85rem);
+  }
+
 }
 
 
@@ -3067,41 +3270,23 @@
   }
 
 
-  .promise-mosaic{
-    gap:20px;
-  }
-
-
   .promise-card{
-    min-height:560px;
-  }
-
-
-  .promise-card-01,
-  .promise-card-04,
-  .promise-card-05{
-    min-height:510px;
-  }
-
-
-  .promise-card-01{
     grid-template-columns:
-      minmax(0,1.18fr)
-      minmax(330px,.82fr);
+      minmax(0,1.15fr)
+      minmax(310px,.85fr);
   }
 
 
+  .promise-card-02,
   .promise-card-04{
     grid-template-columns:
-      minmax(330px,.82fr)
-      minmax(0,1.18fr);
+      minmax(310px,.85fr)
+      minmax(0,1.15fr);
   }
 
 
-  .promise-card-05{
-    grid-template-columns:
-      minmax(0,1.18fr)
-      minmax(330px,.82fr);
+  .promise-card h3{
+    font-size:clamp(2.15rem,3vw,2.9rem);
   }
 
 
@@ -3137,6 +3322,11 @@
 
 /* =========================================================
    MOBILE / SMALL TABLET
+
+   Sticky stacking is intentionally disabled here.
+
+   On touch screens normal document flow is considerably
+   more reliable and easier to understand.
    ========================================================= */
 
 @media(max-width:900px){
@@ -3157,10 +3347,14 @@
   }
 
 
-  /* HERO */
+
+  /* =====================================================
+     HERO
+     ===================================================== */
 
   .home-hero{
     height:100svh;
+
     min-height:690px;
   }
 
@@ -3185,7 +3379,10 @@
   }
 
 
-  /* STORIES */
+
+  /* =====================================================
+     STORIES
+     ===================================================== */
 
   .home-stories-header{
     margin-bottom:65px;
@@ -3239,7 +3436,15 @@
   }
 
 
-  /* PROMISE */
+
+  /* =====================================================
+     PROMISE
+     ===================================================== */
+
+  .home-promise{
+    overflow:hidden;
+  }
+
 
   .promise-heading{
     margin-bottom:58px;
@@ -3247,9 +3452,11 @@
 
 
   .promise-mosaic{
+    display:grid;
+
     grid-template-columns:1fr;
 
-    gap:20px;
+    gap:22px;
   }
 
 
@@ -3258,45 +3465,60 @@
   .promise-card-02,
   .promise-card-03,
   .promise-card-04,
-  .promise-card-05,
-  .promise-card-large,
-  .promise-card-celebration{
-    grid-column:auto;
+  .promise-card-05{
+    position:relative;
+
+    top:auto;
+
+    z-index:auto;
 
     min-height:0;
+
+    margin:0;
 
     display:grid;
 
     grid-template-columns:1fr;
     grid-template-rows:auto auto;
+
+    box-shadow:
+      0 16px 48px rgba(31,28,24,.065);
   }
 
 
   .promise-card-image,
+  .promise-card-01 .promise-card-image,
+  .promise-card-02 .promise-card-image,
+  .promise-card-03 .promise-card-image,
   .promise-card-04 .promise-card-image,
-  .promise-card-05 .promise-card-image,
-  .promise-card-celebration .promise-card-image{
+  .promise-card-05 .promise-card-image{
     order:1;
+
+    min-height:0;
 
     aspect-ratio:16/10;
   }
 
 
+  .promise-card-image img{
+    position:absolute;
+  }
+
+
   .promise-card-copy,
+  .promise-card-01 .promise-card-copy,
+  .promise-card-02 .promise-card-copy,
+  .promise-card-03 .promise-card-copy,
   .promise-card-04 .promise-card-copy,
-  .promise-card-05 .promise-card-copy,
-  .promise-card-celebration .promise-card-copy{
+  .promise-card-05 .promise-card-copy{
     order:2;
   }
 
 
-  .promise-card-02,
-  .promise-card-03{
-    min-height:0;
-  }
 
-
-  /* PROCESS */
+  /* =====================================================
+     PROCESS
+     ===================================================== */
 
   .home-process-grid{
     grid-template-columns:1fr;
@@ -3319,7 +3541,10 @@
   }
 
 
-  /* PARTNER */
+
+  /* =====================================================
+     PARTNER
+     ===================================================== */
 
   .home-partner-inner{
     grid-template-columns:1fr;
@@ -3368,7 +3593,10 @@
   }
 
 
-  /* HERO */
+
+  /* =====================================================
+     HERO
+     ===================================================== */
 
   .home-hero-inner{
     width:92vw;
@@ -3468,7 +3696,10 @@
   }
 
 
-  /* GLOBAL HEADINGS */
+
+  /* =====================================================
+     GLOBAL HEADINGS
+     ===================================================== */
 
   .home-stories-header h2,
   .promise-heading h2,
@@ -3482,7 +3713,10 @@
   }
 
 
-  /* STORIES */
+
+  /* =====================================================
+     STORIES
+     ===================================================== */
 
   .home-stories-header{
     margin-bottom:52px;
@@ -3549,7 +3783,10 @@
   }
 
 
-  /* REVIEW */
+
+  /* =====================================================
+     REVIEW
+     ===================================================== */
 
   .home-review-feature blockquote{
     font-size:1.9rem;
@@ -3558,7 +3795,10 @@
   }
 
 
-  /* PROMISE */
+
+  /* =====================================================
+     PROMISE
+     ===================================================== */
 
   .promise-heading{
     margin-bottom:45px;
@@ -3581,9 +3821,8 @@
 
 
   .promise-card:hover{
-    transform:none;
-
-    box-shadow:none;
+    box-shadow:
+      0 16px 48px rgba(31,28,24,.065);
   }
 
 
@@ -3598,7 +3837,15 @@
 
 
   .promise-card-copy{
-    padding:32px 26px 36px;
+    padding:32px 26px 40px;
+  }
+
+
+  .promise-card-copy::after{
+    top:24px;
+    right:24px;
+
+    width:38px;
   }
 
 
@@ -3607,9 +3854,7 @@
   }
 
 
-  .promise-card h3,
-  .promise-card-02 h3,
-  .promise-card-03 h3{
+  .promise-card h3{
     font-size:2.35rem;
   }
 
@@ -3620,7 +3865,18 @@
   }
 
 
-  /* PROCESS */
+  .promise-card::after{
+    right:21px;
+    bottom:15px;
+
+    font-size:.5rem;
+  }
+
+
+
+  /* =====================================================
+     PROCESS
+     ===================================================== */
 
   .home-process-grid{
     gap:44px;
@@ -3677,7 +3933,10 @@
   }
 
 
-  /* COLLECTIONS */
+
+  /* =====================================================
+     COLLECTIONS
+     ===================================================== */
 
   .collection-intro{
     margin-bottom:50px;
@@ -3694,7 +3953,10 @@
   }
 
 
-  /* PARTNER */
+
+  /* =====================================================
+     PARTNER
+     ===================================================== */
 
   .home-partner-inner{
     gap:50px;
@@ -3816,7 +4078,10 @@
   }
 
 
-  /* LOCATIONS */
+
+  /* =====================================================
+     LOCATIONS
+     ===================================================== */
 
   .home-destination-grid{
     grid-template-columns:1fr;
@@ -3830,7 +4095,10 @@
   }
 
 
-  /* FINAL CTA */
+
+  /* =====================================================
+     FINAL CTA
+     ===================================================== */
 
   .home-final-cta h2{
     font-size:2.8rem;
@@ -3847,7 +4115,10 @@
   }
 
 
-  /* CONTACT */
+
+  /* =====================================================
+     CONTACT
+     ===================================================== */
 
   .home-contact-header{
     margin-bottom:48px;
@@ -3897,9 +4168,7 @@
   }
 
 
-  .promise-card h3,
-  .promise-card-02 h3,
-  .promise-card-03 h3{
+  .promise-card h3{
     font-size:2.15rem;
   }
 
@@ -3952,8 +4221,7 @@
 
 
   .home-hero-video{
-    transform:
-      translate(-50%,-50%) !important;
+    transform:none !important;
   }
 
 

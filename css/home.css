@@ -196,6 +196,8 @@
 
   transform:scale(1.015);
   transform-origin:center center;
+
+  will-change:transform;
 }
 
 
@@ -305,7 +307,9 @@
 }
 
 
-/* BUTTONS */
+/* =========================================================
+   HERO BUTTONS
+   ========================================================= */
 
 .home-hero-actions{
   margin-top:34px;
@@ -626,9 +630,6 @@
 
 /* =========================================================
    PROMISE INTRO
-
-   Separate cinematic opening chapter.
-   This is NOT part of the sticky 01-05 sequence.
    ========================================================= */
 
 .promise-intro{
@@ -690,6 +691,10 @@
   color:rgba(0,0,0,.022);
 
   pointer-events:none;
+
+  transition:
+    opacity .8s ease,
+    transform 1s cubic-bezier(.2,.7,.2,1);
 }
 
 
@@ -707,6 +712,17 @@
   overflow:hidden;
 
   background:#d8d5cf;
+
+  transform-origin:center center;
+
+  transition:
+    opacity .9s cubic-bezier(.2,.7,.2,1),
+    transform 1.05s cubic-bezier(.2,.7,.2,1),
+    filter .9s ease;
+
+  will-change:
+    opacity,
+    transform;
 }
 
 
@@ -725,6 +741,9 @@
   object-position:center center;
 
   transform:scale(1.025);
+
+  transition:
+    transform 1.2s cubic-bezier(.2,.7,.2,1);
 }
 
 
@@ -749,6 +768,14 @@
   z-index:3;
 
   max-width:570px;
+
+  transition:
+    opacity .85s cubic-bezier(.2,.7,.2,1),
+    transform 1.05s cubic-bezier(.2,.7,.2,1);
+
+  will-change:
+    opacity,
+    transform;
 }
 
 
@@ -805,6 +832,67 @@
   font-style:italic;
 
   color:#393632;
+}
+
+
+/* =========================================================
+   INTRO EXIT ANIMATION
+
+   JS adds .is-exiting to .promise-intro.
+
+   Image peels left.
+   Copy peels right.
+   Background word recedes.
+
+   This prevents the transition into 01 feeling like
+   one normal section stacked underneath another.
+   ========================================================= */
+
+.promise-intro.is-exiting .promise-intro-image{
+  opacity:0;
+
+  transform:
+    translate3d(-9vw,0,0)
+    scale(.965);
+
+  filter:blur(2px);
+}
+
+
+.promise-intro.is-exiting .promise-intro-image img{
+  transform:scale(1.07);
+}
+
+
+.promise-intro.is-exiting .promise-intro-copy{
+  opacity:0;
+
+  transform:
+    translate3d(9vw,0,0);
+}
+
+
+.promise-intro.is-exiting .promise-intro-word{
+  opacity:0;
+
+  transform:
+    translate(-50%,-50%)
+    scale(1.08);
+}
+
+
+/* Optional softer intermediate state */
+
+.promise-intro.is-transitioning .promise-intro-image{
+  transform:
+    translate3d(-2vw,0,0)
+    scale(.99);
+}
+
+
+.promise-intro.is-transitioning .promise-intro-copy{
+  transform:
+    translate3d(2vw,0,0);
 }
 
 
@@ -881,8 +969,8 @@
    PROMISE STORY
    01-05
 
-   LEFT = NORMAL DOCUMENT FLOW
-   RIGHT = STICKY VISUAL
+   COPY SCROLLS NATURALLY.
+   IMAGE STAYS CENTRED IN VIEWPORT.
    ========================================================= */
 
 .promise-story{
@@ -942,7 +1030,7 @@
 
   gap:90px;
 
-  align-items:start;
+  align-items:stretch;
 }
 
 
@@ -953,11 +1041,20 @@
 .promise-copy-stack{
   position:relative;
 
+  z-index:3;
+
   min-width:0;
 
-  padding-bottom:20vh;
+  padding:0 0 10vh;
 }
 
+
+/*
+   IMPORTANT:
+   ALL copy stays at full opacity.
+
+   Active state is used by JS for image switching only.
+*/
 
 .promise-copy-block{
   position:relative;
@@ -965,40 +1062,41 @@
   width:100%;
   max-width:560px;
 
-  min-height:82vh;
+  min-height:100svh;
 
-  padding:17vh 0 13vh;
+  padding:
+    22vh
+    0
+    18vh;
 
   display:flex;
   flex-direction:column;
   justify-content:center;
 
-  opacity:.29;
+  opacity:1 !important;
 
-  transform:translateY(10px);
+  transform:none !important;
 
-  transition:
-    opacity .55s ease,
-    transform .55s cubic-bezier(.2,.7,.2,1);
+  color:var(--home-ink);
 }
 
 
 .promise-copy-block:first-child{
-  padding-top:20vh;
+  padding-top:23vh;
 }
 
 
 .promise-copy-block:last-child{
-  min-height:90vh;
+  min-height:100svh;
 
   padding-bottom:24vh;
 }
 
 
 .promise-copy-block.is-active{
-  opacity:1;
+  opacity:1 !important;
 
-  transform:translateY(0);
+  transform:none !important;
 }
 
 
@@ -1097,20 +1195,34 @@
 }
 
 
+/*
+   The key fix:
+
+   We centre the sticky stage around the viewport,
+   rather than pinning it near the top.
+
+   This removes the dead empty space beneath it.
+*/
+
 .promise-visual-sticky{
   position:sticky;
 
-  top:calc(var(--nav-height, 0px) + 7vh);
+  top:
+    calc(
+      var(--nav-height, 0px) +
+      (
+        100svh -
+        var(--nav-height, 0px)
+      ) / 2
+    );
+
+  transform:translateY(-50%);
 
   width:100%;
   max-width:600px;
 
-  height:min(
-    72vh,
-    650px
-  );
-
-  min-height:500px;
+  height:min(68vh,640px);
+  min-height:470px;
 
   margin-left:auto;
 
@@ -1119,7 +1231,9 @@
   background:#d7d3cc;
 
   box-shadow:
-    0 24px 60px rgba(44,39,32,.045);
+    0 24px 60px rgba(44,39,32,.055);
+
+  isolation:isolate;
 }
 
 
@@ -1147,6 +1261,8 @@
 
   inset:0;
 
+  z-index:1;
+
   width:100%;
   height:100%;
 
@@ -1156,11 +1272,14 @@
 
   opacity:0;
 
-  transform:scale(1.025);
+  visibility:hidden;
+
+  transform:scale(1.035);
 
   transition:
-    opacity .75s cubic-bezier(.2,.7,.2,1),
-    transform 1.2s cubic-bezier(.2,.7,.2,1);
+    opacity .65s cubic-bezier(.2,.7,.2,1),
+    transform 1.05s cubic-bezier(.2,.7,.2,1),
+    visibility 0s linear .65s;
 
   pointer-events:none;
 
@@ -1171,11 +1290,18 @@
 
 
 .promise-sticky-image.is-active{
-  z-index:2;
+  z-index:3;
 
   opacity:1;
 
+  visibility:visible;
+
   transform:scale(1);
+
+  transition:
+    opacity .65s cubic-bezier(.2,.7,.2,1),
+    transform 1.05s cubic-bezier(.2,.7,.2,1),
+    visibility 0s;
 
   pointer-events:auto;
 }
@@ -1191,36 +1317,62 @@
   width:100%;
   height:100%;
 
+  max-width:none !important;
+
   object-fit:cover;
 
   object-position:center center;
 }
 
 
-/* Fine positioning for specific compositions */
+/* =========================================================
+   IMAGE-SPECIFIC CROPS
+   ========================================================= */
 
 .promise-sticky-image[data-promise-image="0"] img{
-  object-position:center 48%;
+  object-position:center 47%;
 }
 
 
 .promise-sticky-image[data-promise-image="1"] img{
-  object-position:center 42%;
+  object-position:center 43%;
 }
 
 
 .promise-sticky-image[data-promise-image="2"] img{
-  object-position:center center;
+  object-position:center 48%;
 }
 
 
 .promise-sticky-image[data-promise-image="3"] img{
-  object-position:center 45%;
+  object-position:center 44%;
 }
 
 
 .promise-sticky-image[data-promise-image="4"] img{
-  object-position:center center;
+  object-position:center 49%;
+}
+
+
+/* =========================================================
+   IMAGE CAPTION CHANGES
+   ========================================================= */
+
+.promise-sticky-image .promise-image-caption{
+  opacity:0;
+
+  transform:translateY(10px);
+
+  transition:
+    opacity .45s ease .15s,
+    transform .55s cubic-bezier(.2,.7,.2,1) .15s;
+}
+
+
+.promise-sticky-image.is-active .promise-image-caption{
+  opacity:1;
+
+  transform:translateY(0);
 }
 
 
@@ -2180,7 +2332,7 @@
 
 
 /* =========================================================
-   BENEFITS
+   PARTNER BENEFITS
    ========================================================= */
 
 .partner-benefits{
@@ -2229,7 +2381,8 @@
 
 
 /* =========================================================
-   RUBY CREDIT / LOGO
+   RUBY CREDIT
+   TEXT ONLY
    ========================================================= */
 
 .partner-credit{
@@ -2239,22 +2392,11 @@
 
   display:flex;
   align-items:center;
-
-  gap:20px;
 }
 
 
-.partner-credit img{
-  display:block;
-
-  width:118px;
-  height:68px;
-
-  padding:7px 10px;
-
-  object-fit:contain;
-
-  background:#fff;
+.partner-credit-text-only{
+  padding:4px 0;
 }
 
 
@@ -2266,7 +2408,7 @@
 .partner-credit span{
   display:block;
 
-  margin-bottom:5px;
+  margin-bottom:7px;
 
   color:#8a8176;
 
@@ -2283,7 +2425,7 @@
 
   font-family:'Baskervville',serif;
 
-  font-size:1.25rem;
+  font-size:1.45rem;
   line-height:1.15;
 
   font-weight:400;
@@ -2820,9 +2962,9 @@
 
 
   .promise-copy-block{
-    min-height:92vh;
+    min-height:100svh;
 
-    padding-top:18vh;
+    padding-top:21vh;
     padding-bottom:18vh;
   }
 
@@ -2844,10 +2986,8 @@
 
 
   .promise-visual-sticky{
-    top:calc(var(--nav-height, 0px) + 5vh);
-
-    height:69vh;
-    min-height:380px;
+    height:66vh;
+    min-height:390px;
 
     max-width:550px;
   }
@@ -3026,6 +3166,10 @@
     aspect-ratio:4/5;
 
     order:2;
+
+    opacity:1 !important;
+    transform:none !important;
+    filter:none !important;
   }
 
 
@@ -3033,6 +3177,9 @@
     max-width:650px;
 
     order:1;
+
+    opacity:1 !important;
+    transform:none !important;
   }
 
 
@@ -3065,12 +3212,6 @@
   }
 
 
-  /*
-     Mobile becomes editorial cards.
-     Copy and corresponding image are paired using
-     a generated mobile image treatment below.
-  */
-
   .promise-copy-block{
     max-width:none;
 
@@ -3078,9 +3219,9 @@
 
     padding:74px 0;
 
-    opacity:1;
+    opacity:1 !important;
 
-    transform:none;
+    transform:none !important;
 
     border-bottom:1px solid rgba(36,35,33,.12);
   }
@@ -3516,19 +3657,8 @@
   }
 
 
-  .partner-credit{
-    gap:15px;
-  }
-
-
-  .partner-credit img{
-    width:100px;
-    height:60px;
-  }
-
-
   .partner-credit strong{
-    font-size:1.1rem;
+    font-size:1.2rem;
   }
 
 
@@ -3570,17 +3700,6 @@
     right:14px;
   }
 
-
-  .partner-credit{
-    align-items:flex-start;
-  }
-
-
-  .partner-credit img{
-    width:90px;
-    height:55px;
-  }
-
 }
 
 
@@ -3600,15 +3719,31 @@
 
 
   .home-hero-review,
-  .promise-copy-block,
+  .promise-intro-image,
+  .promise-intro-copy,
+  .promise-intro-word,
   .promise-sticky-image,
+  .promise-sticky-image .promise-image-caption,
   .partner-photo img{
     transition:none;
   }
 
 
+  .promise-intro.is-exiting .promise-intro-image,
+  .promise-intro.is-exiting .promise-intro-copy,
+  .promise-intro.is-transitioning .promise-intro-image,
+  .promise-intro.is-transitioning .promise-intro-copy{
+    opacity:1;
+
+    transform:none;
+
+    filter:none;
+  }
+
+
   .promise-sticky-image:first-child{
     opacity:1;
+    visibility:visible;
   }
 
 }

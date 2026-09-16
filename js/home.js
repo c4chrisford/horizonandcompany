@@ -4,17 +4,21 @@
 
    Homepage-only interactions:
    - Rotating hero testimonials
-   - Subtle hero video movement
-   - Hero copy fade on scroll
-   - Reveal animations
+   - Cinematic hero video movement
+   - Hero content fade as page leaves viewport
+   - Standard reveal animations
    - Sticky story chapter tracking
-   - Subtle image movement inside story cards
+   - Subtle image movement inside sticky story cards
    - Smooth internal anchor scrolling
-   - Resize / Safari safeguards
+   - Image / resize / Safari safeguards
 
    IMPORTANT:
-   Package cards, FAQ interactions, contact form
-   and shared navigation remain handled by /js/site.js.
+   - Package cards
+   - FAQ interactions
+   - Contact form
+   - Shared navigation
+
+   remain handled by /js/site.js.
    ========================================================= */
 
 
@@ -25,39 +29,65 @@ document.addEventListener('DOMContentLoaded', function () {
      GLOBAL
      ===================================================== */
 
-  const motionQuery = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  );
-
-  let reduceMotion = motionQuery.matches;
-
-  const DESKTOP_BREAKPOINT = 900;
+  const motionQuery =
+    window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    );
 
 
-  function clamp(value, min = 0, max = 1) {
+  const reduceMotion =
+    motionQuery.matches;
+
+
+  const DESKTOP_BREAKPOINT =
+    900;
+
+
+  function clamp(
+    value,
+    min = 0,
+    max = 1
+  ) {
+
     return Math.min(
-      Math.max(value, min),
+      Math.max(
+        value,
+        min
+      ),
       max
     );
+
   }
 
 
   function isDesktop() {
-    return window.innerWidth > DESKTOP_BREAKPOINT;
+
+    return (
+      window.innerWidth >
+      DESKTOP_BREAKPOINT
+    );
+
   }
 
 
   function getNavHeight() {
 
-    const styles = window.getComputedStyle(
-      document.documentElement
-    );
+    const styles =
+      window.getComputedStyle(
+        document.documentElement
+      );
 
-    const value = styles.getPropertyValue(
-      '--nav-height'
-    );
 
-    return parseFloat(value) || 0;
+    const value =
+      styles.getPropertyValue(
+        '--nav-height'
+      );
+
+
+    return (
+      parseFloat(value) ||
+      0
+    );
 
   }
 
@@ -67,31 +97,58 @@ document.addEventListener('DOMContentLoaded', function () {
      HERO ELEMENTS
      ===================================================== */
 
-  const hero = document.querySelector(
-    '.home-hero'
-  );
+  const hero =
+    document.querySelector(
+      '.home-hero'
+    );
 
-  const heroVideo = document.querySelector(
-    '.home-hero-video'
-  );
 
-  const heroMain = document.querySelector(
-    '.home-hero-main'
-  );
+  const heroVideo =
+    document.querySelector(
+      '.home-hero-video'
+    );
 
-  const heroProof = document.querySelector(
-    '.home-hero-proof'
-  );
 
-  const heroReviews = Array.from(
-    document.querySelectorAll(
-      '.home-hero-review'
-    )
-  );
+  const heroMain =
+    document.querySelector(
+      '.home-hero-main'
+    );
 
-  const heroReviewProgress = document.querySelector(
-    '.home-hero-proof-progress span'
-  );
+
+  const heroProof =
+    document.querySelector(
+      '.home-hero-proof'
+    );
+
+
+  const heroReviews =
+    Array.from(
+      document.querySelectorAll(
+        '.home-hero-review'
+      )
+    );
+
+
+  const heroReviewProgress =
+    document.querySelector(
+      '.home-hero-proof-progress span'
+    );
+
+
+  const HERO_REVIEW_DURATION =
+    6500;
+
+
+  let heroReviewIndex =
+    0;
+
+
+  let heroReviewTimer =
+    null;
+
+
+  let heroProgressAnimation =
+    null;
 
 
 
@@ -99,18 +156,18 @@ document.addEventListener('DOMContentLoaded', function () {
      HERO TESTIMONIALS
      ===================================================== */
 
-  const HERO_REVIEW_DURATION = 6500;
+  function setHeroReview(
+    index
+  ) {
 
-  let heroReviewIndex = 0;
-  let heroReviewTimer = null;
-  let heroProgressAnimation = null;
+    if (
+      !heroReviews.length
+    ) {
 
-
-  function setHeroReview(index) {
-
-    if (!heroReviews.length) {
       return;
+
     }
+
 
     heroReviewIndex =
       (
@@ -119,46 +176,64 @@ document.addEventListener('DOMContentLoaded', function () {
       ) %
       heroReviews.length;
 
-    heroReviews.forEach(function (
-      review,
-      reviewIndex
-    ) {
 
-      const active =
-        reviewIndex === heroReviewIndex;
+    heroReviews.forEach(
+      function (
+        review,
+        reviewIndex
+      ) {
 
-      review.classList.toggle(
-        'is-active',
-        active
-      );
+        const active =
+          reviewIndex ===
+          heroReviewIndex;
 
-      review.setAttribute(
-        'aria-hidden',
-        active
-          ? 'false'
-          : 'true'
-      );
 
-    });
+        review.classList.toggle(
+          'is-active',
+          active
+        );
+
+
+        review.setAttribute(
+          'aria-hidden',
+          active
+            ? 'false'
+            : 'true'
+        );
+
+      }
+    );
 
   }
+
 
 
   function stopHeroProgress() {
 
-    if (heroProgressAnimation) {
+    if (
+      heroProgressAnimation
+    ) {
 
       heroProgressAnimation.cancel();
 
-      heroProgressAnimation = null;
+
+      heroProgressAnimation =
+        null;
 
     }
 
-    if (heroReviewProgress) {
-      heroReviewProgress.style.width = '0%';
+
+    if (
+      heroReviewProgress
+    ) {
+
+      heroReviewProgress.style.width =
+        '0%';
+
     }
 
   }
+
 
 
   function startHeroProgress() {
@@ -168,80 +243,111 @@ document.addEventListener('DOMContentLoaded', function () {
       reduceMotion ||
       document.hidden
     ) {
+
       return;
+
     }
+
 
     stopHeroProgress();
 
-    heroReviewProgress.style.width = '0%';
+
+    heroReviewProgress.style.width =
+      '0%';
+
 
     if (
       typeof heroReviewProgress.animate !==
       'function'
     ) {
+
       return;
+
     }
+
 
     heroProgressAnimation =
       heroReviewProgress.animate(
         [
           {
-            width: '0%'
+            width:
+              '0%'
           },
           {
-            width: '100%'
+            width:
+              '100%'
           }
         ],
         {
-          duration: HERO_REVIEW_DURATION,
-          easing: 'linear',
-          fill: 'forwards'
+          duration:
+            HERO_REVIEW_DURATION,
+
+          easing:
+            'linear',
+
+          fill:
+            'forwards'
         }
       );
 
   }
 
 
+
   function stopHeroReviews() {
 
-    if (heroReviewTimer) {
+    if (
+      heroReviewTimer
+    ) {
 
       window.clearTimeout(
         heroReviewTimer
       );
 
-      heroReviewTimer = null;
+
+      heroReviewTimer =
+        null;
 
     }
+
 
     stopHeroProgress();
 
   }
 
 
+
   function scheduleHeroReview() {
 
     stopHeroReviews();
+
 
     if (
       reduceMotion ||
       heroReviews.length < 2 ||
       document.hidden
     ) {
+
       return;
+
     }
 
+
     startHeroProgress();
+
 
     heroReviewTimer =
       window.setTimeout(
         function () {
 
+
           setHeroReview(
             heroReviewIndex + 1
           );
 
+
           scheduleHeroReview();
+
 
         },
         HERO_REVIEW_DURATION
@@ -250,7 +356,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-  if (heroReviews.length) {
+
+  if (
+    heroReviews.length
+  ) {
 
     setHeroReview(0);
 
@@ -260,18 +369,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-  /* =====================================================
-     PAGE VISIBILITY
-
-     Stop testimonial animation while the browser tab
-     is hidden, then restart it when visible again.
-     ===================================================== */
+  /*
+     Do not let the reviews continue rotating
+     while the browser tab is hidden.
+  */
 
   document.addEventListener(
     'visibilitychange',
     function () {
 
-      if (document.hidden) {
+
+      if (
+        document.hidden
+      ) {
 
         stopHeroReviews();
 
@@ -281,6 +391,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       }
 
+
     }
   );
 
@@ -288,45 +399,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* =====================================================
      HERO SCROLL EFFECT
+
+     IMPORTANT:
+
+     CSS positions the video using inset:0.
+
+     JS therefore writes SCALE ONLY.
+
+     Do not add translate(-50%, -50%) here or change
+     the video back to left:50%; top:50%.
+
+     That was one of the causes of the previous hero issue.
      ===================================================== */
-
-  function resetHeroEffects() {
-
-    if (heroVideo) {
-      heroVideo.style.transform = '';
-    }
-
-    if (heroMain) {
-      heroMain.style.opacity = '';
-      heroMain.style.transform = '';
-    }
-
-    if (heroProof) {
-      heroProof.style.opacity = '';
-    }
-
-  }
-
 
   function updateHero() {
 
-    if (!hero) {
-      return;
-    }
-
     if (
-      !isDesktop() ||
-      reduceMotion
+      !hero
     ) {
 
-      resetHeroEffects();
-
       return;
 
     }
+
 
     const rect =
       hero.getBoundingClientRect();
+
 
     const heroHeight =
       Math.max(
@@ -334,77 +433,172 @@ document.addEventListener('DOMContentLoaded', function () {
         1
       );
 
-    const progress =
+
+    /*
+       How far through the hero the visitor has scrolled.
+
+       0 = top of page
+       1 = hero has completely passed
+    */
+
+    const scrollProgress =
       clamp(
         -rect.top /
         heroHeight
       );
 
 
-    /* -----------------------------------------------
-       VIDEO MOVEMENT
-       ----------------------------------------------- */
+    /*
+       -----------------------------------------------------
+       VIDEO SCALE
+       -----------------------------------------------------
 
-    if (heroVideo) {
+       Starts at roughly 1.015.
 
-      const scale =
-        1.01 +
-        (
-          progress *
-          0.025
-        );
+       Slowly moves towards 1.045 while leaving the hero.
 
-      heroVideo.style.transform =
-        'scale(' +
-        scale.toFixed(4) +
-        ')';
+       It feels more like a very gentle camera push
+       than obvious parallax.
+    */
+
+    if (
+      heroVideo
+    ) {
+
+
+      if (
+        !isDesktop() ||
+        reduceMotion
+      ) {
+
+        heroVideo.style.transform =
+          '';
+
+      } else {
+
+
+        const scale =
+          1.015 +
+          (
+            scrollProgress *
+            0.03
+          );
+
+
+        heroVideo.style.transform =
+          'scale(' +
+          scale.toFixed(4) +
+          ')';
+
+      }
+
 
     }
 
 
-    /* -----------------------------------------------
+
+    /*
+       -----------------------------------------------------
        HERO COPY
-       ----------------------------------------------- */
+       -----------------------------------------------------
 
-    if (heroMain) {
+       As the next section begins to cover the hero,
+       the central proposition gently recedes.
 
-      const opacity =
-        1 -
-        clamp(
-          progress *
-          1.25
-        );
+       The movement is intentionally restrained.
+    */
 
-      const translateY =
-        progress *
-        -18;
+    if (
+      heroMain
+    ) {
 
-      heroMain.style.opacity =
-        opacity.toFixed(3);
 
-      heroMain.style.transform =
-        'translate3d(0,' +
-        translateY.toFixed(2) +
-        'px,0)';
+      if (
+        reduceMotion ||
+        !isDesktop()
+      ) {
+
+        heroMain.style.opacity =
+          '';
+
+        heroMain.style.transform =
+          '';
+
+      } else {
+
+
+        const fade =
+          1 -
+          clamp(
+            scrollProgress *
+            1.32
+          );
+
+
+        const translateY =
+          scrollProgress *
+          -22;
+
+
+        heroMain.style.opacity =
+          Math.max(
+            0,
+            fade
+          ).toFixed(3);
+
+
+        heroMain.style.transform =
+          'translate3d(0,' +
+          translateY.toFixed(2) +
+          'px,0)';
+
+      }
+
 
     }
 
 
-    /* -----------------------------------------------
-       HERO REVIEW
-       ----------------------------------------------- */
 
-    if (heroProof) {
+    /*
+       Social proof leaves slightly earlier than
+       the main hero headline.
 
-      const opacity =
-        1 -
-        clamp(
-          progress *
-          1.55
-        );
+       This helps the transition into the next section
+       feel less cluttered.
+    */
 
-      heroProof.style.opacity =
-        opacity.toFixed(3);
+    if (
+      heroProof
+    ) {
+
+
+      if (
+        reduceMotion ||
+        !isDesktop()
+      ) {
+
+        heroProof.style.opacity =
+          '';
+
+      } else {
+
+
+        const proofFade =
+          1 -
+          clamp(
+            scrollProgress *
+            1.7
+          );
+
+
+        heroProof.style.opacity =
+          Math.max(
+            0,
+            proofFade
+          ).toFixed(3);
+
+      }
+
 
     }
 
@@ -413,40 +607,55 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* =====================================================
-     REVEAL ANIMATIONS
+     STANDARD REVEALS
      ===================================================== */
 
-  const revealItems = Array.from(
-    document.querySelectorAll(
-      '[data-reveal]'
-    )
-  );
+  const revealItems =
+    Array.from(
+      document.querySelectorAll(
+        '[data-reveal]'
+      )
+    );
 
-  let revealObserver = null;
 
+  let revealObserver =
+    null;
 
-  function revealEverything() {
-
-    revealItems.forEach(function (item) {
-
-      item.classList.add(
-        'is-visible'
-      );
-
-    });
-
-  }
 
 
   function initialiseReveals() {
 
-    if (reduceMotion) {
 
-      revealEverything();
+    /*
+       Reduced motion:
+       show everything immediately.
+    */
+
+    if (
+      reduceMotion
+    ) {
+
+
+      revealItems.forEach(
+        function (item) {
+
+          item.classList.add(
+            'is-visible'
+          );
+
+        }
+      );
+
 
       return;
 
     }
+
+
+
+    /*
+       Old browser fallback.
+    */
 
     if (
       !(
@@ -455,61 +664,103 @@ document.addEventListener('DOMContentLoaded', function () {
       )
     ) {
 
-      revealEverything();
+
+      revealItems.forEach(
+        function (item) {
+
+          item.classList.add(
+            'is-visible'
+          );
+
+        }
+      );
+
 
       return;
 
     }
 
+
+
     revealObserver =
       new IntersectionObserver(
         function (entries) {
 
+
           entries.forEach(
             function (entry) {
 
-              if (!entry.isIntersecting) {
+
+              if (
+                !entry.isIntersecting
+              ) {
+
                 return;
+
               }
 
-              entry.target.classList.add(
-                'is-visible'
-              );
 
-              revealObserver.unobserve(
-                entry.target
-              );
+              entry.target
+                .classList
+                .add(
+                  'is-visible'
+                );
+
+
+              if (
+                revealObserver
+              ) {
+
+                revealObserver.unobserve(
+                  entry.target
+                );
+
+              }
+
 
             }
           );
 
+
         },
         {
-          threshold: 0.12,
+
+          threshold:
+            0.1,
+
           rootMargin:
-            '0px 0px -7% 0px'
+            '0px 0px -5% 0px'
+
         }
       );
 
+
+
     revealItems.forEach(
       function (item) {
+
 
         if (
           item.classList.contains(
             'is-visible'
           )
         ) {
+
           return;
+
         }
+
 
         revealObserver.observe(
           item
         );
 
+
       }
     );
 
   }
+
 
 
   initialiseReveals();
@@ -517,32 +768,56 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* =====================================================
-     STORY CARDS
+     CINEMATIC STORY CHAPTERS
+
+     CSS performs the actual sticky stacking.
+
+     JS adds:
+     - current chapter tracking
+     - subtle image movement
+     - CSS progress variables for future styling
+
+     Importantly, the card itself is NOT transformed.
+     Transforming a sticky element can cause erratic
+     browser behaviour.
      ===================================================== */
 
-  const promiseSection = document.querySelector(
-    '.home-promise'
-  );
-
-  const promiseCards = Array.from(
-    document.querySelectorAll(
-      '.promise-card'
-    )
-  );
-
-  let currentPromiseIndex = -1;
+  const promiseSection =
+    document.querySelector(
+      '.home-promise'
+    );
 
 
-  function setCurrentPromiseCard(index) {
+  const promiseCards =
+    Array.from(
+      document.querySelectorAll(
+        '.promise-card'
+      )
+    );
+
+
+  let currentPromiseIndex =
+    -1;
+
+
+
+  function setCurrentPromiseCard(
+    index
+  ) {
 
     if (
       index ===
       currentPromiseIndex
     ) {
+
       return;
+
     }
 
-    currentPromiseIndex = index;
+
+    currentPromiseIndex =
+      index;
+
 
     promiseCards.forEach(
       function (
@@ -550,33 +825,33 @@ document.addEventListener('DOMContentLoaded', function () {
         cardIndex
       ) {
 
+
         const current =
-          cardIndex === index;
+          cardIndex ===
+          index;
+
 
         card.classList.toggle(
           'is-current',
           current
         );
 
-        let state = 'future';
-
-        if (current) {
-          state = 'current';
-        } else if (
-          cardIndex < index
-        ) {
-          state = 'past';
-        }
 
         card.setAttribute(
           'data-chapter-state',
-          state
+          current
+            ? 'current'
+            : cardIndex < index
+              ? 'past'
+              : 'future'
         );
+
 
       }
     );
 
   }
+
 
 
   function resetPromiseEffects() {
@@ -584,37 +859,42 @@ document.addEventListener('DOMContentLoaded', function () {
     promiseCards.forEach(
       function (card) {
 
+
         card.style.removeProperty(
           '--chapter-progress'
         );
+
 
         card.style.removeProperty(
           '--chapter-visible'
         );
 
-        card.classList.remove(
-          'is-current'
-        );
-
-        card.removeAttribute(
-          'data-chapter-state'
-        );
 
         const image =
           card.querySelector(
             '.promise-card-image img'
           );
 
-        if (image) {
-          image.style.transform = '';
+
+        if (
+          image
+        ) {
+
+          image.style.transform =
+            '';
+
         }
+
 
       }
     );
 
-    currentPromiseIndex = -1;
+
+    currentPromiseIndex =
+      -1;
 
   }
+
 
 
   function updatePromiseStory() {
@@ -623,8 +903,17 @@ document.addEventListener('DOMContentLoaded', function () {
       !promiseSection ||
       !promiseCards.length
     ) {
+
       return;
+
     }
+
+
+
+    /*
+       CSS removes sticky stacking below 900px,
+       so the extra scroll maths is unnecessary there.
+    */
 
     if (
       !isDesktop() ||
@@ -637,14 +926,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+
+
     const navHeight =
       getNavHeight();
 
-    const stickyOffset =
-      navHeight + 32;
 
-    let nearestIndex = 0;
-    let nearestDistance = Infinity;
+    const stickyOffset =
+      navHeight +
+      34;
+
+
+
+    let nearestIndex =
+      0;
+
+
+    let nearestDistance =
+      Infinity;
+
 
 
     promiseCards.forEach(
@@ -653,19 +953,22 @@ document.addEventListener('DOMContentLoaded', function () {
         index
       ) {
 
+
         const rect =
           card.getBoundingClientRect();
 
 
-        /* -------------------------------------------
-           CURRENT CHAPTER
-           ------------------------------------------- */
+        /*
+           Distance between this chapter and the
+           sticky presentation position.
+        */
 
         const distance =
           Math.abs(
             rect.top -
             stickyOffset
           );
+
 
         if (
           distance <
@@ -675,21 +978,28 @@ document.addEventListener('DOMContentLoaded', function () {
           nearestDistance =
             distance;
 
+
           nearestIndex =
             index;
 
         }
 
 
-        /* -------------------------------------------
-           CARD PROGRESS
-           ------------------------------------------- */
+
+        /*
+           Progress through the individual chapter.
+
+           This does not drive the sticky behaviour itself.
+           It just gives us controlled visual movement
+           within the image.
+        */
 
         const travel =
           Math.max(
             window.innerHeight,
             rect.height
           );
+
 
         const progress =
           clamp(
@@ -700,15 +1010,18 @@ document.addEventListener('DOMContentLoaded', function () {
             travel
           );
 
+
         card.style.setProperty(
           '--chapter-progress',
           progress.toFixed(4)
         );
 
 
-        /* -------------------------------------------
-           VISIBLE RATIO
-           ------------------------------------------- */
+
+        /*
+           Visible amount gives us another hook in case
+           we later want to add chapter indicators in CSS.
+        */
 
         const visibleTop =
           Math.max(
@@ -716,11 +1029,13 @@ document.addEventListener('DOMContentLoaded', function () {
             0
           );
 
+
         const visibleBottom =
           Math.min(
             rect.bottom,
             window.innerHeight
           );
+
 
         const visiblePixels =
           Math.max(
@@ -729,20 +1044,16 @@ document.addEventListener('DOMContentLoaded', function () {
             visibleTop
           );
 
-        const divisor =
-          Math.max(
-            1,
+
+        const visibleRatio =
+          clamp(
+            visiblePixels /
             Math.min(
               rect.height,
               window.innerHeight
             )
           );
 
-        const visibleRatio =
-          clamp(
-            visiblePixels /
-            divisor
-          );
 
         card.style.setProperty(
           '--chapter-visible',
@@ -750,23 +1061,32 @@ document.addEventListener('DOMContentLoaded', function () {
         );
 
 
-        /* -------------------------------------------
-           SUBTLE IMAGE MOVEMENT
-           ------------------------------------------- */
+
+        /*
+           Very small Ken Burns-style movement.
+
+           Importantly, we transform only the IMAGE,
+           never the sticky card.
+        */
 
         const image =
           card.querySelector(
             '.promise-card-image img'
           );
 
-        if (image) {
+
+        if (
+          image
+        ) {
+
 
           const scale =
             1 +
             (
               progress *
-              0.018
+              0.022
             );
+
 
           image.style.transform =
             'scale(' +
@@ -775,8 +1095,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
 
+
       }
     );
+
 
 
     setCurrentPromiseCard(
@@ -791,33 +1113,42 @@ document.addEventListener('DOMContentLoaded', function () {
      SMOOTH INTERNAL ANCHOR SCROLLING
      ===================================================== */
 
-  const internalLinks = Array.from(
-    document.querySelectorAll(
-      'a[href^="#"]'
-    )
-  );
+  const internalLinks =
+    Array.from(
+      document.querySelectorAll(
+        'a[href^="#"]'
+      )
+    );
 
 
   internalLinks.forEach(
     function (link) {
 
+
       link.addEventListener(
         'click',
         function (event) {
+
 
           const href =
             link.getAttribute(
               'href'
             );
 
+
           if (
             !href ||
             href === '#'
           ) {
+
             return;
+
           }
 
-          let target = null;
+
+          let target =
+            null;
+
 
           try {
 
@@ -832,18 +1163,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
           }
 
-          if (!target) {
+
+          if (
+            !target
+          ) {
+
             return;
+
           }
 
-          if (reduceMotion) {
+
+          if (
+            reduceMotion
+          ) {
+
             return;
+
           }
+
 
           event.preventDefault();
 
+
           const navHeight =
             getNavHeight();
+
 
           const targetTop =
             target
@@ -852,18 +1196,27 @@ document.addEventListener('DOMContentLoaded', function () {
             window.scrollY -
             navHeight;
 
+
           window.scrollTo(
             {
+
               top:
                 Math.max(
                   0,
                   targetTop
                 ),
+
               behavior:
                 'smooth'
+
             }
           );
 
+
+
+          /*
+             Update URL without causing a second jump.
+          */
 
           if (
             window.history &&
@@ -879,8 +1232,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
           }
 
+
         }
       );
+
 
     }
   );
@@ -891,25 +1246,30 @@ document.addEventListener('DOMContentLoaded', function () {
      IMAGE LOAD SAFETY
      ===================================================== */
 
-  const homepageImages = Array.from(
-    document.querySelectorAll(
-      [
-        '.home-stories img',
-        '.home-promise img',
-        '.home-process img',
-        '.home-partner img',
+  const homepageImages =
+    Array.from(
+      document.querySelectorAll(
+        '.home-stories img,' +
+        '.home-promise img,' +
+        '.home-process img,' +
+        '.home-partner img,' +
         '.home-locations img'
-      ].join(',')
-    )
-  );
+      )
+    );
 
 
   homepageImages.forEach(
     function (image) {
 
-      if (image.complete) {
+
+      if (
+        image.complete
+      ) {
+
         return;
+
       }
+
 
       image.addEventListener(
         'load',
@@ -919,9 +1279,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         },
         {
-          once: true
+          once:
+            true
         }
       );
+
 
       image.addEventListener(
         'error',
@@ -931,9 +1293,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         },
         {
-          once: true
+          once:
+            true
         }
       );
+
 
     }
   );
@@ -942,9 +1306,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* =====================================================
      SCROLL ENGINE
+
+     One requestAnimationFrame loop handles:
+     - hero
+     - sticky story chapters
+
+     This avoids multiple scroll listeners fighting each
+     other or forcing excessive layout calculations.
      ===================================================== */
 
-  let ticking = false;
+  let ticking =
+    false;
 
 
   function updateScrollEffects() {
@@ -956,20 +1328,32 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
+
   function requestScrollUpdate() {
 
-    if (ticking) {
+    if (
+      ticking
+    ) {
+
       return;
+
     }
 
-    ticking = true;
+
+    ticking =
+      true;
+
 
     window.requestAnimationFrame(
       function () {
 
+
         updateScrollEffects();
 
-        ticking = false;
+
+        ticking =
+          false;
+
 
       }
     );
@@ -977,11 +1361,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
+
   window.addEventListener(
     'scroll',
     requestScrollUpdate,
     {
-      passive: true
+      passive:
+        true
     }
   );
 
@@ -991,48 +1377,94 @@ document.addEventListener('DOMContentLoaded', function () {
      RESIZE
      ===================================================== */
 
-  let resizeTimer = null;
-
-
-  function handleResize() {
-
-    if (resizeTimer) {
-
-      window.clearTimeout(
-        resizeTimer
-      );
-
-    }
-
-    resizeTimer =
-      window.setTimeout(
-        function () {
-
-          if (
-            !isDesktop() ||
-            reduceMotion
-          ) {
-
-            resetHeroEffects();
-
-            resetPromiseEffects();
-
-          }
-
-          requestScrollUpdate();
-
-          resizeTimer = null;
-
-        },
-        120
-      );
-
-  }
+  let resizeTimer =
+    null;
 
 
   window.addEventListener(
     'resize',
-    handleResize
+    function () {
+
+
+      if (
+        resizeTimer
+      ) {
+
+        window.clearTimeout(
+          resizeTimer
+        );
+
+      }
+
+
+      resizeTimer =
+        window.setTimeout(
+          function () {
+
+
+            /*
+               Remove inline desktop effects after
+               crossing down into the mobile layout.
+            */
+
+            if (
+              !isDesktop() ||
+              reduceMotion
+            ) {
+
+
+              if (
+                heroVideo
+              ) {
+
+                heroVideo.style.transform =
+                  '';
+
+              }
+
+
+              if (
+                heroMain
+              ) {
+
+                heroMain.style.transform =
+                  '';
+
+                heroMain.style.opacity =
+                  '';
+
+              }
+
+
+              if (
+                heroProof
+              ) {
+
+                heroProof.style.opacity =
+                  '';
+
+              }
+
+
+              resetPromiseEffects();
+
+            }
+
+
+
+            requestScrollUpdate();
+
+
+            resizeTimer =
+              null;
+
+
+          },
+          120
+        );
+
+
+    }
   );
 
 
@@ -1045,6 +1477,7 @@ document.addEventListener('DOMContentLoaded', function () {
     'orientationchange',
     function () {
 
+
       window.setTimeout(
         function () {
 
@@ -1054,61 +1487,23 @@ document.addEventListener('DOMContentLoaded', function () {
         180
       );
 
+
     }
   );
 
 
 
   /* =====================================================
-     REDUCED MOTION CHANGES
-     ===================================================== */
-
-  if (
-    typeof motionQuery.addEventListener ===
-    'function'
-  ) {
-
-    motionQuery.addEventListener(
-      'change',
-      function (event) {
-
-        reduceMotion =
-          event.matches;
-
-        if (reduceMotion) {
-
-          stopHeroReviews();
-
-          resetHeroEffects();
-
-          resetPromiseEffects();
-
-          revealEverything();
-
-        } else {
-
-          scheduleHeroReview();
-
-          requestScrollUpdate();
-
-        }
-
-      }
-    );
-
-  }
-
-
-
-  /* =====================================================
-     SAFARI BACK / FORWARD CACHE
+     SAFARI BACK/FORWARD CACHE
      ===================================================== */
 
   window.addEventListener(
     'pageshow',
     function () {
 
+
       requestScrollUpdate();
+
 
       if (
         !document.hidden
@@ -1117,6 +1512,7 @@ document.addEventListener('DOMContentLoaded', function () {
         scheduleHeroReview();
 
       }
+
 
     }
   );

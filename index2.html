@@ -9,183 +9,174 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 <!-- ======================================================
      HERO
+     FULL SCREEN VIDEO + ROTATING SOCIAL PROOF
      ====================================================== -->
 
 <section
   id="hero"
-  class="home-hero-scroll">
+  class="home-hero">
 
-  <div class="hero home-hero-sticky">
+  <div class="home-hero-media">
 
-    <div class="hero-media">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      class="home-hero-video">
 
-      <video
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        class="hero-video">
+      <source
+        src="/videos/cinematic-uk-wedding-videographer-horizon-co.mp4"
+        type="video/mp4">
 
-        <source
-          src="/videos/cinematic-uk-wedding-videographer-horizon-co.mp4"
-          type="video/mp4">
-
-      </video>
-
-    </div>
-
-
-    <div class="hero-overlay"></div>
-
-
-    <div class="home-hero-content">
-
-
-      <div class="hero-stage">
-
-
-        <!-- INTRO -->
-
-        <div
-          class="hero-slide active"
-          data-slide="0">
-
-          <div class="hero-brand">
-
-            <h1>
-              The Moments You Lived.
-
-              <span class="hero-subtitle">
-                And The Ones Happening Around You
-              </span>
-            </h1>
-
-          </div>
-
-        </div>
-
-
-        <!-- REVIEW 01 -->
-
-        <div
-          class="hero-slide"
-          data-slide="1">
-
-          <span class="hero-review-kicker">
-            The Moments You Missed
-          </span>
-
-          <div
-            class="hero-review-stars"
-            aria-label="5 star Google review">
-            &#9733;&#9733;&#9733;&#9733;&#9733;
-          </div>
-
-          <p class="hero-review-quote">
-            &ldquo;He captured some really special moments
-            that we didn't even get to see on the day.&rdquo;
-          </p>
-
-          <p class="hero-review-name">
-            Aimee &middot; Google Review
-          </p>
-
-        </div>
-
-
-        <!-- REVIEW 02 -->
-
-        <div
-          class="hero-slide"
-          data-slide="2">
-
-          <span class="hero-review-kicker">
-            Thoughtful From Start To Finish
-          </span>
-
-          <div
-            class="hero-review-stars"
-            aria-label="5 star Google review">
-            &#9733;&#9733;&#9733;&#9733;&#9733;
-          </div>
-
-          <p class="hero-review-quote">
-            &ldquo;Our wedding video were so amazing we loved it
-            &#128513; he was so thoughtful too.&rdquo;
-          </p>
-
-          <p class="hero-review-name">
-            Kirsty &middot; Google Review
-          </p>
-
-        </div>
-
-
-      </div>
-
-
-      <div class="hero-fixed">
-
-        <div class="hero-actions">
-
-          <a
-            href="#real-weddings"
-            class="hero-action hero-action-primary">
-            Watch A Wedding Film
-          </a>
-
-          <a
-            href="#contact"
-            class="hero-action hero-action-secondary">
-            Check Availability
-          </a>
-
-        </div>
-
-
-        <div
-          class="hero-controls"
-          aria-label="Hero messages">
-
-          <button
-            type="button"
-            class="hero-dot active"
-            data-target="0"
-            aria-label="Show introduction">
-          </button>
-
-          <button
-            type="button"
-            class="hero-dot"
-            data-target="1"
-            aria-label="Show Aimee review">
-          </button>
-
-          <button
-            type="button"
-            class="hero-dot"
-            data-target="2"
-            aria-label="Show Kirsty review">
-          </button>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-
-    <div
-      class="hero-scroll-cue"
-      aria-hidden="true">
-
-      Scroll to continue
-
-    </div>
+    </video>
 
   </div>
+
+
+  <div class="home-hero-overlay"></div>
+
+
+  <div class="home-hero-inner">
+
+
+    <div class="home-hero-main">
+
+      <span class="home-hero-eyebrow">
+        Natural Wedding Films
+      </span>
+
+
+      <h1>
+
+        The Moments You Lived.
+
+        <em>
+          And the ones happening around you.
+        </em>
+
+      </h1>
+
+
+      <p class="home-hero-lead">
+        Cinematic wedding films built around the people,
+        voices and moments that made your day yours.
+      </p>
+
+
+      <div class="home-hero-actions">
+
+        <a
+          href="#real-weddings"
+          class="home-hero-button home-hero-button-primary">
+          Watch A Wedding Film
+        </a>
+
+        <a
+          href="#contact"
+          class="home-hero-button home-hero-button-secondary">
+          Check Availability
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         ROTATING TESTIMONIAL
+         ================================================== -->
+
+    <div
+      class="home-hero-proof"
+      aria-live="polite">
+
+
+      <div class="home-hero-proof-rule"></div>
+
+
+      <div class="home-hero-proof-label">
+        From The Couples
+      </div>
+
+
+      <div class="home-hero-proof-stage">
+
+
+        <blockquote
+          class="home-hero-review is-active"
+          data-hero-review="0">
+
+          <div
+            class="home-hero-review-stars"
+            aria-label="5 star Google review">
+            ★★★★★
+          </div>
+
+          <p>
+            “He captured some really special moments
+            that we didn't even get to see on the day.”
+          </p>
+
+          <footer>
+            Aimee · Google Review
+          </footer>
+
+        </blockquote>
+
+
+        <blockquote
+          class="home-hero-review"
+          data-hero-review="1">
+
+          <div
+            class="home-hero-review-stars"
+            aria-label="5 star Google review">
+            ★★★★★
+          </div>
+
+          <p>
+            “Our wedding video were so amazing we loved it 😁
+            he was so thoughtful too.”
+          </p>
+
+          <footer>
+            Kirsty · Google Review
+          </footer>
+
+        </blockquote>
+
+
+      </div>
+
+
+      <div
+        class="home-hero-proof-progress"
+        aria-hidden="true">
+
+        <span></span>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <a
+    href="#headspace"
+    class="home-hero-scroll-cue"
+    aria-label="Continue to the next section">
+
+    <span>
+      Scroll
+    </span>
+
+    <i></i>
+
+  </a>
 
 </section>
 
@@ -193,8 +184,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 <!-- ======================================================
      YOUR WEDDING DAY
-     LEFT COPY REMAINS
-     FOUR IMAGES MOVE THROUGH ON THE RIGHT
+     FIXED COPY + FOUR IMAGE STORY
      ====================================================== -->
 
 <section
@@ -214,7 +204,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     <div class="home-feeling-inner">
 
 
-      <!-- FIXED COPY -->
+      <!-- ==================================================
+           LEFT COPY
+           ================================================== -->
 
       <div class="home-feeling-copy">
 
@@ -226,7 +218,10 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         <h2>
 
           You spend months
-          <span>planning it.</span>
+
+          <span>
+            planning it.
+          </span>
 
           <em>
             Then somehow, it becomes
@@ -237,8 +232,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
         <p class="home-feeling-lead">
-          You live the day from one point of view.
-          Around you, hundreds of other moments are unfolding.
+          You live it from one point of view.
+          Around you, the rest of the day keeps happening.
         </p>
 
 
@@ -249,25 +244,28 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
           </span>
 
           <p class="feeling-chapter-copy">
-            The day starts quietly, before everyone is in the same room.
+            The day starts quietly, before everyone
+            is in the same room.
           </p>
 
         </div>
 
 
-        <div class="feeling-progress">
+        <div
+          class="feeling-progress"
+          aria-hidden="true">
 
-          <span
-            id="feeling-progress-bar"
-            aria-hidden="true">
-          </span>
+          <span id="feeling-progress-bar"></span>
 
         </div>
 
       </div>
 
 
-      <!-- IMAGE REEL -->
+
+      <!-- ==================================================
+           RIGHT IMAGE REEL
+           ================================================== -->
 
       <div class="home-feeling-visual">
 
@@ -275,28 +273,34 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         <!-- 01 -->
 
         <figure
-          class="feeling-shot"
+          class="feeling-shot is-active"
+          data-feeling-shot="0"
           data-label="The Anticipation"
           data-copy="The day starts quietly, before everyone is in the same room."
           data-word="ANTICIPATION">
 
           <img
             src="/images/kirsty-connor-thornton-hall-wedding.jpg"
-            alt="Bride and groom sharing a quiet moment on their wedding day"
+            alt="Bride and groom sharing a quiet moment during their wedding day"
             loading="eager">
 
           <div class="feeling-shot-overlay"></div>
 
+
           <figcaption>
 
-            <span>
-              Before It Begins
-            </span>
+            <div>
 
-            <p>
-              The nerves, the anticipation,
-              the last quiet moments.
-            </p>
+              <span>
+                Before It Begins
+              </span>
+
+              <p>
+                The nerves, the anticipation,
+                the last quiet moments.
+              </p>
+
+            </div>
 
             <strong>
               01
@@ -307,31 +311,38 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </figure>
 
 
+
         <!-- 02 -->
 
         <figure
           class="feeling-shot"
+          data-feeling-shot="1"
           data-label="The Ceremony"
-          data-copy="The part you've imagined for months suddenly becomes real."
+          data-copy="The thing you've imagined for months suddenly becomes real."
           data-word="CEREMONY">
 
           <img
             src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
-            alt="Emotional wedding ceremony at Grosvenor Pulford Hotel and Spa"
+            alt="Wedding ceremony at Grosvenor Pulford Hotel and Spa"
             loading="lazy">
 
           <div class="feeling-shot-overlay"></div>
 
+
           <figcaption>
 
-            <span>
-              The Ceremony
-            </span>
+            <div>
 
-            <p>
-              The part you've imagined
-              finally becomes real.
-            </p>
+              <span>
+                The Ceremony
+              </span>
+
+              <p>
+                The thing you've imagined
+                suddenly becomes real.
+              </p>
+
+            </div>
 
             <strong>
               02
@@ -342,10 +353,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </figure>
 
 
+
         <!-- 03 -->
 
         <figure
           class="feeling-shot"
+          data-feeling-shot="2"
           data-label="Everything Around You"
           data-copy="Reactions, laughter and tiny stories are happening at the same time as yours."
           data-word="AROUND YOU">
@@ -357,16 +370,21 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
           <div class="feeling-shot-overlay"></div>
 
+
           <figcaption>
 
-            <span>
-              Everything Around You
-            </span>
+            <div>
 
-            <p>
-              The laughter, reactions
-              and moments you never planned.
-            </p>
+              <span>
+                Everything Around You
+              </span>
+
+              <p>
+                The laughter, reactions
+                and moments you never planned.
+              </p>
+
+            </div>
 
             <strong>
               03
@@ -377,10 +395,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </figure>
 
 
+
         <!-- 04 -->
 
         <figure
           class="feeling-shot"
+          data-feeling-shot="3"
           data-label="Then It's A Memory"
           data-copy="By the evening, months of planning have become one extraordinary day."
           data-word="MEMORY">
@@ -392,16 +412,21 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
           <div class="feeling-shot-overlay"></div>
 
+
           <figcaption>
 
-            <span>
-              Then It's A Memory
-            </span>
+            <div>
 
-            <p>
-              Months of planning.
-              One extraordinary day.
-            </p>
+              <span>
+                Then It's A Memory
+              </span>
+
+              <p>
+                Months of planning.
+                One extraordinary day.
+              </p>
+
+            </div>
 
             <strong>
               04
@@ -444,11 +469,14 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     <div class="home-promise-inner">
 
 
+
       <!-- ==================================================
            INTRO
            ================================================== -->
 
-      <article class="promise-scene">
+      <article
+        class="promise-scene is-active"
+        data-promise-scene="0">
 
 
         <div class="promise-image">
@@ -489,8 +517,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
             Relive what you remember.
 
             <em>
-              Recover everything
-              time starts to soften.
+              Recover what time starts to soften.
             </em>
 
           </h2>
@@ -509,10 +536,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
       <!-- ==================================================
-           01 — VOICES
+           01
            ================================================== -->
 
-      <article class="promise-scene reverse">
+      <article
+        class="promise-scene reverse"
+        data-promise-scene="1">
 
 
         <div class="promise-image">
@@ -532,7 +561,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
             </span>
 
             <p>
-              The words become part
+              Words become part
               of the memory.
             </p>
 
@@ -577,10 +606,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
       <!-- ==================================================
-           02 — ATMOSPHERE
+           02
            ================================================== -->
 
-      <article class="promise-scene">
+      <article
+        class="promise-scene"
+        data-promise-scene="2">
 
 
         <div class="promise-image">
@@ -626,15 +657,15 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
           <p>
-            The nervous quiet before the ceremony. Everyone erupting
-            into laughter during a speech. The music starting and the
-            room changing completely once the evening begins.
+            The nervous quiet before the ceremony.
+            Everyone erupting into laughter during a speech.
+            The music starting and the whole room changing.
           </p>
 
 
           <span class="promise-note">
-            The tiny changes in atmosphere are often what make
-            a wedding feel real again.
+            Atmosphere is often what turns a memory
+            into something you can genuinely feel again.
           </span>
 
         </div>
@@ -645,17 +676,19 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
       <!-- ==================================================
-           03 — PEOPLE
+           03
            ================================================== -->
 
-      <article class="promise-scene reverse">
+      <article
+        class="promise-scene reverse"
+        data-promise-scene="3">
 
 
         <div class="promise-image">
 
           <img
             src="/images/Kirsty-connor-laughter.png"
-            alt="Wedding couple and guests captured naturally"
+            alt="Wedding couple captured laughing naturally"
             loading="lazy">
 
           <div class="promise-image-overlay"></div>
@@ -696,7 +729,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
           <p>
             Not simply standing for a photograph, but talking,
             moving, laughing, crying and interacting with each other.
-            The parts that reveal personality rather than appearance.
+            Personality rather than poses.
           </p>
 
 
@@ -711,12 +744,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </article>
 
 
-      <div class="promise-progress">
 
-        <span
-          id="promise-progress-bar"
-          aria-hidden="true">
-        </span>
+      <div
+        class="promise-progress"
+        aria-hidden="true">
+
+        <span id="promise-progress-bar"></span>
 
       </div>
 
@@ -767,10 +800,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-  <!-- ====================================================
-       ANDY & LESLEY
-       ==================================================== -->
-
   <article class="editorial-story">
 
 
@@ -803,6 +832,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         aria-hidden="true">
         01
       </span>
+
 
       <span class="eyebrow">
         Real Wedding
@@ -858,10 +888,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-  <!-- ====================================================
-       KIRSTY & CONNOR
-       ==================================================== -->
-
   <article class="editorial-story reverse">
 
 
@@ -895,6 +921,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         02
       </span>
 
+
       <span class="eyebrow">
         Real Wedding
       </span>
@@ -916,9 +943,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
       <p class="editorial-story-description">
-        This one needed movement, humour and pace. The personalities
-        were bigger, the speeches were funnier and the edit needed
-        to feel as energetic as the people in it.
+        This one needed movement, humour and pace.
+        The personalities were bigger, the speeches were funnier
+        and the edit needed to feel as energetic as the people in it.
       </p>
 
 
@@ -969,7 +996,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     <div
       class="home-review-stars"
       aria-label="5 star Google review">
-      &#9733;&#9733;&#9733;&#9733;&#9733;
+      ★★★★★
     </div>
 
 
@@ -1152,17 +1179,17 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       <p>
         I regularly work alongside
         <strong>Carol at Ruby Salmon Photography</strong>.
-        Because we've already covered weddings together, we understand
-        each other's pace, positioning and priorities throughout the day.
+        Because we've already covered weddings together,
+        we understand each other's pace, positioning
+        and priorities throughout the day.
       </p>
 
 
       <p>
-        That matters more than it might sound. Instead of your
-        photographer and videographer competing for the same moment,
-        we know when to give each other space, when to coordinate
-        and how to keep things moving without making your wedding
-        feel like a production.
+        Instead of your photographer and videographer competing
+        for the same moment, we know when to give each other space,
+        when to coordinate and how to keep things moving without
+        making your wedding feel like a production.
       </p>
 
 
@@ -1396,8 +1423,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   <div class="packages">
 
 
-    <!-- NARRATIVE -->
-
     <div
       class="card"
       onclick="toggleActive(this)"
@@ -1432,8 +1457,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </div>
 
 
-
-    <!-- CINEMATIC -->
 
     <div
       id="cinematic-default"
@@ -1473,8 +1496,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-    <!-- CEREMONY -->
-
     <div
       class="card"
       onclick="toggleActive(this)"
@@ -1512,8 +1533,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-  <!-- OPTIONAL EXTRAS -->
-
   <div
     class="optional-extras"
     data-reveal>
@@ -1529,6 +1548,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
     <div class="extras-grid">
+
 
       <div class="extra-item">
 
@@ -1594,6 +1614,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
       </div>
 
+
     </div>
 
 
@@ -1656,14 +1677,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
       </button>
 
-
       <div class="faq-answer">
 
         <p>
-          Not at all. In fact, the approach is designed around couples
+          Not at all. The approach is designed around couples
           who do not want their wedding to feel like a production.
-          Most of the day is filmed naturally as it happens, with only
-          occasional light guidance where it genuinely helps.
+          Most of the day is filmed naturally as it happens.
         </p>
 
       </div>
@@ -1687,14 +1706,13 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
       </button>
 
-
       <div class="faq-answer">
 
         <p>
-          Not necessarily, and that is intentional. Every wedding has
-          a different atmosphere. The soundtrack, pacing, dialogue and
-          edit are shaped around your own celebration rather than trying
-          to make every wedding feel the same.
+          Not necessarily, and that is intentional.
+          Every wedding has a different atmosphere.
+          The soundtrack, pacing, dialogue and edit are shaped
+          around your own celebration.
         </p>
 
       </div>
@@ -1717,7 +1735,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </span>
 
       </button>
-
 
       <div class="faq-answer">
 
@@ -1749,15 +1766,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
       </button>
 
-
       <div class="faq-answer">
 
         <p>
           Yes. Photography and videography should complement one
-          another rather than compete for the same moments. I regularly
-          work alongside Carol at Ruby Salmon Photography, so we already
-          understand each other's pace, positioning and when to give
-          one another space.
+          another rather than compete for the same moments.
+          I regularly work alongside Carol at Ruby Salmon Photography.
         </p>
 
       </div>
@@ -1781,13 +1795,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
       </button>
 
-
       <div class="faq-answer">
 
         <p>
-          Travel within 50 miles of our base is included. For weddings
-          further afield across the UK or Europe, additional travel
-          and accommodation costs are agreed before booking.
+          Travel within 50 miles of our base is included.
+          For weddings further afield across the UK or Europe,
+          travel and accommodation costs are agreed before booking.
         </p>
 
       </div>
@@ -1810,7 +1823,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </span>
 
       </button>
-
 
       <div class="faq-answer">
 
@@ -1841,13 +1853,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
       </button>
 
-
       <div class="faq-answer">
 
         <p>
           Yes. We carry Public Liability and Professional Indemnity
-          insurance and can provide evidence of cover directly to
-          your venue if required.
+          insurance and can provide evidence of cover directly
+          to your venue if required.
         </p>
 
       </div>
@@ -1890,8 +1901,10 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
     <p>
-      Your date and venue are useful. Your personalities are even better.
-      Tell me what you're like together and what kind of day you're creating.
+      Your date and venue are useful.
+      Your personalities are even better.
+      Tell me what you're like together
+      and what kind of day you're creating.
     </p>
 
   </div>
@@ -2082,13 +2095,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </button>
 
 
-
       <div
         id="form-success"
         class="form-success">
 
-        Thank you. Your enquiry has been received and we will be
-        in touch within 24 hours.
+        Thank you. Your enquiry has been received
+        and we will be in touch within 24 hours.
 
       </div>
 

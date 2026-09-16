@@ -8,12 +8,39 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 <!-- ======================================================
+     HORIZON & COMPANY
+     HOMEPAGE
+
+     PAGE FLOW
+
+     01 Hero
+     02 Real weddings
+     03 Social proof
+     04 What film keeps — interactive scroll story
+     05 Supporting visual strip
+     06 Experience / filmmaker
+     07 Collections
+     08 Photography + film
+     09 Locations
+     10 FAQ
+     11 Final CTA
+     12 Contact
+     ====================================================== -->
+
+
+
+<!-- ======================================================
      HERO
      ====================================================== -->
 
-<section id="hero" class="home-hero">
+<section
+  id="hero"
+  class="home-hero"
+  aria-labelledby="home-hero-title">
 
-  <div class="home-hero-media">
+  <div
+    class="home-hero-media"
+    aria-hidden="true">
 
     <video
       autoplay
@@ -32,7 +59,10 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 
-  <div class="home-hero-overlay"></div>
+  <div
+    class="home-hero-overlay"
+    aria-hidden="true">
+  </div>
 
 
   <div class="home-hero-inner">
@@ -44,7 +74,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </span>
 
 
-      <h1>
+      <h1 id="home-hero-title">
         Your wedding,
 
         <em>
@@ -101,7 +131,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         <blockquote
           class="home-hero-review is-active"
-          data-hero-review="0">
+          data-hero-review="0"
+          aria-hidden="false">
 
           <div
             class="home-hero-review-stars"
@@ -126,7 +157,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         <blockquote
           class="home-hero-review"
-          data-hero-review="1">
+          data-hero-review="1"
+          aria-hidden="true">
 
           <div
             class="home-hero-review-stars"
@@ -169,11 +201,14 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 <!-- ======================================================
      REAL WEDDINGS
+
+     Actual work appears immediately after the proposition.
      ====================================================== -->
 
 <section
   id="real-weddings"
-  class="home-stories home-stories-primary">
+  class="home-stories home-stories-primary"
+  aria-labelledby="real-weddings-title">
 
 
   <div
@@ -185,7 +220,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </span>
 
 
-    <h2>
+    <h2 id="real-weddings-title">
       No template.
 
       <span class="story-heading-accent">
@@ -216,7 +251,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       class="editorial-story-image"
       data-reveal="left">
 
-      <a href="/weddings/grosvenor-pulford-wedding.html">
+      <a
+        href="/weddings/grosvenor-pulford-wedding.html"
+        aria-label="Watch Andy and Lesley's Grosvenor Pulford wedding film">
 
         <img
           src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
@@ -229,7 +266,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </span>
 
 
-        <span class="editorial-story-play">
+        <span
+          class="editorial-story-play"
+          aria-hidden="true">
           Watch Film
         </span>
 
@@ -242,7 +281,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     <div
       class="editorial-story-copy"
       data-reveal="right">
-
 
       <span
         class="editorial-story-number"
@@ -317,7 +355,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       class="editorial-story-image"
       data-reveal="right">
 
-      <a href="/weddings/thornton-hall-wedding.html">
+      <a
+        href="/weddings/thornton-hall-wedding.html"
+        aria-label="Watch Kirsty and Connor's Thornton Hall wedding film">
 
         <img
           src="/images/wedding-first-dance-thornton-hall-wirral.png"
@@ -330,7 +370,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </span>
 
 
-        <span class="editorial-story-play">
+        <span
+          class="editorial-story-play"
+          aria-hidden="true">
           Watch Film
         </span>
 
@@ -343,7 +385,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     <div
       class="editorial-story-copy"
       data-reveal="left">
-
 
       <span
         class="editorial-story-number"
@@ -413,7 +454,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
      SOCIAL PROOF
      ====================================================== -->
 
-<section class="home-review-feature">
+<section
+  class="home-review-feature"
+  aria-label="Wedding videography review">
 
   <div
     class="home-review-feature-inner"
@@ -451,293 +494,631 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 <!-- ======================================================
      WHAT FILM KEEPS
 
-     FIVE-PART CHRONOLOGICAL STORY
+     DESKTOP:
+     Copy scrolls naturally on the left.
+     Visual remains sticky on the right.
+     Image changes with active chapter.
+
+     MOBILE:
+     Each chapter gets its own inline image.
+
+     01 anticipation
+     02 voices
+     03 unseen moments
+     04 atmosphere
+     05 celebration
      ====================================================== -->
 
 <section
   id="promise"
-  class="home-promise">
+  class="home-promise"
+  aria-labelledby="promise-title">
 
 
-  <div
-    class="promise-heading"
-    data-reveal>
+  <!-- ==================================================
+       PROMISE INTRO
+       ================================================== -->
 
+  <div class="promise-intro">
 
-    <span class="eyebrow">
-      More Than The Highlights
-    </span>
+    <div
+      class="promise-intro-inner"
+      data-reveal>
 
-
-    <h2>
-      You lived one version of the day.
-
-      <span>
-        Your film lets you discover the rest.
+      <span class="eyebrow">
+        More Than The Highlights
       </span>
-    </h2>
 
 
-    <p>
-      You can't be everywhere at once.
-      While you're getting ready, saying your vows,
-      talking to guests or simply taking it all in,
-      hundreds of little moments are happening around you.
-    </p>
+      <h2 id="promise-title">
+        You lived one version of the day.
+
+        <span>
+          Your film lets you discover the rest.
+        </span>
+      </h2>
+
+
+      <p>
+        You can't be everywhere at once.
+        While you're getting ready, saying your vows,
+        talking to guests or simply taking it all in,
+        hundreds of little moments are happening around you.
+      </p>
+
+    </div>
 
   </div>
 
 
 
-  <div class="promise-mosaic">
+  <!-- ==================================================
+       SCROLL STORY
+       ================================================== -->
+
+  <div class="promise-story">
+
+
+    <div class="promise-story-inner">
+
+
+      <!-- ================================================
+           LEFT — COPY
+           ================================================ -->
+
+      <div class="promise-copy-stack">
+
+
+        <!-- ==============================================
+             01 — BEFORE IT BEGINS
+             ============================================== -->
+
+        <article
+          class="promise-copy-block is-active"
+          data-promise-step="0"
+          aria-current="true">
+
+
+          <!-- MOBILE IMAGE -->
+
+          <figure class="promise-mobile-image">
+
+            <img
+              src="/images/wedding-bride-prep-smile-grosvenor-cheshire.png"
+              alt="Bride smiling naturally during wedding morning preparations at Grosvenor Pulford in Cheshire"
+              loading="lazy">
+
+          </figure>
+
+
+          <span class="promise-number">
+            01
+          </span>
+
+
+          <span class="promise-kicker">
+            Before It Begins
+          </span>
+
+
+          <h3>
+            The part where everything is still ahead of you.
+          </h3>
+
+
+          <p>
+            Hair half finished.
+            Friends wandering in and out.
+            Nervous jokes, quiet pauses and that strange moment
+            when everybody suddenly realises it's nearly time.
+          </p>
+
+
+          <span class="promise-note">
+            The ordinary-looking moments become surprisingly
+            valuable once the day has moved on.
+          </span>
+
+        </article>
+
+
+
+        <!-- ==============================================
+             02 — THEIR VOICES
+             ============================================== -->
+
+        <article
+          class="promise-copy-block"
+          data-promise-step="1"
+          aria-current="false">
+
+
+          <figure class="promise-mobile-image">
+
+            <img
+              src="/images/wedding-top-table-speech-grosvenor-cheshire.png"
+              alt="Wedding speech being delivered at the top table during a Grosvenor Pulford wedding in Cheshire"
+              loading="lazy">
+
+          </figure>
+
+
+          <span class="promise-number">
+            02
+          </span>
+
+
+          <span class="promise-kicker">
+            Their Voices
+          </span>
+
+
+          <h3>
+            Not only what they said.
+            How they said it.
+          </h3>
+
+
+          <p>
+            Your vows.
+            A parent's speech.
+            Somebody pausing because the words suddenly mean
+            more than they expected.
+            The laughter immediately afterwards.
+          </p>
+
+
+          <span class="promise-note">
+            Photographs keep the expression.
+            Film keeps the voice that came with it.
+          </span>
+
+        </article>
+
+
+
+        <!-- ==============================================
+             03 — THE MOMENTS YOU MISSED
+             ============================================== -->
+
+        <article
+          class="promise-copy-block"
+          data-promise-step="2"
+          aria-current="false">
+
+
+          <figure class="promise-mobile-image">
+
+            <img
+              src="/images/candid-wedding-guest-moment-grosvenor-cheshire.png"
+              alt="Natural candid moment between wedding guests during a Cheshire wedding"
+              loading="lazy">
+
+          </figure>
+
+
+          <span class="promise-number">
+            03
+          </span>
+
+
+          <span class="promise-kicker">
+            The Moments You Missed
+          </span>
+
+
+          <h3>
+            Some of your favourite memories happened somewhere else.
+          </h3>
+
+
+          <p>
+            Your parents together.
+            A friend reacting to your vows.
+            Somebody hugging across the room.
+            Conversations and expressions you were never there to see.
+          </p>
+
+
+          <span class="promise-note">
+            This is the part couples often discover for the
+            first time when they watch the finished film.
+          </span>
+
+        </article>
+
+
+
+        <!-- ==============================================
+             04 — THE ATMOSPHERE
+             ============================================== -->
+
+        <article
+          class="promise-copy-block"
+          data-promise-step="3"
+          aria-current="false">
+
+
+          <figure class="promise-mobile-image">
+
+            <img
+              src="/images/wedding-guests-laughing-reception-thornton-hall-wirral.png"
+              alt="Wedding guests laughing together during a reception at Thornton Hall on the Wirral"
+              loading="lazy">
+
+          </figure>
+
+
+          <span class="promise-number">
+            04
+          </span>
+
+
+          <span class="promise-kicker">
+            The Atmosphere Around You
+          </span>
+
+
+          <h3>
+            The room had a personality of its own.
+          </h3>
+
+
+          <p>
+            Glasses clinking.
+            People catching up.
+            Somebody laughing at the other end of the room.
+            The background moments that quietly become
+            part of how the day felt.
+          </p>
+
+
+          <span class="promise-note">
+            A wedding isn't only the two people in the middle.
+            It's everybody who came to share it with them.
+          </span>
+
+        </article>
+
+
+
+        <!-- ==============================================
+             05 — WHEN EVERYONE LETS GO
+             ============================================== -->
+
+        <article
+          class="promise-copy-block"
+          data-promise-step="4"
+          aria-current="false">
+
+
+          <figure class="promise-mobile-image">
+
+            <img
+              src="/images/wedding-first-dance-thornton-hall-wirral.png"
+              alt="Bride and groom laughing together during their first dance at Thornton Hall on the Wirral"
+              loading="lazy">
+
+          </figure>
+
+
+          <span class="promise-number">
+            05
+          </span>
+
+
+          <span class="promise-kicker">
+            When Everyone Lets Go
+          </span>
+
+
+          <h3>
+            The formalities finish.
+            The personalities come out.
+          </h3>
+
+
+          <p>
+            The drinks.
+            The questionable dancing.
+            People singing far too loudly.
+            The friend who swore they weren't going to get up
+            suddenly taking over the dance floor.
+          </p>
+
+
+          <span class="promise-note">
+            By this point nobody is performing for the camera.
+            That's usually when some of the best footage appears.
+          </span>
+
+        </article>
+
+
+      </div>
+
+
+
+      <!-- ================================================
+           RIGHT — STICKY VISUAL
+
+           JavaScript swaps .is-active between images.
+           ================================================ -->
+
+      <div
+        class="promise-visual-column"
+        aria-hidden="true">
+
+
+        <div class="promise-visual-sticky">
+
+
+          <!-- 01 -->
+
+          <figure
+            class="promise-sticky-image is-active"
+            data-promise-image="0">
+
+            <img
+              src="/images/wedding-bride-prep-smile-grosvenor-cheshire.png"
+              alt="">
+
+
+            <figcaption class="promise-image-caption">
+
+              <span>
+                01 · Before It Begins
+              </span>
+
+              <p>
+                Anticipation before the ceremony.
+              </p>
+
+            </figcaption>
+
+          </figure>
+
+
+
+          <!-- 02 -->
+
+          <figure
+            class="promise-sticky-image"
+            data-promise-image="1">
+
+            <img
+              src="/images/wedding-top-table-speech-grosvenor-cheshire.png"
+              alt="">
+
+
+            <figcaption class="promise-image-caption">
+
+              <span>
+                02 · Their Voices
+              </span>
+
+              <p>
+                Words are only half of what you'll remember.
+              </p>
+
+            </figcaption>
+
+          </figure>
+
+
+
+          <!-- 03 -->
+
+          <figure
+            class="promise-sticky-image"
+            data-promise-image="2">
+
+            <img
+              src="/images/candid-wedding-guest-moment-grosvenor-cheshire.png"
+              alt="">
+
+
+            <figcaption class="promise-image-caption">
+
+              <span>
+                03 · The Moments You Missed
+              </span>
+
+              <p>
+                The parts of your wedding you weren't there to see.
+              </p>
+
+            </figcaption>
+
+          </figure>
+
+
+
+          <!-- 04 -->
+
+          <figure
+            class="promise-sticky-image"
+            data-promise-image="3">
+
+            <img
+              src="/images/wedding-guests-laughing-reception-thornton-hall-wirral.png"
+              alt="">
+
+
+            <figcaption class="promise-image-caption">
+
+              <span>
+                04 · The Atmosphere
+              </span>
+
+              <p>
+                The people around you become part of the film too.
+              </p>
+
+            </figcaption>
+
+          </figure>
+
+
+
+          <!-- 05 -->
+
+          <figure
+            class="promise-sticky-image"
+            data-promise-image="4">
+
+            <img
+              src="/images/wedding-first-dance-thornton-hall-wirral.png"
+              alt="">
+
+
+            <figcaption class="promise-image-caption">
+
+              <span>
+                05 · When Everyone Lets Go
+              </span>
+
+              <p>
+                The polished part ends. The personality doesn't.
+              </p>
+
+            </figcaption>
+
+          </figure>
+
+
+          <!-- ============================================
+               CHAPTER INDICATOR
+               ============================================ -->
+
+          <div class="promise-visual-indicator">
+
+            <span class="promise-visual-current">
+              01
+            </span>
+
+            <span
+              class="promise-visual-divider"
+              aria-hidden="true">
+            </span>
+
+            <span class="promise-visual-total">
+              05
+            </span>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
 
 
     <!-- ==================================================
-         01 — BEFORE IT BEGINS
+         STORY PROGRESS
          ================================================== -->
 
-    <article
-      class="promise-card promise-card-large promise-card-01"
+    <div
+      class="promise-progress"
+      aria-hidden="true">
+
+      <span id="promise-progress-bar"></span>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     SUPPORTING MOMENTS
+
+     Uses additional stills without diluting the five core
+     chapters above.
+     ====================================================== -->
+
+<section
+  class="home-moments"
+  aria-labelledby="home-moments-title">
+
+
+  <div
+    class="home-moments-header"
+    data-reveal>
+
+    <span class="eyebrow">
+      The Details Between The Big Moments
+    </span>
+
+
+    <h2 id="home-moments-title">
+      The day isn't only made
+      <em>of milestones.</em>
+    </h2>
+
+  </div>
+
+
+
+  <div class="home-moments-grid">
+
+
+    <figure
+      class="home-moment home-moment-tall"
+      data-reveal="left">
+
+      <img
+        src="/images/wedding-dress-window-bridal-preparations-grosvenor-cheshire.png"
+        alt="Wedding dress hanging by the window during bridal preparations at Grosvenor Pulford"
+        loading="lazy">
+
+    </figure>
+
+
+
+    <figure
+      class="home-moment"
       data-reveal>
 
+      <img
+        src="/images/wedding-bride-makeup-grosvenor-cheshire.png"
+        alt="Bride having her makeup finished during wedding preparations in Cheshire"
+        loading="lazy">
 
-      <div class="promise-card-image">
-
-        <img
-          src="/images/wedding-bride-prep-smile-grosvenor-cheshire.png"
-          alt="Bride smiling naturally during wedding morning preparations at Grosvenor Pulford in Cheshire"
-          loading="lazy">
-
-      </div>
-
-
-      <div class="promise-card-copy">
-
-        <span class="promise-number">
-          01
-        </span>
-
-
-        <span class="promise-kicker">
-          Before It Begins
-        </span>
-
-
-        <h3>
-          The part where everything is still ahead of you.
-        </h3>
-
-
-        <p>
-          Hair half finished.
-          Friends wandering in and out.
-          Nervous jokes, quiet pauses and that strange moment
-          when everybody suddenly realises it's nearly time.
-        </p>
-
-      </div>
-
-    </article>
+    </figure>
 
 
 
-    <!-- ==================================================
-         02 — THEIR VOICES
-         ================================================== -->
-
-    <article
-      class="promise-card promise-card-02"
+    <figure
+      class="home-moment"
       data-reveal>
 
+      <img
+        src="/images/wedding-morning-prosecco-bridal-preparations-grosvenor-cheshire.png"
+        alt="Wedding morning prosecco during bridal preparations at Grosvenor Pulford"
+        loading="lazy">
 
-      <div class="promise-card-image">
+    </figure>
 
-        <img
-          src="/images/wedding-top-table-speech-grosvenor-cheshire.png"
-          alt="Wedding speech being delivered at the top table during a Grosvenor Pulford wedding in Cheshire"
-          loading="lazy">
 
-      </div>
 
+    <figure
+      class="home-moment home-moment-wide"
+      data-reveal="right">
 
-      <div class="promise-card-copy">
+      <img
+        src="/images/wedding-couple-kiss-reception-thornton-hall-wirral.png"
+        alt="Wedding couple sharing a kiss during their Thornton Hall reception on the Wirral"
+        loading="lazy">
 
-        <span class="promise-number">
-          02
-        </span>
-
-
-        <span class="promise-kicker">
-          Their Voices
-        </span>
-
-
-        <h3>
-          Not only what they said.
-          How they said it.
-        </h3>
-
-
-        <p>
-          Your vows. A parent's speech.
-          Someone pausing because the words suddenly mean
-          more than they expected.
-          The laughter immediately afterwards.
-        </p>
-
-      </div>
-
-    </article>
-
-
-
-    <!-- ==================================================
-         03 — THE MOMENTS YOU MISSED
-         ================================================== -->
-
-    <article
-      class="promise-card promise-card-03"
-      data-reveal>
-
-
-      <div class="promise-card-image">
-
-        <img
-          src="/images/candid-wedding-guest-moment-grosvenor-cheshire.png"
-          alt="Natural candid moment between wedding guests during a Cheshire wedding"
-          loading="lazy">
-
-      </div>
-
-
-      <div class="promise-card-copy">
-
-        <span class="promise-number">
-          03
-        </span>
-
-
-        <span class="promise-kicker">
-          The Moments You Missed
-        </span>
-
-
-        <h3>
-          Some of your favourite memories happened somewhere else.
-        </h3>
-
-
-        <p>
-          Your parents together.
-          A friend reacting to your vows.
-          Somebody hugging across the room.
-          Conversations and expressions you were never there to see.
-        </p>
-
-      </div>
-
-    </article>
-
-
-
-    <!-- ==================================================
-         04 — THE ATMOSPHERE
-         ================================================== -->
-
-    <article
-      class="promise-card promise-card-04"
-      data-reveal>
-
-
-      <div class="promise-card-image">
-
-        <img
-          src="/images/wedding-guests-laughing-reception-thornton-hall-wirral.png"
-          alt="Wedding guests laughing together during a reception at Thornton Hall on the Wirral"
-          loading="lazy">
-
-      </div>
-
-
-      <div class="promise-card-copy">
-
-        <span class="promise-number">
-          04
-        </span>
-
-
-        <span class="promise-kicker">
-          The Atmosphere Around You
-        </span>
-
-
-        <h3>
-          The room had a personality of its own.
-        </h3>
-
-
-        <p>
-          Glasses clinking.
-          People catching up.
-          Somebody laughing at the other end of the room.
-          The background moments that quietly become
-          part of how the day felt.
-        </p>
-
-      </div>
-
-    </article>
-
-
-
-    <!-- ==================================================
-         05 — CELEBRATION
-         ================================================== -->
-
-    <article
-      class="promise-card promise-card-large promise-card-celebration promise-card-05"
-      data-reveal>
-
-
-      <div class="promise-card-image">
-
-        <img
-          src="/images/wedding-first-dance-thornton-hall-wirral.png"
-          alt="Bride and groom laughing together during their first dance at Thornton Hall on the Wirral"
-          loading="lazy">
-
-      </div>
-
-
-      <div class="promise-card-copy">
-
-        <span class="promise-number">
-          05
-        </span>
-
-
-        <span class="promise-kicker">
-          When Everyone Lets Go
-        </span>
-
-
-        <h3>
-          The formalities finish.
-          The personalities come out.
-        </h3>
-
-
-        <p>
-          The drinks.
-          The questionable dancing.
-          People singing far too loudly.
-          The friend who swore they weren't going to get up
-          suddenly taking over the dance floor.
-        </p>
-
-      </div>
-
-    </article>
+    </figure>
 
 
   </div>
@@ -752,7 +1133,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 <section
   id="filmmaker"
-  class="home-process">
+  class="home-process"
+  aria-labelledby="filmmaker-title">
+
 
   <div class="home-process-grid">
 
@@ -780,7 +1163,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </span>
 
 
-      <h2>
+      <h2 id="filmmaker-title">
         Your wedding first.
 
         <span class="process-heading-accent">
@@ -818,7 +1201,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         <div class="process-pillar">
 
-          <span>01</span>
+          <span>
+            01
+          </span>
 
           <strong>
             Relaxed on the day
@@ -835,7 +1220,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         <div class="process-pillar">
 
-          <span>02</span>
+          <span>
+            02
+          </span>
 
           <strong>
             Real audio
@@ -852,7 +1239,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         <div class="process-pillar">
 
-          <span>03</span>
+          <span>
+            03
+          </span>
 
           <strong>
             Edited around you
@@ -896,7 +1285,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 <section
   id="collections"
-  class="home-collections">
+  class="home-collections"
+  aria-labelledby="collections-title">
 
 
   <div
@@ -909,7 +1299,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </span>
 
 
-    <h2>
+    <h2 id="collections-title">
       Choose how much of the day
 
       <span class="collection-heading-accent">
@@ -931,6 +1321,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   <div class="packages">
 
+
+    <!-- NARRATIVE -->
 
     <div
       class="card"
@@ -974,6 +1366,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </div>
 
 
+
+    <!-- CINEMATIC -->
 
     <div
       id="cinematic-default"
@@ -1021,6 +1415,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
+    <!-- CEREMONY -->
+
     <div
       class="card"
       onclick="toggleActive(this)"
@@ -1064,6 +1460,10 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 
+
+  <!-- ==================================================
+       OPTIONAL EXTRAS
+       ================================================== -->
 
   <div
     class="optional-extras"
@@ -1126,7 +1526,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
      PHOTOGRAPHY + FILM
      ====================================================== -->
 
-<section class="home-partner">
+<section
+  class="home-partner"
+  aria-labelledby="partner-title">
 
 
   <div class="home-partner-inner">
@@ -1196,7 +1598,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </span>
 
 
-      <h2>
+      <h2 id="partner-title">
         Two people behind the cameras.
 
         <span class="partner-heading-accent">
@@ -1295,7 +1697,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 <section
   id="destinations"
-  class="home-locations">
+  class="home-locations"
+  aria-labelledby="locations-title">
 
 
   <div
@@ -1308,7 +1711,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </span>
 
 
-    <h2>
+    <h2 id="locations-title">
       Based on the Wirral.
 
       <span class="location-heading-accent">
@@ -1339,9 +1742,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         alt="Wedding videography on the Wirral"
         loading="lazy">
 
+
       <div class="destination-overlay">
 
-        <h3>Wirral</h3>
+        <h3>
+          Wirral
+        </h3>
 
         <p>
           Coast, Countryside &amp; Character
@@ -1363,9 +1769,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         alt="Liverpool wedding videographer"
         loading="lazy">
 
+
       <div class="destination-overlay">
 
-        <h3>Liverpool</h3>
+        <h3>
+          Liverpool
+        </h3>
 
         <p>
           City Weddings &amp; Urban Character
@@ -1387,9 +1796,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         alt="Cheshire wedding videographer"
         loading="lazy">
 
+
       <div class="destination-overlay">
 
-        <h3>Cheshire</h3>
+        <h3>
+          Cheshire
+        </h3>
 
         <p>
           Barns, Hotels &amp; Country Houses
@@ -1411,9 +1823,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         alt="North Wales wedding videographer"
         loading="lazy">
 
+
       <div class="destination-overlay">
 
-        <h3>North Wales</h3>
+        <h3>
+          North Wales
+        </h3>
 
         <p>
           Wild &amp; Natural Settings
@@ -1436,7 +1851,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 <section
   id="faqs"
-  class="home-faq">
+  class="home-faq"
+  aria-labelledby="faq-title">
 
 
   <div
@@ -1449,7 +1865,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </span>
 
 
-    <h2>
+    <h2 id="faq-title">
       A few things worth
 
       <span class="faq-heading-accent">
@@ -1670,7 +2086,9 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
      FINAL CTA
      ====================================================== -->
 
-<section class="home-final-cta">
+<section
+  class="home-final-cta"
+  aria-labelledby="final-cta-title">
 
 
   <div
@@ -1683,7 +2101,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </span>
 
 
-    <h2>
+    <h2 id="final-cta-title">
       If the films feel like you,
 
       <em>
@@ -1716,7 +2134,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 <section
   id="contact"
-  class="home-contact">
+  class="home-contact"
+  aria-labelledby="contact-title">
 
 
   <div
@@ -1729,7 +2148,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </span>
 
 
-    <h2>
+    <h2 id="contact-title">
       Tell me about the day.
 
       <span class="contact-heading-accent">
@@ -1960,6 +2379,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
   </div>
 
 </section>
+
 
 
 <script

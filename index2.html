@@ -45,13 +45,11 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
       <h1>
-
         The Moments You Lived.
 
         <em>
           And the ones happening around you.
         </em>
-
       </h1>
 
 
@@ -93,7 +91,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
       <div class="home-hero-proof-stage">
 
-
         <blockquote
           class="home-hero-review is-active"
           data-hero-review="0">
@@ -114,7 +111,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
           </cite>
 
         </blockquote>
-
 
 
         <blockquote
@@ -138,7 +134,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         </blockquote>
 
-
       </div>
 
 
@@ -161,13 +156,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 <!-- ======================================================
      WHAT FILM GIVES YOU
 
-     INTRO:
-     DISTINCT OPENING MOMENT
-
-     THEN:
-     TEXT SCROLLS LEFT
-     VISUAL REMAINS STICKY RIGHT
-     IMAGES CROSSFADE AS EACH CHAPTER BECOMES ACTIVE
+     1. STANDALONE INTRO
+     2. SCROLLING COPY + STICKY IMAGE STORY
      ====================================================== -->
 
 <section
@@ -177,12 +167,16 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   <!-- ==================================================
        INTRO
+
+       This is deliberately separate from the 01-05 story.
+       JS can animate the image left and copy right as
+       the numbered story enters.
        ================================================== -->
 
   <div class="promise-intro">
 
     <div
-      class="home-promise-word promise-intro-word"
+      class="promise-intro-word"
       aria-hidden="true">
       REMEMBER
     </div>
@@ -190,6 +184,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
     <div class="promise-intro-inner">
 
+
+      <!-- INTRO IMAGE -->
 
       <div class="promise-intro-image">
 
@@ -218,6 +214,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
+      <!-- INTRO COPY -->
+
       <div class="promise-intro-copy">
 
         <span class="eyebrow">
@@ -226,13 +224,11 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
         <h2>
-
           Don't just remember the day.
 
           <em>
             Step back inside it.
           </em>
-
         </h2>
 
 
@@ -253,13 +249,21 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
   <!-- ==================================================
-       SCROLL STORY
+       NUMBERED STORY
+
+       LEFT:
+       copy scrolls naturally
+
+       RIGHT:
+       one sticky image frame
+
+       JS changes ONLY the active image
        ================================================== -->
 
   <div class="promise-story">
 
     <div
-      class="home-promise-word promise-story-word"
+      class="promise-story-word"
       aria-hidden="true">
       YOUR STORY
     </div>
@@ -269,17 +273,16 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
       <!-- ==================================================
-           LEFT:
-           NATURALLY SCROLLING COPY
+           LEFT COLUMN
            ================================================== -->
 
       <div class="promise-copy-stack">
 
 
-        <!-- 01 — VOICES -->
+        <!-- 01 -->
 
         <article
-          class="promise-copy-block is-active"
+          class="promise-copy-block"
           data-promise-index="0">
 
           <span class="promise-number">
@@ -314,7 +317,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-        <!-- 02 — ATMOSPHERE -->
+        <!-- 02 -->
 
         <article
           class="promise-copy-block"
@@ -353,7 +356,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-        <!-- 03 — PEOPLE -->
+        <!-- 03 -->
 
         <article
           class="promise-copy-block"
@@ -392,7 +395,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-        <!-- 04 — WHAT HAPPENS AROUND YOU -->
+        <!-- 04 -->
 
         <article
           class="promise-copy-block"
@@ -431,7 +434,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-        <!-- 05 — CELEBRATION -->
+        <!-- 05 -->
 
         <article
           class="promise-copy-block"
@@ -474,25 +477,27 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
       <!-- ==================================================
-           RIGHT:
-           STICKY IMAGE STAGE
+           RIGHT COLUMN
            ================================================== -->
 
-      <div class="promise-visual-column">
+      <aside
+        class="promise-visual-column"
+        aria-label="Wedding film moments">
 
         <div class="promise-visual-sticky">
 
 
-          <!-- IMAGE 01 -->
+          <!-- 01 IMAGE -->
 
           <figure
             class="promise-sticky-image is-active"
-            data-promise-image="0">
+            data-promise-image="0"
+            aria-hidden="false">
 
             <img
               src="/images/wedding-top-table-speech-grosvenor-cheshire.png"
               alt="Wedding speech being delivered at the top table during a Grosvenor Pulford wedding in Cheshire"
-              loading="lazy">
+              loading="eager">
 
             <div class="promise-image-overlay"></div>
 
@@ -514,11 +519,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-          <!-- IMAGE 02 -->
+          <!-- 02 IMAGE -->
 
           <figure
             class="promise-sticky-image"
-            data-promise-image="1">
+            data-promise-image="1"
+            aria-hidden="true">
 
             <img
               src="/images/wedding-couple-kiss-reception-thornton-hall-wirral.png"
@@ -545,11 +551,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-          <!-- IMAGE 03 -->
+          <!-- 03 IMAGE -->
 
           <figure
             class="promise-sticky-image"
-            data-promise-image="2">
+            data-promise-image="2"
+            aria-hidden="true">
 
             <img
               src="/images/candid-wedding-guest-moment-grosvenor-cheshire.png"
@@ -576,11 +583,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-          <!-- IMAGE 04 -->
+          <!-- 04 IMAGE -->
 
           <figure
             class="promise-sticky-image"
-            data-promise-image="3">
+            data-promise-image="3"
+            aria-hidden="true">
 
             <img
               src="/images/wedding-guests-laughing-reception-thornton-hall-wirral.png"
@@ -607,11 +615,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-          <!-- IMAGE 05 -->
+          <!-- 05 IMAGE -->
 
           <figure
             class="promise-sticky-image"
-            data-promise-image="4">
+            data-promise-image="4"
+            aria-hidden="true">
 
             <img
               src="/images/wedding-first-dance-thornton-hall-wirral.png"
@@ -639,11 +648,10 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
         </div>
 
-      </div>
+      </aside>
 
 
     </div>
-
 
 
     <div
@@ -653,7 +661,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       <span id="promise-progress-bar"></span>
 
     </div>
-
 
   </div>
 
@@ -699,9 +706,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-  <!-- ==================================================
-       ANDY + LESLEY
-       ================================================== -->
+  <!-- ANDY + LESLEY -->
 
   <article class="editorial-story">
 
@@ -792,9 +797,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
 
 
-  <!-- ==================================================
-       KIRSTY + CONNOR
-       ================================================== -->
+  <!-- KIRSTY + CONNOR -->
 
   <article class="editorial-story reverse">
 
@@ -805,8 +808,8 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       <a href="/weddings/thornton-hall-wedding.html">
 
         <img
-          src="/images/Kirsty-connor-laughter.png"
-          alt="Kirsty and Connor laughing during their Thornton Hall wedding on the Wirral"
+          src="/images/kirsty-connor-cheers.png"
+          alt="Kirsty and Connor celebrating during their Thornton Hall wedding on the Wirral"
           loading="lazy">
 
         <span class="editorial-story-badge">
@@ -1031,6 +1034,7 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
   <div class="home-partner-inner">
 
+
     <div
       class="home-partner-gallery"
       data-reveal="left">
@@ -1147,12 +1151,12 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </div>
 
 
-      <div class="partner-credit">
+      <!--
+         Logo intentionally removed.
+         White logo artwork interrupted the visual language.
+      -->
 
-        <img
-          src="/images/ruby-salmon-logo.png"
-          alt="Ruby Salmon Photography"
-          loading="lazy">
+      <div class="partner-credit partner-credit-text-only">
 
         <div>
 
@@ -1248,7 +1252,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </a>
 
 
-
     <a
       href="/liverpool.html"
       class="destination-card"
@@ -1274,7 +1277,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
     </a>
 
 
-
     <a
       href="/cheshire.html"
       class="destination-card"
@@ -1298,7 +1300,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </div>
 
     </a>
-
 
 
     <a
@@ -1497,7 +1498,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
 
     <div class="extras-grid">
 
-
       <div class="extra-item">
 
         <strong>
@@ -1509,7 +1509,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </span>
 
       </div>
-
 
 
       <div class="extra-item">
@@ -1525,7 +1524,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </div>
 
 
-
       <div class="extra-item">
 
         <strong>
@@ -1539,7 +1537,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
       </div>
 
 
-
       <div class="extra-item">
 
         <strong>
@@ -1551,7 +1548,6 @@ description: "Natural, cinematic wedding films shaped around each couple. Weddin
         </span>
 
       </div>
-
 
 
       <div class="extra-item">

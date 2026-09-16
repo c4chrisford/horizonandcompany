@@ -167,7 +167,10 @@
 }
 
 
-/* MEDIA */
+
+/* =========================================================
+   HERO MEDIA
+   ========================================================= */
 
 .home-hero-media{
   position:absolute;
@@ -198,6 +201,8 @@
   max-width:none !important;
   max-height:none !important;
 
+  margin:0 !important;
+
   object-fit:cover !important;
   object-position:center center;
 
@@ -208,7 +213,10 @@
 }
 
 
-/* OVERLAY */
+
+/* =========================================================
+   HERO OVERLAY
+   ========================================================= */
 
 .home-hero-overlay{
   position:absolute;
@@ -220,16 +228,19 @@
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.14) 0%,
-      rgba(0,0,0,.20) 35%,
-      rgba(0,0,0,.46) 100%
+      rgba(0,0,0,.13) 0%,
+      rgba(0,0,0,.21) 36%,
+      rgba(0,0,0,.49) 100%
     );
 
   pointer-events:none;
 }
 
 
-/* INNER */
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
 
 .home-hero-inner{
   position:relative;
@@ -316,7 +327,7 @@
 
   margin:27px auto 0;
 
-  color:rgba(255,255,255,.87);
+  color:rgba(255,255,255,.88);
 
   font-size:.96rem;
   line-height:1.74;
@@ -428,6 +439,17 @@
 }
 
 
+.home-hero-proof,
+.home-hero-proof *,
+.home-hero-proof-stage,
+.home-hero-review,
+.home-hero-review-source{
+  background:transparent !important;
+
+  box-shadow:none !important;
+}
+
+
 .home-hero-proof-rule{
   width:100%;
   height:1px;
@@ -440,7 +462,7 @@
       transparent,
       rgba(255,255,255,.30),
       transparent
-    );
+    ) !important;
 }
 
 
@@ -462,6 +484,8 @@
 
   width:100%;
   min-height:82px;
+
+  overflow:visible;
 }
 
 
@@ -470,6 +494,9 @@
 
   inset:0;
 
+  width:100%;
+  height:100%;
+
   margin:0 !important;
   padding:0 !important;
 
@@ -477,6 +504,8 @@
   flex-direction:column;
   align-items:center;
   justify-content:center;
+
+  border:0 !important;
 
   opacity:0;
 
@@ -487,20 +516,20 @@
     transform .7s ease;
 
   pointer-events:none;
-
-  border:0 !important;
-  background:transparent !important;
 }
 
 
 .home-hero-review::before,
 .home-hero-review::after{
   content:none !important;
+
+  display:none !important;
 }
 
 
 .home-hero-review.is-active{
   opacity:1;
+
   transform:none;
 }
 
@@ -520,6 +549,7 @@
   max-width:680px;
 
   margin:0 auto !important;
+  padding:0 !important;
 
   font-family:'Baskervville',serif;
 
@@ -530,6 +560,8 @@
 
   color:rgba(255,255,255,.96);
 
+  text-align:center;
+
   text-shadow:
     0 2px 14px rgba(0,0,0,.42);
 }
@@ -539,10 +571,13 @@
   display:block;
 
   margin-top:7px !important;
+  padding:0 !important;
 
   color:rgba(255,255,255,.62);
 
   font-size:.48rem;
+  line-height:1.2;
+
   font-style:normal;
 
   letter-spacing:2.2px;
@@ -558,7 +593,7 @@
 
   overflow:hidden;
 
-  background:rgba(255,255,255,.22);
+  background:rgba(255,255,255,.22) !important;
 }
 
 
@@ -568,7 +603,7 @@
   width:0;
   height:100%;
 
-  background:#fff;
+  background:#fff !important;
 }
 
 
@@ -649,6 +684,7 @@
   margin-top:10px;
 
   font-size:.68em;
+  line-height:1.12;
 
   font-style:italic;
 
@@ -716,10 +752,15 @@
 }
 
 
-/* IMAGE */
+
+/* =========================================================
+   STORY IMAGE
+   ========================================================= */
 
 .editorial-story-image{
   position:relative;
+
+  min-width:0;
 }
 
 
@@ -847,7 +888,8 @@
 
   transition:
     opacity .35s ease,
-    transform .4s cubic-bezier(.2,.7,.2,1);
+    transform .4s cubic-bezier(.2,.7,.2,1),
+    background .3s ease;
 }
 
 
@@ -857,15 +899,22 @@
   transform:
     translate(-50%,-50%)
     scale(1);
+
+  background:rgba(20,20,20,.28);
 }
 
 
-/* COPY */
+
+/* =========================================================
+   STORY COPY
+   ========================================================= */
 
 .editorial-story-copy{
   position:relative;
 
   max-width:485px;
+
+  min-width:0;
 }
 
 
@@ -1114,33 +1163,36 @@
 
 
 .home-promise::before{
-  content:"KEEP";
+  content:"DISCOVER";
 
   position:absolute;
 
-  right:-15px;
-  top:50px;
+  right:-30px;
+  top:42px;
 
   font-family:'Baskervville',serif;
 
-  font-size:clamp(8rem,16vw,16rem);
+  font-size:clamp(7rem,14vw,14rem);
 
   font-style:italic;
 
-  color:rgba(0,0,0,.02);
+  color:rgba(0,0,0,.018);
 
   pointer-events:none;
 }
 
 
-/* HEADER */
+
+/* =========================================================
+   PROMISE HEADER
+   ========================================================= */
 
 .promise-heading{
   position:relative;
 
   z-index:2;
 
-  max-width:850px;
+  max-width:880px;
 
   margin:0 auto 88px;
 
@@ -1172,9 +1224,12 @@
 .promise-heading h2 span{
   display:block;
 
-  margin-top:10px;
+  max-width:800px;
+
+  margin:10px auto 0;
 
   font-size:.66em;
+  line-height:1.12;
 
   font-style:italic;
 
@@ -1183,7 +1238,7 @@
 
 
 .promise-heading p{
-  max-width:675px;
+  max-width:690px;
 
   margin:27px auto 0;
 
@@ -1235,12 +1290,15 @@
 
   transition:
     transform .45s cubic-bezier(.2,.7,.2,1),
-    box-shadow .45s ease;
+    box-shadow .45s ease,
+    border-color .45s ease;
 }
 
 
 .promise-card:hover{
   transform:translateY(-4px);
+
+  border-color:rgba(36,35,33,.15);
 
   box-shadow:var(--home-shadow);
 }
@@ -1249,15 +1307,20 @@
 .promise-card-large{
   grid-column:span 2;
 
-  min-height:560px;
+  min-height:550px;
 
-  grid-template-columns:1.3fr .7fr;
+  grid-template-columns:
+    minmax(0,1.3fr)
+    minmax(0,.7fr);
+
   grid-template-rows:1fr;
 }
 
 
 .promise-card-celebration{
-  grid-template-columns:.9fr 1.1fr;
+  grid-template-columns:
+    minmax(0,.78fr)
+    minmax(0,1.22fr);
 }
 
 
@@ -1271,7 +1334,10 @@
 }
 
 
-/* IMAGE */
+
+/* =========================================================
+   PROMISE IMAGE
+   ========================================================= */
 
 .promise-card-image{
   position:relative;
@@ -1317,15 +1383,18 @@
 }
 
 
-/* CROPS */
+
+/* =========================================================
+   PROMISE IMAGE CROPS
+   ========================================================= */
 
 .promise-card:nth-child(1) .promise-card-image img{
-  object-position:center 45%;
+  object-position:center 46%;
 }
 
 
 .promise-card:nth-child(2) .promise-card-image img{
-  object-position:center 42%;
+  object-position:center 45%;
 }
 
 
@@ -1335,14 +1404,19 @@
 
 
 .promise-card:nth-child(4) .promise-card-image img{
-  object-position:center 42%;
+  object-position:center 44%;
 }
 
 
-/* COPY */
+
+/* =========================================================
+   PROMISE COPY
+   ========================================================= */
 
 .promise-card-copy{
   position:relative;
+
+  min-width:0;
 
   padding:
     clamp(34px,4vw,56px);
@@ -1383,7 +1457,7 @@
 
 
 .promise-card h3{
-  max-width:480px;
+  max-width:490px;
 
   margin:0 0 18px;
 
@@ -1401,7 +1475,7 @@
 
 
 .promise-card p{
-  max-width:460px;
+  max-width:470px;
 
   margin:0;
 
@@ -1414,7 +1488,7 @@
 
 
 /* =========================================================
-   BEHIND THE LENS / EXPERIENCE
+   EXPERIENCE / BEHIND THE LENS
    ========================================================= */
 
 .home-process{
@@ -1467,7 +1541,10 @@
 }
 
 
-/* PROFILE */
+
+/* =========================================================
+   PROCESS IMAGE
+   ========================================================= */
 
 .home-process-image{
   position:relative;
@@ -1527,7 +1604,15 @@
 }
 
 
-/* COPY */
+
+/* =========================================================
+   PROCESS COPY
+   ========================================================= */
+
+.home-process-copy{
+  min-width:0;
+}
+
 
 .home-process-copy .eyebrow{
   margin-bottom:19px;
@@ -1594,7 +1679,10 @@
 }
 
 
-/* PROCESS PILLARS */
+
+/* =========================================================
+   PROCESS PILLARS
+   ========================================================= */
 
 .process-pillars{
   max-width:650px;
@@ -1680,9 +1768,12 @@
 
 
 .process-signature span{
+  display:block;
+
   color:#77716a;
 
   font-size:.82rem;
+  line-height:1.55;
 }
 
 
@@ -1760,6 +1851,7 @@
   margin-top:9px;
 
   font-size:.68em;
+  line-height:1.13;
 
   font-style:italic;
 
@@ -1779,14 +1871,17 @@
 }
 
 
-/* PACKAGE EXTENSIONS */
+
+/* =========================================================
+   PACKAGE EXTENSIONS
+   ========================================================= */
 
 .home-collections .packages{
   position:relative;
 
   z-index:2;
 
-  max-width:1100px;
+  width:min(1100px,100%);
 
   margin-left:auto;
   margin-right:auto;
@@ -1829,14 +1924,17 @@
 }
 
 
-/* EXTRAS */
+
+/* =========================================================
+   OPTIONAL EXTRAS
+   ========================================================= */
 
 .home-collections .optional-extras{
   position:relative;
 
   z-index:2;
 
-  max-width:1100px;
+  width:min(1100px,100%);
 
   margin-left:auto;
   margin-right:auto;
@@ -2092,6 +2190,8 @@
    ========================================================= */
 
 .home-partner-copy{
+  min-width:0;
+
   max-width:620px;
 }
 
@@ -2161,7 +2261,10 @@
 }
 
 
-/* BENEFITS */
+
+/* =========================================================
+   PARTNER BENEFITS
+   ========================================================= */
 
 .partner-benefits{
   max-width:620px;
@@ -2208,7 +2311,10 @@
 }
 
 
-/* CREDIT */
+
+/* =========================================================
+   PARTNER CREDIT
+   ========================================================= */
 
 .partner-credit{
   max-width:620px;
@@ -2355,6 +2461,7 @@
   margin-top:9px;
 
   font-size:.67em;
+  line-height:1.14;
 
   font-style:italic;
 
@@ -2379,7 +2486,7 @@
 
   z-index:2;
 
-  max-width:1180px;
+  width:min(1180px,100%);
 
   margin:auto;
 
@@ -2490,6 +2597,7 @@
   margin-top:8px;
 
   font-size:.65em;
+  line-height:1.14;
 
   font-style:italic;
 
@@ -3319,6 +3427,13 @@
 
   .promise-card{
     border-color:rgba(36,35,33,.10);
+  }
+
+
+  .promise-card:hover{
+    transform:none;
+
+    box-shadow:none;
   }
 
 

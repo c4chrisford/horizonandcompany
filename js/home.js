@@ -1449,11 +1449,11 @@ if (!videoId) {
         document.createElement('iframe');
 
 
-      iframe.src =
-        'https://www.youtube.com/embed/' +
-        encodeURIComponent(videoId) +
-        '?autoplay=1&rel=0&modestbranding=1';
-
+iframe.src =
+  'https://www.youtube.com/embed/' +
+  encodeURIComponent(videoId) +
+  '?autoplay=1&rel=0&modestbranding=1&start=' +
+  startTime;
 
       iframe.title =
         title;

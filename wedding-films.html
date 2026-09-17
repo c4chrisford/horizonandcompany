@@ -1,317 +1,258 @@
 ---
 layout: default
-title: "Wedding Films | Horizon & Company | Cinematic Wedding Videography"
-description: "Watch real wedding films by Horizon & Company. Personality-led cinematic wedding videography shaped around each couple across Cheshire, Wirral, Liverpool, North Wales and the UK."
+title: "Wedding Films | Real Cinematic Wedding Films | Horizon & Company"
+description: "Watch real wedding films by Horizon & Company. Natural, personality-led wedding videography across Cheshire, Wirral, Liverpool, North Wales and the UK."
+body_class: films-page
 ---
 
-<style>
+<link rel="stylesheet" href="/css/home.css">
 
-.films-hero{
-  padding-top:175px;
-  padding-bottom:105px;
-  background:var(--light-grey);
-  text-align:center;
-}
-
-.films-hero-inner{
-  max-width:850px;
-  margin:auto;
-}
-
-.films-hero h1{
-  font-family:'Baskervville',serif;
-  font-size:4rem;
-  line-height:1.08;
-  font-weight:400;
-  margin:0 0 28px;
-}
-
-.films-hero p{
-  max-width:720px;
-  margin:0 auto;
-  color:#555;
-  font-size:1.05rem;
-  line-height:1.8;
-}
-
-.films-principle{
-  max-width:760px;
-  margin:45px auto 0;
-  padding-top:40px;
-  border-top:1px solid var(--border);
-  font-family:'Baskervville',serif;
-  font-size:1.8rem;
-  line-height:1.45;
-  color:var(--charcoal);
-}
-
-.film-feature{
-  padding-top:115px;
-  padding-bottom:125px;
-}
-
-.film-feature.white{
-  background:white;
-}
-
-.film-feature.grey{
-  background:var(--light-grey);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-}
-
-.film-inner{
-  max-width:1050px;
-  margin:auto;
-}
-
-.film-heading{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  align-items:end;
-  margin-bottom:45px;
-}
-
-.film-heading h2{
-  font-family:'Baskervville',serif;
-  font-size:3.2rem;
-  line-height:1.1;
-  font-weight:400;
-  margin:0;
-}
-
-.film-venue{
-  color:var(--gold);
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:.72rem;
-  margin:12px 0 0;
-}
-
-.film-tone{
-  font-family:'Baskervville',serif;
-  font-size:1.35rem;
-  line-height:1.5;
-  font-style:italic;
-  margin:0 0 15px;
-  color:var(--charcoal);
-}
-
-.film-intro{
-  color:#555;
-  line-height:1.8;
-  font-size:.95rem;
-  margin:0;
-  max-width:500px;
-}
-
-.video-frame{
-  position:relative;
-  width:100%;
-  aspect-ratio:16/9;
-  background:#111;
-  overflow:hidden;
-  box-shadow:0 25px 55px rgba(0,0,0,.10);
-}
-
-.video-frame iframe{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  border:0;
-}
-
-.film-footer{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:60px;
-  margin-top:38px;
-  align-items:start;
-}
-
-.film-footer p{
-  color:#666;
-  font-size:.92rem;
-  line-height:1.8;
-  margin:0;
-}
-
-.film-link{
-  text-align:right;
-}
-
-.film-link a{
-  color:var(--charcoal);
-  text-decoration:none;
-  font-size:.72rem;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  font-weight:600;
-  border-bottom:1px solid var(--gold);
-  padding-bottom:5px;
-}
-
-.film-quote{
-  max-width:820px;
-  margin:60px auto 0;
-  padding-top:45px;
-  border-top:1px solid var(--border);
-  text-align:center;
-}
-
-.film-quote-stars{
-  color:var(--gold);
-  letter-spacing:5px;
-  font-size:.9rem;
-  margin-bottom:22px;
-}
-
-.film-quote blockquote{
-  font-family:'Baskervville',serif;
-  font-size:1.55rem;
-  line-height:1.55;
-  font-style:italic;
-  margin:0 auto 20px;
-  color:var(--charcoal);
-}
-
-.film-quote-name{
-  margin:0;
-  font-size:.7rem;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:#777;
-}
-
-.approach-section{
-  background:white;
-  border-top:1px solid var(--border);
-}
-
-.approach-grid-films{
-  max-width:950px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:90px;
-}
-
-.approach-grid-films h2{
-  font-family:'Baskervville',serif;
-  font-size:3rem;
-  line-height:1.15;
-  font-weight:400;
-  margin:0;
-}
-
-.approach-grid-films p{
-  color:#555;
-  font-size:.98rem;
-  line-height:1.85;
-  margin-top:0;
-}
-
-.films-cta{
-  background:var(--charcoal);
-  color:white;
-  text-align:center;
-}
-
-.films-cta-inner{
-  max-width:750px;
-  margin:auto;
-}
-
-.films-cta h2{
-  font-family:'Baskervville',serif;
-  font-size:3.2rem;
-  line-height:1.15;
-  font-weight:400;
-  margin:0 0 22px;
-}
-
-.films-cta p{
-  max-width:620px;
-  margin:0 auto 30px;
-  color:#ccc;
-  line-height:1.8;
-}
-
-@media(max-width:900px){
-
-  .film-heading,
-  .film-footer,
-  .approach-grid-films{
-    grid-template-columns:1fr;
-    gap:25px;
-  }
-
-  .film-link{
-    text-align:left;
-  }
-
-  .film-heading h2{
-    font-size:2.6rem;
-  }
-
-}
-
-@media(max-width:600px){
-
-  .films-hero h1{
-    font-size:2.8rem;
-  }
-
-  .films-hero{
-    padding-top:145px;
-    padding-bottom:75px;
-  }
-
-  .films-principle{
-    font-size:1.5rem;
-  }
-
-}
-
-</style>
-
-
-<!-- HERO -->
+<!-- ======================================================
+     HERO
+     ====================================================== -->
 
 <section class="films-hero">
 
   <div class="films-hero-inner">
 
-    <span class="eyebrow">
-      Real Weddings
-    </span>
+    <div class="films-hero-copy" data-reveal="left">
 
-    <h1>
-      Wedding Films
-    </h1>
+      <span class="eyebrow">
+        Real Weddings · Real Stories
+      </span>
 
-    <p>
-      No two weddings have the same personality, and their films shouldn't
-      either. The people, relationships, speeches and atmosphere of the day
-      shape the soundtrack, pacing and storytelling of every film.
-    </p>
+      <h1>
+        Wedding films
+        <em>that still feel like the people in them.</em>
+      </h1>
+
+      <p class="films-hero-lead">
+        No preset edit. No version of what a wedding is supposed to feel like.
+        The people, voices, reactions and atmosphere of the day decide how
+        each film moves.
+      </p>
+
+      <div class="films-hero-actions">
+
+        <a
+          href="#watch"
+          class="home-hero-button home-hero-button-primary">
+          Watch The Films
+        </a>
+
+        <a
+          href="/#contact"
+          class="home-hero-button home-hero-button-secondary">
+          Check Your Date
+        </a>
+
+      </div>
+
+      <div class="films-hero-proof">
+
+        <span>★★★★★</span>
+
+        <p>
+          “He captured some really special moments that we didn't even
+          get to see on the day.”
+        </p>
+
+        <small>
+          Aimee · Google Review
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="films-hero-visual"
+      data-reveal="right"
+      aria-label="Featured Horizon & Company wedding films">
+
+      <a
+        href="#andy-lesley"
+        class="films-hero-frame films-hero-frame-main">
+
+        <img
+          src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
+          alt="Andy and Lesley at Grosvenor Pulford Hotel and Spa in Cheshire">
+
+        <span class="films-hero-frame-overlay"></span>
+
+        <span class="films-hero-frame-copy">
+
+          <small>
+            Cheshire · 01
+          </small>
+
+          <strong>
+            Andy &amp; Lesley
+          </strong>
+
+          <em>
+            Emotional. Reflective.
+          </em>
+
+        </span>
+
+      </a>
+
+
+      <a
+        href="#kirsty-connor"
+        class="films-hero-frame films-hero-frame-small">
+
+        <img
+          src="/images/Kirsty-connor-laughter.png"
+          alt="Kirsty and Connor laughing at their Thornton Hall wedding on the Wirral">
+
+        <span class="films-hero-frame-overlay"></span>
+
+        <span class="films-hero-frame-copy">
+
+          <small>
+            Wirral · 02
+          </small>
+
+          <strong>
+            Kirsty &amp; Connor
+          </strong>
+
+          <em>
+            Fun. Carefree.
+          </em>
+
+        </span>
+
+      </a>
+
+
+      <div
+        class="films-hero-visual-label"
+        aria-hidden="true">
+
+        <span>
+          Two weddings.
+        </span>
+
+        <strong>
+          Two completely different films.
+        </strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="films-hero-scroll"
+    aria-hidden="true">
+
+    <span></span>
+
+    Watch the stories
 
   </div>
 
 </section>
 
 
-<!-- ANDY & LESLEY -->
+<!-- ======================================================
+     INTRO / FILM SELECTOR
+     ====================================================== -->
 
-<section class="film-feature white">
+<section
+  id="watch"
+  class="films-intro">
 
-  <div class="film-inner">
+  <div
+    class="films-intro-inner"
+    data-reveal>
 
-    <div class="film-heading">
+    <span class="eyebrow">
+      Choose A Story
+    </span>
 
-      <div>
+    <h2>
+      Same filmmaker.
+      <em>
+        Different rhythm, different emotion, different people.
+      </em>
+    </h2>
+
+    <p>
+      Watch both and the difference is the point.
+      I am not trying to make every couple fit the same film.
+      I am looking for the version of the day that feels most like them.
+    </p>
+
+
+    <div
+      class="films-jump-links"
+      aria-label="Jump to a wedding film">
+
+      <a href="#andy-lesley">
+
+        <span>
+          01
+        </span>
+
+        <strong>
+          Andy &amp; Lesley
+        </strong>
+
+        <small>
+          Grosvenor Pulford · Cheshire
+        </small>
+
+      </a>
+
+
+      <a href="#kirsty-connor">
+
+        <span>
+          02
+        </span>
+
+        <strong>
+          Kirsty &amp; Connor
+        </strong>
+
+        <small>
+          Thornton Hall · Wirral
+        </small>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     FILM 01 — ANDY & LESLEY
+     ====================================================== -->
+
+<section
+  id="andy-lesley"
+  class="films-story films-story-light">
+
+  <div class="films-story-inner">
+
+
+    <header class="films-story-heading">
+
+      <div data-reveal="left">
+
+        <span class="films-story-number">
+          01
+        </span>
 
         <span class="eyebrow">
           Cheshire Wedding Film
@@ -321,59 +262,135 @@ description: "Watch real wedding films by Horizon & Company. Personality-led cin
           Andy &amp; Lesley
         </h2>
 
-        <p class="film-venue">
-          Grosvenor Pulford Hotel &amp; Spa
+        <p class="films-story-venue">
+          Grosvenor Pulford Hotel &amp; Spa · Cheshire
         </p>
 
       </div>
 
-      <div>
 
-        <p class="film-tone">
+      <div
+        class="films-story-intro"
+        data-reveal="right">
+
+        <p class="films-story-tone">
           Emotional. Reflective. Full of history.
         </p>
 
-        <p class="film-intro">
-          Their story called for space to breathe. Friends looked back on
-          Andy's life, spoke about the difference Lesley had made to him,
-          and Andy himself spoke about feeling lucky to have found the
-          person he wanted to spend the rest of his life with.
+        <p>
+          This film needed room to breathe.
+          The speeches carried years of friendship,
+          family history and the sense that two people
+          had found each other at exactly the right point
+          in their lives.
         </p>
 
       </div>
 
+    </header>
+
+
+    <div
+      class="films-player-wrap"
+      data-reveal>
+
+      <button
+        class="films-player"
+        type="button"
+        data-youtube-id="oc7l4F5AuB4"
+        data-title="Andy and Lesley wedding film at Grosvenor Pulford Hotel and Spa">
+
+        <img
+          src="/images/andy-lesley-grosvenor-pulford-wedding.jpg"
+          alt="Play Andy and Lesley's Grosvenor Pulford wedding film"
+          loading="lazy">
+
+        <span class="films-player-shade"></span>
+
+
+        <span class="films-player-centre">
+
+          <span
+            class="films-player-play"
+            aria-hidden="true">
+            ▶
+          </span>
+
+          <strong>
+            Watch Their Film
+          </strong>
+
+          <small>
+            Grosvenor Pulford · Cheshire
+          </small>
+
+        </span>
+
+
+        <span class="films-player-corner">
+          5–7 min highlight film
+        </span>
+
+      </button>
+
     </div>
 
 
-    <div class="video-frame">
+    <div class="films-story-after">
 
-      <iframe
-        src="https://www.youtube.com/embed/oc7l4F5AuB4"
-        title="Andy and Lesley wedding film at Grosvenor Pulford Hotel and Spa"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
+      <div
+        class="films-story-copy"
+        data-reveal="left">
 
-    </div>
+        <span class="eyebrow">
+          Why This Film Feels Different
+        </span>
 
-
-    <div class="film-footer">
-
-      <p>
-        The speeches became the emotional spine of the film. A slower pace,
-        more reflective soundtrack and longer moments allowed the words,
-        memories and reactions to lead the story rather than forcing the
-        wedding into a predetermined style.
-      </p>
-
-      <div class="film-link">
-
-        <a href="/weddings/grosvenor-pulford-wedding.html">
-          Explore Their Story &rarr;
-        </a>
+        <p>
+          The speeches became the emotional spine.
+          The edit gives the words time to land,
+          then lets the reactions around them do part of the storytelling.
+          A slower soundtrack, longer moments and quieter transitions
+          keep the film reflective rather than forcing energy
+          that was never really there.
+        </p>
 
       </div>
+
+
+      <div
+        class="films-story-quote"
+        data-reveal="right">
+
+        <blockquote>
+          “Andy tells me that you're the love of his life
+          and he wishes he would have met you sooner.”
+        </blockquote>
+
+        <span>
+          From their wedding speeches
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="films-story-link-row"
+      data-reveal>
+
+      <a
+        href="/weddings/grosvenor-pulford-wedding.html"
+        class="films-text-link">
+
+        Explore Andy &amp; Lesley's Full Wedding Story
+
+        <span>
+          →
+        </span>
+
+      </a>
 
     </div>
 
@@ -382,15 +399,24 @@ description: "Watch real wedding films by Horizon & Company. Personality-led cin
 </section>
 
 
-<!-- KIRSTY & CONNOR -->
+<!-- ======================================================
+     FILM 02 — KIRSTY & CONNOR
+     ====================================================== -->
 
-<section class="film-feature grey">
+<section
+  id="kirsty-connor"
+  class="films-story films-story-stone">
 
-  <div class="film-inner">
+  <div class="films-story-inner">
 
-    <div class="film-heading">
 
-      <div>
+    <header class="films-story-heading films-story-heading-reverse">
+
+      <div data-reveal="left">
+
+        <span class="films-story-number">
+          02
+        </span>
 
         <span class="eyebrow">
           Wirral Wedding Film
@@ -400,79 +426,141 @@ description: "Watch real wedding films by Horizon & Company. Personality-led cin
           Kirsty &amp; Connor
         </h2>
 
-        <p class="film-venue">
-          Thornton Hall Hotel &amp; Spa
+        <p class="films-story-venue">
+          Thornton Hall Hotel &amp; Spa · Wirral
         </p>
 
       </div>
 
-      <div>
 
-        <p class="film-tone">
+      <div
+        class="films-story-intro"
+        data-reveal="right">
+
+        <p class="films-story-tone">
           Fun. Carefree. Full of energy.
         </p>
 
-        <p class="film-intro">
-          Kirsty and Connor's personalities called for movement, rhythm and
-          pace. Their friends and family brought humour and big reactions,
-          while the speeches revealed the warmth and support underneath it.
+        <p>
+          Kirsty and Connor's wedding needed movement.
+          Their friends brought humour, big reactions
+          and a lot of personality, while the speeches
+          gave the film warmth underneath all of that energy.
         </p>
 
       </div>
 
+    </header>
+
+
+    <div
+      class="films-player-wrap"
+      data-reveal>
+
+      <button
+        class="films-player"
+        type="button"
+        data-youtube-id="wpxDWhmKgyk"
+        data-title="Kirsty and Connor wedding film at Thornton Hall Hotel and Spa">
+
+        <img
+          src="/images/Kirsty-connor-laughter.png"
+          alt="Play Kirsty and Connor's Thornton Hall wedding film"
+          loading="lazy">
+
+        <span class="films-player-shade"></span>
+
+
+        <span class="films-player-centre">
+
+          <span
+            class="films-player-play"
+            aria-hidden="true">
+            ▶
+          </span>
+
+          <strong>
+            Watch Their Film
+          </strong>
+
+          <small>
+            Thornton Hall · Wirral
+          </small>
+
+        </span>
+
+
+        <span class="films-player-corner">
+          5–7 min highlight film
+        </span>
+
+      </button>
+
     </div>
 
 
-    <div class="video-frame">
-
-      <iframe
-        src="https://www.youtube.com/embed/wpxDWhmKgyk"
-        title="Kirsty and Connor wedding film at Thornton Hall Hotel and Spa"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-
-    </div>
-
-
-    <div class="film-footer">
-
-      <p>
-        The humour gave the film its pace, while the relationships gave it
-        its heart. Faster cutting, a stronger beat and playful moments sit
-        alongside the words that show why these two people belong together.
-      </p>
-
-      <div class="film-link">
-
-        <a href="/weddings/thornton-hall-wedding.html">
-          Explore Their Story &rarr;
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <div class="film-quote">
+    <div class="films-story-after">
 
       <div
-        class="film-quote-stars"
-        aria-label="5 star Google review">
-        &#9733;&#9733;&#9733;&#9733;&#9733;
+        class="films-story-copy"
+        data-reveal="left">
+
+        <span class="eyebrow">
+          Why This Film Feels Different
+        </span>
+
+        <p>
+          The humour gives this film its pace.
+          Faster cutting, stronger rhythmic moments
+          and more movement sit alongside the emotional beats
+          rather than replacing them.
+          The result feels lighter, louder and more playful
+          because that is what the day gave me.
+        </p>
+
       </div>
 
-      <blockquote>
-        &ldquo;Our wedding video were so amazing we loved it. He was so thoughtful
-        too as he put the subtitled on for us as we are deaf couple. We were so
-        pleased he had done that, it made a huge difference for us making us so
-        involved the video knowing what they are saying. He is amazing videographer.&rdquo;
-      </blockquote>
 
-      <p class="film-quote-name">
-        Kirsty - Google Review
-      </p>
+      <div
+        class="films-story-review"
+        data-reveal="right">
+
+        <div
+          class="films-story-stars"
+          aria-label="5 star Google review">
+          ★★★★★
+        </div>
+
+        <blockquote>
+          “Our wedding video were so amazing we loved it.
+          He was so thoughtful too as he put the subtitled on for us
+          as we are deaf couple.”
+        </blockquote>
+
+        <span>
+          Kirsty · Google Review
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="films-story-link-row"
+      data-reveal>
+
+      <a
+        href="/weddings/thornton-hall-wedding.html"
+        class="films-text-link">
+
+        Explore Kirsty &amp; Connor's Full Wedding Story
+
+        <span>
+          →
+        </span>
+
+      </a>
 
     </div>
 
@@ -481,42 +569,205 @@ description: "Watch real wedding films by Horizon & Company. Personality-led cin
 </section>
 
 
-<!-- APPROACH -->
+<!-- ======================================================
+     WHAT YOU ARE ACTUALLY WATCHING
+     ====================================================== -->
 
-<section class="approach-section">
+<section class="films-craft">
 
-  <div class="approach-grid-films">
+  <div class="films-craft-inner">
 
-    <div>
+
+    <div
+      class="films-craft-heading"
+      data-reveal="left">
+
+      <span class="eyebrow">
+        What Makes The Film
+      </span>
+
+      <h2>
+        Beautiful footage matters.
+
+        <em>
+          But footage alone isn't the story.
+        </em>
+      </h2>
+
+    </div>
+
+
+    <div class="films-craft-grid">
+
+
+      <article data-reveal>
+
+        <span>
+          01
+        </span>
+
+        <h3>
+          Real voices
+        </h3>
+
+        <p>
+          Vows, speeches and natural audio give the film
+          something photographs cannot preserve:
+          exactly how the day sounded.
+        </p>
+
+      </article>
+
+
+      <article data-reveal>
+
+        <span>
+          02
+        </span>
+
+        <h3>
+          Reactions around you
+        </h3>
+
+        <p>
+          The story is often happening away from the obvious moment:
+          parents, friends, laughter and little exchanges
+          you never saw yourself.
+        </p>
+
+      </article>
+
+
+      <article data-reveal>
+
+        <span>
+          03
+        </span>
+
+        <h3>
+          An edit shaped around you
+        </h3>
+
+        <p>
+          Music, pacing, colour and structure respond
+          to the personality of the wedding
+          rather than forcing it into a house style.
+        </p>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     MID-PAGE REVIEW
+     ====================================================== -->
+
+<section class="films-review-feature">
+
+  <div
+    class="films-review-feature-inner"
+    data-reveal>
+
+    <span class="eyebrow">
+      From The Couples
+    </span>
+
+    <div
+      class="films-review-stars"
+      aria-label="5 star Google review">
+      ★★★★★
+    </div>
+
+    <blockquote>
+      “He captured some really special moments
+      that we didn't even get to see on the day.”
+    </blockquote>
+
+    <p>
+      Aimee · Google Review
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     APPROACH
+     ====================================================== -->
+
+<section class="films-approach">
+
+  <div class="films-approach-inner">
+
+
+    <div
+      class="films-approach-heading"
+      data-reveal="left">
 
       <span class="eyebrow">
         The Approach
       </span>
 
       <h2>
-        A film that feels like you.
+        Quiet on the day.
+
+        <em>
+          Particular in the edit.
+        </em>
       </h2>
 
     </div>
 
-    <div>
 
-      <p>
-        We don't arrive with a template for what your wedding film should
-        look or sound like. We pay attention to the people, conversations,
-        relationships and atmosphere around us.
+    <div
+      class="films-approach-copy"
+      data-reveal="right">
+
+      <p class="films-approach-lead">
+        You should not spend your wedding performing for the camera.
       </p>
 
       <p>
-        On the day, the approach is relaxed and unobtrusive so genuine
-        moments can happen without constantly being directed for the camera.
+        I work around the day as it naturally happens,
+        stepping in with a little guidance only when it genuinely helps.
+        Most of the time, I am looking for the moments that happen
+        because nobody has been asked to create them.
       </p>
 
       <p>
-        In the edit, those moments determine the creative choices. Sound,
-        music, dialogue, colour and pacing are used to reflect the character
-        of the wedding rather than make every celebration feel the same.
+        Afterwards, the work becomes much more deliberate.
+        I go through the footage, speeches and natural audio
+        looking for the emotional thread that already exists,
+        then build the film around it.
       </p>
+
+
+      <div class="films-approach-points">
+
+        <span>
+          Documentary-led coverage
+        </span>
+
+        <span>
+          Professional multi-source audio
+        </span>
+
+        <span>
+          Natural cinematic colour
+        </span>
+
+        <span>
+          Private 4K delivery
+        </span>
+
+      </div>
 
     </div>
 
@@ -525,34 +776,112 @@ description: "Watch real wedding films by Horizon & Company. Personality-led cin
 </section>
 
 
-<!-- CTA -->
+<!-- ======================================================
+     LOCATIONS
+     ====================================================== -->
 
-<section class="films-cta">
+<section class="films-locations">
 
-  <div class="films-cta-inner">
+  <div
+    class="films-locations-inner"
+    data-reveal>
 
-    <span
-      class="eyebrow"
-      style="color:var(--gold);">
-      Your Story
+    <span class="eyebrow">
+      Where I Film
     </span>
 
     <h2>
-      Yours should feel different too.
+      North West weddings.
+
+      <em>
+        Stories that travel further.
+      </em>
     </h2>
 
     <p>
-      Tell us your wedding date, venue and a little about yourselves.
-      We'll confirm availability and start getting a feel for the celebration
-      you're planning.
+      Based on the Wirral and filming weddings across Cheshire,
+      Liverpool, North Wales, the wider UK and Europe.
     </p>
 
-    <a
-      href="/#contact"
-      class="hero-btn">
-      Check Your Date
-    </a>
+
+    <nav
+      class="films-location-links"
+      aria-label="Wedding videography locations">
+
+      <a href="/cheshire.html">
+        Cheshire
+      </a>
+
+      <a href="/wirral.html">
+        Wirral
+      </a>
+
+      <a href="/liverpool.html">
+        Liverpool
+      </a>
+
+      <a href="/north-wales.html">
+        North Wales
+      </a>
+
+    </nav>
 
   </div>
 
 </section>
+
+
+<!-- ======================================================
+     FINAL CTA
+     ====================================================== -->
+
+<section class="films-cta">
+
+  <div
+    class="films-cta-inner"
+    data-reveal>
+
+    <span class="eyebrow">
+      Your Wedding
+    </span>
+
+    <h2>
+      The next film should not look like either of these.
+
+      <em>
+        It should look like yours.
+      </em>
+    </h2>
+
+    <p>
+      Send over your date, venue and a little about the two of you.
+      I will confirm availability and point you towards
+      the collection that best fits the day you're planning.
+    </p>
+
+
+    <div class="films-cta-actions">
+
+      <a
+        href="/#contact"
+        class="home-hero-button home-hero-button-primary">
+        Check Your Date
+      </a>
+
+      <a
+        href="/#collections"
+        class="home-hero-button home-hero-button-secondary">
+        View Collections
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<script
+  src="/js/home.js"
+  defer>
+</script>

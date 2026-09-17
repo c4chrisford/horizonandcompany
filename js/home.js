@@ -1423,17 +1423,22 @@ document.addEventListener('DOMContentLoaded', function () {
          Get video information from HTML
          ----------------------------------------------- */
 
-      const videoId =
-        player.getAttribute('data-youtube-id');
+const videoId =
+  player.getAttribute('data-youtube-id');
 
-      const title =
-        player.getAttribute('data-title') ||
-        'Wedding film';
+const title =
+  player.getAttribute('data-title') ||
+  'Wedding film';
 
+const startTime =
+  parseInt(
+    player.getAttribute('data-youtube-start') || '0',
+    10
+  );
 
-      if (!videoId) {
-        return;
-      }
+if (!videoId) {
+  return;
+}
 
 
       /* -----------------------------------------------

@@ -15,7 +15,9 @@ layout: default
 
   <div class="wedding-hero-inner">
 
-    <div class="wedding-hero-copy" data-reveal="left">
+    <div
+      class="wedding-hero-copy"
+      data-reveal="left">
 
       <span class="eyebrow">
         {% if page.hero_eyebrow %}
@@ -26,38 +28,75 @@ layout: default
       </span>
 
       <h1>
+
         {% if page.couple_line_1 and page.couple_line_2 %}
-          <span>{{ page.couple_line_1 }}</span>
-          <span>{{ page.couple_line_2 }}</span>
+
+          <span>
+            {{ page.couple_line_1 }}
+          </span>
+
+          <span>
+            {{ page.couple_line_2 }}
+          </span>
+
         {% else %}
-          <span>{{ page.couple }}</span>
+
+          <span>
+            {{ page.couple }}
+          </span>
+
         {% endif %}
+
       </h1>
 
+
       {% if page.venue %}
+
         <p class="wedding-hero-venue">
-          {{ page.venue }}{% if page.location %} · {{ page.location }}{% endif %}
+
+          {{ page.venue }}
+
+          {% if page.location %}
+            · {{ page.location }}
+          {% endif %}
+
         </p>
+
       {% endif %}
+
 
       {% if page.tone %}
+
         <p class="wedding-hero-tone">
-          {% for item in page.tone %}{{ item }}{% unless forloop.last %}. {% endunless %}{% endfor %}.
+
+          {% for item in page.tone %}
+            {{ item }}{% unless forloop.last %}. {% endunless %}
+          {% endfor %}.
+
         </p>
+
       {% endif %}
 
+
       {% if page.intro %}
-        <p class="wedding-hero-intro">{{ page.intro }}</p>
+
+        <p class="wedding-hero-intro">
+          {{ page.intro }}
+        </p>
+
       {% endif %}
+
 
       <div class="wedding-hero-actions">
 
         {% if page.youtube_id %}
+
           <a
             href="#wedding-film"
             class="home-hero-button home-hero-button-primary">
             Watch Their Film
           </a>
+
         {% endif %}
 
         <a
@@ -76,6 +115,7 @@ layout: default
       <div
         class="wedding-hero-visual"
         data-reveal="right">
+
 
         <figure class="wedding-hero-image-main">
 
@@ -99,9 +139,11 @@ layout: default
             </strong>
 
             {% if page.hero_caption %}
+
               <em>
                 {{ page.hero_caption }}
               </em>
+
             {% endif %}
 
           </figcaption>
@@ -160,7 +202,8 @@ layout: default
 
 
 <!-- ======================================================
-     STORY — EDITORIAL OPENING
+     STORY
+     Compact editorial introduction
      ====================================================== -->
 
 {% if page.story or page.story_paragraphs %}
@@ -196,9 +239,11 @@ layout: default
         {% endif %}
 
         {% if page.story_heading_accent %}
+
           <em>
             {{ page.story_heading_accent }}
           </em>
+
         {% endif %}
 
       </h2>
@@ -207,12 +252,11 @@ layout: default
 
 
 
-    <div class="wedding-story-body">
+    <div
+      class="wedding-story-body"
+      data-reveal="right">
 
-
-      <div
-        class="wedding-story-copy"
-        data-reveal="right">
+      <div class="wedding-story-copy">
 
         {% if page.story_lead %}
 
@@ -243,32 +287,8 @@ layout: default
 
       </div>
 
-
-      {% assign story_visual = page.story_image | default: page.hero_secondary_image | default: page.feature_image %}
-
-      {% if story_visual %}
-
-        <figure
-          class="wedding-story-image"
-          data-reveal>
-
-          <img
-            src="{{ story_visual }}"
-            alt="{% if page.story_image_alt %}{{ page.story_image_alt }}{% else %}A candid moment from {{ page.couple }}'s wedding{% endif %}"
-            loading="lazy">
-
-          <span
-            class="wedding-story-image-index"
-            aria-hidden="true">
-            01
-          </span>
-
-        </figure>
-
-      {% endif %}
-
-
     </div>
+
 
   </div>
 
@@ -279,7 +299,7 @@ layout: default
 
 
 <!-- ======================================================
-     OPTIONAL VENUE FEATURE
+     VENUE FEATURE
      ====================================================== -->
 
 {% if page.venue_image %}
@@ -303,9 +323,13 @@ layout: default
         class="wedding-venue-image-label"
         aria-hidden="true">
 
-        <span>
-          {{ page.location }}
-        </span>
+        {% if page.location %}
+
+          <span>
+            {{ page.location }}
+          </span>
+
+        {% endif %}
 
         <strong>
           {{ page.venue }}
@@ -384,7 +408,7 @@ layout: default
 
 
 <!-- ======================================================
-     CINEMATIC IMAGE CHAPTER
+     FULL-WIDTH CINEMATIC IMAGE
      ====================================================== -->
 
 {% if page.feature_image %}
@@ -403,6 +427,7 @@ layout: default
 
 
     <div class="wedding-image-break-overlay"></div>
+
 
     <div
       class="wedding-image-break-frame"
@@ -436,13 +461,6 @@ layout: default
     {% endif %}
 
 
-    <div
-      class="wedding-image-break-number"
-      aria-hidden="true">
-      02
-    </div>
-
-
   </div>
 
 </section>
@@ -461,7 +479,6 @@ layout: default
   id="wedding-film"
   class="wedding-film">
 
-
   <div class="wedding-film-inner">
 
 
@@ -476,6 +493,7 @@ layout: default
       <h2>
         Watch {{ page.couple }}'s Wedding Film
       </h2>
+
 
       {% if page.film_intro %}
 
@@ -492,7 +510,6 @@ layout: default
     <div
       class="wedding-film-stage"
       data-reveal>
-
 
       <div class="films-player-wrap">
 
@@ -537,7 +554,13 @@ layout: default
             </strong>
 
             <small>
-              {{ page.venue }}{% if page.location %} · {{ page.location }}{% endif %}
+
+              {{ page.venue }}
+
+              {% if page.location %}
+                · {{ page.location }}
+              {% endif %}
+
             </small>
 
           </span>
@@ -556,22 +579,6 @@ layout: default
 
       </div>
 
-
-      <div
-        class="wedding-film-stage-caption"
-        aria-hidden="true">
-
-        <span>
-          03
-        </span>
-
-        <p>
-          Movement. Voices. Reactions. The day, back in motion.
-        </p>
-
-      </div>
-
-
     </div>
 
   </div>
@@ -583,13 +590,12 @@ layout: default
 
 
 <!-- ======================================================
-     THE EDIT — EDITORIAL QUOTE COMPOSITION
+     THE EDIT
      ====================================================== -->
 
 {% if page.edit_heading or page.quotes %}
 
 <section class="wedding-edit">
-
 
   <div
     class="wedding-edit-word"
@@ -608,6 +614,7 @@ layout: default
       <span class="eyebrow">
         The Edit
       </span>
+
 
       {% if page.edit_heading %}
 
@@ -634,17 +641,11 @@ layout: default
 
       <div class="wedding-quotes">
 
-
         {% for quote in page.quotes %}
 
           <article
             class="wedding-quote {% if forloop.first %}wedding-quote-primary{% else %}wedding-quote-secondary{% endif %}"
             data-reveal>
-
-
-            <span class="wedding-quote-number">
-              0{{ forloop.index }}
-            </span>
 
 
             {% if quote.label %}
@@ -664,7 +665,6 @@ layout: default
           </article>
 
         {% endfor %}
-
 
       </div>
 
@@ -698,13 +698,12 @@ layout: default
 
 
 <!-- ======================================================
-     OPTIONAL REVIEW
+     REVIEW
      ====================================================== -->
 
 {% if page.review_text %}
 
 <section class="wedding-review">
-
 
   <div
     class="wedding-review-inner"
@@ -756,11 +755,9 @@ layout: default
 
 <section class="wedding-cta">
 
-
   <div
     class="wedding-cta-inner"
     data-reveal>
-
 
     <span class="eyebrow">
 
@@ -827,7 +824,6 @@ layout: default
 
     </div>
 
-
   </div>
 
 </section>
@@ -835,4 +831,7 @@ layout: default
 
 </main>
 
-<script src="/js/home.js" defer></script>
+<script
+  src="/js/home.js"
+  defer>
+</script>

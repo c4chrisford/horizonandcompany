@@ -1579,3 +1579,78 @@
   }
 
 }
+
+/* =========================================================
+   NAV PROTECTION
+   Keep global navigation independent from location page CSS
+   ========================================================= */
+
+@media (min-width:901px){
+
+  .location-page nav{
+    overflow:visible !important;
+  }
+
+  .location-page .nav-container{
+    overflow:visible !important;
+  }
+
+  .location-page .menu{
+    overflow:visible !important;
+  }
+
+  .location-page .dropdown{
+    position:relative !important;
+  }
+
+  .location-page .dropdown-content{
+    display:none !important;
+
+    position:absolute !important;
+
+    top:100% !important;
+    left:35px !important;
+
+    width:auto !important;
+    min-width:180px !important;
+    max-width:none !important;
+
+    margin:0 !important;
+    padding:0 !important;
+
+    background:#fff !important;
+    border:1px solid var(--border,#e5e5e5);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+    z-index:10000;
+  }
+
+  .location-page .dropdown:hover .dropdown-content{
+    display:block !important;
+  }
+
+  .location-page .dropdown-content a{
+    display:block !important;
+
+    width:auto !important;
+    min-width:0 !important;
+
+    margin:0 !important;
+    padding:15px 20px !important;
+
+    white-space:nowrap;
+
+    border:0 !important;
+    border-bottom:1px solid #f2f2f2 !important;
+
+    background:#fff;
+
+    text-align:left;
+  }
+
+  .location-page .dropdown-content a:last-child{
+    border-bottom:0 !important;
+  }
+
+}

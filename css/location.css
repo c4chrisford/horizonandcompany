@@ -1,69 +1,112 @@
 /* =========================================================
-
    HORIZON & COMPANY
-
    SHARED LOCATION PAGE STYLES
 
-   Used by:
+   Liverpool / Cheshire / Wirral / North Wales
 
-   - Liverpool
-
-   - Cheshire
-
-   - Wirral
-
-   - North Wales
-
-   Load alongside /css/home.css
-
+   Load order:
+   1. styles.css
+   2. home.css
+   3. location.css
    ========================================================= */
 
+
 /* =========================================================
-
    ROOT
-
    ========================================================= */
 
 .location-page{
-
   background:var(--home-cream,#f4f2ed);
-
   color:var(--home-ink,#242321);
-
 }
 
+
 /* =========================================================
+   LOCATION PAGE RESET / FULL BLEED
 
-   LOCATION HERO
+   The original site stylesheet applies generic widths,
+   margins and padding to sections.
 
+   Location pages need to escape those rules in the same
+   way that home.css does for the homepage.
    ========================================================= */
 
-.location-hero{
+.location-page .location-hero,
+.location-page .location-intro,
+.location-page .location-quote,
+.location-page .location-character,
+.location-page .location-approach,
+.location-page .location-film-cta,
+.location-page .home-collections,
+.location-page .home-faq,
+.location-page .home-contact{
+  position:relative !important;
 
-  position:relative;
+  width:100vw !important;
+  max-width:none !important;
 
-  width:100vw;
+  margin-left:calc(50% - 50vw) !important;
+  margin-right:calc(50% - 50vw) !important;
 
-  max-width:none;
+  box-sizing:border-box;
+}
 
+
+/*
+   Prevent generic child sizing rules from styles.css
+   constraining the redesigned page.
+*/
+
+.location-page .location-hero > *,
+.location-page .location-intro > *,
+.location-page .location-quote > *,
+.location-page .location-character > *,
+.location-page .location-approach > *,
+.location-page .location-film-cta > *,
+.location-page .home-collections > *,
+.location-page .home-faq > *,
+.location-page .home-contact > *{
+  box-sizing:border-box;
+}
+
+
+/*
+   Location components should calculate widths consistently.
+*/
+
+.location-page .location-hero *,
+.location-page .location-intro *,
+.location-page .location-quote *,
+.location-page .location-character *,
+.location-page .location-approach *,
+.location-page .location-film-cta *{
+  box-sizing:border-box;
+}
+
+
+/* =========================================================
+   LOCATION HERO
+   ========================================================= */
+
+.location-page .location-hero{
   height:calc(100svh - var(--nav-height,0px));
 
   min-height:700px;
 
-  margin-left:calc(50% - 50vw);
+  margin-top:0 !important;
+  margin-bottom:0 !important;
 
-  margin-right:calc(50% - 50vw);
+  padding:0 !important;
 
   overflow:hidden;
 
   background:#161616;
 
   color:#fff;
-
 }
 
-.location-hero-media{
 
+.location-hero-media{
   position:absolute;
 
   inset:0;
@@ -71,41 +114,44 @@
   z-index:0;
 
   width:100%;
-
   height:100%;
 
   overflow:hidden;
 
+  background:#161616;
 }
 
-.location-hero-media img{
 
+.location-hero-media img{
   position:absolute;
 
   inset:0;
 
   display:block;
 
-  width:100%;
+  width:100% !important;
+  height:100% !important;
 
-  height:100%;
+  min-width:100%;
+  min-height:100%;
 
-  max-width:none;
+  max-width:none !important;
+  max-height:none !important;
 
-  object-fit:cover;
+  margin:0 !important;
 
+  object-fit:cover !important;
   object-position:center center;
 
   transform:scale(1.015);
+  transform-origin:center center;
 
   transition:
-
     transform 1.8s cubic-bezier(.2,.7,.2,1);
-
 }
 
-.location-hero::after{
 
+.location-hero::after{
   content:"";
 
   position:absolute;
@@ -115,65 +161,52 @@
   z-index:1;
 
   background:
-
     linear-gradient(
-
       90deg,
-
       rgba(8,8,8,.69) 0%,
-
       rgba(8,8,8,.39) 47%,
-
       rgba(8,8,8,.12) 78%,
-
       rgba(8,8,8,.05) 100%
-
     ),
-
     linear-gradient(
-
       0deg,
-
       rgba(0,0,0,.34) 0%,
-
       transparent 43%
-
     );
 
   pointer-events:none;
-
 }
 
-.location-hero-inner{
 
+.location-hero-inner{
   position:relative;
 
   z-index:2;
 
-  width:min(1180px,90vw);
+  width:min(1180px,90vw) !important;
+  max-width:1180px !important;
 
   height:100%;
 
-  margin:0 auto;
+  margin:0 auto !important;
+  padding:0 !important;
 
   display:flex;
 
   align-items:center;
-
 }
+
 
 .location-hero-copy{
-
   width:100%;
 
-  max-width:800px;
+  max-width:800px !important;
 
   margin-top:-15px;
-
 }
 
-.location-hero-eyebrow{
 
+.location-hero-eyebrow{
   display:block;
 
   margin-bottom:20px;
@@ -181,17 +214,14 @@
   color:#d3b27d;
 
   font-size:.62rem;
-
   font-weight:600;
 
   letter-spacing:3.5px;
-
   text-transform:uppercase;
-
 }
 
-.location-hero h1{
 
+.location-hero h1{
   max-width:850px;
 
   margin:0;
@@ -199,7 +229,6 @@
   font-family:'Baskervville',serif;
 
   font-size:clamp(3.8rem,6vw,6.3rem);
-
   line-height:.92;
 
   font-weight:400;
@@ -209,13 +238,11 @@
   color:#fff;
 
   text-shadow:
-
     0 4px 30px rgba(0,0,0,.34);
-
 }
 
-.location-hero h1 em{
 
+.location-hero h1 em{
   display:block;
 
   max-width:720px;
@@ -223,21 +250,18 @@
   margin-top:20px;
 
   font-size:.43em;
-
   line-height:1.16;
 
   font-weight:400;
-
   font-style:italic;
 
   letter-spacing:-.025em;
 
   color:rgba(255,255,255,.91);
-
 }
 
-.location-hero-lead{
 
+.location-hero-lead{
   max-width:620px;
 
   margin:28px 0 0;
@@ -245,17 +269,14 @@
   color:rgba(255,255,255,.82);
 
   font-size:.97rem;
-
   line-height:1.75;
 
   text-shadow:
-
     0 2px 15px rgba(0,0,0,.28);
-
 }
 
-.location-hero-actions{
 
+.location-hero-actions{
   margin-top:34px;
 
   display:flex;
@@ -263,47 +284,33 @@
   align-items:center;
 
   gap:13px;
-
 }
+
 
 .location-hero .home-hero-button{
-
   min-width:225px;
-
 }
 
+
 /* =========================================================
-
    INTRO
-
    ========================================================= */
 
-.location-intro{
-
-  position:relative;
-
-  width:100vw;
-
-  margin-left:calc(50% - 50vw);
-
-  margin-right:calc(50% - 50vw);
-
-  padding:125px 5vw;
+.location-page .location-intro{
+  padding:125px 5vw !important;
 
   overflow:hidden;
 
   background:#fff;
-
 }
 
-.location-intro::before{
 
+.location-intro::before{
   content:"CITY";
 
   position:absolute;
 
   left:50%;
-
   top:35px;
 
   transform:translateX(-50%);
@@ -311,7 +318,6 @@
   font-family:'Baskervville',serif;
 
   font-size:clamp(8rem,16vw,16rem);
-
   line-height:1;
 
   font-style:italic;
@@ -319,53 +325,50 @@
   color:rgba(36,35,33,.021);
 
   pointer-events:none;
-
 }
 
-.location-intro-inner{
 
+.location-intro-inner{
   position:relative;
 
   z-index:1;
 
-  width:min(1160px,90vw);
+  width:min(1160px,90vw) !important;
+  max-width:1160px !important;
 
-  margin:0 auto;
+  margin:0 auto !important;
+  padding:0 !important;
 
   display:grid;
 
   grid-template-columns:
-
     minmax(0,.9fr)
-
     minmax(0,1.1fr);
 
   gap:100px;
 
   align-items:start;
-
 }
+
 
 .location-intro-heading{
+  min-width:0;
 
   max-width:500px;
-
 }
+
 
 .location-intro-heading .eyebrow{
-
   margin-bottom:22px;
-
 }
 
-.location-intro-heading h2{
 
+.location-intro-heading h2{
   margin:0;
 
   font-family:'Baskervville',serif;
 
   font-size:clamp(3.1rem,4.2vw,4.4rem);
-
   line-height:.99;
 
   font-weight:400;
@@ -373,82 +376,70 @@
   letter-spacing:-.04em;
 
   color:var(--home-ink);
-
 }
 
-.location-intro-heading h2 em{
 
+.location-intro-heading h2 em{
   display:block;
 
   margin-top:13px;
 
   font-size:.61em;
-
   line-height:1.16;
 
   font-weight:400;
-
   font-style:italic;
 
   letter-spacing:-.02em;
 
   color:#777068;
-
 }
 
+
 .location-intro-copy{
+  min-width:0;
 
   max-width:590px;
 
   padding-top:6px;
-
 }
 
-.location-intro-copy p{
 
+.location-intro-copy p{
   margin:0 0 22px;
 
   color:#625e59;
 
   font-size:.97rem;
-
   line-height:1.85;
-
 }
 
-.location-intro-copy .location-lead{
 
+.location-intro-copy p:last-child{
+  margin-bottom:0;
+}
+
+
+.location-intro-copy .location-lead{
   margin-bottom:26px;
 
   font-family:'Baskervville',serif;
 
   font-size:1.55rem;
-
   line-height:1.45;
 
   font-style:italic;
 
   color:#312f2c;
-
 }
 
+
 /* =========================================================
-
    EDITORIAL QUOTE
-
    ========================================================= */
 
-.location-quote{
-
-  position:relative;
-
-  width:100vw;
-
-  margin-left:calc(50% - 50vw);
-
-  margin-right:calc(50% - 50vw);
-
-  padding:105px 5vw;
+.location-page .location-quote{
+  padding:105px 5vw !important;
 
   overflow:hidden;
 
@@ -457,125 +448,105 @@
   color:#fff;
 
   text-align:center;
-
 }
 
-.location-quote::before{
 
+.location-quote::before{
   content:"“";
 
   position:absolute;
 
   left:3%;
-
   top:-115px;
 
   font-family:'Baskervville',serif;
 
   font-size:25rem;
-
   line-height:1;
 
   color:rgba(255,255,255,.026);
 
   pointer-events:none;
-
 }
 
-.location-quote-inner{
 
+.location-quote-inner{
   position:relative;
 
   z-index:1;
 
-  max-width:950px;
+  width:min(950px,90vw) !important;
+  max-width:950px !important;
 
-  margin:0 auto;
-
+  margin:0 auto !important;
 }
+
 
 .location-quote .eyebrow{
-
   color:#c9a876;
-
 }
 
+
 .location-quote blockquote{
+  max-width:950px;
 
   margin:25px auto 0;
 
   font-family:'Baskervville',serif;
 
   font-size:clamp(2.1rem,3.5vw,3.35rem);
-
   line-height:1.25;
 
   font-weight:400;
-
   font-style:italic;
 
   color:#fff;
-
 }
 
+
 /* =========================================================
-
-   LIVERPOOL / LOCATION CHARACTER SECTION
-
+   LOCATION CHARACTER
    ========================================================= */
 
-.location-character{
-
-  position:relative;
-
-  width:100vw;
-
-  margin-left:calc(50% - 50vw);
-
-  margin-right:calc(50% - 50vw);
-
-  padding:125px 5vw;
+.location-page .location-character{
+  padding:125px 5vw !important;
 
   overflow:hidden;
 
   background:var(--home-cream);
-
 }
+
 
 .location-character-header{
+  width:min(820px,90vw) !important;
+  max-width:820px !important;
 
-  max-width:820px;
-
-  margin:0 auto 90px;
+  margin:0 auto 90px !important;
 
   text-align:center;
-
 }
+
 
 .location-character-header .eyebrow{
-
   margin-bottom:20px;
-
 }
 
-.location-character-header h2{
 
+.location-character-header h2{
   margin:0;
 
   font-family:'Baskervville',serif;
 
   font-size:clamp(3rem,4.3vw,4.2rem);
-
   line-height:1.02;
 
   font-weight:400;
 
   letter-spacing:-.035em;
-
 }
 
-.location-character-header h2 em{
 
+.location-character-header h2 em{
   display:block;
 
   margin-top:10px;
@@ -583,15 +554,13 @@
   font-size:.67em;
 
   font-weight:400;
-
   font-style:italic;
 
   color:#716b63;
-
 }
 
-.location-character-header p{
 
+.location-character-header p{
   max-width:660px;
 
   margin:25px auto 0;
@@ -599,303 +568,270 @@
   color:#65615c;
 
   font-size:.94rem;
-
   line-height:1.8;
-
 }
 
+
 /* =========================================================
-
    EDITORIAL LOCATION ROWS
-
    ========================================================= */
 
 .location-editorial-list{
+  width:min(1180px,90vw) !important;
+  max-width:1180px !important;
 
-  width:min(1180px,90vw);
-
-  margin:0 auto;
-
+  margin:0 auto !important;
 }
 
-.location-editorial{
 
+.location-editorial{
   position:relative;
+
+  width:100%;
 
   margin:0 0 135px;
 
   display:grid;
 
   grid-template-columns:
-
     minmax(0,1.08fr)
-
     minmax(0,.92fr);
 
   gap:82px;
 
   align-items:center;
-
 }
+
 
 .location-editorial:last-child{
-
   margin-bottom:0;
-
 }
+
 
 .location-editorial.reverse{
-
   grid-template-columns:
-
     minmax(0,.92fr)
-
     minmax(0,1.08fr);
-
 }
+
 
 .location-editorial.reverse .location-editorial-media{
-
   order:2;
-
 }
+
 
 .location-editorial.reverse .location-editorial-copy{
-
   order:1;
-
 }
+
 
 .location-editorial-media{
-
   position:relative;
 
+  min-width:0;
 }
 
-.location-editorial-media::after{
 
+.location-editorial-media::after{
   content:"";
 
   position:absolute;
 
   right:-17px;
-
   bottom:-17px;
 
   z-index:0;
 
   width:91%;
-
   height:91%;
 
   border-right:
-
     1px solid rgba(36,35,33,.14);
 
   border-bottom:
-
     1px solid rgba(36,35,33,.14);
 
+  pointer-events:none;
 }
 
-.location-editorial.reverse
 
-.location-editorial-media::after{
-
+.location-editorial.reverse .location-editorial-media::after{
   right:auto;
-
   left:-17px;
 
   border-right:0;
 
   border-left:
-
     1px solid rgba(36,35,33,.14);
-
 }
 
-.location-editorial-media img{
 
+.location-editorial-media img{
   position:relative;
 
   z-index:1;
 
   display:block;
 
-  width:100%;
+  width:100% !important;
+  max-width:none !important;
 
   aspect-ratio:4/3;
+
+  margin:0 !important;
 
   object-fit:cover;
 
   background:#ddd8d0;
 
   transition:
-
     transform .9s cubic-bezier(.2,.7,.2,1);
-
 }
+
 
 .location-editorial-media:hover img{
-
   transform:scale(1.018);
-
 }
+
 
 .location-editorial-copy{
-
   position:relative;
 
-  max-width:500px;
+  min-width:0;
 
+  max-width:500px;
 }
 
-.location-editorial-number{
 
+.location-editorial-number{
   position:absolute;
 
   right:0;
-
   top:-93px;
 
   font-family:'Baskervville',serif;
 
   font-size:7rem;
-
   line-height:1;
 
   color:rgba(36,35,33,.045);
 
   pointer-events:none;
-
 }
+
 
 .location-editorial-copy .eyebrow{
-
   margin-bottom:17px;
-
 }
 
-.location-editorial-copy h3{
 
+.location-editorial-copy h3{
   margin:0 0 24px;
 
   font-family:'Baskervville',serif;
 
   font-size:clamp(2.7rem,3.5vw,3.55rem);
-
   line-height:1;
 
   font-weight:400;
 
   letter-spacing:-.03em;
-
 }
 
-.location-editorial-copy p{
 
+.location-editorial-copy p{
   margin:0 0 20px;
 
   color:#605c57;
 
   font-size:.95rem;
-
   line-height:1.82;
-
 }
 
-.location-editorial-note{
 
+.location-editorial-copy p:last-of-type{
+  margin-bottom:0;
+}
+
+
+.location-editorial-note{
   display:block;
 
   margin-top:28px;
-
   padding-top:20px;
 
   border-top:
-
     1px solid rgba(36,35,33,.13);
 
   font-family:'Baskervville',serif;
 
   font-size:1.12rem;
-
   line-height:1.5;
 
   font-style:italic;
 
   color:#746e67;
-
 }
 
+
 /* =========================================================
-
    APPROACH / WHY FILM
-
    ========================================================= */
 
-.location-approach{
-
-  position:relative;
-
-  width:100vw;
-
-  margin-left:calc(50% - 50vw);
-
-  margin-right:calc(50% - 50vw);
-
-  padding:125px 5vw;
+.location-page .location-approach{
+  padding:125px 5vw !important;
 
   overflow:hidden;
 
   background:#fff;
-
 }
 
+
 .location-approach-inner{
+  width:min(1140px,90vw) !important;
+  max-width:1140px !important;
 
-  width:min(1140px,90vw);
-
-  margin:0 auto;
+  margin:0 auto !important;
+  padding:0 !important;
 
   display:grid;
 
   grid-template-columns:
-
     minmax(0,.85fr)
-
     minmax(0,1.15fr);
 
   gap:95px;
 
   align-items:center;
-
 }
 
-.location-approach-image{
 
+.location-approach-image{
   position:relative;
+
+  min-width:0;
 
   overflow:hidden;
 
   background:#d7d2cb;
-
 }
 
-.location-approach-image img{
 
+.location-approach-image img{
   display:block;
 
-  width:100%;
+  width:100% !important;
+  max-width:none !important;
 
   aspect-ratio:4/5;
 
-  object-fit:cover;
+  margin:0 !important;
 
+  object-fit:cover;
 }
 
-.location-approach-image::after{
 
+.location-approach-image::after{
   content:"";
 
   position:absolute;
@@ -903,21 +839,23 @@
   inset:16px;
 
   border:
-
     1px solid rgba(255,255,255,.35);
 
   pointer-events:none;
-
 }
+
+
+.location-approach-copy{
+  min-width:0;
+}
+
 
 .location-approach-copy .eyebrow{
-
   margin-bottom:20px;
-
 }
 
-.location-approach-copy h2{
 
+.location-approach-copy h2{
   max-width:650px;
 
   margin:0 0 30px;
@@ -925,17 +863,15 @@
   font-family:'Baskervville',serif;
 
   font-size:clamp(3rem,4vw,4rem);
-
   line-height:1.02;
 
   font-weight:400;
 
   letter-spacing:-.035em;
-
 }
 
-.location-approach-copy h2 em{
 
+.location-approach-copy h2 em{
   display:block;
 
   margin-top:10px;
@@ -943,15 +879,13 @@
   font-size:.65em;
 
   font-weight:400;
-
   font-style:italic;
 
   color:#716b63;
-
 }
 
-.location-approach-lead{
 
+.location-approach-lead{
   max-width:600px;
 
   margin:0 0 25px;
@@ -959,17 +893,15 @@
   font-family:'Baskervville',serif;
 
   font-size:1.4rem;
-
   line-height:1.5;
 
   font-style:italic;
 
   color:#34312e;
-
 }
 
-.location-approach-copy p:not(.location-approach-lead){
 
+.location-approach-copy p:not(.location-approach-lead){
   max-width:610px;
 
   margin:0 0 18px;
@@ -977,15 +909,12 @@
   color:#5e5a56;
 
   font-size:.95rem;
-
   line-height:1.82;
-
 }
 
+
 .location-principles{
-
   margin-top:32px;
-
   padding-top:25px;
 
   display:grid;
@@ -995,13 +924,11 @@
   gap:14px 34px;
 
   border-top:
-
     1px solid rgba(36,35,33,.13);
-
 }
 
-.location-principle{
 
+.location-principle{
   position:relative;
 
   padding-left:20px;
@@ -1009,68 +936,49 @@
   color:#55514c;
 
   font-size:.82rem;
-
   line-height:1.5;
-
 }
 
-.location-principle::before{
 
+.location-principle::before{
   content:"";
 
   position:absolute;
 
   left:0;
-
   top:.7em;
 
   width:8px;
-
   height:1px;
 
   background:var(--home-gold);
-
 }
 
+
 /* =========================================================
-
    INTERNAL CTA
-
    ========================================================= */
 
-.location-film-cta{
-
-  position:relative;
-
-  width:100vw;
-
-  margin-left:calc(50% - 50vw);
-
-  margin-right:calc(50% - 50vw);
-
-  padding:105px 5vw;
+.location-page .location-film-cta{
+  padding:105px 5vw !important;
 
   overflow:hidden;
 
   background:#e9e5de;
 
   text-align:center;
-
 }
 
-.location-film-cta::before{
 
+.location-film-cta::before{
   content:"FILM";
 
   position:absolute;
 
   left:50%;
-
   top:50%;
 
-  transform:
-
-    translate(-50%,-50%);
+  transform:translate(-50%,-50%);
 
   font-family:'Baskervville',serif;
 
@@ -1078,48 +986,46 @@
 
   font-style:italic;
 
+  white-space:nowrap;
+
   color:rgba(36,35,33,.025);
 
   pointer-events:none;
-
 }
 
-.location-film-cta-inner{
 
+.location-film-cta-inner{
   position:relative;
 
   z-index:1;
 
-  max-width:790px;
+  width:min(790px,90vw) !important;
+  max-width:790px !important;
 
-  margin:0 auto;
-
+  margin:0 auto !important;
 }
+
 
 .location-film-cta .eyebrow{
-
   margin-bottom:20px;
-
 }
 
-.location-film-cta h2{
 
+.location-film-cta h2{
   margin:0;
 
   font-family:'Baskervville',serif;
 
   font-size:clamp(3rem,4.3vw,4.1rem);
-
   line-height:1.03;
 
   font-weight:400;
 
   letter-spacing:-.03em;
-
 }
 
-.location-film-cta h2 em{
 
+.location-film-cta h2 em{
   display:block;
 
   margin-top:10px;
@@ -1127,15 +1033,13 @@
   font-size:.67em;
 
   font-weight:400;
-
   font-style:italic;
 
   color:#716b63;
-
 }
 
-.location-film-cta p{
 
+.location-film-cta p{
   max-width:620px;
 
   margin:25px auto 0;
@@ -1143,13 +1047,11 @@
   color:#625e59;
 
   font-size:.94rem;
-
   line-height:1.8;
-
 }
 
-.location-film-cta-actions{
 
+.location-film-cta-actions{
   margin-top:32px;
 
   display:flex;
@@ -1157,13 +1059,11 @@
   justify-content:center;
 
   gap:12px;
-
 }
 
+
 .location-button{
-
   min-width:225px;
-
   height:56px;
 
   padding:0 24px;
@@ -1171,433 +1071,364 @@
   display:inline-flex;
 
   align-items:center;
-
   justify-content:center;
 
   box-sizing:border-box;
 
   border:
-
     1px solid var(--home-ink);
 
-  background:
-
-    var(--home-ink);
+  background:var(--home-ink);
 
   color:#fff;
 
   text-decoration:none;
 
   font-size:.64rem;
-
   font-weight:600;
 
   letter-spacing:2px;
-
   text-transform:uppercase;
 
   transition:
-
     transform .3s ease,
-
     background .3s ease,
-
-    color .3s ease;
-
+    color .3s ease,
+    border-color .3s ease;
 }
 
-.location-button:hover{
 
+.location-button:hover{
   transform:translateY(-2px);
 
   background:var(--home-gold);
 
   border-color:var(--home-gold);
 
+  color:#fff;
 }
 
-.location-button-secondary{
 
+.location-button-secondary{
   background:transparent;
 
   color:var(--home-ink);
-
 }
+
 
 .location-button-secondary:hover{
-
   color:#fff;
-
 }
 
+
 /* =========================================================
-
    HOMEPAGE COMPONENTS USED ON LOCATION PAGES
-
    ========================================================= */
+
+/*
+   home.css already styles these components.
+
+   These rules simply make sure the generic site stylesheet
+   cannot constrain them when they appear on a location page.
+*/
 
 .location-page .home-collections,
-
 .location-page .home-faq,
-
 .location-page .home-contact{
+  width:100vw !important;
+  max-width:none !important;
 
   margin-left:calc(50% - 50vw) !important;
-
   margin-right:calc(50% - 50vw) !important;
-
 }
+
 
 .location-page .home-contact{
-
   background:#efede8;
-
 }
 
+
 /* =========================================================
-
-   LOCATION-SPECIFIC HERO IMAGES
-
+   LOCATION-SPECIFIC HERO CROPPING
    ========================================================= */
 
-.location-liverpool
-
-.location-hero-media img{
-
+.location-liverpool .location-hero-media img{
   object-position:center 52%;
-
 }
 
-.location-cheshire
 
-.location-hero-media img{
-
+.location-cheshire .location-hero-media img{
   object-position:center center;
-
 }
 
-.location-wirral
 
-.location-hero-media img{
-
+.location-wirral .location-hero-media img{
   object-position:center center;
-
 }
 
-.location-north-wales
 
-.location-hero-media img{
-
+.location-north-wales .location-hero-media img{
   object-position:center center;
-
 }
+
 
 /* =========================================================
-
    LAPTOP HEIGHT
-
    ========================================================= */
 
 @media(max-height:820px) and (min-width:901px){
 
-  .location-hero{
-
+  .location-page .location-hero{
     min-height:620px;
-
   }
+
 
   .location-hero h1{
-
     font-size:clamp(3.2rem,5vw,5rem);
-
   }
+
 
   .location-hero-copy{
-
     margin-top:0;
-
   }
+
 
   .location-hero-lead{
-
     margin-top:22px;
-
   }
 
+
   .location-hero-actions{
-
     margin-top:27px;
-
   }
 
 }
 
+
 /* =========================================================
-
    TABLET
-
    ========================================================= */
 
 @media(max-width:1050px){
 
   .location-intro-inner{
-
     gap:60px;
-
   }
+
 
   .location-editorial{
-
     gap:55px;
-
   }
 
+
   .location-approach-inner{
-
     gap:55px;
-
   }
 
 }
 
+
 /* =========================================================
-
    MOBILE / SMALL TABLET
-
    ========================================================= */
 
 @media(max-width:900px){
 
-  .location-hero{
-
+  .location-page .location-hero{
     height:88svh;
 
     min-height:650px;
-
   }
+
 
   .location-hero::after{
-
     background:
-
       linear-gradient(
-
         0deg,
-
         rgba(5,5,5,.74) 0%,
-
         rgba(5,5,5,.32) 58%,
-
         rgba(5,5,5,.12) 100%
-
       );
-
   }
 
-  .location-hero-inner{
 
-    width:88vw;
+  .location-hero-inner{
+    width:88vw !important;
+
+    max-width:700px !important;
 
     align-items:flex-end;
 
-    padding-bottom:85px;
-
+    padding-bottom:85px !important;
   }
+
 
   .location-hero-copy{
+    max-width:650px !important;
 
     margin:0;
-
   }
+
 
   .location-hero h1{
-
     font-size:clamp(3rem,8vw,4.7rem);
-
   }
+
 
   .location-hero-lead{
-
     max-width:560px;
-
   }
 
-  .location-intro,
 
-  .location-character,
-
-  .location-approach{
-
-    padding:
-
-      95px 0;
-
+  .location-page .location-intro,
+  .location-page .location-character,
+  .location-page .location-approach{
+    padding:95px 0 !important;
   }
+
 
   .location-intro-inner,
-
   .location-approach-inner{
-
-    width:min(700px,88vw);
+    width:min(700px,88vw) !important;
+    max-width:700px !important;
 
     grid-template-columns:1fr;
 
     gap:46px;
-
   }
+
 
   .location-intro::before{
-
     display:none;
-
   }
+
 
   .location-intro-heading{
-
     max-width:650px;
-
   }
+
 
   .location-intro-copy{
-
     max-width:650px;
-
   }
+
 
   .location-character-header{
+    width:min(700px,88vw) !important;
+    max-width:700px !important;
 
-    width:min(700px,88vw);
-
-    margin-bottom:65px;
-
+    margin-bottom:65px !important;
   }
+
 
   .location-editorial-list{
-
-    width:min(700px,88vw);
-
+    width:min(700px,88vw) !important;
+    max-width:700px !important;
   }
 
+
   .location-editorial,
-
   .location-editorial.reverse{
-
     grid-template-columns:1fr;
 
     gap:42px;
 
     margin-bottom:90px;
-
   }
 
-  .location-editorial.reverse
 
-  .location-editorial-media,
-
-  .location-editorial.reverse
-
-  .location-editorial-copy{
-
+  .location-editorial.reverse .location-editorial-media,
+  .location-editorial.reverse .location-editorial-copy{
     order:initial;
-
   }
+
 
   .location-editorial-media::after{
-
     display:none;
-
   }
 
-  .location-editorial-number{
 
+  .location-editorial-number{
     top:-60px;
 
     font-size:5rem;
-
   }
 
-  .location-approach-image{
 
+  .location-editorial-copy{
+    max-width:650px;
+  }
+
+
+  .location-approach-image{
     width:min(100%,620px);
 
     margin:0 auto;
-
   }
 
-  .location-approach-copy{
 
+  .location-approach-copy{
     max-width:680px;
 
     margin:0 auto;
-
   }
 
-  .location-film-cta{
 
-    padding:90px 6vw;
-
+  .location-page .location-film-cta{
+    padding:90px 6vw !important;
   }
 
 }
 
+
 /* =========================================================
-
    PHONE
-
    ========================================================= */
 
 @media(max-width:600px){
 
-  .location-hero{
-
+  .location-page .location-hero{
     min-height:620px;
-
   }
+
 
   .location-hero-inner{
+    width:90vw !important;
 
-    width:90vw;
-
-    padding-bottom:65px;
-
+    padding-bottom:65px !important;
   }
 
-  .location-hero-eyebrow{
 
+  .location-hero-eyebrow{
     margin-bottom:15px;
 
     font-size:.54rem;
 
     letter-spacing:2.7px;
-
   }
+
 
   .location-hero h1{
-
     font-size:2.85rem;
-
   }
 
-  .location-hero h1 em{
 
+  .location-hero h1 em{
     margin-top:14px;
 
     font-size:.48em;
-
   }
 
-  .location-hero-lead{
 
+  .location-hero-lead{
     margin-top:21px;
 
     font-size:.88rem;
-
     line-height:1.65;
-
   }
 
-  .location-hero-actions{
 
+  .location-hero-actions{
     width:100%;
 
     margin-top:27px;
@@ -1607,15 +1438,13 @@
     grid-template-columns:1fr 1fr;
 
     gap:8px;
-
   }
 
-  .location-hero .home-hero-button{
 
+  .location-hero .home-hero-button{
     min-width:0;
 
     width:100%;
-
     height:51px;
 
     padding:0 8px;
@@ -1623,79 +1452,64 @@
     font-size:.52rem;
 
     letter-spacing:1.1px;
-
   }
 
-  .location-intro,
 
-  .location-character,
-
-  .location-approach{
-
-    padding:78px 0;
-
+  .location-page .location-intro,
+  .location-page .location-character,
+  .location-page .location-approach{
+    padding:78px 0 !important;
   }
+
 
   .location-intro-heading h2{
-
     font-size:2.75rem;
-
   }
+
 
   .location-intro-copy .location-lead{
-
     font-size:1.35rem;
-
   }
 
-  .location-quote{
 
-    padding:78px 6vw;
-
+  .location-page .location-quote{
+    padding:78px 6vw !important;
   }
+
 
   .location-quote blockquote{
-
     font-size:1.9rem;
-
   }
+
 
   .location-character-header h2,
-
   .location-approach-copy h2,
-
   .location-film-cta h2{
-
     font-size:2.65rem;
-
   }
+
 
   .location-editorial{
-
     margin-bottom:75px;
-
   }
+
 
   .location-editorial-copy h3{
-
     font-size:2.7rem;
-
   }
+
 
   .location-editorial-number{
-
     display:none;
-
   }
+
 
   .location-principles{
-
     grid-template-columns:1fr;
-
   }
 
-  .location-film-cta-actions{
 
+  .location-film-cta-actions{
     display:grid;
 
     grid-template-columns:1fr;
@@ -1703,37 +1517,65 @@
     max-width:320px;
 
     margin-left:auto;
-
     margin-right:auto;
-
   }
 
-  .location-button{
 
+  .location-button{
     width:100%;
 
     min-width:0;
-
   }
 
 }
 
+
 /* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
 
+@media(max-width:390px){
+
+  .location-hero h1{
+    font-size:2.55rem;
+  }
+
+
+  .location-hero-actions{
+    grid-template-columns:1fr;
+  }
+
+
+  .location-hero .home-hero-button{
+    height:49px;
+  }
+
+
+  .location-intro-heading h2,
+  .location-character-header h2,
+  .location-approach-copy h2,
+  .location-film-cta h2{
+    font-size:2.4rem;
+  }
+
+
+  .location-editorial-copy h3{
+    font-size:2.45rem;
+  }
+
+}
+
+
+/* =========================================================
    REDUCED MOTION
-
    ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
   .location-hero-media img,
-
   .location-editorial-media img,
-
   .location-button{
-
     transition:none !important;
-
   }
 
 }

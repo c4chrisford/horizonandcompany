@@ -1,0 +1,905 @@
+---
+
+layout: default
+
+---
+
+<link rel="stylesheet" href="/css/home.css">
+
+<link rel="stylesheet" href="/css/wedding.css">
+
+<main class="wedding-page">
+
+<!-- ======================================================
+
+     HERO
+
+     ====================================================== -->
+
+<section class="wedding-hero">
+
+  <div class="wedding-hero-inner">
+
+    <!-- HERO COPY -->
+
+    <div
+
+      class="wedding-hero-copy"
+
+      data-reveal="left">
+
+      <span class="eyebrow">
+
+        {% if page.hero_eyebrow %}
+
+          {{ page.hero_eyebrow }}
+
+        {% else %}
+
+          Real Wedding · {{ page.location }}
+
+        {% endif %}
+
+      </span>
+
+      <h1>
+
+        {% if page.couple_line_1 and page.couple_line_2 %}
+
+          <span>
+
+            {{ page.couple_line_1 }}
+
+          </span>
+
+          <span>
+
+            {{ page.couple_line_2 }}
+
+          </span>
+
+        {% else %}
+
+          <span>
+
+            {{ page.couple }}
+
+          </span>
+
+        {% endif %}
+
+      </h1>
+
+      {% if page.venue %}
+
+        <p class="wedding-hero-venue">
+
+          {{ page.venue }}
+
+          {% if page.location %}
+
+            · {{ page.location }}
+
+          {% endif %}
+
+        </p>
+
+      {% endif %}
+
+      {% if page.tone %}
+
+        <p class="wedding-hero-tone">
+
+          {% for item in page.tone %}
+
+            {{ item }}{% unless forloop.last %}. {% endunless %}
+
+          {% endfor %}.
+
+        </p>
+
+      {% endif %}
+
+      {% if page.intro %}
+
+        <p class="wedding-hero-intro">
+
+          {{ page.intro }}
+
+        </p>
+
+      {% endif %}
+
+      <div class="wedding-hero-actions">
+
+        {% if page.youtube_id %}
+
+          <a
+
+            href="#wedding-film"
+
+            class="home-hero-button home-hero-button-primary">
+
+            Watch Their Film
+
+          </a>
+
+        {% endif %}
+
+        <a
+
+          href="/#contact"
+
+          class="home-hero-button home-hero-button-secondary">
+
+          Check Your Date
+
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- HERO IMAGES -->
+
+    {% if page.hero_image %}
+
+      <div
+
+        class="wedding-hero-visual"
+
+        data-reveal="right">
+
+        <figure class="wedding-hero-image-main">
+
+          <img
+
+            src="{{ page.hero_image }}"
+
+            alt="{% if page.hero_image_alt %}{{ page.hero_image_alt }}{% else %}{{ page.couple }} wedding at {{ page.venue }}{% endif %}"
+
+            fetchpriority="high">
+
+          <figcaption class="wedding-hero-image-caption">
+
+            <small>
+
+              {% if page.location %}
+
+                {{ page.location }}
+
+              {% else %}
+
+                Real Wedding
+
+              {% endif %}
+
+            </small>
+
+            <strong>
+
+              {{ page.couple }}
+
+            </strong>
+
+            {% if page.hero_caption %}
+
+              <em>
+
+                {{ page.hero_caption }}
+
+              </em>
+
+            {% endif %}
+
+          </figcaption>
+
+        </figure>
+
+        {% if page.hero_secondary_image %}
+
+          <figure class="wedding-hero-image-secondary">
+
+            <img
+
+              src="{{ page.hero_secondary_image }}"
+
+              alt="{% if page.hero_secondary_alt %}{{ page.hero_secondary_alt }}{% else %}A moment from {{ page.couple }}'s wedding{% endif %}"
+
+              loading="eager">
+
+          </figure>
+
+        {% endif %}
+
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</section>
+
+<!-- ======================================================
+
+     STORY
+
+     ====================================================== -->
+
+{% if page.story or page.story_paragraphs %}
+
+<section class="wedding-story">
+
+  <div class="wedding-story-inner">
+
+    <div
+
+      class="wedding-story-heading"
+
+      data-reveal="left">
+
+      <span class="eyebrow">
+
+        The Wedding
+
+      </span>
+
+      <h2>
+
+        {% if page.story_heading %}
+
+          {{ page.story_heading }}
+
+        {% else %}
+
+          Their day.
+
+        {% endif %}
+
+        {% if page.story_heading_accent %}
+
+          <em>
+
+            {{ page.story_heading_accent }}
+
+          </em>
+
+        {% endif %}
+
+      </h2>
+
+    </div>
+
+    <div
+
+      class="wedding-story-copy"
+
+      data-reveal="right">
+
+      {% if page.story_lead %}
+
+        <p class="wedding-story-lead">
+
+          {{ page.story_lead }}
+
+        </p>
+
+      {% endif %}
+
+      {% if page.story_paragraphs %}
+
+        {% for paragraph in page.story_paragraphs %}
+
+          <p>
+
+            {{ paragraph }}
+
+          </p>
+
+        {% endfor %}
+
+      {% elsif page.story %}
+
+        <p>
+
+          {{ page.story }}
+
+        </p>
+
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endif %}
+
+<!-- ======================================================
+
+     OPTIONAL VENUE FEATURE
+
+     ====================================================== -->
+
+{% if page.venue_image %}
+
+<section class="wedding-venue">
+
+  <div class="wedding-venue-inner">
+
+    <div
+
+      class="wedding-venue-image"
+
+      data-reveal="left">
+
+      <img
+
+        src="{{ page.venue_image }}"
+
+        alt="{% if page.venue_image_alt %}{{ page.venue_image_alt }}{% else %}{{ page.venue }} wedding venue{% endif %}"
+
+        loading="lazy">
+
+    </div>
+
+    <div
+
+      class="wedding-venue-copy"
+
+      data-reveal="right">
+
+      <span class="eyebrow">
+
+        The Venue
+
+      </span>
+
+      <h2>
+
+        {% if page.venue_heading %}
+
+          {{ page.venue_heading }}
+
+        {% else %}
+
+          {{ page.venue }}
+
+        {% endif %}
+
+      </h2>
+
+      {% if page.venue_paragraphs %}
+
+        {% for paragraph in page.venue_paragraphs %}
+
+          <p>
+
+            {{ paragraph }}
+
+          </p>
+
+        {% endfor %}
+
+      {% elsif page.venue_copy %}
+
+        <p>
+
+          {{ page.venue_copy }}
+
+        </p>
+
+      {% endif %}
+
+      {% if page.location_url %}
+
+        <div style="margin-top:12px;">
+
+          <a
+
+            href="{{ page.location_url }}"
+
+            class="films-text-link">
+
+            Explore {{ page.location }} Wedding Videography
+
+            <span aria-hidden="true">
+
+              →
+
+            </span>
+
+          </a>
+
+        </div>
+
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endif %}
+
+<!-- ======================================================
+
+     OPTIONAL CINEMATIC IMAGE BREAK
+
+     ====================================================== -->
+
+{% if page.feature_image %}
+
+<section class="wedding-image-break">
+
+  <div
+
+    class="wedding-image-break-inner"
+
+    data-reveal>
+
+    <img
+
+      src="{{ page.feature_image }}"
+
+      alt="{% if page.feature_image_alt %}{{ page.feature_image_alt }}{% else %}A candid moment from {{ page.couple }}'s wedding{% endif %}"
+
+      loading="lazy">
+
+    <div class="wedding-image-break-overlay"></div>
+
+    {% if page.feature_heading or page.feature_copy %}
+
+      <div class="wedding-image-break-copy">
+
+        {% if page.feature_heading %}
+
+          <span>
+
+            {{ page.feature_heading }}
+
+          </span>
+
+        {% endif %}
+
+        {% if page.feature_copy %}
+
+          <p>
+
+            {{ page.feature_copy }}
+
+          </p>
+
+        {% endif %}
+
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</section>
+
+{% endif %}
+
+<!-- ======================================================
+
+     WEDDING FILM
+
+     Uses the existing films-player JS
+
+     ====================================================== -->
+
+{% if page.youtube_id %}
+
+<section
+
+  id="wedding-film"
+
+  class="wedding-film">
+
+  <div class="wedding-film-inner">
+
+    <div
+
+      class="wedding-film-heading"
+
+      data-reveal>
+
+      <span class="eyebrow">
+
+        Their Story
+
+      </span>
+
+      <h2>
+
+        Watch The Wedding Film
+
+      </h2>
+
+      {% if page.film_intro %}
+
+        <p>
+
+          {{ page.film_intro }}
+
+        </p>
+
+      {% endif %}
+
+    </div>
+
+    <div
+
+      class="films-player-wrap"
+
+      data-reveal>
+
+      <button
+
+        class="films-player"
+
+        type="button"
+
+        data-youtube-id="{{ page.youtube_id }}"
+
+        data-youtube-start="{{ page.youtube_start | default: 0 }}"
+
+        data-title="{{ page.couple }} wedding film at {{ page.venue }}">
+
+        {% if page.film_poster %}
+
+          <img
+
+            src="{{ page.film_poster }}"
+
+            alt="Play {{ page.couple }}'s wedding film"
+
+            loading="lazy">
+
+        {% elsif page.hero_image %}
+
+          <img
+
+            src="{{ page.hero_image }}"
+
+            alt="Play {{ page.couple }}'s wedding film"
+
+            loading="lazy">
+
+        {% endif %}
+
+        <span class="films-player-shade"></span>
+
+        <span class="films-player-centre">
+
+          <span
+
+            class="films-player-play"
+
+            aria-hidden="true">
+
+            ▶
+
+          </span>
+
+          <strong>
+
+            Watch Their Film
+
+          </strong>
+
+          <small>
+
+            {{ page.venue }}
+
+            {% if page.location %}
+
+              · {{ page.location }}
+
+            {% endif %}
+
+          </small>
+
+        </span>
+
+        {% if page.film_length %}
+
+          <span class="films-player-corner">
+
+            {{ page.film_length }}
+
+          </span>
+
+        {% endif %}
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endif %}
+
+<!-- ======================================================
+
+     CREATIVE / EDIT
+
+     ====================================================== -->
+
+{% if page.edit_heading or page.quotes %}
+
+<section class="wedding-edit">
+
+  <div class="wedding-edit-inner">
+
+    <div
+
+      class="wedding-edit-heading"
+
+      data-reveal>
+
+      <span class="eyebrow">
+
+        The Edit
+
+      </span>
+
+      {% if page.edit_heading %}
+
+        <h2>
+
+          {{ page.edit_heading }}
+
+        </h2>
+
+      {% endif %}
+
+      {% if page.edit_intro %}
+
+        <p>
+
+          {{ page.edit_intro }}
+
+        </p>
+
+      {% endif %}
+
+    </div>
+
+    {% if page.quotes %}
+
+      <div class="wedding-quotes">
+
+        {% for quote in page.quotes %}
+
+          <article
+
+            class="wedding-quote"
+
+            data-reveal>
+
+            {% if quote.label %}
+
+              <span>
+
+                {{ quote.label }}
+
+              </span>
+
+            {% endif %}
+
+            <blockquote>
+
+              &ldquo;{{ quote.text }}&rdquo;
+
+            </blockquote>
+
+          </article>
+
+        {% endfor %}
+
+      </div>
+
+    {% endif %}
+
+    {% if page.edit_reflection %}
+
+      <div
+
+        class="wedding-edit-reflection"
+
+        data-reveal>
+
+        <p>
+
+          {{ page.edit_reflection }}
+
+        </p>
+
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</section>
+
+{% endif %}
+
+<!-- ======================================================
+
+     OPTIONAL REVIEW
+
+     ====================================================== -->
+
+{% if page.review_text %}
+
+<section class="wedding-review">
+
+  <div
+
+    class="wedding-review-inner"
+
+    data-reveal>
+
+    <span class="eyebrow">
+
+      Kind Words
+
+    </span>
+
+    <div
+
+      class="wedding-review-stars"
+
+      aria-label="5 star Google review">
+
+      ★★★★★
+
+    </div>
+
+    <blockquote>
+
+      &ldquo;{{ page.review_text }}&rdquo;
+
+    </blockquote>
+
+    {% if page.review_name %}
+
+      <p class="wedding-review-name">
+
+        {{ page.review_name }}
+
+        {% if page.review_source %}
+
+          · {{ page.review_source }}
+
+        {% endif %}
+
+      </p>
+
+    {% endif %}
+
+  </div>
+
+</section>
+
+{% endif %}
+
+<!-- ======================================================
+
+     FINAL CTA
+
+     ====================================================== -->
+
+<section class="wedding-cta">
+
+  <div
+
+    class="wedding-cta-inner"
+
+    data-reveal>
+
+    <span class="eyebrow">
+
+      {% if page.cta_eyebrow %}
+
+        {{ page.cta_eyebrow }}
+
+      {% else %}
+
+        Your Wedding
+
+      {% endif %}
+
+    </span>
+
+    <h2>
+
+      {% if page.cta_heading %}
+
+        {{ page.cta_heading }}
+
+      {% else %}
+
+        Your film shouldn't feel like theirs.
+
+      {% endif %}
+
+      <em>
+
+        {% if page.cta_accent %}
+
+          {{ page.cta_accent }}
+
+        {% else %}
+
+          It should feel like yours.
+
+        {% endif %}
+
+      </em>
+
+    </h2>
+
+    <p>
+
+      {% if page.cta_copy %}
+
+        {{ page.cta_copy }}
+
+      {% else %}
+
+        Tell me your wedding date, venue and a little about
+
+        the two of you. I'll confirm availability and start
+
+        getting a feel for the celebration you're planning.
+
+      {% endif %}
+
+    </p>
+
+    <div class="wedding-cta-actions">
+
+      <a
+
+        href="/#contact"
+
+        class="home-hero-button home-hero-button-primary">
+
+        Check Your Date
+
+      </a>
+
+      <a
+
+        href="/wedding-films.html"
+
+        class="home-hero-button home-hero-button-secondary">
+
+        More Wedding Films
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<script
+
+  src="/js/home.js"
+
+  defer>
+
+</script>

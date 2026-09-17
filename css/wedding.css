@@ -1,13 +1,25 @@
 /* =========================================================
    HORIZON & COMPANY
    SHARED REAL WEDDING PAGE
+   Editorial story system
    ========================================================= */
 
 .wedding-page{
-  background:var(--home-cream,#f4f2ed);
-  color:var(--home-ink,#242321);
+  --wedding-ink:var(--home-ink,#242321);
+  --wedding-cream:var(--home-cream,#f4f2ed);
+  --wedding-stone:#e9e5de;
+  --wedding-gold:var(--home-gold,#b89562);
+  --wedding-copy:#625e59;
+  background:var(--wedding-cream);
+  color:var(--wedding-ink);
+  overflow:hidden;
 }
 
+.wedding-page *,
+.wedding-page *::before,
+.wedding-page *::after{
+  box-sizing:border-box;
+}
 
 /* =========================================================
    HERO
@@ -16,12 +28,12 @@
 .wedding-hero{
   position:relative;
   width:100vw;
+  min-height:calc(100svh - var(--nav-height,0px));
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
-  min-height:calc(100svh - var(--nav-height,0px));
-  padding:110px 5vw 90px;
+  padding:105px 5vw 88px;
   overflow:hidden;
-  background:var(--home-ink,#242321);
+  background:var(--wedding-ink);
   color:#fff;
 }
 
@@ -38,9 +50,17 @@
   pointer-events:none;
 }
 
+.wedding-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 72% 42%,rgba(255,255,255,.035),transparent 34%);
+  pointer-events:none;
+}
+
 .wedding-hero-inner{
   position:relative;
-  z-index:1;
+  z-index:2;
   width:min(1180px,90vw);
   min-height:680px;
   margin:0 auto;
@@ -49,9 +69,6 @@
   gap:70px;
   align-items:center;
 }
-
-
-/* HERO COPY */
 
 .wedding-hero-copy{
   position:relative;
@@ -74,9 +91,7 @@
   color:#fff;
 }
 
-.wedding-hero h1 span{
-  display:block;
-}
+.wedding-hero h1 span{display:block;}
 
 .wedding-hero-venue{
   margin:26px 0 0;
@@ -112,12 +127,7 @@
   gap:12px;
 }
 
-.wedding-hero .home-hero-button{
-  min-width:205px;
-}
-
-
-/* HERO VISUAL */
+.wedding-hero .home-hero-button{min-width:205px;}
 
 .wedding-hero-visual{
   position:relative;
@@ -130,6 +140,7 @@
   left:0;
   width:74%;
   height:84%;
+  margin:0;
   overflow:hidden;
   background:#393633;
   box-shadow:0 28px 75px rgba(0,0,0,.24);
@@ -150,7 +161,11 @@
   height:100%;
   display:block;
   object-fit:cover;
+  transition:transform 1.1s cubic-bezier(.2,.7,.2,1);
 }
+
+.wedding-hero-image-main:hover img,
+.wedding-hero-image-secondary:hover img{transform:scale(1.018);}
 
 .wedding-hero-image-secondary{
   position:absolute;
@@ -159,17 +174,11 @@
   z-index:2;
   width:49%;
   height:48%;
+  margin:0;
   overflow:hidden;
   background:#393633;
   box-shadow:0 25px 65px rgba(0,0,0,.28);
 }
-
-.wedding-hero-image-secondary img{
-  object-position:center;
-}
-
-
-/* HERO IMAGE CAPTION */
 
 .wedding-hero-image-caption{
   position:absolute;
@@ -207,9 +216,57 @@
   color:rgba(255,255,255,.78);
 }
 
+.wedding-hero-visual-note{
+  position:absolute;
+  top:44px;
+  right:-10px;
+  z-index:4;
+  max-width:230px;
+  text-align:right;
+  pointer-events:none;
+}
+
+.wedding-hero-visual-note span{
+  display:block;
+  color:rgba(255,255,255,.38);
+  font-size:.52rem;
+  font-weight:600;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+}
+
+.wedding-hero-visual-note strong{
+  display:block;
+  margin-top:7px;
+  font-family:'Baskervville',serif;
+  font-size:1rem;
+  line-height:1.35;
+  font-weight:400;
+  font-style:italic;
+  color:rgba(255,255,255,.74);
+}
+
+.wedding-hero-scroll{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:27px;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:rgba(255,255,255,.42);
+  text-decoration:none;
+  font-size:.5rem;
+  font-weight:600;
+  letter-spacing:2.3px;
+  text-transform:uppercase;
+}
+
+.wedding-hero-scroll span{width:34px;height:1px;background:rgba(255,255,255,.28);}
 
 /* =========================================================
-   STORY INTRO
+   STORY — editorial opening
    ========================================================= */
 
 .wedding-story{
@@ -217,52 +274,73 @@
   width:100vw;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
-  padding:125px 5vw;
-  background:#fff;
+  padding:145px 5vw 155px;
   overflow:hidden;
+  background:#fff;
+}
+
+.wedding-story-word{
+  position:absolute;
+  right:-2vw;
+  top:35px;
+  font-family:'Baskervville',serif;
+  font-size:clamp(8rem,17vw,17rem);
+  line-height:1;
+  font-style:italic;
+  color:rgba(36,35,33,.018);
+  pointer-events:none;
 }
 
 .wedding-story-inner{
-  width:min(1100px,90vw);
+  position:relative;
+  z-index:1;
+  width:min(1180px,90vw);
   margin:0 auto;
   display:grid;
-  grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+  grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);
   gap:95px;
   align-items:start;
 }
 
-.wedding-story-heading .eyebrow{
-  margin-bottom:20px;
+.wedding-story-heading{
+  position:sticky;
+  top:130px;
 }
+
+.wedding-story-heading .eyebrow{margin-bottom:20px;}
 
 .wedding-story-heading h2{
   margin:0;
   font-family:'Baskervville',serif;
-  font-size:clamp(3.1rem,4.5vw,4.5rem);
-  line-height:.98;
+  font-size:clamp(3.3rem,4.8vw,4.8rem);
+  line-height:.94;
   font-weight:400;
-  letter-spacing:-.04em;
+  letter-spacing:-.045em;
 }
 
 .wedding-story-heading h2 em{
   display:block;
-  margin-top:12px;
-  font-size:.6em;
-  line-height:1.17;
+  margin-top:16px;
+  font-size:.58em;
+  line-height:1.12;
   font-weight:400;
   font-style:italic;
-  color:#716b63;
+  letter-spacing:-.025em;
+  color:#756f68;
 }
+
+.wedding-story-body{min-width:0;}
 
 .wedding-story-copy{
   max-width:620px;
+  margin-left:auto;
 }
 
 .wedding-story-lead{
-  margin:0 0 27px;
+  margin:0 0 28px;
   font-family:'Baskervville',serif;
-  font-size:1.5rem;
-  line-height:1.48;
+  font-size:1.62rem;
+  line-height:1.45;
   font-style:italic;
   color:#35322f;
 }
@@ -271,175 +349,50 @@
   margin:0 0 20px;
   color:#5f5a55;
   font-size:.96rem;
-  line-height:1.86;
+  line-height:1.88;
 }
 
-
-/* =========================================================
-   FILM
-   ========================================================= */
-
-.wedding-film{
+.wedding-story-image{
   position:relative;
-  width:100vw;
-  margin-left:calc(50% - 50vw);
-  margin-right:calc(50% - 50vw);
-  padding:125px 5vw;
-  background:var(--home-cream,#f4f2ed);
-}
-
-.wedding-film-inner{
-  width:min(1120px,90vw);
-  margin:0 auto;
-}
-
-.wedding-film-heading{
-  max-width:760px;
-  margin:0 auto 45px;
-  text-align:center;
-}
-
-.wedding-film-heading .eyebrow{
-  margin-bottom:18px;
-}
-
-.wedding-film-heading h2{
-  margin:0;
-  font-family:'Baskervville',serif;
-  font-size:clamp(3rem,4.5vw,4.2rem);
-  line-height:1;
-  font-weight:400;
-  letter-spacing:-.035em;
-}
-
-.wedding-film-heading p{
-  max-width:640px;
-  margin:22px auto 0;
-  color:#625e59;
-  font-size:.94rem;
-  line-height:1.8;
-}
-
-
-/* Uses films-player JS already built */
-
-.wedding-film .films-player-wrap{
-  max-width:1120px;
-  margin:0 auto;
-}
-
-.wedding-film .films-player{
-  width:100%;
-}
-
-
-/* =========================================================
-   EDIT / CREATIVE DIRECTION
-   ========================================================= */
-
-.wedding-edit{
-  position:relative;
-  width:100vw;
-  margin-left:calc(50% - 50vw);
-  margin-right:calc(50% - 50vw);
-  padding:125px 5vw;
+  width:84%;
+  margin:58px 0 0 auto;
+  aspect-ratio:4/5;
   overflow:hidden;
-  background:#fff;
+  background:#ddd8d0;
 }
 
-.wedding-edit::before{
-  content:"EDIT";
+.wedding-story-image::before{
+  content:"";
   position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  font-family:'Baskervville',serif;
-  font-size:clamp(10rem,22vw,21rem);
-  line-height:1;
-  font-style:italic;
-  color:rgba(36,35,33,.022);
+  inset:16px;
+  z-index:2;
+  border:1px solid rgba(255,255,255,.34);
   pointer-events:none;
 }
 
-.wedding-edit-inner{
-  position:relative;
-  z-index:1;
-  width:min(1050px,90vw);
-  margin:0 auto;
-}
-
-.wedding-edit-heading{
-  max-width:780px;
-  margin:0 auto 60px;
-  text-align:center;
-}
-
-.wedding-edit-heading h2{
-  margin:0;
-  font-family:'Baskervville',serif;
-  font-size:clamp(3rem,4.4vw,4.2rem);
-  line-height:1.02;
-  font-weight:400;
-  letter-spacing:-.035em;
-}
-
-.wedding-edit-heading p{
-  max-width:620px;
-  margin:24px auto 0;
-  color:#625e59;
-  font-size:.95rem;
-  line-height:1.82;
-}
-
-.wedding-quotes{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px;
-}
-
-.wedding-quote{
-  padding:44px 40px;
-  background:var(--home-cream,#f4f2ed);
-  border:1px solid rgba(36,35,33,.10);
-}
-
-.wedding-quote span{
+.wedding-story-image img{
+  width:100%;
+  height:100%;
   display:block;
-  margin-bottom:17px;
-  color:#9d7c4e;
-  font-size:.59rem;
-  font-weight:600;
-  letter-spacing:2.2px;
-  text-transform:uppercase;
+  object-fit:cover;
+  transition:transform 1s cubic-bezier(.2,.7,.2,1);
 }
 
-.wedding-quote blockquote{
-  margin:0;
+.wedding-story-image:hover img{transform:scale(1.018);}
+
+.wedding-story-image-index{
+  position:absolute;
+  left:-52px;
+  bottom:20px;
   font-family:'Baskervville',serif;
-  font-size:1.48rem;
-  line-height:1.5;
-  font-style:italic;
-  color:#36332f;
+  font-size:5.8rem;
+  line-height:1;
+  color:rgba(36,35,33,.09);
+  pointer-events:none;
 }
-
-.wedding-edit-reflection{
-  max-width:760px;
-  margin:55px auto 0;
-  text-align:center;
-}
-
-.wedding-edit-reflection p{
-  margin:0;
-  font-family:'Baskervville',serif;
-  font-size:1.65rem;
-  line-height:1.52;
-  font-style:italic;
-  color:#514c47;
-}
-
 
 /* =========================================================
-   OPTIONAL VENUE FEATURE
+   VENUE — overlapping editorial composition
    ========================================================= */
 
 .wedding-venue{
@@ -447,50 +400,100 @@
   width:100vw;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
-  padding:120px 5vw;
-  background:var(--home-cream,#f4f2ed);
+  padding:125px 5vw 145px;
+  overflow:hidden;
+  background:var(--wedding-cream);
 }
 
 .wedding-venue-inner{
-  width:min(1140px,90vw);
+  position:relative;
+  width:min(1180px,90vw);
+  min-height:620px;
   margin:0 auto;
-  display:grid;
-  grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
-  align-items:stretch;
 }
 
 .wedding-venue-image{
-  min-height:520px;
+  position:relative;
+  width:70%;
+  min-height:600px;
   overflow:hidden;
+  background:#d8d3cb;
+}
+
+.wedding-venue-image::after{
+  content:"";
+  position:absolute;
+  inset:16px;
+  border:1px solid rgba(255,255,255,.32);
+  pointer-events:none;
 }
 
 .wedding-venue-image img{
   width:100%;
   height:100%;
-  min-height:520px;
+  min-height:600px;
   display:block;
   object-fit:cover;
 }
 
-.wedding-venue-copy{
-  padding:65px 58px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  background:#fff;
+.wedding-venue-image-label{
+  position:absolute;
+  left:30px;
+  bottom:28px;
+  z-index:2;
+  color:#fff;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
 }
 
-.wedding-venue-copy .eyebrow{
-  margin-bottom:18px;
+.wedding-venue-image-label span{
+  display:block;
+  margin-bottom:6px;
+  color:#e4c995;
+  font-size:.55rem;
+  font-weight:600;
+  letter-spacing:2.3px;
+  text-transform:uppercase;
 }
+
+.wedding-venue-image-label strong{
+  display:block;
+  font-family:'Baskervville',serif;
+  font-size:1.45rem;
+  font-weight:400;
+}
+
+.wedding-venue-copy{
+  position:absolute;
+  z-index:3;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:43%;
+  padding:64px 58px;
+  background:#fff;
+  box-shadow:0 30px 80px rgba(35,31,28,.08);
+}
+
+.wedding-venue-copy::before{
+  content:"02";
+  position:absolute;
+  right:28px;
+  top:-51px;
+  font-family:'Baskervville',serif;
+  font-size:6rem;
+  line-height:1;
+  color:rgba(36,35,33,.045);
+}
+
+.wedding-venue-copy .eyebrow{margin-bottom:18px;}
 
 .wedding-venue-copy h2{
   margin:0 0 26px;
   font-family:'Baskervville',serif;
-  font-size:clamp(2.7rem,3.8vw,3.6rem);
-  line-height:1.03;
+  font-size:clamp(2.75rem,3.8vw,3.7rem);
+  line-height:.99;
   font-weight:400;
-  letter-spacing:-.03em;
+  letter-spacing:-.035em;
 }
 
 .wedding-venue-copy p{
@@ -500,9 +503,26 @@
   line-height:1.82;
 }
 
+.wedding-inline-link{
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  margin-top:12px;
+  padding-bottom:6px;
+  border-bottom:1px solid var(--wedding-gold);
+  color:var(--wedding-ink);
+  text-decoration:none;
+  font-size:.6rem;
+  font-weight:600;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+  transition:gap .25s ease,color .25s ease;
+}
+
+.wedding-inline-link:hover{gap:16px;color:#967344;}
 
 /* =========================================================
-   OPTIONAL IMAGE BREAK
+   CINEMATIC IMAGE CHAPTER
    ========================================================= */
 
 .wedding-image-break{
@@ -510,17 +530,18 @@
   width:100vw;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
-  padding:0;
-  background:#fff;
+  padding:0 0 30px;
+  background:#111;
 }
 
 .wedding-image-break-inner{
   position:relative;
-  width:min(1180px,92vw);
-  height:min(68vw,720px);
-  min-height:480px;
+  width:100%;
+  height:min(74vw,850px);
+  min-height:560px;
   margin:0 auto;
   overflow:hidden;
+  background:#111;
 }
 
 .wedding-image-break img{
@@ -530,53 +551,281 @@
   object-fit:cover;
 }
 
-.wedding-image-break::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-}
-
 .wedding-image-break-overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    to top,
-    rgba(0,0,0,.62),
-    rgba(0,0,0,.04) 65%
-  );
+  background:
+    linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,.08) 62%,rgba(0,0,0,.03) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.22),transparent 45%);
+}
+
+.wedding-image-break-frame{
+  position:absolute;
+  inset:24px;
+  border:1px solid rgba(255,255,255,.16);
+  pointer-events:none;
 }
 
 .wedding-image-break-copy{
   position:absolute;
-  left:48px;
-  right:48px;
-  bottom:42px;
-  max-width:670px;
+  left:max(7vw,55px);
+  bottom:max(7vw,58px);
+  max-width:760px;
   color:#fff;
 }
 
 .wedding-image-break-copy span{
   display:block;
-  margin-bottom:11px;
-  color:#ddc08e;
+  margin-bottom:13px;
+  color:#dfc18c;
   font-size:.58rem;
   font-weight:600;
-  letter-spacing:2.3px;
+  letter-spacing:2.5px;
   text-transform:uppercase;
 }
 
 .wedding-image-break-copy p{
   margin:0;
   font-family:'Baskervville',serif;
-  font-size:clamp(1.7rem,2.7vw,2.5rem);
-  line-height:1.3;
+  font-size:clamp(2.2rem,4vw,4.2rem);
+  line-height:1.08;
+  font-style:italic;
+  letter-spacing:-.025em;
+}
+
+.wedding-image-break-number{
+  position:absolute;
+  right:5vw;
+  bottom:3vw;
+  font-family:'Baskervville',serif;
+  font-size:8rem;
+  line-height:1;
+  color:rgba(255,255,255,.07);
+  pointer-events:none;
+}
+
+/* =========================================================
+   FILM — product becomes the hero of the middle
+   ========================================================= */
+
+.wedding-film{
+  position:relative;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  padding:145px 5vw 155px;
+  background:#efece6;
+}
+
+.wedding-film-inner{
+  width:min(1260px,92vw);
+  margin:0 auto;
+}
+
+.wedding-film-heading{
+  max-width:850px;
+  margin:0 auto 52px;
+  text-align:center;
+}
+
+.wedding-film-heading .eyebrow{margin-bottom:18px;}
+
+.wedding-film-heading h2{
+  margin:0;
+  font-family:'Baskervville',serif;
+  font-size:clamp(3.2rem,5vw,5rem);
+  line-height:.95;
+  font-weight:400;
+  letter-spacing:-.045em;
+}
+
+.wedding-film-heading p{
+  max-width:680px;
+  margin:24px auto 0;
+  color:#625e59;
+  font-size:.94rem;
+  line-height:1.82;
+}
+
+.wedding-film-stage{position:relative;}
+
+.wedding-film .films-player-wrap{
+  width:100%;
+  max-width:none;
+  margin:0;
+  box-shadow:0 32px 85px rgba(43,38,34,.14);
+}
+
+.wedding-film .films-player{width:100%;}
+
+.wedding-film-stage-caption{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  max-width:600px;
+  margin:28px 0 0 auto;
+  color:#7a736b;
+}
+
+.wedding-film-stage-caption span{
+  font-family:'Baskervville',serif;
+  font-size:2.3rem;
+  font-style:italic;
+  color:#a18762;
+}
+
+.wedding-film-stage-caption p{
+  margin:0;
+  font-family:'Baskervville',serif;
+  font-size:1rem;
+  line-height:1.5;
   font-style:italic;
 }
 
+/* =========================================================
+   THE EDIT — asymmetrical editorial quote treatment
+   ========================================================= */
+
+.wedding-edit{
+  position:relative;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  padding:145px 5vw 155px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.wedding-edit-word{
+  position:absolute;
+  left:50%;
+  top:45%;
+  transform:translate(-50%,-50%);
+  font-family:'Baskervville',serif;
+  font-size:clamp(11rem,25vw,24rem);
+  line-height:1;
+  font-style:italic;
+  color:rgba(36,35,33,.018);
+  pointer-events:none;
+}
+
+.wedding-edit-inner{
+  position:relative;
+  z-index:1;
+  width:min(1120px,90vw);
+  margin:0 auto;
+}
+
+.wedding-edit-heading{
+  max-width:800px;
+  margin:0 auto 80px;
+  text-align:center;
+}
+
+.wedding-edit-heading .eyebrow{margin-bottom:18px;}
+
+.wedding-edit-heading h2{
+  margin:0;
+  font-family:'Baskervville',serif;
+  font-size:clamp(3.2rem,4.8vw,4.7rem);
+  line-height:.98;
+  font-weight:400;
+  letter-spacing:-.04em;
+}
+
+.wedding-edit-heading p{
+  max-width:650px;
+  margin:25px auto 0;
+  color:#625e59;
+  font-size:.95rem;
+  line-height:1.84;
+}
+
+.wedding-quotes{
+  display:grid;
+  grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);
+  gap:28px;
+  align-items:start;
+}
+
+.wedding-quote{
+  position:relative;
+  overflow:hidden;
+}
+
+.wedding-quote-primary{
+  min-height:390px;
+  padding:72px 62px;
+  background:var(--wedding-ink);
+  color:#fff;
+}
+
+.wedding-quote-secondary{
+  margin-top:105px;
+  padding:50px 45px;
+  background:var(--wedding-cream);
+  border:1px solid rgba(36,35,33,.10);
+}
+
+.wedding-quote-number{
+  position:absolute;
+  right:24px;
+  top:12px;
+  font-family:'Baskervville',serif;
+  font-size:5.5rem;
+  line-height:1;
+  color:rgba(184,149,98,.14);
+  pointer-events:none;
+}
+
+.wedding-quote small{
+  display:block;
+  margin-bottom:24px;
+  color:#a88756;
+  font-size:.58rem;
+  font-weight:600;
+  letter-spacing:2.3px;
+  text-transform:uppercase;
+}
+
+.wedding-quote-primary small{color:#d4b27c;}
+
+.wedding-quote blockquote{
+  margin:0;
+  font-family:'Baskervville',serif;
+  font-size:clamp(1.6rem,2.5vw,2.35rem);
+  line-height:1.42;
+  font-style:italic;
+}
+
+.wedding-quote-primary blockquote{color:#fff;}
+.wedding-quote-secondary blockquote{color:#37332f;}
+
+.wedding-edit-reflection{
+  max-width:850px;
+  margin:80px auto 0;
+  text-align:center;
+}
+
+.wedding-edit-reflection-rule{
+  display:block;
+  width:42px;
+  height:1px;
+  margin:0 auto 24px;
+  background:var(--wedding-gold);
+}
+
+.wedding-edit-reflection p{
+  margin:0;
+  font-family:'Baskervville',serif;
+  font-size:clamp(1.55rem,2.3vw,2rem);
+  line-height:1.5;
+  font-style:italic;
+  color:#514c47;
+}
 
 /* =========================================================
-   OPTIONAL REVIEW
+   REVIEW
    ========================================================= */
 
 .wedding-review{
@@ -584,32 +833,45 @@
   width:100vw;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
-  padding:110px 5vw;
-  background:#fff;
+  padding:125px 5vw;
+  overflow:hidden;
+  background:#f3f0ea;
   text-align:center;
 }
 
+.wedding-review::before{
+  content:"“";
+  position:absolute;
+  left:4vw;
+  top:-95px;
+  font-family:'Baskervville',serif;
+  font-size:24rem;
+  line-height:1;
+  color:rgba(36,35,33,.025);
+  pointer-events:none;
+}
+
 .wedding-review-inner{
-  max-width:850px;
+  position:relative;
+  z-index:1;
+  max-width:920px;
   margin:0 auto;
 }
 
-.wedding-review .eyebrow{
-  margin-bottom:20px;
-}
+.wedding-review .eyebrow{margin-bottom:20px;}
 
 .wedding-review-stars{
-  margin-bottom:25px;
+  margin-bottom:26px;
   color:#b89562;
   font-size:.85rem;
   letter-spacing:5px;
 }
 
 .wedding-review blockquote{
-  margin:0 auto 24px;
+  margin:0 auto 27px;
   font-family:'Baskervville',serif;
-  font-size:clamp(1.5rem,2.5vw,2rem);
-  line-height:1.5;
+  font-size:clamp(1.6rem,2.7vw,2.25rem);
+  line-height:1.48;
   font-style:italic;
   color:#35322f;
 }
@@ -623,7 +885,6 @@
   text-transform:uppercase;
 }
 
-
 /* =========================================================
    CTA
    ========================================================= */
@@ -633,9 +894,9 @@
   width:100vw;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
-  padding:125px 5vw;
+  padding:130px 5vw;
   overflow:hidden;
-  background:var(--home-ink,#242321);
+  background:var(--wedding-ink);
   color:#fff;
   text-align:center;
 }
@@ -657,20 +918,17 @@
 .wedding-cta-inner{
   position:relative;
   z-index:1;
-  max-width:790px;
+  max-width:820px;
   margin:0 auto;
 }
 
-.wedding-cta .eyebrow{
-  margin-bottom:20px;
-  color:#c9a876;
-}
+.wedding-cta .eyebrow{margin-bottom:20px;color:#c9a876;}
 
 .wedding-cta h2{
   margin:0;
   font-family:'Baskervville',serif;
-  font-size:clamp(3.1rem,5vw,4.8rem);
-  line-height:1;
+  font-size:clamp(3.1rem,5vw,4.9rem);
+  line-height:.98;
   font-weight:400;
   letter-spacing:-.04em;
   color:#fff;
@@ -678,8 +936,8 @@
 
 .wedding-cta h2 em{
   display:block;
-  margin-top:13px;
-  font-size:.62em;
+  margin-top:14px;
+  font-size:.61em;
   line-height:1.15;
   font-style:italic;
   font-weight:400;
@@ -687,11 +945,11 @@
 }
 
 .wedding-cta p{
-  max-width:620px;
-  margin:27px auto 34px;
+  max-width:640px;
+  margin:28px auto 35px;
   color:rgba(255,255,255,.68);
   font-size:.94rem;
-  line-height:1.8;
+  line-height:1.82;
 }
 
 .wedding-cta-actions{
@@ -701,16 +959,12 @@
   gap:12px;
 }
 
-
 /* =========================================================
    TABLET
    ========================================================= */
 
 @media(max-width:950px){
-
-  .wedding-hero{
-    padding-top:95px;
-  }
+  .wedding-hero{padding-top:95px;}
 
   .wedding-hero-inner{
     width:min(720px,88vw);
@@ -718,134 +972,116 @@
     gap:55px;
   }
 
-  .wedding-hero-visual{
-    min-height:620px;
-  }
+  .wedding-hero-visual{min-height:620px;}
+  .wedding-hero-visual-note{right:0;}
 
+  .wedding-story{padding:105px 0 115px;}
   .wedding-story-inner{
-    width:min(700px,88vw);
+    width:min(720px,88vw);
     grid-template-columns:1fr;
-    gap:42px;
+    gap:50px;
   }
 
-  .wedding-venue-inner{
-    width:min(700px,88vw);
-    grid-template-columns:1fr;
+  .wedding-story-heading{position:static;}
+  .wedding-story-copy{margin-left:0;}
+  .wedding-story-image{width:82%;margin-left:auto;}
+
+  .wedding-venue{padding:100px 0 110px;}
+  .wedding-venue-inner{width:min(720px,88vw);min-height:0;}
+  .wedding-venue-image{width:88%;min-height:520px;}
+  .wedding-venue-image img{min-height:520px;}
+  .wedding-venue-copy{
+    position:relative;
+    width:72%;
+    margin:-95px 0 0 auto;
+    top:auto;
+    right:auto;
+    transform:none;
   }
 
-  .wedding-quotes{
-    grid-template-columns:1fr;
-  }
+  .wedding-film{padding:110px 0 120px;}
+  .wedding-film-inner{width:min(900px,92vw);}
 
+  .wedding-edit{padding:110px 0 120px;}
+  .wedding-edit-inner{width:min(720px,88vw);}
+  .wedding-quotes{grid-template-columns:1fr;}
+  .wedding-quote-secondary{margin-top:0;margin-left:11%;}
 }
-
 
 /* =========================================================
    PHONE
    ========================================================= */
 
 @media(max-width:600px){
+  .wedding-hero{min-height:auto;padding:90px 0 70px;}
+  .wedding-hero-inner{width:88vw;min-height:0;gap:45px;}
+  .wedding-hero h1{font-size:4rem;}
+  .wedding-hero-tone{font-size:1.45rem;}
+  .wedding-hero-actions{display:grid;grid-template-columns:1fr;}
+  .wedding-hero .home-hero-button{width:100%;min-width:0;}
+  .wedding-hero-visual{min-height:440px;}
+  .wedding-hero-image-main{width:82%;height:78%;}
+  .wedding-hero-image-secondary{width:52%;height:45%;}
+  .wedding-hero-visual-note{display:none;}
+  .wedding-hero-scroll{display:none;}
 
-  .wedding-hero{
-    min-height:auto;
-    padding:90px 0 70px;
-  }
+  .wedding-story{padding:82px 0 90px;}
+  .wedding-story-inner{gap:36px;}
+  .wedding-story-heading h2{font-size:2.85rem;}
+  .wedding-story-image{width:94%;margin-top:40px;}
+  .wedding-story-image-index{display:none;}
 
-  .wedding-hero-inner{
-    width:88vw;
-    min-height:0;
-    gap:45px;
-  }
-
-  .wedding-hero h1{
-    font-size:4rem;
-  }
-
-  .wedding-hero-tone{
-    font-size:1.45rem;
-  }
-
-  .wedding-hero-actions{
-    display:grid;
-    grid-template-columns:1fr;
-  }
-
-  .wedding-hero .home-hero-button{
-    width:100%;
-    min-width:0;
-  }
-
-  .wedding-hero-visual{
-    min-height:440px;
-  }
-
-  .wedding-hero-image-main{
-    width:82%;
-    height:78%;
-  }
-
-  .wedding-hero-image-secondary{
-    width:52%;
-    height:45%;
-  }
-
-  .wedding-story,
-  .wedding-film,
-  .wedding-edit,
-  .wedding-venue{
-    padding:80px 0;
-  }
-
-  .wedding-story-heading h2,
-  .wedding-film-heading h2,
-  .wedding-edit-heading h2{
-    font-size:2.8rem;
-  }
-
-  .wedding-quote{
-    padding:34px 27px;
-  }
-
+  .wedding-venue{padding:76px 0 88px;}
+  .wedding-venue-inner{width:90vw;}
+  .wedding-venue-image{width:100%;min-height:360px;}
+  .wedding-venue-image img{min-height:360px;}
   .wedding-venue-copy{
+    width:92%;
+    margin:-42px auto 0;
     padding:42px 30px;
   }
+  .wedding-venue-copy::before{font-size:4.3rem;top:-35px;}
+  .wedding-venue-copy h2{font-size:2.65rem;}
 
-  .wedding-venue-image,
-  .wedding-venue-image img{
-    min-height:350px;
-  }
+  .wedding-image-break{padding-bottom:0;}
+  .wedding-image-break-inner{height:125vw;min-height:540px;}
+  .wedding-image-break-frame{inset:12px;}
+  .wedding-image-break-copy{left:27px;right:27px;bottom:34px;}
+  .wedding-image-break-copy p{font-size:2rem;}
+  .wedding-image-break-number{display:none;}
 
-  .wedding-image-break-inner{
-    width:100%;
-    height:125vw;
-    min-height:500px;
-  }
+  .wedding-film{padding:82px 0 92px;}
+  .wedding-film-inner{width:92vw;}
+  .wedding-film-heading{margin-bottom:34px;}
+  .wedding-film-heading h2{font-size:2.9rem;}
+  .wedding-film-stage-caption{margin-top:20px;gap:12px;}
+  .wedding-film-stage-caption span{font-size:1.9rem;}
 
-  .wedding-image-break-copy{
-    left:26px;
-    right:26px;
-    bottom:27px;
-  }
+  .wedding-edit{padding:85px 0 95px;}
+  .wedding-edit-heading{margin-bottom:52px;}
+  .wedding-edit-heading h2{font-size:2.9rem;}
+  .wedding-quote-primary{min-height:0;padding:45px 30px;}
+  .wedding-quote-secondary{margin-left:0;padding:38px 30px;}
+  .wedding-quote-number{font-size:4.4rem;}
+  .wedding-quote blockquote{font-size:1.55rem;}
+  .wedding-edit-reflection{margin-top:55px;}
 
-  .wedding-review{
-    padding:80px 6vw;
-  }
+  .wedding-review{padding:86px 6vw;}
+  .wedding-review blockquote{font-size:1.5rem;}
 
-  .wedding-cta{
-    padding:90px 6vw;
-  }
-
+  .wedding-cta{padding:92px 6vw;}
+  .wedding-cta-actions{display:grid;grid-template-columns:1fr;max-width:340px;margin-left:auto;margin-right:auto;}
+  .wedding-cta .home-hero-button{width:100%;}
 }
-
 
 /* =========================================================
    REDUCED MOTION
    ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
-
-  .wedding-page *{
-    scroll-behavior:auto !important;
-  }
-
+  .wedding-page *{scroll-behavior:auto !important;}
+  .wedding-hero-image-main img,
+  .wedding-hero-image-secondary img,
+  .wedding-story-image img,
+  .wedding-inline-link{transition:none !important;}
 }
